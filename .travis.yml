@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+- 9.3.0
+branches: 
+  - only: source
+before_install:
+- npm install -g hexo-cli
+install:
+- npm install
+script:
+- hexo generate
+after_success:
+- git config --global user.name "lijiarui"
+- git config --global user.email "ruiruibupt@126.com"
+- sed -i'' "/^ *repo/s~github\.com~${GH_TOKEN}@github.com~" _config.yml
+- hexo deploy
+env:
+  global:
+    secure: V4rNFY714JvqqHJQWZYMWLnMaBRl6eEirzWkV1nd/HnZNsYfZ/XM8BfJxJmNGwqTqXArC9NDAmBonGsfIgSS8oZEKHekEJlwGpRFORJyRd81/BYE5aoZo4R7XyHpMOwaAUXS6dcs8O5Wt427lrPtUJnY4yeX+K6ZdUlo6tg+7bZbuug6VsInDsUYIz5Us0SxtT0nq+UwbB0m00hz9ILX8OVmeZsQDVAQc4oF7xDs3AKifhIqWXvzoB+poDoNUZJ0C2r2sYfNfAZj1XS28FOJyVjPrQC8j3F8VI+gQC5hx4B3FpW6cYlk78MJP8dpn38WCwb15FZ70bYUYbqFEQwkLE+j85fvzy0kjgnj7acyqtAz7JpKXG1kA+JqXFf7q+NT+r6AtmAR8xB34wpDzaM5W9w+A1uX8ZMXhQ8HOpWwGz806nNUpvnFxHxhkQl04rigjd16W+7w9NdxC45C4gkE1us8sbEngFiExmqaR5k3MZIlConZJ5D+XCkPzf7/gOL0DtrZGYHcD8tFMvfqhdTJRoF/JXQ1AEotZKijYonW5n3M0FOSXtsx8Wr61IzQkPVTjdieetfWqu/sS2EyC3onyouGHRge7b3MCXkB5HSKDOxm2aiskStqHwo0f4vjflaJYI1s0cy0aS0egbGFLH9vDUnTJ8NA3f0Fk47xBu1X6ZY=
