@@ -2,7 +2,8 @@ language: node_js
 node_js:
 - 9.3.0
 branches:
-- only: source
+  only: 
+  - source
 before_install:
 - npm install -g hexo-cli
 install:
