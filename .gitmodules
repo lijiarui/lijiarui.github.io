@@ -1,0 +1,3 @@
+[submodule "themes/jsimple"]
+	path = themes/jsimple
+	url = https://github.com/lijiarui/hexo-theme-jsimple.git

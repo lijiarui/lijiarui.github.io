@@ -6,8 +6,11 @@ branches:
   - source
 before_install:
 - npm install -g hexo-cli
-- npm install
 install:
+- git submodule init
+- git submodule update
+- npm install
+script:
 - hexo generate
 after_success:
 - git config --global user.name "lijiarui"
