@@ -40,4 +40,7 @@ travis encrypt 'GH_TOKEN=<TOKEN>' --add
 ```
 5. Start [Travis CI](https://travis-ci.org) 
 
-see more [Hexo-Auto-Deploy-to-Github](http://lotabout.me/2016/Hexo-Auto-Deploy-to-Github/)
+see more 
+* [Deploying Hexo to Github Pages with Travis](https://sazzer.github.io/blog/2015/05/04/Deploying-Hexo-to-Github-Pages-with-Travis/)
+* [Hexo-Auto-Deploy-to-Github](http://lotabout.me/2016/Hexo-Auto-Deploy-to-Github/)
+* [手把手教从零开始在GitHub上使用Hexo搭建博客教程(四)-使用Travis自动部署Hexo](https://zhuanlan.zhihu.com/p/22405971)
