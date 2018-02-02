@@ -1,0 +1,381 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<!--
+//                            _ooOoo_
+//                           o8888888o
+//                           88" . "88
+//                           (| -_- |)
+//                            O\ = /O
+//                        ____/`---'\____
+//                      .   ' \\| |// `.
+//                       / \\||| : |||// \
+//                     / _||||| -:- |||||- \
+//                       | | \\\ - /// | |
+//                     | \_| ''\---/'' | |
+//                      \ .-\__ `-` ___/-. /
+//                   ___`. .' /--.--\ `. . __
+//                ."" '< `.___\_<|>_/___.' >'"".
+//               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+//                 \ \ `-. \_ __\ /__ _/ .-` / /
+//         ======`-.____`-.___\_____/___.-`____.-'======
+//                            `=---='
+//                 拦截插件累计拦截逗比攻击"1381438"次！
+//         .............................................
+//                  佛祖保佑             永无BUG
+//          佛曰:
+//                  写字楼里写字间，写字间里程序员；
+//                  程序人员写程序，又拿程序换酒钱。
+//                  酒醒只在网上坐，酒醉还来网下眠；
+//                  酒醉酒醒日复日，网上网下年复年。
+//                  但愿老死电脑间，不愿鞠躬老板前；
+//                  奔驰宝马贵者趣，公交自行程序员。
+//                  别人笑我忒疯癫，我笑自己命太贱；
+//                  不见满街漂亮妹，哪个归得程序员？
+-->
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://lijiarui.github.io/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://lijiarui.github.io">
+<meta name="author" content="Li jiarui">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/SimpleStyle.min.css">
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+
+<title>构建人脸识别聊天机器人--wechaty blinder - 李佳芮de博客</title>
+
+<meta name="keywords" content="chatbot, 技术博客, 聊天机器人, 人工智能, 创业">
+
+<meta name="description " content="这是我在2017 北京 谷歌开发者节 TensorFlow 分会场的分享，本次活动是由谷歌（中国）、谷歌北京开发者社区主办，北京邮电大学协办的2017谷歌开发者节北京站在北京邮电大学圆满举办。我主要介绍了如何使用开源项目Wechaty-Blinder快速搭建一个微信人脸识别机器人，迅速帮助你识别照片里的人。">
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="芮">芮</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a>
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">李佳芮の博客</h1>
+        <h3 class="cover-siteTitle">时间看得见</h3>
+        <p class="cover-siteDesc">一个现实的理想主义者</p>
+        <div class="cover-sns">
+            
+            <div class="btn btn-weibo">
+                <a href="https://weibo.com/u/2175505900?refer_flag=1001030101_" target="_blank" title="weibo" ref="friend">
+                    <i class="fa fa-weibo"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-weixin">
+                <a href="http://blog.botorange.com" target="_blank" title="weixin" ref="friend">
+                    <i class="fa fa-weixin"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-github">
+                <a href="https://github.com/lijiarui" target="_blank" title="github" ref="friend">
+                    <i class="fa fa-github"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-telegram">
+                <a href="https://www.jianshu.com/u/ac5aaa7ad293" target="_blank" title="telegram" ref="friend">
+                    <i class="fa fa-telegram"></i>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最新</a></li>
+        
+            
+                <li class="">
+                    <a href="/categories/chatbot" data-name="chatbot">chatbot</a>
+                </li>
+            
+                <li class="active">
+                    <a href="/categories/presentation" data-name="presentation">presentation</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/thought" data-name="thought">thought</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/project" data-name="project">project</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/tech" data-name="技术随笔">技术随笔</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/reading" data-name="读书笔记">读书笔记</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <label for="s" class="sr-only">请输入关键字</label>
+        <input class="search-field" type="text" name="s" class="text" placeholder="请输入关键字" />
+        <button type="submit" class="search-form-submit" title="搜索"><i class="fa fa-search"></i></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://www.botorange.com" target="_blank">
+                    <img width="48" src="/images/avatar.jpg" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://blog.botorange.com" target="_blank">李佳芮</a>
+                    <span title="最后编辑于2018-01-25">2018-01-25</span>
+                </p>
+                <p>一个现实的理想主义者</p>
+            </div>
+            <h2 class="post-title">构建人脸识别聊天机器人--Wechaty Blinder</h2>
+            <div class="post-meta">
+                本文总共3988个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <p>这是我在<a href="http://www.itdks.com/eventlist/detail/1627" target="_blank" rel="noopener">2017 北京 谷歌开发者节</a> TensorFlow 分会场的分享，本次活动是由谷歌（中国）、谷歌北京开发者社区主办，北京邮电大学协办的2017谷歌开发者节北京站在北京邮电大学圆满举办。我主要介绍了如何使用开源项目Wechaty-Blinder快速搭建一个微信脸盲机器人，迅速帮助你识别照片里的人。</p>
+<p><img src="/img/2018/wechaty-blinder-1.jpg" alt=""></p>
+<h3 id="Who-am-I"><a href="#Who-am-I" class="headerlink" title="Who am I"></a>Who am I</h3><p><img src="/img/2018/wechaty-blinder-2.jpg" alt=""></p>
+<p>在分享这个开源项目之前，我先介绍一个我的先天性缺陷：</p>
+<ol>
+<li>近视+散光，但是每年带眼镜的次数是个位数。</li>
+<li>先天性记不住人样貌。</li>
+<li>每天还要见好多人，微信有大几千好友。        </li>
+</ol>
+<p>通常情况下我会和一个人在微信上聊的火热，然后在一次活动见面又聊的很开心，然后过了几个月再次见面的时候，我们双方热情打招呼后心里默默嘀咕这个人是谁。。。。<br>为了不让大家觉得我是一个高冷の女子，在我经常活动的地方，只要有人往我这看,我就热情的打招呼，也许对方也在默默嘀咕这是哪个神经病。。。。<br>对，我有脸盲。<br>而今天介绍的脸盲机器人，用人工智能，专门帮助我认识各种人的。</p>
+<h3 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h3><p><img src="/img/2018/wechaty-blinder-3.jpg" alt=""></p>
+<p>我会从5个角度来做这场分享，首先简单的介绍下TensorFlow, 然后介绍下Google 的Facenet，再来介绍下我们的3个开源项目：Wechaty, Node-Facenet, Wechaty-Blinder, 最后会给大家做现场的代码演示。<br>之所以介绍wechaty-blinder 的项目要介绍wechaty 和node-facenet，是因为wechaty-blinder 是基于wechaty 和 node-facenet 这两个开源项目的。</p>
+<h3 id="Google-TensorFlow"><a href="#Google-TensorFlow" class="headerlink" title="Google TensorFlow"></a>Google TensorFlow</h3><p><img src="/img/2018/wechaty-blinder-4.jpg" alt=""></p>
+<p>脸盲机器人wechaty的底层用到了TensorFlow, 今天要介绍的wechaty-blinder 是一个基于TensorFlow 和google 的论文 Facenet 实现的node.js 开源项目，可以帮助解决人脸认证、识别和聚类等问题。</p>
+<h3 id="Google-Facenet"><a href="#Google-Facenet" class="headerlink" title="Google Facenet"></a>Google Facenet</h3><p><img src="/img/2018/wechaty-blinder-5.jpg" alt=""></p>
+<p>Facenet 来源于Google 的论文<a href="https://arxiv.org/abs/1503.03832" target="_blank" rel="noopener">FaceNet: A Unified Embedding for Face Recognition and Clustering</a>，是一个用来给人脸做分类的神经网络。<br>与其他的深度学习方法在人脸上的应用不同，FaceNet并没有用传统的softmax的方式去进行分类学习，然后抽取其中某一层作为特征，而是直接进行端对端学习一个从图像到欧式空间的编码方法，然后基于这个编码再做人脸识别、人脸验证和人脸聚类等，欧式集合距离可以直接来代表脸的相似度。<br>FaceNet算法有2个特点：</p>
+<ol>
+<li>去掉了最后的softmax，而是用元组计算距离的方式来进行模型的训练。使用这种方式学到的图像表示非常紧致，使用128位足矣。</li>
+<li>元组的选择非常重要，选的好可以很快的收敛。</li>
+</ol>
+<h3 id="Open-Source-Chatie"><a href="#Open-Source-Chatie" class="headerlink" title="Open Source Chatie"></a>Open Source Chatie</h3><p><img src="/img/2018/wechaty-blinder-6.jpg" alt=""></p>
+<p>Wechaty 是一个开源的针对个人号的微信机器人框架，仅仅使用6行JavaScript代码就可以实现一个简单的机器人，同时支持Linux，Windows，Darwin(OSX/Mac) 和 Docker。<br>博客地址是 <a href="https://blog.chatie.io" target="_blank" rel="noopener">https://blog.chatie.io</a></p>
+<h3 id="Open-Source-Chatie-1"><a href="#Open-Source-Chatie-1" class="headerlink" title="Open Source Chatie"></a>Open Source Chatie</h3><p><img src="/img/2018/wechaty-blinder-7.jpg" alt=""></p>
+<p>最简单的6行代码代码在这里，也可以去我的项目<a href="https://github.com/lijiarui/wechaty-getting-started.git" target="_blank" rel="noopener">wechaty-getting-started</a>下快速入门wechaty。wechaty 最终运行页面就是右手边的样子。</p>
+<h3 id="Open-Source-Chatie-2"><a href="#Open-Source-Chatie-2" class="headerlink" title="Open Source Chatie"></a>Open Source Chatie</h3><p><img src="/img/2018/wechaty-blinder-8.jpg" alt=""></p>
+<p>Github, Docker, npm 相关地址在这里，wechaty有非常完善的devOps，一旦代码提交，就会自动进行自动化测试，当测试通过后，会自动打包更新docker 和npm， 所以也欢迎各位开发者来pull request。</p>
+<h3 id="Open-Source-Chatie-3"><a href="#Open-Source-Chatie-3" class="headerlink" title="Open Source Chatie"></a>Open Source Chatie</h3><p><img src="/img/2018/wechaty-blinder-9.jpg" alt=""></p>
+<p>Wechaty 现在有非常完善的开发者社区，开发者覆盖了全球，包括中国、美国、澳洲、英国等。这是一部分的contributor的列表，同时chatie 下面也有几个分值项目来支持微信机器人。</p>
+<h3 id="Open-Source-Node-FaceNet"><a href="#Open-Source-Node-FaceNet" class="headerlink" title="Open Source Node-FaceNet"></a>Open Source Node-FaceNet</h3><p><img src="/img/2018/wechaty-blinder-10.jpg" alt=""></p>
+<p><a href="https://npmjs.com/package/facenet" target="_blank" rel="noopener">Node-FaceNet</a> 是一个基于TensorFlow和facenet ，解决人脸认证、识别和聚类问题的开源项目。它是一个用node封装的python的Facenet库，主要实现了下面三个主要功能：</p>
+<ol>
+<li>把不同的脸放在一个欧几里得空间中，不同脸之间的距离代表着脸的相似度。</li>
+<li>很好的优化了识别脸的性能，一张脸只要128维向量即可表示。</li>
+<li>在LFW 数据集上可以达到99.63% 的准确率，在YouTube 数据集上可以达到95.21% 的准确率。</li>
+</ol>
+<h3 id="Open-Source-Node-FaceNet-1"><a href="#Open-Source-Node-FaceNet-1" class="headerlink" title="Open Source Node-FaceNet"></a>Open Source Node-FaceNet</h3><p><img src="/img/2018/wechaty-blinder-11.jpg" alt=""></p>
+<p>这个开源项目核心是2个类和3个方法，更多的细节可以参考我写的<a href="http://www.zixia.net/node-facenet" target="_blank" rel="noopener">文档</a>。<br>两个主要的类是：    </p>
+<ol>
+<li>Face, 毫无疑问代表一张脸</li>
+<li>Facenet, 代表的是一坨脸。。。</li>
+</ol>
+<p>三个主要的方法是:</p>
+<ol>
+<li>aling()， 从一张图中找出包含的所有的脸，通过先找到脸的坐标，然后生成一个Face 实例数组。换句话中，传一张图片给align，他会突出一个脸的array.</li>
+<li>embedding()， 将脸转换成一个128维向量</li>
+<li>distance()，计算两个脸的距离     </li>
+</ol>
+<h3 id="Open-Source-Node-FaceNet-2"><a href="#Open-Source-Node-FaceNet-2" class="headerlink" title="Open Source Node-FaceNet"></a>Open Source Node-FaceNet</h3><p><img src="/img/2018/wechaty-blinder-12.jpg" alt=""></p>
+<p>这是一个简单的例子，我们来读左边的代码。先新建一个Facenet 的实例，然后传入照片，看打印出来的face的结果。右边是打印的结果。通过这个我们可以看出来，align 函数在图片上找出这张脸的坐标以后，生成一个Face实例，把所有的实例放在一个数组里面。 这个坐标包括两种，一种是能够框出这个脸的框框，另外一个是脸上关键性的5个特征点。看log感受一下：</p>
+<ul>
+<li>bounding box: 用来框出脸的框框，用两个关键点表示：一个是左上角的点，一个是右上角的点。</li>
+<li>landmarks:代表脸上关键性的5个特征点，左眼、有眼、鼻子、左边的嘴、右边的嘴</li>
+<li>embedding: 代表脸的128维向量, Facenet 论文中的embedding 代表一个脸部特征矩阵，是一个128维向量。</li>
+</ul>
+<h3 id="Open-Source-Node-FaceNet-3"><a href="#Open-Source-Node-FaceNet-3" class="headerlink" title="Open Source Node-FaceNet"></a>Open Source Node-FaceNet</h3><p><img src="/img/2018/wechaty-blinder-13.jpg" alt=""></p>
+<p>这是另外一个例子，把脸和脸之间的距离可视化。<br>我们可以看到这个绿色的框框就是上面我说的align出来的能够框出脸的框框，1.45，1.47, 0.66 三个数字分别代表了两个脸的相似程度，可以看出，数字约小，脸约像。如果两个脸是属于一个人的，他们的距离通常是0.75。当然这只是一个经验性数字，还要具体情况具体分析。</p>
+<h3 id="Open-Source-Wechaty-Blinder"><a href="#Open-Source-Wechaty-Blinder" class="headerlink" title="Open Source Wechaty-Blinder"></a>Open Source Wechaty-Blinder</h3><p><img src="/img/2018/wechaty-blinder-14.jpg" alt=""></p>
+<p>终于讲到了今天的主角，脸盲机器人的开源项目<a href="https://github.com/zixia/wechaty-blinder" target="_blank" rel="noopener">wechaty-blinder</a>, 其实当你了解了上面两个项目以后，wechaty-blinder 就非常好理解了。</p>
+<p>这个项目是可以记住你所有的微信好友的脸。</p>
+<p>一旦机器人帮你记住了这张脸，你随时随地都可以为这张脸命名。他有下面3个功能：</p>
+<ol>
+<li>记住群里所有好友的脸</li>
+<li>记住通讯录里所有好友的脸</li>
+<li>记住你发的每张照片中的脸    </li>
+</ol>
+<p>当然，他就可以帮助你认出你发的照片、群、和好友中哪些是同一个人啦。</p>
+<h3 id="Open-Source-Wechaty-Blinder-1"><a href="#Open-Source-Wechaty-Blinder-1" class="headerlink" title="Open Source Wechaty-Blinder"></a>Open Source Wechaty-Blinder</h3><p><img src="/img/2018/wechaty-blinder-15.jpg" alt=""></p>
+<p>这是使用wechaty-blinder 的效果图，看到当我发甄子丹和刘德华的脸的时候，他会自动吐出库里面和这个相似的所有的脸，并可以随时给他们改名字。简单的说就是两点：</p>
+<ol>
+<li>识别出脸</li>
+<li>给脸起名字</li>
+</ol>
+<h3 id="Open-Source-Wechaty-Blinder-2"><a href="#Open-Source-Wechaty-Blinder-2" class="headerlink" title="Open Source Wechaty-Blinder"></a>Open Source Wechaty-Blinder</h3><p><img src="/img/2018/wechaty-blinder-16.jpg" alt=""><br>大家可以体验一下，这个是我预先为这个活动创建好的wechaty-dev-facenet 微信群，群里面有机器人，扫码进去就可以体验这个功能了。</p>
+<p>这个机器人已经用Docker 封装好了，运行下面的命令，就可以启动这个机器人了，<code>WECHATY_TOKEN=TOKEN</code> 是可以你随便起名字的。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --restart=always --volume=/workdir:/workdir -e WECHATY_TOKEN=TOKEN zixia/wechaty-blinder</span><br></pre></td></tr></table></figure></p>
+<p>如果你想随时在网页上控制这个机器人怎么办呢？很简单，跟着我做下面这五步：</p>
+<ol>
+<li>打开 <a href="https://chatie.io/angular/" target="_blank" rel="noopener">https://chatie.io/angular/</a> ，然后点击 Click to run</li>
+<li>在输入框填入你的 WECHATY_TOKEN ，然后点击 Set Token </li>
+<li>等待显示登录二维码，然后用手机摄像头（微信内长按不可以）扫描登录</li>
+<li>建立一个新群，建群后不要做任何操作，先把群名修改为任意包含 facenet 的字符串</li>
+<li>在群里面发图片，附体在你身上的机器人就会施法了。</li>
+</ol>
+<h3 id="最后，感谢Google-办了这么一场有趣的活动"><a href="#最后，感谢Google-办了这么一场有趣的活动" class="headerlink" title="最后，感谢Google 办了这么一场有趣的活动"></a>最后，感谢Google 办了这么一场有趣的活动</h3><p><img src="/img/2018/wechaty-blinder-17.jpeg" alt=""></p>
+<p>本次活动邀请到了来自海内外数十位资深工程师，除了 Google的研发专家团队，还邀请到了JetBrains团队，这也是 JetBrains 团队在中国大陆首次针对Kotlin的官方分享。另外，该活动还邀请到了国内诸多一线研发团队，滴滴、Strikingly、百度、集智社区，桔子互动等公司，带来他们近期的一线研发经验。   </p>
+<p>DevFest 是 Google 每年秋季在全球GDG（谷歌开发者社区）推行的，针对 Google 技术开发者、爱好者所举办的技术交流活动。其主要目的在于同步 Google 相关各种先进技术，并进行推广与应用，促进本地社区成员的交流。DevFest活动除设置有吸引力的主题分享，还有互动参与环节和来自 Google 的正版周边礼物，对于 Google 技术开发者、爱好者都是不可错过的体验机会。</p>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/wechaty/">wechaty</a>
+            
+            <a href="/tags/聊天机器人/">聊天机器人</a>
+            
+            <a href="/tags/facenet/">facenet</a>
+            
+            <a href="/tags/人脸识别/">人脸识别</a>
+            
+        </div>
+        
+    </article>
+    
+    <p>本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+<div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    var disqus_config = function () {
+        this.page.url = 'http://lijiarui.github.io/presentation/2018-01-25-how-to-build-face-blinder-bot.html';
+        this.page.identifier = 'presentation/2018-01-25-how-to-build-face-blinder-bot.html';
+    };
+    (function () { // DON'T EDIT BELOW THIS LINE
+        var d = document, disqus_shortname = 'lijiarui', s = d.createElement('script');
+        s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+        Disqus.</a></noscript>
+
+</div>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner">
+        <p>
+            <a href="/about"  title="关于本站">关于本站</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="help" >急救中心</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友情链接">友情链接</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/app" title="App下载">App下载</a>
+        </p>
+        <p>
+            本站点采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>，已建立<a href="/timeline" id="siteBuildingTime"></a>天<br/>
+            ©2017 基于<a href="http://hexo.io" target="_blank">Hexo</a>搭建
+            ，主题&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank">JSimple</a>
+            ，作者<a href="https://www.tangkunyin.com" target="_blank">唐先森</a>
+            ，Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+        </p>
+        
+
+    </div>
+</footer>
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script src="/js/InsightSearch.js"></script>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '01/20/2018',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+        });
+    });
+</script>
+</body>
+</html>
