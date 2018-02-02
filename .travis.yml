@@ -6,9 +6,8 @@ branches:
   - source
 before_install:
 - npm install -g hexo-cli
-install:
 - npm install
-script:
+install:
 - hexo generate
 after_success:
 - git config --global user.name "lijiarui"
