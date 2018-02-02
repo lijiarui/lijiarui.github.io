@@ -14,7 +14,7 @@ after_success:
 - git config --global user.name "lijiarui"
 - git config --global user.email "ruiruibupt@126.com"
 - sed -i'' "/^ *repo/s~github\.com~${GH_TOKEN}@github.com~" _config.yml
-- hexo deploy
+- hexo deploy --silent
 env:
   global:
   - secure: gwCbNVKUqTQk+8Go88iaab+XYWYket+NvAr0P5w1qs8yTADEgLmFNpaU/9P2wP4kahdz+eTtjoMYnIZuP8kaQiPXaEW8Enre+SPHUhAv99sS0geuRMJ3hVqoH9a/6vp1FiklNO/GKXRc6uyb1tuHz0wRHrI/dEpsD+apS3IjWfKH/QHjRHMFHV3EVga65z1L0ZpYQ8OGeoKc2n5TKDkc4V4z253hSkGGiXmBWw1aFz+h9jgen0H2/L7qanZ41gZx3xurhJQEM/3CKtIFzaH92DEtIBuctjPg12PLqGt0pEUg0UR4la5/EaO5QkuLwBc+OpmkSG91pfYAe2Wt5q4zJt66jfWsLA0bv7oSA1WXPhtnvbkGLvZcUcKuNa+lMtYEHjd9kCkLHLV1NI/X6hG0gB0g4LHWuP2TB+G6XjvLIeJqp0hhMJQ4/gP96qh0BJ66/kKKRCXeoLgS+jwP9XoYBjSQxY7zxtkijxIVLyszjH2SNcUcNxPUrVt7TP8h2N8NhAbgQkTq1DXfOm7C8BZo0eAu6d/aEmeLi9tWx6mO628ktt7ATcNQUVlu/FDjsqJvJKWouiclC7h4ekO/qoe7W02Q66WJSCTcB0yDjB1mzv2veHTKmAiKOacXcRV5saVCefzhp7JbdTP08xV18ligWaQubzCux4X6OfPGRbQsTLI=
