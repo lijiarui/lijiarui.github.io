@@ -61,9 +61,9 @@ default_category: chatbot
 category_map:
   chatbot: chatbot
   presentation: presentation
-  thought: thought
   project: project
   技术随笔: tech
+  thought: thought
   读书笔记: reading
 tag_map:
   创业: startup
