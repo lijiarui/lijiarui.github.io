@@ -44,3 +44,23 @@ see more
 * [Deploying Hexo to Github Pages with Travis](https://sazzer.github.io/blog/2015/05/04/Deploying-Hexo-to-Github-Pages-with-Travis/)
 * [Hexo-Auto-Deploy-to-Github](http://lotabout.me/2016/Hexo-Auto-Deploy-to-Github/)
 * [手把手教从零开始在GitHub上使用Hexo搭建博客教程(四)-使用Travis自动部署Hexo](https://zhuanlan.zhihu.com/p/22405971)
+
+## ADD TAG CLOUD
+Using [hexo-tag-cloud](https://github.com/MikeCoder/hexo-tag-cloud) to generate tag cloud automatically.
+
+Add the following code to `themes/jsimple/layout/tags.ejs` instead of the fake tag cloud image.
+
+```ejs
+<% if (site.tags.length) { %>
+                <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+                <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+                <div class="widget-wrap">
+                    <h3 class="widget-title">标签云</h3>
+                    <div id="myCanvasContainer" class="widget tagcloud">
+                        <canvas width="500" height="500" id="resCanvas" style="width=100%">
+                            <%- tagcloud() %>
+                        </canvas>
+                    </div>
+                </div>
+            <% } %>
+```
