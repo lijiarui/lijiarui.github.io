@@ -14,11 +14,12 @@ photos:
   - /img/2018/techfestival-1.png
 ---
 
-活动信息：[《从0到1，搭建你的个人智能助理》](https://mp.weixin.qq.com/s?__biz=MzI4NDkwNDA2NA==&mid=2247484233&idx=1&sn=e6e4d66c9e81ae909c8a523d70972d26&chksm=ebf51ca6dc8295b02c5b320a17e2bb69918500ecdda69bdf565fa69377dac5a2a3ee3aef3387&mpshare=1&scene=1&srcid=0129BCkHC0MAzDl6r6y10V1j&pass_ticket=KEvH2mABSfNtoFSgclVOWz9M40KevjNRkSVjxyPhWuc%3D#rd)     
+## 活动信息：
+[《从0到1，搭建你的个人智能助理》](https://mp.weixin.qq.com/s?__biz=MzI4NDkwNDA2NA==&mid=2247484233&idx=1&sn=e6e4d66c9e81ae909c8a523d70972d26&chksm=ebf51ca6dc8295b02c5b320a17e2bb69918500ecdda69bdf565fa69377dac5a2a3ee3aef3387&mpshare=1&scene=1&srcid=0129BCkHC0MAzDl6r6y10V1j&pass_ticket=KEvH2mABSfNtoFSgclVOWz9M40KevjNRkSVjxyPhWuc%3D#rd)     
 
 ![](/img/2018/techfestival-1.png)
 
-PPT内容分享
+## PPT内容分享
 
 ![](/img/2018/techfestival-2.jpg)       
 ![](/img/2018/techfestival-3.jpg)              

@@ -14,10 +14,10 @@ photos:
   - /img/2015/startup-teacher-2.jpg
 ---
 
-活动信息      
+## 活动信息      
 ![](/img/2015/startup-teacher-1.jpeg)    
 
-PPT内容分享
+## PPT内容分享
 
 ![](/img/2015/startup-teacher-2.jpg)       
 ![](/img/2015/startup-teacher-3.jpg)              
