@@ -7,7 +7,10 @@ authorAbout: 'https://www.botorange.com'
 authorDesc: 一个现实的理想主义者
 categories: presentation
 date: 2015-08-13 00:00:33
-tags: 创业 创业失败 startup
+tags: 
+  - 创业 
+  - 创业失败 
+  - startup
 keywords:
 description: 全国大学生网络创新创业大赛是由教育部、国新办举办的，希望通过邀请业界权威、资深经理人,企业CEO通过不同形式的授课知道，使得营员做到理论结合实际。我的授课主题是，创业路上，从未言败
 photos:

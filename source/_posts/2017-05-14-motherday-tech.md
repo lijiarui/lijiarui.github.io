@@ -7,7 +7,10 @@ authorAbout: 'https://www.botorange.com'
 authorDesc: 一个现实的理想主义者
 categories: presentation
 date: 2017-05-14 00:15:21
-tags: startup 创业 程序媛
+tags: 
+  - startup 
+  - 创业 
+  - 程序媛
 keywords:
 description: 在母亲节的下午，数人云也将举办一场技术女性专场沙龙。邀请来自互联网企业和传统企业的运维、开发、架构等技术岗位的女性工程师分享她们职场发展的感悟和心得。活动当天也会请到国内著名的花艺老师带领大家一起进行现场花艺学习。当天我带着妈妈一起参加了活动，做了分享后带着，妈妈一起做了插画，文末有妈妈彩蛋。
 photos:

@@ -7,7 +7,10 @@ authorAbout: 'https://www.botorange.com'
 authorDesc: 一个现实的理想主义者
 categories: presentation
 date: 2018-01-14 20:47:35
-tags: wechaty chatbot 女性科技节
+tags: 
+  - wechaty 
+  - chatbot 
+  - 女性科技节
 keywords:
 description: 在2018女生科技体验节中，我向大家讲解了《从0到1，搭建你的个人智能助理》，带领爱技术的女生体验使用Wechaty制作自己的微信机器人。 本次活动是由科技猫 TechieCat  & DataGirls 联合主办的活动。
 photos: 

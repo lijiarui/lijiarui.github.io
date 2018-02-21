@@ -7,7 +7,9 @@ authorAbout: 'https://www.botorange.com'
 authorDesc: 一个现实的理想主义者
 categories: presentation
 date: 2017-12-14 00:35:08
-tags: chatbot 北邮
+tags: 
+  - chatbot 
+  - 北邮
 keywords:
 description: 这是我给北邮CAD实验室的学生做的分享，主要介绍了行业动态，以及论文中的各个点再行业上具体的应用。以我做的订票机器人为案例，分享了遇到的问题以及解决方案。
 photos:
