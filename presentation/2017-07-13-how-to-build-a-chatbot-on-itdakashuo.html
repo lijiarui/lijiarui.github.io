@@ -1,0 +1,356 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<!--
+//                            _ooOoo_
+//                           o8888888o
+//                           88" . "88
+//                           (| -_- |)
+//                            O\ = /O
+//                        ____/`---'\____
+//                      .   ' \\| |// `.
+//                       / \\||| : |||// \
+//                     / _||||| -:- |||||- \
+//                       | | \\\ - /// | |
+//                     | \_| ''\---/'' | |
+//                      \ .-\__ `-` ___/-. /
+//                   ___`. .' /--.--\ `. . __
+//                ."" '< `.___\_<|>_/___.' >'"".
+//               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+//                 \ \ `-. \_ __\ /__ _/ .-` / /
+//         ======`-.____`-.___\_____/___.-`____.-'======
+//                            `=---='
+//                 拦截插件累计拦截逗比攻击"1381438"次！
+//         .............................................
+//                  佛祖保佑             永无BUG
+//          佛曰:
+//                  写字楼里写字间，写字间里程序员；
+//                  程序人员写程序，又拿程序换酒钱。
+//                  酒醒只在网上坐，酒醉还来网下眠；
+//                  酒醉酒醒日复日，网上网下年复年。
+//                  但愿老死电脑间，不愿鞠躬老板前；
+//                  奔驰宝马贵者趣，公交自行程序员。
+//                  别人笑我忒疯癫，我笑自己命太贱；
+//                  不见满街漂亮妹，哪个归得程序员？
+-->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://lijiarui.github.io/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://lijiarui.github.io">
+<meta name="author" content="Li jiarui">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/SimpleStyle.min.css">
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+
+<title>如何编写聊天机器人 - 李佳芮de博客</title>
+
+<meta name="keywords" content="chatbot, 技术博客, 聊天机器人, 人工智能, 创业">
+
+<meta name="description " content="这是我在AI专题沙龙（无人车&amp;Chatbot)的分享，本次活动是由中生代技术主办。我主要介绍了Chatbot中用到的AI技术.">
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="芮">芮</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/about" title="关于本站">
+            <i class="fa fa-user"></i>
+            <span>关于本站</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a>
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">李佳芮の博客</h1>
+        <h3 class="cover-siteTitle">时间看得见</h3>
+        <p class="cover-siteDesc">一个现实的理想主义者</p>
+        <div class="cover-sns">
+            
+            <div class="btn btn-weibo">
+                <a href="https://weibo.com/u/2175505900?refer_flag=1001030101_" target="_blank" title="weibo" ref="friend">
+                    <i class="fa fa-weibo"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-weixin">
+                <a href="http://blog.botorange.com" target="_blank" title="weixin" ref="friend">
+                    <i class="fa fa-weixin"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-github">
+                <a href="https://github.com/lijiarui" target="_blank" title="github" ref="friend">
+                    <i class="fa fa-github"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-telegram">
+                <a href="https://www.jianshu.com/u/ac5aaa7ad293" target="_blank" title="telegram" ref="friend">
+                    <i class="fa fa-telegram"></i>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最新</a></li>
+        
+            
+                <li class="">
+                    <a href="/categories/chatbot" data-name="chatbot">chatbot</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/project" data-name="project">project</a>
+                </li>
+            
+                <li class="active">
+                    <a href="/categories/presentation" data-name="presentation">presentation</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/thought" data-name="thought">thought</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/tech" data-name="技术">技术</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/reading" data-name="读书">读书</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <label for="s" class="sr-only">请输入关键字</label>
+        <input class="search-field" type="text" name="s" placeholder="请输入关键字">
+        <button type="submit" class="search-form-submit" title="搜索"><i class="fa fa-search"></i></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://www.botorange.com" target="_blank">
+                    <img width="48" src="/images/avatar.jpg" alt="avatar">
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://blog.botorange.com" target="_blank">李佳芮</a>
+                    <span title="最后编辑于2017-07-13">2017-07-13</span>
+                </p>
+                <p>一个现实的理想主义者</p>
+            </div>
+            <h2 class="post-title">如何编写聊天机器人</h2>
+            <div class="post-meta">
+                本文总共2699个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <p>这是我在<a href="http://www.itdks.com/dakashuo/new/eventlist/detail/167" target="_blank" rel="noopener">AI专题沙龙（无人车&amp;Chatbot)</a>的分享，本次活动是由中生代技术主办。我主要介绍了Chatbot中用到的AI技术.</p>
+<blockquote>
+<p>摘要:<br>Chatbot，聊天机器人，用于和人类用户聊天的电脑程序。它是场交互革命，也是一个多技术融合的平台。桔子互动创始人根据自己的经验告诉大家，该如何来编写微信聊天机器人。</p>
+</blockquote>
+<h2 id="What-are-chatbots-and-why-the-hype"><a href="#What-are-chatbots-and-why-the-hype" class="headerlink" title="What are chatbots and why the hype"></a>What are chatbots and why the hype</h2><p><img src="/img/2017/itdakashuo-how-to-build-a-chatbot-1.jpg" alt=""></p>
+<a id="more"></a>
+<p>早在80年代，大家普遍使用PC上网，所有网上交互都是通过PC客户端去实现的。随着网速变得越来越快，浏览器开始普及。</p>
+<p>智能手机出现以后，人们使用电脑的时间越来越少，手机里安装的APP则越来越多。</p>
+<p>而现在就到了聊天机器人的时代。所有bots都搭载在message的平台上，去实现所有APP上的服务。</p>
+<p>我觉得公众号、直达号和H5这些在最开始的时候都是很像chatbot的雏形。APP实在是让用户太焦虑了，大家都希望有一个可以简单迅速找到服务的程序。</p>
+<p>因为数据、计算能力和网速都在迅速发展，在message这种消息的APP上会出现很多有意思的应用和服务，就像PC到Web，APP到chatbot这个过程的转换一样。</p>
+<p>我认为chatbot是未来，接下来的所有服务可能都是通过chatbot去实现的。</p>
+<p><img src="/img/2017/itdakashuo-how-to-build-a-chatbot-2.jpg" alt=""></p>
+<p>Chatbot Magazine创始人Matt Schlicht对chatbot的定义是：“A chatbot is a service,powered by rules and sometimes artificial intelligence,that you interact with via a chat interface.”</p>
+<p>聊天机器人是一种由规则和一部分人工智能驱动的服务，通过聊天接口进行交互。</p>
+<p>现在的交互方式已经发生了新的改变，我们可以通过说话去实现所有的功能。在Web和APP的时代，人要像计算机一样思考，而chatbot则是让计算机像人一样思考，做到“no UI”。</p>
+<p>当今用户不喜欢使用APP，因为不仅用户下载的成本高，APP的开发和升级成本也非常高，而且只有极少数的APP还处于活跃状态。</p>
+<p>而bots搭建在message平台上，无需安装，甚至在网速不佳的情况下也能进入它的服务。Chatbot处于“no UI”状态。如果只是关注逻辑层面去解决一些场景上的问题，开发的成本不会很高。</p>
+<h2 id="Overview-of-the-bot-ecosystem"><a href="#Overview-of-the-bot-ecosystem" class="headerlink" title="Overview of the bot ecosystem"></a>Overview of the bot ecosystem</h2><p><img src="/img/2017/itdakashuo-how-to-build-a-chatbot-3.jpg" alt=""><br>Facebook Message已经向开发者开放了，Apple ios Message APPS也在开放，Slack、Kik、Telegram和Skype都支持相关的接口。</p>
+<p>Facebook收购了Wit.ai，google收购了Api.ai，微软推出了luis.ai。我认为这三个都是实现一样的功能，就是实行意图识别。</p>
+<p>微软还有一个Bot Framework去做整个chat中控的系统，以及IBM推出了Watson Conversation API。</p>
+<p>Facebook Message上面有超过10万个bots，大概有10万个开发者在Facebook Message上进行这些bots的开发。</p>
+<p>有超过200万的用户每天在和chatbot进行交互。</p>
+<p>在其它平台如Skype、Telegram上也有上千的bot。</p>
+<p><img src="/img/2017/itdakashuo-how-to-build-a-chatbot-4.jpg" alt=""></p>
+<p>消费者能够真正接触到的chatbots大概分为三类：</p>
+<p>第一类是个人助理，帮助用户实现各种服务。</p>
+<p>第二类是虚拟客服，根据用户的问题给相应回答。</p>
+<p>第三类是提高生产力的工具，可以做一些信息的收集、分发消息等工作。</p>
+<p>Chatbot是一个很大的产业，它不是只有AI和deep learning，不一定要high tech去做，也不只有算法。而是要真正去解决一些实际问题。未来它就会像APP一样在我们身边，为我们提供非常一些简洁的服务。</p>
+<p><img src="/img/2017/itdakashuo-how-to-build-a-chatbot-5.jpg" alt=""></p>
+<p>Requirement和正常软件开发相似，然后写一些需求的文档和需求说明。</p>
+<p>做软件开发或APP的时候会做一些线框图或流程图。Chatbot是一个“no UI”的体验，所以要写script，了解如何收集用户的信息、怎样理解用户，并把这些用户的话术整理出来。它就是一个和用户交流的线框图的概念。</p>
+<p>接下来要做架构开发，它同样分为前端和后端。前端就是script，更完整地收集用户信息。收集好了做成一个action给到后端，和其它的Web service做整合。</p>
+<p>在做chatbot开发的时候，往往会陷入编码和测试反复的循环之中，因为交互还不是结构化的数据，所以会有点复杂。</p>
+<p>Chatbot里做的测试和一般的APP测试不一样。在APP里可以简单暴力地做测试，但在chatbot里，不同的message有不同的需求或限制。做测试的时候要摸清不同message平台的区别。</p>
+<p>要部署到一个可托管的环境并时刻去监控它，然后做推广。</p>
+<p>最后还要做chatbot的分析，需要知道每一个会话时长是怎样的、用户对什么最感兴趣。拿到这些数据后再去调研用户的需求，形成一个循环。<br><img src="/img/2017/itdakashuo-how-to-build-a-chatbot-6.jpg" alt=""><br>Chatbot主要是从场景入手，更关注的是解决一些问题和创新的点，而不是底层的开发。我认为接下来各种开发者也会从APP开发者转换成chatbot开发者，只是时间问题。</p>
+<h2 id="itdakashuo-how-to-build-a-chatbot"><a href="#itdakashuo-how-to-build-a-chatbot" class="headerlink" title="itdakashuo-how-to-build-a-chatbot"></a>itdakashuo-how-to-build-a-chatbot</h2><p><img src="/img/2017/itdakashuo-how-to-build-a-chatbot-7.jpg" alt=""></p>
+<p>Wechaty是一个可以让微信变成机器人的接口，利用这个框架可以把个人微信号变成机器人，能自动回复和提供一些服务。</p>
+<p>Wechaty的实现原理主要是监听网页上的信息，把信息封装然后给开发者调用，开发者发送信息的时候让浏览器去实现这些功能。</p>
+<p>Side project通过代码追踪的方式应对微信网页变化。</p>
+<p>Wechaty的七个基本事件分别是error、scan、login、logout、message、friend和join。</p>
+<p><img src="/img/2017/itdakashuo-how-to-build-a-chatbot-8.jpg" alt=""></p>
+<h2 id="Related-Scene"><a href="#Related-Scene" class="headerlink" title="Related Scene"></a>Related Scene</h2><p>我们已经实现了微信群的CRM管理、通过各种方式邀请好友进群以及做一些多群的直播。</p>
+<p>还有一些有意思的东西想和大家分享。</p>
+<p>挑选一个最吸引人的头像到微信上。通过用户点赞数分析出哪些头像在男性和女性中分别最受欢迎，帮助用户挑选微信头像。</p>
+<p>存储文件。把微信和云盘打通，可以直接把微信上收到的文件转给机器人，让机器人存进云盘里。</p>
+<p>把歌词生成一张好看的图片。订机票、车票、酒店等。Github的通知。把用户关注的动态实时发送到微信群里，让微信群和各种平台的信息做对接，也可以收集群里的消息做分析和训练。</p>
+<p>Chatbot确实是一个可以帮我们解决生活中很多问题的工具，只要是开发者都能去实现它。</p>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/wechaty/">wechaty</a>
+            
+            <a href="/tags/聊天机器人/">聊天机器人</a>
+            
+        </div>
+        
+    </article>
+    
+    <p>本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+<div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    var disqus_config = function () {
+        this.page.url = 'http://lijiarui.github.io/presentation/2017-07-13-how-to-build-a-chatbot-on-itdakashuo.html';
+        this.page.identifier = 'presentation/2017-07-13-how-to-build-a-chatbot-on-itdakashuo.html';
+    };
+    (function () { // DON'T EDIT BELOW THIS LINE
+        var d = document, disqus_shortname = 'lijiarui', s = d.createElement('script');
+        s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+        Disqus.</a></noscript>
+
+</div>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner">
+        <p>
+            <a href="/about" title="关于本站">关于本站</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="help">急救中心</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友情链接">友情链接</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/app" title="App下载">App下载</a>
+        </p>
+        <p>
+            本站点采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>，已建立<a href="/timeline" id="siteBuildingTime"></a>天<br>
+            ©2017 基于<a href="http://hexo.io" target="_blank">Hexo</a>搭建
+            ，主题&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank">JSimple</a>
+            ，作者<a href="https://www.tangkunyin.com" target="_blank">唐先森</a>
+            ，Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+        </p>
+        <!--  -->
+<!-- Tencent Analytics -->
+<!-- <script type="text/javascript" src="//tajs.qq.com/stats?sId=65330142" charset="UTF-8"></script> -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-114589636-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-114589636-1');
+</script>
+
+<!--  -->
+
+    </div>
+</footer>
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script src="/js/InsightSearch.js"></script>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '01/20/2018',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+        });
+    });
+</script>
+</body>
+</html>
