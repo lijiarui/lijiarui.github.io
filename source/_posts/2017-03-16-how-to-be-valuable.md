@@ -13,6 +13,7 @@ tags:
 keywords:
 description: 世上一切都是交换，拿你有的，换你没有的。
 photos:
+  - /img/2017/value.jpg
 ---
 
 我女神说，世上一切都是交换，拿你有的，换你没有的。       
