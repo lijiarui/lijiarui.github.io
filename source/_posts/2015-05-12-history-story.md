@@ -14,6 +14,7 @@ tags:
 keywords:
 description: “没有永恒的朋友，也没有永恒的敌人，只有永恒的利益”忽然在此浮现历史老师那双因为近视突起的大眼睛。
 photos:
+  - /img/2015/history.jpg
 ---
 
 > “弱国无外交”
