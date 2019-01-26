@@ -11,6 +11,7 @@ tags:
 keywords:
 description: 每一条你所走过的路，其实都是你人生的必经之路  
 photos:
+  - /img/2017/grocery.jpg
 ---
 
 
