@@ -11,6 +11,7 @@ tags:
 keywords:
 description:
 photos:
+  - /img/2012/live-life.jpg
 ---
 
 好久没来图书馆自习了，因为偏执，因为无知。     

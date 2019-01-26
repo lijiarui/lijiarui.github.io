@@ -14,6 +14,7 @@ tags:
 keywords:
 description: 我记得有人说过，如果你是一个小姑娘，这样的情况，或许很文艺，或者可以理解。但我是一家公司的CEO。小姑娘可以没有责任，但我不可以。
 photos:
+  - /img/2015/lose-control.jpg
 ---
 
 总是想写点东西，却不知道从哪里开始。       
