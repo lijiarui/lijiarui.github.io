@@ -7,7 +7,10 @@ authorAbout: 'https://www.botorange.com'
 authorDesc: 一个现实的理想主义者
 categories: thought
 date: 2018-10-15 01:13:59 +0800
-tags: 创业 梦想 程序媛
+tags: 
+  - 创业 
+  - 梦想 
+  - 程序媛
 keywords: 
 description:
 "最高兴的时候，就是'崩溃时刻'结束后的时候" 
