@@ -17,7 +17,7 @@ photos:
   - /img/2019/botorange.png
 ---
 
-> 如果你对我们的公司感兴趣，欢迎加入我们，欢迎投简历，发送到邮箱：grace@botorange.com，, 发邮件请注明来源。我们现在招 TO B产品、技术、运营和销售，具体内容请看官网：https://www.botorange.com。
+> 如果你对我们的公司感兴趣，欢迎加入我们，欢迎投简历，发送到邮箱：grace@botorange.com , 发邮件请注明来源。我们现在招 TO B产品、技术、运营和销售，具体内容请看官网：https://www.botorange.com
 
 ## 第一部分— 公司战略：
 
