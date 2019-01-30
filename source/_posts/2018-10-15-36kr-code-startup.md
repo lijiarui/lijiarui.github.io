@@ -12,7 +12,7 @@ tags:
   - 梦想 
   - 程序媛
 keywords: 
-description: 最高兴的时候，就是'崩溃时刻'结束后的时候
+description: 做一个坦诚和率真的人，也做一个坦诚和率真的公司，相信微小积累，持续改变和时间的力量，因为，时间看得见。
 photos:
   - /img/2018/1024-coder-startup.jpeg
 ---
