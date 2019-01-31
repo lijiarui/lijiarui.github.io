@@ -13,7 +13,7 @@ tags:
 keywords:
 description: 这个模块是基于Wechaty 的子模块，专门针对ipad 接入的。wechaty 是一个开源的的 个人号 微信机器人接口，是一个使用Typescript 构建的Node.js 应用。支持多种微信接入方案，包括网页，ipad，ios，windows， android 等。同时支持Linux, Windows, Darwin(OSX/Mac) 和 Docker 多个平台。
 photos:
-  - /img/2016/wechaty-logo.png
+  - /img/2018/wechaty-logo.png
 ---
 
 # WECHATY-PUPPET-PADCHAT
