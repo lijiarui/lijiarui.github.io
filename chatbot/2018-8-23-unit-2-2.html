@@ -1,0 +1,462 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://lijiarui.github.io/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+<link rel="dns-prefetch" href="http://lijiarui.github.io">
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+<link rel="prefetch" href="http://lijiarui.github.io">
+<link rel="prefetch" href="//www.google-analytics.com">
+
+    <link rel="dns-prefetch" href="//disqus.com">
+    <link rel="dns-prefetch" href="//lijiarui.disqus.com">
+    <link rel="prefetch" href="//disqus.com">
+    <link rel="prefetch" href="//lijiarui.disqus.com">
+
+
+<link rel="prerender" href="http://lijiarui.github.io">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://lijiarui.github.io">
+<meta name="author" content="Li jiarui">
+<link rel="stylesheet" href="/css/JSimple.css">
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+
+<title>连载 | 2.2 对话系统分类 - 李佳芮de博客</title>
+
+<meta name="keywords" content="chatbot, 技术博客, 聊天机器人, 人工智能, 创业">
+
+<meta name="description " content="本章我会介绍对话系统的分类：任务型，问答型和闲聊型。">
+
+    
+
+    
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="//www.googletagmanager.com/gtag/js?id=UA-114589636-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-114589636-1');
+        </script>
+    
+    <!-- put your likes here. -->
+
+
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="芮">芮</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/about" title="关于本站">
+            <i class="fa fa-user"></i>
+            <span>关于本站</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <!-- <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a> -->
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">李佳芮の博客</h1>
+        <h3 class="cover-siteTitle">时间看得见</h3>
+        <p class="cover-siteDesc">一个现实的理想主义者</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-weibo">
+        <a href="https://weibo.com/u/2175505900?refer_flag=1001030101_" target="_blank" title="weibo" ref="friend">
+            <i class="fa fa-weibo"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-weixin">
+        <a href="http://lijiarui.github.io" target="_blank" title="weixin" ref="friend">
+            <i class="fa fa-weixin"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/lijiarui" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-telegram">
+        <a href="https://www.jianshu.com/u/ac5aaa7ad293" target="_blank" title="telegram" ref="friend">
+            <i class="fa fa-telegram"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最近</a></li>
+        
+            
+                <li class="active">
+                    <a href="/categories/chatbot" data-name="chatbot">chatbot</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/project" data-name="project">project</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/presentation" data-name="presentation">presentation</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/thought" data-name="thought">thought</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/tech" data-name="技术">技术</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/reading" data-name="读书">读书</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text"
+               readonly="readonly"
+               id="local-search-input-tip"
+               placeholder="读物检索" />
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://lijiarui.github.io"
+                   target="_blank">
+                    <img width="48" src="/images/avatar.jpg" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://www.botorange.com"
+                       target="_blank">李佳芮</a>
+                    <span title="最后编辑于&nbsp;2018-08-23">2018-08-23</span>
+                </p>
+                <p>一个现实的理想主义者</p>
+            </div>
+            <h2 class="post-title">连载 | 2.2 对话系统分类</h2>
+            <div class="post-meta">
+                本文共计2283个字 |
+                您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <p>欢迎大家来到第二节课，对话系统的分类。</p>
+<p><img src="/img/2018/unit-2-2-1.jpeg" alt="image"></p>
+<p><strong>对话系统的分类场景概览</strong></p>
+<p>对话系统总共分为三类，第一类是<strong>任务型</strong>、第二类是<strong>问答型</strong>、第三类是<strong>闲聊型</strong>。</p>
+<p><strong>任务型有固定的任务，且每一句话是需要转换成参数**</strong>。**</p>
+<ul>
+<li>比如“明天下午2点帮我订一张北京去上海的机票”，会把它参数化成“下午2点”“北京上海”，然后就把它转换成了参数化的请求。它的任务目标是：我要订机票； </li>
+</ul>
+<p><strong>问答型同样有任务目标，但是不需要转化成参数**</strong>。**</p>
+<ul>
+<li>比如，“什么叫做经停航班”，“怎么定闹钟”，或者“如何购买现金贷”。这些不需要转换成参数，但是有明确的任务目标，通常它是在客服中使用的比较广泛； </li>
+</ul>
+<p><strong>闲聊型是开放不限定领域的，没有目标，只要能一直聊下去就好。</strong></p>
+<p>以下是这三类的应用场景：</p>
+<p><strong>任务型应用场景：</strong></p>
+<ul>
+<li><p><strong>智能助理：</strong>如<strong>办公行政的助理</strong>。你可以问它“我要订一张北京到上海的机票”，可以做成任务型的对话系统；</p>
+</li>
+<li><p><strong>新手妈妈</strong>、<strong>母婴专家：</strong>，你会去问一些儿童相关的问题，机器人通过多轮对话去引导着用户完成一个任务；</p>
+</li>
+<li><p><strong>导游：</strong>如“去厦门的鼓浪屿怎么走啊”</p>
+</li>
+<li><p><strong>智能会议系统：</strong>比如用一句话去操控：幻灯片打开；投影仪打开；拨通一个视频会议；拨通一个会议电话等等；或者在健身房运动中，用语音去控制器械。比如：跑步机开始，跑步机停止等等；</p>
+</li>
+<li><p><strong>地图导航</strong>，<strong>车载系统</strong>；</p>
+</li>
+<li><p><strong>儿童故事机：</strong>它会同时用到任务型和闲聊型，一些明确性教育目标的是任务型的，剩下的一小部分是闲聊型的，主要为了陪孩子聊天，聊的越久越好；</p>
+</li>
+</ul>
+<p><strong>问答型的应用场景：</strong></p>
+<ul>
+<li><strong>电话客服类：</strong>它能帮助我们去解决售前80%的共性基础问题，比如“什么叫做经停航班”或者说去咨询某个产品的使用情况等；</li>
+</ul>
+<p>除了电话客服，在网页、APP、微信公众号上，这种问答型的对话机器人也非常常见。它被大量的使用在电商、金融、银行等系统中。</p>
+<p><strong>闲聊型的应用场景：</strong></p>
+<ul>
+<li><p>闲聊型应用场景是不限定领域的，聊的越久越好；</p>
+</li>
+<li><p>比如一个我们去和<strong>虚拟的陪伴助手</strong>闲聊：</p>
+<ul>
+<li><p>“我今天不高兴”</p>
+<ul>
+<li><p>“你是为什么不高兴”</p>
+</li>
+<li><p>“因为感情的问题不高兴”</p>
+</li>
+<li><p>…</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>我们进一步看一下，他们在技术上的对比。</p>
+<p><img src="/img/2018/unit-2-1-2.jpeg" alt="image"></p>
+<p>首先是<strong>平台系统的开放性</strong>。</p>
+<ul>
+<li><p><strong>任务型</strong>通常是一家公司开发直接面向C端的消费者的，不开放技术细节，可能会调用第三方的任务，不能定制机器人的对话；</p>
+</li>
+<li><p><strong>问答型</strong>通常是一个平台，技术细节可能开放，可以让普通的用户配置修改机器人的行业；</p>
+</li>
+<li><p><strong>闲聊型</strong>是一家公司开发，直接面向C端消费者，通常不开放技术细节，可能调用第三方的服务，很难定制机器人的对话；</p>
+</li>
+</ul>
+<p>技术方案上，任务型会更加精准、可控、复杂。它通常使用意图识别+多轮对话，并且对接公开的API和知识图谱，领域意图和对话是要预先进行定义的。</p>
+<p>而问答型相对于任务型更加精确，可控和简单，需要自行挖掘问答对或知识图谱，通常使用的意图识别+多轮对话+对接企业的API+企业知识图谱补充同意的问题。</p>
+<p>闲聊型几乎不可控，你不知道用户下一句话会说什么，一般是可以直接调用的。通常，这个系统会使用构建一个闲聊库，检索类似的问题给出答案。</p>
+<p>有两种技术方案：</p>
+<ul>
+<li><p>第一种是检索式；</p>
+</li>
+<li><p>第二种是生成式，从闲聊库里生成模型；</p>
+</li>
+</ul>
+<p>这三块的优化目标是不一样的：</p>
+<ul>
+<li><p>任务型是希望用最短的对话轮次来满足用户的需求。</p>
+</li>
+<li><p>问答型是希望用最短的对话轮次来满足用户的需求。只要解决了问题，聊的越短越好。</p>
+</li>
+<li><p>闲聊型则相反，聊的越久越好，而且也没有明确的问题要回答；</p>
+</li>
+</ul>
+<p>接下来，再给大家具体的举一个例子： </p>
+<p><img src="/img/2018/unit-2-1-3.jpeg" alt="image"></p>
+<p><strong>对话系统的分类：任务型</strong></p>
+<p>如上图，我们看到用户说的每一句话都是可以转换成明确参数的。机器人把所有的参数收集全以后，完成整个任务。 </p>
+<p>整个对话围绕着一个目标，一般只有通过多轮对话才能达成这个目标，只要完成这个目标，聊天机器人就是合格的。</p>
+<p><img src="/img/2018/unit-2-1-4.jpeg" alt="image"></p>
+<p><strong>对话系统的分类：问答型</strong></p>
+<p>第二类是问答型，上图中举了两个例子。</p>
+<p>第一个：</p>
+<ul>
+<li><p>用户问：“在哪里设置闹钟呢？”；</p>
+</li>
+<li><p>机器人告诉用户怎么去设置：</p>
+</li>
+</ul>
+<ol>
+<li><p>我们看到进入闹钟设置页面；</p>
+</li>
+<li><p>点击左上角的“编辑”；</p>
+</li>
+<li><p>选择一个想要设置铃声的闹钟；</p>
+</li>
+<li><p>在设置页面看到铃声选项，点击进入就可以设置闹钟了；</p>
+</li>
+</ol>
+<p>以上这一块是已经预先录入好的，设置好一个问答放了进去。类似于咨询客服，用户提出问题有较为固定的回答。 </p>
+<p>第二个例子：</p>
+<p>这个时候不一定是用户提问，机器人回答，也可以是用户说一句陈述的话“谢谢”，机器人回答“不用谢”。只要有这种匹配的问答对在库里，我们都可以叫做问答型。</p>
+<p><img src="/img/2018/unit-2-1-5.jpeg" alt="image"></p>
+<p><strong>对话系统的分类：闲聊型</strong></p>
+<p>闲聊型例子如上，可以看到，这是没有明确目的对话。只要人愿意一直和机器人聊下去，越久越好。</p>
+<p><img src="/img/2018/unit-2-1-6.jpeg" alt="image"></p>
+<p><strong>差旅中的chatbot场景类型：任务型&amp;问答型</strong></p>
+<p>最后给大家做一个对比，<strong>图中是差旅场景中聊天机器人的一个应用</strong>。实际上在很多场景中，只用一个类型的机器人很难解决所有问题。</p>
+<p>比如，<strong>做差旅中的聊天机器人，我们同时需要用到任务型和问答型。</strong></p>
+<p>任务型：我说：“后天出差，帮我订张机票飞往深圳”，那机器人一步一步的手机城市，时间等参数信息直到任务完成。</p>
+<p>问答型：用户问：“什么是经停航班”，然后机器人通过库里检索出类似的问题回答：“经停航班是一张机票的一个航班号，是同一个航空公司运行的航线，在第三地经停的时候，有可能换飞机继续飞行，也有可能不换飞机继续飞行”。</p>
+<p>这就是一个任务型和问答型结合到一起使用的案例。</p>
+<p>希望大家在搭建自己的聊天机器人的时候，也不要拘泥于某一种场景，比如只用任务型、只用问答型或者只用闲聊型。<strong>一定要把多种类型融会贯通放到一起，我们的机器人才会更加聪明。</strong></p>
+<p>以上就是这节课的内容，谢谢大家，下期再会！</p>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/chatbot/">chatbot</a>
+            
+            <a href="/tags/百度/">百度</a>
+            
+            <a href="/tags/UNIT/">UNIT</a>
+            
+        </div>
+        
+    </article>
+    
+    <p style="text-align: center">本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+    
+    
+        <div class="adsense_post_left">
+            
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:160px;height:600px"
+         data-ad-client=""
+         data-ad-slot=""></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </div>
+        <div class="adsense_post_right">
+            
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:160px;height:600px"
+         data-ad-client=""
+         data-ad-slot=""></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </div>
+        <p>
+            
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client=""
+         data-ad-slot=""
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </p>
+    
+
+
+    
+    
+        <div id="disqus_thread"></div>
+        <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            var disqus_config = function () {
+                this.page.url = 'http://lijiarui.github.io/chatbot/2018-8-23-unit-2-2.html';
+                this.page.identifier = 'chatbot/2018-8-23-unit-2-2.html';
+            };
+            (function () { // DON'T EDIT BELOW THIS LINE
+                var d = document, disqus_shortname = 'lijiarui', s = d.createElement('script');
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+
+</div>
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about"  title="关于">关于</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="帮助" >帮助</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友链">友链</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="地图">地图</a>
+        </p>
+        <p>
+            本站已建立&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbsp天，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议创作</a><br/>
+            ©2017-<span id="cpYear"></span> 基于&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，主题采用&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，作者&nbsp<a href="https://lijiarui.github.io" target="_blank" rel="friend">李佳芮</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+        </p>
+    </div>
+</footer>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input"
+                   spellcheck="false"
+                   type="text"
+                   autocomplete="off"
+                   placeholder="请输入查询关键词"/>
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '01/20/2018',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+            localSearch: {
+                dbPath: '/search.xml',
+                trigger: 'auto',
+                topN: '1',
+                unescape: 'false'
+            }
+        });
+    });
+</script>
+</body>
+</html>

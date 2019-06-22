@@ -1,0 +1,402 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://lijiarui.github.io/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+<link rel="dns-prefetch" href="http://lijiarui.github.io">
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+<link rel="prefetch" href="http://lijiarui.github.io">
+<link rel="prefetch" href="//www.google-analytics.com">
+
+    <link rel="dns-prefetch" href="//disqus.com">
+    <link rel="dns-prefetch" href="//lijiarui.disqus.com">
+    <link rel="prefetch" href="//disqus.com">
+    <link rel="prefetch" href="//lijiarui.disqus.com">
+
+
+<link rel="prerender" href="http://lijiarui.github.io">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://lijiarui.github.io">
+<meta name="author" content="Li jiarui">
+<link rel="stylesheet" href="/css/JSimple.css">
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+
+<title>连载 | 3.2 确定场景边界 - 李佳芮de博客</title>
+
+<meta name="keywords" content="chatbot, 技术博客, 聊天机器人, 人工智能, 创业">
+
+<meta name="description " content="本章我会介绍如何确定场景边界">
+
+    
+
+    
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="//www.googletagmanager.com/gtag/js?id=UA-114589636-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-114589636-1');
+        </script>
+    
+    <!-- put your likes here. -->
+
+
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="芮">芮</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/about" title="关于本站">
+            <i class="fa fa-user"></i>
+            <span>关于本站</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <!-- <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a> -->
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">李佳芮の博客</h1>
+        <h3 class="cover-siteTitle">时间看得见</h3>
+        <p class="cover-siteDesc">一个现实的理想主义者</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-weibo">
+        <a href="https://weibo.com/u/2175505900?refer_flag=1001030101_" target="_blank" title="weibo" ref="friend">
+            <i class="fa fa-weibo"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-weixin">
+        <a href="http://lijiarui.github.io" target="_blank" title="weixin" ref="friend">
+            <i class="fa fa-weixin"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/lijiarui" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-telegram">
+        <a href="https://www.jianshu.com/u/ac5aaa7ad293" target="_blank" title="telegram" ref="friend">
+            <i class="fa fa-telegram"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最近</a></li>
+        
+            
+                <li class="active">
+                    <a href="/categories/chatbot" data-name="chatbot">chatbot</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/project" data-name="project">project</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/presentation" data-name="presentation">presentation</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/thought" data-name="thought">thought</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/tech" data-name="技术">技术</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/reading" data-name="读书">读书</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text"
+               readonly="readonly"
+               id="local-search-input-tip"
+               placeholder="读物检索" />
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://lijiarui.github.io"
+                   target="_blank">
+                    <img width="48" src="/images/avatar.jpg" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://www.botorange.com"
+                       target="_blank">李佳芮</a>
+                    <span title="最后编辑于&nbsp;2018-10-03">2018-10-03</span>
+                </p>
+                <p>一个现实的理想主义者</p>
+            </div>
+            <h2 class="post-title">连载 | 3.2 确定场景边界</h2>
+            <div class="post-meta">
+                本文共计1186个字 |
+                您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <p>欢迎大家来到第三章的第二节，<strong>确定场景边界</strong>。</p>
+<p><img src="/img/2018/unit-3-2-1.jpeg" alt="image"></p>
+<p>如何确定场景边界？</p>
+<p><strong>第一步，创建机器人的定位</strong>。机器人的形象就像一本书或者影视片中的一个角色一样，需要给它定义一个形象，换句话说是一个定位。比如机器人是严肃的、认真的，还是非常有爱心的、活泼的等。</p>
+<p>不同的定位和公司的品牌理念、公司形象、产品特征是息息相关的。只有将机器人的定位明确，才能在机器人的话术设计中，知道以什么样的口气/口吻去和用户交流，比如是快速的还是缓慢的，轻快的还是严肃的等等。甚至，需要细化到“你”和“您”的使用，什么情况下要用到“您”，什么情况下用到“你”。同时，也希望读者注意一点——<strong>机器人的定位越鲜明，用户就会越极端。</strong>因此，对于机器人的定位，需要找到一个微妙的平衡。</p>
+<p><img src="/img/2018/unit-3-2-2.jpeg" alt="image"></p>
+<p><strong>第二步，明确机器人的产品场景</strong>。分为三点：</p>
+<ol>
+<li><p>明确产品的目标人群，任何一款产品都有一个基本的前提——即产品是为什么样的用户群准备的。比如懂球帝就是为了球迷准备的，如果在懂球帝上做一个关于现金贷的对话管理，显然，是非常奇怪的；</p>
+</li>
+<li><p>确定这个产品给目标人群提供哪些服务与产品。比如，携程提供在线票务购买服务；懂球帝提供最新的足球资讯，当然，也可以购买足球装备。但懂球帝都是围绕着足球领域，而携程都是围绕着票务领域，这个需要明确；</p>
+</li>
+<li><p>要了解目标用户是什么类型的人，产品能解决目标用户的什么痛点，以此来确定机器人的产品逻辑；</p>
+</li>
+</ol>
+<p><img src="/img/2018/unit-3-2-3.jpeg" alt="image"></p>
+<ul>
+<li><strong>应该做 &amp; 不应该做</strong></li>
+</ul>
+<p>举例来说，一个进行火车票预定的，或者差旅预定的聊天机器人应该做什么？</p>
+<ul>
+<li><p>订票、改签、查询业务——任务型；</p>
+</li>
+<li><p>火车票业务中的常见问题解答——问答型；</p>
+</li>
+<li><p>接入简单的问候/答谢作为过场；</p>
+</li>
+<li><p>跟出行相关的查天气；</p>
+</li>
+</ul>
+<p>以上是应该做的。</p>
+<p>那不应该做什么？一个做火车票预定的聊天机器人，不应该闲聊。</p>
+<p><img src="/img/2018/unit-3-2-4.jpeg" alt="image"></p>
+<ul>
+<li><strong>回顾：chatbot 分类</strong></li>
+</ul>
+<p>回顾之前介绍过的，任务型、问答型和闲聊型的定义：</p>
+<ul>
+<li><p>任务型：有任务目标，把需求参数化；</p>
+</li>
+<li><p>问答型：有任务目标，但不需要把需求参数化；</p>
+</li>
+</ul>
+<blockquote>
+<p>比如：退票手续费的相关规则和规章制度等等。</p>
+</blockquote>
+<ul>
+<li>闲聊型：没有任务目标；</li>
+</ul>
+<blockquote>
+<p>比如：今天太热了。</p>
+</blockquote>
+<p><img src="/img/2018/unit-3-2-5.jpeg" alt="image"></p>
+<p><strong>第三步，进一步确定边界，确认目标</strong>。</p>
+<p>依旧以差旅场景中的机器人为例。</p>
+<p>差旅公司会有很多的业务线，不同的业务线也有不同的层级，如何根据用户的需求，把所有的业务都梳理出来，是非常重要的。因此，场景边界是需要在画流程图之前确定的。</p>
+<p>一个差旅的聊天机器人的领域分为火车、飞机票、车票、酒店、打车、美食等等；意图分为购票、改签、退票；词槽又分为时间（针对飞机票的）、出发地、到达地等等；</p>
+<p>因此，差旅业务线的梳理如下：</p>
+<p>1. 能够预定机票、预定酒店、查询美食、叫车、查询个人信息，并对常见问题进行解答。</p>
+<p>2. 可以接入简单的问候作为过场。</p>
+<p>3. 不接入纯闲聊。</p>
+<p>如上，是一个确定边界，明确目标的例子。</p>
+<p>这节课就先讲到这里，谢谢大家。</p>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/chatbot/">chatbot</a>
+            
+            <a href="/tags/百度/">百度</a>
+            
+            <a href="/tags/UNIT/">UNIT</a>
+            
+        </div>
+        
+    </article>
+    
+    <p style="text-align: center">本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+    
+    
+        <div class="adsense_post_left">
+            
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:160px;height:600px"
+         data-ad-client=""
+         data-ad-slot=""></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </div>
+        <div class="adsense_post_right">
+            
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:160px;height:600px"
+         data-ad-client=""
+         data-ad-slot=""></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </div>
+        <p>
+            
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client=""
+         data-ad-slot=""
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </p>
+    
+
+
+    
+    
+        <div id="disqus_thread"></div>
+        <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            var disqus_config = function () {
+                this.page.url = 'http://lijiarui.github.io/chatbot/2018-10-3-unit-3-2.html';
+                this.page.identifier = 'chatbot/2018-10-3-unit-3-2.html';
+            };
+            (function () { // DON'T EDIT BELOW THIS LINE
+                var d = document, disqus_shortname = 'lijiarui', s = d.createElement('script');
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+
+</div>
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about"  title="关于">关于</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="帮助" >帮助</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友链">友链</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="地图">地图</a>
+        </p>
+        <p>
+            本站已建立&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbsp天，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议创作</a><br/>
+            ©2017-<span id="cpYear"></span> 基于&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，主题采用&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，作者&nbsp<a href="https://lijiarui.github.io" target="_blank" rel="friend">李佳芮</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+        </p>
+    </div>
+</footer>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input"
+                   spellcheck="false"
+                   type="text"
+                   autocomplete="off"
+                   placeholder="请输入查询关键词"/>
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '01/20/2018',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+            localSearch: {
+                dbPath: '/search.xml',
+                trigger: 'auto',
+                topN: '1',
+                unescape: 'false'
+            }
+        });
+    });
+</script>
+</body>
+</html>

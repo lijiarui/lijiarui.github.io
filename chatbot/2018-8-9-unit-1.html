@@ -1,0 +1,402 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://lijiarui.github.io/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+<link rel="dns-prefetch" href="http://lijiarui.github.io">
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+<link rel="prefetch" href="http://lijiarui.github.io">
+<link rel="prefetch" href="//www.google-analytics.com">
+
+    <link rel="dns-prefetch" href="//disqus.com">
+    <link rel="dns-prefetch" href="//lijiarui.disqus.com">
+    <link rel="prefetch" href="//disqus.com">
+    <link rel="prefetch" href="//lijiarui.disqus.com">
+
+
+<link rel="prerender" href="http://lijiarui.github.io">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://lijiarui.github.io">
+<meta name="author" content="Li jiarui">
+<link rel="stylesheet" href="/css/JSimple.css">
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+
+<title>连载 | 1.对话系统趋势分析 - 李佳芮de博客</title>
+
+<meta name="keywords" content="chatbot, 技术博客, 聊天机器人, 人工智能, 创业">
+
+<meta name="description " content="本章我会带领大家了解对话系统的趋势，以及为什么我们要搭建一个对话系统。">
+
+    
+
+    
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="//www.googletagmanager.com/gtag/js?id=UA-114589636-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-114589636-1');
+        </script>
+    
+    <!-- put your likes here. -->
+
+
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="芮">芮</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/about" title="关于本站">
+            <i class="fa fa-user"></i>
+            <span>关于本站</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <!-- <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a> -->
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">李佳芮の博客</h1>
+        <h3 class="cover-siteTitle">时间看得见</h3>
+        <p class="cover-siteDesc">一个现实的理想主义者</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-weibo">
+        <a href="https://weibo.com/u/2175505900?refer_flag=1001030101_" target="_blank" title="weibo" ref="friend">
+            <i class="fa fa-weibo"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-weixin">
+        <a href="http://lijiarui.github.io" target="_blank" title="weixin" ref="friend">
+            <i class="fa fa-weixin"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/lijiarui" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-telegram">
+        <a href="https://www.jianshu.com/u/ac5aaa7ad293" target="_blank" title="telegram" ref="friend">
+            <i class="fa fa-telegram"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最近</a></li>
+        
+            
+                <li class="active">
+                    <a href="/categories/chatbot" data-name="chatbot">chatbot</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/project" data-name="project">project</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/presentation" data-name="presentation">presentation</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/thought" data-name="thought">thought</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/tech" data-name="技术">技术</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/reading" data-name="读书">读书</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text"
+               readonly="readonly"
+               id="local-search-input-tip"
+               placeholder="读物检索" />
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://lijiarui.github.io"
+                   target="_blank">
+                    <img width="48" src="/images/avatar.jpg" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://www.botorange.com"
+                       target="_blank">李佳芮</a>
+                    <span title="最后编辑于&nbsp;2018-08-09">2018-08-09</span>
+                </p>
+                <p>一个现实的理想主义者</p>
+            </div>
+            <h2 class="post-title">连载 | 1.对话系统趋势分析</h2>
+            <div class="post-meta">
+                本文共计2276个字 |
+                您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <p>本章我会带领大家了解对话系统的趋势，以及为什么我们要搭建一个对话系统。</p>
+<p><img src="/img/2018/unit-1-1.jpeg" alt="unit-1"></p>
+<p><strong>前Apple交互设计师</strong>是这样说的：“在未来的25年没有人会再点击下拉菜单，但是人们仍然会指着地图互相纠正对方说的话，这是最基本的。好的信息软件在处理信息的时候会更加贴近人类本来的方式，而不是电脑”。</p>
+<p>换句话说，未来的交互更多的是机器和电脑适应人，而不是人按照电脑的方式一步一步的操作完成任务。</p>
+<p><img src="/img/2018/unit-1-2.jpeg" alt="unit-2"></p>
+<p>这是交互趋势的变化：从80年代以PC为主的交互方式，到90年代的<strong>互联网时代</strong>，再后来的<strong>移动互联网时代</strong>，以及现在的<strong>人工智能时代</strong>，我们会发现，信息的交互方式一直在演进。</p>
+<p><strong>从最开始的鼠标键盘，到后来的以触摸为主的移动交互。</strong></p>
+<p>人类一直在追求更加便捷的人接对话方式。能用一句话解决的事情，我们就不需要再按照电脑的方式一步一步的操作。</p>
+<p>也就是说，<strong>接下来是对话交互的时代，过去的成百上千个app会逐渐演化成未来的成百上千个chatbot。</strong>  </p>
+<p><img src="/img/2018/unit-1-3.jpeg" alt="unit-3"></p>
+<p>这是未来交互趋势的变化，发现交互是从没有<strong>AI</strong>到有<strong>AI</strong>，从有界面到无界面的转换。话说，就是机器从不懂你到懂你，UI界面会变得越来越少，CUI（Conversation UI）会逐渐发展起来。 </p>
+<p><img src="/img/2018/unit-1-4.jpeg" alt="unit-4"></p>
+<p>我们发现一个很有意思的现象：</p>
+<p>从手机到智能手机的一个最大变化，是因为它有了操作系统。</p>
+<p>而从家居到智能家居，机器人到智能机器人，客服到智能客服，是因为他们有了对话的能力，或者说是有了对话系统。</p>
+<p>所以，我们说未来的对话系统将会逐渐成为新的操作系统，换句话说，对话系统将是人工智能时代的一个必要组件，<strong>任何产品依赖对话系统为之赋予智能的能力</strong>。</p>
+<p><strong>在未来，每一个行业都像现在拥有自己的APP一样需要拥有自己的对话机器人。</strong>  </p>
+<p><img src="/img/2018/unit-1-5.jpeg" alt="unit-5"></p>
+<p>过去我们依赖操作系统去完成游戏、听音乐、看视频，买东西，而未来，所有这些操作中的一大部分都会逐渐交给对话系统去完成。</p>
+<p><img src="/img/2018/unit-1-6.jpeg" alt="unit-6"></p>
+<p><strong>对话交互是一种新的UI</strong>。网站和App强制用户像机器人一样去思考问题，而对话系统是强制机器人像人一样思考问题，让机器去适应人，而不是人去适应机器。</p>
+<p><img src="/img/2018/unit-1-7.jpeg" alt="unit-7"></p>
+<p>当然，未来的交互方式并不会是单一的对话交互，它会变成一个多感官的综合交互，包括对话、视觉、触觉，但我们这一系列的课程主要是讲对话的。</p>
+<p>进一步为各位科普两个观念：</p>
+<ul>
+<li><p>GUI：是图形用户界面接口，就是我们过去的电脑，包括手机都是图形化界面，需要用户根据设计者的要求，一步步的点击操作完成。</p>
+</li>
+<li><p>CUI：是Conversation的User Interface，通过对话去完成所有的交互任务，在未来，交互会逐渐从GUI 转到CUI上来。 </p>
+</li>
+</ul>
+<p><img src="/img/2018/unit-1-8.jpeg" alt="unit-8"><br>对话交互的产品形态也非常广泛，可以是商用机器人，家用机器人，儿童故事机、智能音响、智能家居、车载系统、智能客服以及个人助手类的产品。所有的产品通过对话系统为它赋予智能的能力。</p>
+<p><img src="/img/2018/unit-1-9.jpeg" alt="unit-9"></p>
+<p>对话交互的目标是希望机器像人一样对话，对话系统训练的要求是需要有合理的逻辑，正确的场景，包括对话的上下文关联，角色的设定。你要知道，机器人是以一个什么样的角色去扮演，用什么样的口气去和你的客户进行交流，包括语境的感知。</p>
+<p>举个例子来说：用户已经非常愤怒了，我们是不是要应该把机器人的对话终止，立刻切换到人工去为用户服务。</p>
+<p>最后，为大家推荐未来的一个新兴的职业：<strong>对话系统训练师</strong>，他可能是一个设计师，因为他要设计整个的流程，还需要了解基本的开发的话术，基本开发的一些原理，同时他也需要是一个语言学家，所有的对话都需要用合理的话术去做，包括要了解用户的心理。甚至他还是一个剧作家，他去编写所有对话的故事线，带着用户一步一步的完成任务。</p>
+<p><strong>简单的来说，对话交互是通过梳理业务逻辑，让机器人辅助用户以最便捷的方式获取服务。</strong></p>
+<p><img src="/img/2018/unit-1-10.jpeg" alt="unit-10"></p>
+<p><strong>如果你希望成为一个对话系统训练师</strong>，<strong>这一系列课程会带着你从入门到精通</strong>。</p>
+<p><strong>如果你是传统行业的产品设计师或开发工程师</strong>，对人工智能或者对话系统非常感兴趣，通过这一系列的课程，也可以帮助你完成职场转型。</p>
+<p><strong>如果你是市场拓展或者管理者</strong>，也希望你通过这一系列课程，了解技术的发展是什么样的，了解技术的边境是什么样的，了解技术的局限是什么样的，从而能更好地管理自己公司产品的发展。</p>
+<p>换个角度来说，如果你从来没有接触过代码，通过我的方法论和介绍相关的工具，你可以搭建一个满足自己需求的聊天机器人。</p>
+<p><strong>如果你是一名开发者</strong>，通过本课程的一系列方法，你会从产品维度知道，如何搭建一个更加符合用户需求，能够帮助用户完成任务的聊天机器人或者对话机器人。</p>
+<p><img src="/img/2018/unit-1-11.jpeg" alt="unit-11"></p>
+<p>最后我也给大家简单介绍一下，什么是我们一直在说的，<strong>对话系统训练师，他到底是什么样的一个角色</strong>。</p>
+<p>他其实是在系统和终端用户之间，从开始到结束的整个对话过程中，思考着正在解决的问题，以及用户需要什么来帮助他完成任务。</p>
+<p>他要知道用户是谁，也要负责产品的设计、原型的设计，并且去描述所有用户的行为，他还要知道底层的所有技术优点和缺点，在系统上线之后，通过用户的行为去分析这个系统有什么样的不足，进而去更新改进这个系统。</p>
+<p>甚至在整个的流程中，因为我们的系统不可能完全那么智能，如果有人参与的时候，他要知道在什么时候让客服去接入，接入的时候，是怎么样的一个流程平滑过渡。</p>
+<p><img src="/img/2018/unit-1-12.jpeg" alt="unit-12"></p>
+<p>希望大家在课后能够进一步思考：</p>
+<ul>
+<li><p>对话设计和屏幕的交互，是一个什么样的关系？</p>
+</li>
+<li><p>对话机器人需要有什么样的性格？</p>
+</li>
+<li><p>如何去管理用户的预期值？</p>
+</li>
+<li><p>如何弥补对话过程中带来的挫败感？</p>
+</li>
+<li><p>以及交互过程中的用户情感如何控制？</p>
+</li>
+</ul>
+<p>这就是我们第一节课给大家做的简短的介绍，后面我们会更加细致的说明对话系统的很多概念，包括一些工具和搭建的过程。 </p>
+<p>先到这里，谢谢大家！下期再会！</p>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/chatbot/">chatbot</a>
+            
+            <a href="/tags/百度/">百度</a>
+            
+            <a href="/tags/UNIT/">UNIT</a>
+            
+        </div>
+        
+    </article>
+    
+    <p style="text-align: center">本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+    
+    
+        <div class="adsense_post_left">
+            
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:160px;height:600px"
+         data-ad-client=""
+         data-ad-slot=""></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </div>
+        <div class="adsense_post_right">
+            
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:160px;height:600px"
+         data-ad-client=""
+         data-ad-slot=""></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </div>
+        <p>
+            
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client=""
+         data-ad-slot=""
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </p>
+    
+
+
+    
+    
+        <div id="disqus_thread"></div>
+        <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            var disqus_config = function () {
+                this.page.url = 'http://lijiarui.github.io/chatbot/2018-8-9-unit-1.html';
+                this.page.identifier = 'chatbot/2018-8-9-unit-1.html';
+            };
+            (function () { // DON'T EDIT BELOW THIS LINE
+                var d = document, disqus_shortname = 'lijiarui', s = d.createElement('script');
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+
+</div>
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about"  title="关于">关于</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="帮助" >帮助</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友链">友链</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="地图">地图</a>
+        </p>
+        <p>
+            本站已建立&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbsp天，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议创作</a><br/>
+            ©2017-<span id="cpYear"></span> 基于&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，主题采用&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，作者&nbsp<a href="https://lijiarui.github.io" target="_blank" rel="friend">李佳芮</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+        </p>
+    </div>
+</footer>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input"
+                   spellcheck="false"
+                   type="text"
+                   autocomplete="off"
+                   placeholder="请输入查询关键词"/>
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '01/20/2018',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+            localSearch: {
+                dbPath: '/search.xml',
+                trigger: 'auto',
+                topN: '1',
+                unescape: 'false'
+            }
+        });
+    });
+</script>
+</body>
+</html>

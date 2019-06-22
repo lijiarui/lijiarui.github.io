@@ -1,0 +1,526 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://lijiarui.github.io/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+<link rel="dns-prefetch" href="http://lijiarui.github.io">
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+<link rel="prefetch" href="http://lijiarui.github.io">
+<link rel="prefetch" href="//www.google-analytics.com">
+
+    <link rel="dns-prefetch" href="//disqus.com">
+    <link rel="dns-prefetch" href="//lijiarui.disqus.com">
+    <link rel="prefetch" href="//disqus.com">
+    <link rel="prefetch" href="//lijiarui.disqus.com">
+
+
+<link rel="prerender" href="http://lijiarui.github.io">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://lijiarui.github.io">
+<meta name="author" content="Li jiarui">
+<link rel="stylesheet" href="/css/JSimple.css">
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+
+<title>连载 | 2.5 unit整体介绍 - 李佳芮de博客</title>
+
+<meta name="keywords" content="chatbot, 技术博客, 聊天机器人, 人工智能, 创业">
+
+<meta name="description " content="本章我会介绍一个搭建对话系统的工具 ———— UNIT">
+
+    
+
+    
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="//www.googletagmanager.com/gtag/js?id=UA-114589636-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-114589636-1');
+        </script>
+    
+    <!-- put your likes here. -->
+
+
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="芮">芮</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/about" title="关于本站">
+            <i class="fa fa-user"></i>
+            <span>关于本站</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <!-- <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a> -->
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">李佳芮の博客</h1>
+        <h3 class="cover-siteTitle">时间看得见</h3>
+        <p class="cover-siteDesc">一个现实的理想主义者</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-weibo">
+        <a href="https://weibo.com/u/2175505900?refer_flag=1001030101_" target="_blank" title="weibo" ref="friend">
+            <i class="fa fa-weibo"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-weixin">
+        <a href="http://lijiarui.github.io" target="_blank" title="weixin" ref="friend">
+            <i class="fa fa-weixin"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/lijiarui" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-telegram">
+        <a href="https://www.jianshu.com/u/ac5aaa7ad293" target="_blank" title="telegram" ref="friend">
+            <i class="fa fa-telegram"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最近</a></li>
+        
+            
+                <li class="active">
+                    <a href="/categories/chatbot" data-name="chatbot">chatbot</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/project" data-name="project">project</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/presentation" data-name="presentation">presentation</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/thought" data-name="thought">thought</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/tech" data-name="技术">技术</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/reading" data-name="读书">读书</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text"
+               readonly="readonly"
+               id="local-search-input-tip"
+               placeholder="读物检索" />
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://lijiarui.github.io"
+                   target="_blank">
+                    <img width="48" src="/images/avatar.jpg" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://www.botorange.com"
+                       target="_blank">李佳芮</a>
+                    <span title="最后编辑于&nbsp;2018-09-13">2018-09-13</span>
+                </p>
+                <p>一个现实的理想主义者</p>
+            </div>
+            <h2 class="post-title">连载 | 2.5 UNIT整体介绍</h2>
+            <div class="post-meta">
+                本文共计4569个字 |
+                您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <p>欢迎大家来到第二章的第五节，UNIT的整体介绍。</p>
+<p><img src="/img/2018/unit-2-5-1.jpeg" alt="image"></p>
+<p>上一节课我们介绍了需要搭建一个对话系统的五个步骤,这节课我们先来复习一下:</p>
+<ul>
+<li><p>1. 我们需要定义对话系统；</p>
+</li>
+<li><p>2. 我们需要富集数据资源；</p>
+</li>
+<li><p>3. 我们需要搭建系统、训练、评价和调优；</p>
+</li>
+<li><p>4. 我们需要系统接入；</p>
+</li>
+<li><p>5. 我们需要进行运营迭代；</p>
+</li>
+</ul>
+<p>在第五步我们需要将结果反馈到第二步以及第三步上，通过运营数据，更好的收集数据资源进而更好的搭建系统。</p>
+<p>给大家举一个例子：百度的地图语音交互项目，经过了数个深度学习对话系统，NLP数据挖掘资深工程师，他们花了一年多的时间，写了超过10万行的NLP和DNN代码，经过了十余个大版本的版本迭代，通过了上亿对的对话数据和上亿个地址数据，才完成了我们现在看到的<strong>百度的地图语音交互项目</strong>。</p>
+<p>我们会发现，从头搭建一个好用的对话系统，是需要非常高的成本和代价的。对于小公司来，如果不善用工具，拥有一个智能的对话系统是一件非常困难的事情。</p>
+<p>这节课我给大家介绍<strong>一个特别好用的搭建对话系统的工具–**</strong>UNIT**。有了UNIT之后，只要熟悉业务逻辑，就可以很轻松的成为对话系统训练专家。</p>
+<p><img src="/img/2018/unit-2-5-2.jpeg" alt="image"></p>
+<p>同样还是五个步骤，我们每一个步骤进行一个一个的说一下： </p>
+<ul>
+<li><p>定义对话系统：UNIT会为你提供高质量高可干预的预置技能，助力你定义对话系统；</p>
+</li>
+<li><p>富集数据资源：直接拥有通过百度大数据，智能引擎，智能推荐引擎的超过40个的预置词槽；</p>
+</li>
+<li><p>搭建系统、训练、评估和调优：UNIT是一个真实应用打磨的对话系统，拥有最懂中文的自然语言理解（NLU）技术。可以快速的帮助业务人员搭建系统，甚至一行代码都不用写，就可以直接搭建我们的对话系统；</p>
+</li>
+<li><p>系统接入：UNIT集成了微信公众号的一键接入，并且有完善的iOS、安卓的sdk；</p>
+</li>
+<li><p>运营迭代：UNIT增加了AI加持的反馈分析和学习机制，通过反馈的内容，持续优化数据；</p>
+</li>
+</ul>
+<p>简单的说，有了UNIT后，搭建对话系统就不一定需要专业的编程人员，对话系统开发工程师和算法工程师，只需要让熟悉业务的人维护语言模型就可以了。懂业务的人定义好它的业务逻辑，并根据UNIT进行一步一步的操作，只需要简单的几行开发和部署对接到消息系统中，这样可以免费享用百度NLP多年的研究成果。</p>
+<p>换句话说，我们是站在巨人的肩膀上，开发我们自己的对话系统。</p>
+<p><img src="/img/2018/unit-2-5-3.jpeg" alt="image"></p>
+<ul>
+<li><strong>UNIT概述</strong>  </li>
+</ul>
+<p>UNIT是一个建立在百度多年的自然语言处理和对话技术积累和大数据的基础上的对话系统的平台，她是一个面向第三方提供的对话系统生成器，对话系统的搭建工具。</p>
+<p><img src="/img/2018/unit-2-5-4.jpeg" alt="image"></p>
+<ul>
+<li><strong>UNIT技术特色</strong>  </li>
+</ul>
+<p>它的技术特色有四块： </p>
+<ul>
+<li>平台非常的简单，易学易用，不需要具备算法的基础，五步就可以训练一个对话机器人；</li>
+</ul>
+<ol>
+<li><p>新建bot；</p>
+</li>
+<li><p>添加技能；</p>
+</li>
+<li><p>标注数据；</p>
+</li>
+<li><p>训练优化；</p>
+</li>
+<li><p>发布上线；</p>
+</li>
+</ol>
+<ul>
+<li><p>对话管理更加贴近真人，领先的NLP技术、海量的大数据、多轮交互、自动澄清、主动引导，对话更贴近真人；</p>
+</li>
+<li><p>门槛非常的低，只需要少量的语料，就可以实现强大的泛化效果，轻松对接微信、手机App、网站和硬件等等；</p>
+</li>
+<li><p>UNIT的机制非常灵活，并且持续进行优化。同时拥有高可干预的预置技能、勾选调用、灵活调整、对话系统持续优化，你的机器人越来越聪明；</p>
+</li>
+</ul>
+<p><img src="/img/2018/unit-2-5-5.jpeg" alt="image"></p>
+<ul>
+<li><strong>UNIT概览</strong></li>
+</ul>
+<p>搭建对话机器人需要开发者先进行数据标注、搭建领域知识和交互逻辑，开发你自己的领域对话产品。对应的UNIT 有以下的能力：</p>
+<p>一、理解技术：</p>
+<ul>
+<li><p>多知识融合的意图理解；</p>
+</li>
+<li><p>基于大数据的联合词槽识别；</p>
+</li>
+</ul>
+<p>二、问答技术：</p>
+<ul>
+<li>依托海量优质数据的语义匹配</li>
+</ul>
+<p>三、交互技术： </p>
+<ul>
+<li><p>面向任务的多轮交互技术；</p>
+</li>
+<li><p>面向问答的多轮交互技术；</p>
+</li>
+</ul>
+<p>四、大数据的助力： </p>
+<ul>
+<li><p>知识推荐的加速模型迭代；</p>
+</li>
+<li><p>训练师模式助力零门槛标注； </p>
+</li>
+</ul>
+<p>UNIT有NLP的基础技术，机器学习能力和百度大数据，帮助不懂算法而懂业务的人搭建对话系统，是一个非常好用的对话系统生成器。</p>
+<p><img src="/img/2018/unit-2-5-6.jpeg" alt="image"></p>
+<ul>
+<li><strong>UNIT提供预置技能，最低成本创建对话系统</strong>  </li>
+</ul>
+<p>以上是UNIT提供的预置技能，帮助业务人员最低成本最快速度的搭建对话系统，平均解析准确率超过90%。应用领域包括但不限于：家庭娱乐；智能车载；智能客服；服务机器人。</p>
+<p>我们在第二个小节介绍的对话系统的分类里有任务型的机器人和问答型的机器人，应用场景包括智能助理、会议系统，健身系统等等。这些都可以用UNIT进行简单的配置实现。</p>
+<p><img src="/img/2018/unit-2-5-7.jpeg" alt="image"></p>
+<ul>
+<li><strong>UNIT平台案例</strong>  </li>
+</ul>
+<p>这是一个UNIT平台的案例，用户说：“我要去北京南站，不走高速”。UNIT 可以识别到用户的目的地是北京南站，偏好是不走高速。</p>
+<p>因此进一步可以实现这样的对话对：导航问：“请问您要去哪里？”，“已为您规划到北京首都机场的路线，有避开高速”，“好的”。</p>
+<p>再比如说：“限号策略”，那么回答：“限号策略是2008年10月1日在北京市发布的”。</p>
+<p>UNIT平台可以提供很好的任务型和问答型对话系统的解决方案。</p>
+<p><img src="/img/2018/unit-2-5-8.jpeg" alt="image"></p>
+<ul>
+<li><strong>全渠道接入</strong>  </li>
+</ul>
+<p>UNIT支持全渠道的接入，她包括了训练服务、数据模型，管理模块和对话服务模块。</p>
+<p>对话服务模块支持全渠道接入，包括HttpAPI、DuerOS、iOS、安卓，微信等等。只要你能想到的，基本上UNIT都能够覆盖到。</p>
+<p>再一个是服务管理模块，登陆unit.baidu.com，有非常好用的管理API帮助你去管理。</p>
+<p>介绍了UNIT之后，我们再介绍一下UNIT的一个非常强大的工具，叫做DMKit。</p>
+<p>DMKit是一个开源的对话管理框架。</p>
+<p><img src="/img/2018/unit-2-5-9.jpeg" alt="image"></p>
+<ul>
+<li><strong>UNIT系统构成</strong>  </li>
+</ul>
+<p>我们先来看一下对话系统的构成：</p>
+<p>当用户说一句话的时候，需要通过对话理解技术，比如说我要订一张北京到上海的机票，识别出到订票意图和词槽（北京和上海）。这些我们叫它对话理解，在云端的对话理解。</p>
+<p>下一步是对话的管理，当用户说了北京到上海，我们拿到这些词槽以及意图后，下一步机器人应该如何引导用户给出更多重要的信息，包括机器人收集到所有的词槽后，如何完成对话任务并给出搜索到的机票信息。这个过程叫做资源的检索与任务的执行。</p>
+<p>第一步更多在云端的对话叫做云端的对话理解，将一句话分成意图和实体，也就是用户的目的地等参数对。</p>
+<p>第二步是针对高级开发者的，根据拿到的意图和参数对，通过代码进行灵活的对话管理。接下来我详细的给大家介绍DMKit，一个开源的对话管理解决方案。</p>
+<p><img src="/img/2018/unit-2-5-10.jpeg" alt="image"></p>
+<ul>
+<li><strong>DMKit 开源对话管理方案</strong>  </li>
+</ul>
+<p>我们再来回顾一下这张图，对话理解，对话管理，资源检索和答复生成，灵活的和知识库及外部的服务进行交互，这是DMKit的一个优势。同时，DMKit 还有很多独特的优势，包括完整的离线框架、图形化对话管理、搭建门槛更低、开发更简单、无缝对接云端、轻松易用等。</p>
+<p>开发的同学可以去github上看一下，这是github上的地址：<a href="https://github.com/baidu/unit-dmkit，通过代码管理是更高级的搭建对话的玩法，处理更加灵活。" target="_blank" rel="noopener">https://github.com/baidu/unit-dmkit，通过代码管理是更高级的搭建对话的玩法，处理更加灵活。</a></p>
+<p><img src="/img/2018/unit-2-5-11.jpeg" alt="image"></p>
+<p>当用户说一句话的时候，通过语音识别讲语音转成文字，UNIT 分析后，放在DMKit 中拿到对话状态。根据对话的状态跳转到不同的策略，再跳转到不同的对话状态。外面可以调用UNIT的解析服务以及知识库，最后升到了不同的对话状态之后，再通过ASR反馈到系统，再去和用户进行应答。</p>
+<p><img src="/img/2018/unit-2-5-12.jpeg" alt="image"></p>
+<ul>
+<li><strong>DMKit 在百度支撑了工业级的真实流量</strong>  </li>
+</ul>
+<p>以上简单的介绍了DMKit，我会在稍后的课程介绍更详细的内容，主要是面向开发者的。</p>
+<p>在百度里，DMKit 支撑了工业级的真实的流量，比如说小度机器人，小度聊球和百度的车载语音系统都用到了DMKit，开发者可以放心使用。</p>
+<p><img src="/img/2018/unit-2-5-13.jpeg" alt="image"></p>
+<ul>
+<li><strong>如何优化理解能力</strong>  </li>
+</ul>
+<p>第三块是要介绍的是UNIT的持续学习能力，也就是如何优化机器的理解能力。</p>
+<p>举个例子说，“我要去北京火车站，哎呀，那个啥，帮我导航去北京站，要快一点的路线。我要从西二旗出发，先去西单，再去南锣鼓巷，然后去后海，最后去北京站赶火车，帮我规划一条红绿灯少的不堵车的最快的路线吧”。 </p>
+<p>通过理解模型和大量的训练数据，UNIT会自动的一点一点的优化它的理解能力。</p>
+<p><img src="/img/2018/unit-2-5-14.jpeg" alt="image"></p>
+<ul>
+<li><strong>可终身进化的对话理解技术</strong>  </li>
+</ul>
+<p>UNIT是一个可终身进化的对话理解技术。通过自定义技能和预置技能加上语料，模版，问答对，知识图谱和词典可以优化对话理解技术。在对话理解技术中，包括了内系统内置的对话管理技术和用户定制的多引擎驱动的SLU。多引擎渠道的SLU包括启发式SLU，DNN-SLU和IR-SLU，它可以再的反馈回到整个外面的自定义技能和预置技能里。</p>
+<p>我们会发现，UNIT是在持续不停的迭代过程，通过和用户的交互，用户在后台的配置，可以实现机器的自学习和自进化，进而机器人会更加聪明。</p>
+<p>再举一个例子，让UNIT像人一样在交流中学习，比如说，我问机器人梅球王进了几个球，机器人不知道梅球王是谁，机器人就会问我，梅球王是谁？然后我告诉它梅球王是梅西，那机器人待会儿就会直接回答我梅西进了一个球。</p>
+<p>下一次，你再跟它说梅球王的时候，它就记住了。所以你只要不停的跟机器人去聊天，机器人就能够学习，然后优化自己的对话系统。</p>
+<p><img src="/img/2018/unit-2-5-15.jpeg" alt="image"></p>
+<ul>
+<li><strong>主动学习</strong>  </li>
+</ul>
+<p>我们看到这样一个图，研发人员通过数百条的数据搭建，搭建初始模型，训练师通过1到2天的对话实战练习，用户通过大量的交互反馈持续学习，系统可以在对话中向所有人去学习。那么你只需要做的事就是跟它聊一聊，聊了之后，机器人就会变得越来越聪明。</p>
+<p><img src="/img/2018/unit-2-5-16.jpeg" alt="image"></p>
+<ul>
+<li><strong>UNIT完整的系统推动效果优化</strong>  </li>
+</ul>
+<p>我们看到这是UNIT完整的系统来持续推动效果优化，线上对话我们去采集得到了，UNIT会自动采集得到日志系统，然后进行对话反馈。正确的我们会有漏识别和误识别的，正确的我们都会收集出来，然后只是提炼，得到一些训练的数据，然后在反馈给服务上，然后进行持续的学习和效果优化。</p>
+<p>整个UNIT系统是符合我们上面说的对话系统的生命周期。换句话说你只要在UNIT去搭建，就可以很好的去对话系统的生命周期。</p>
+<p>从最开始的定义、搭建、接入，到后面的我们去看数据去反馈，再回过头来更好的定义搭建。</p>
+<p><img src="/img/2018/unit-2-5-17.jpeg" alt="image"></p>
+<ul>
+<li><strong>UNIT 日志分析系统</strong>  </li>
+</ul>
+<p>这是UNIT的日志对话分析系统，一个新的bot模型，通过对话系统的日志分析，分析出已识别到的意图、未识别到的意图和识别错的意图，再去拿用户的需求，找到bot覆盖到的高频需求，bot覆盖到的低频需求，bot没有覆盖到的高频需求和bot没有覆盖到的低频需求，然后将这些再反馈到bot定义里边，去优化bot的定义。然后再进一步的训练bot，再造一个新bot模型。</p>
+<p>这样我们会发现，我们从0.1、0.2、0.3到1.1、1.2，随着这个模型，我们一点一点地通过大量的真实场景去迭代，逐渐搭建一个越来越好用的机器人。</p>
+<p>建议大家现在就立刻着手去搭建。搭建的越早，上线的越早，你的机器人就越早被你的用户所训练，你的机器人就越早变得越聪明。</p>
+<p>最后给介绍一下UNIT的应用场景。</p>
+<p><img src="/img/2018/unit-2-5-18.jpeg" alt="image"></p>
+<ul>
+<li><strong>应用场景</strong>  </li>
+</ul>
+<p>UNIT不止能应用在我之前介绍的各种应用场景，基本上已经覆盖了所有的行业。</p>
+<p>不论是金融、制造业、汽车业、客服、银行、媒体、旅游、教育、安防、餐饮等。UNIT提供的是一种对话式的智能系统，所以我们可以发现UNIT可以应用在各行各业，有兴趣的小伙伴快来试试吧！</p>
+<p>谢谢大家。</p>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/chatbot/">chatbot</a>
+            
+            <a href="/tags/百度/">百度</a>
+            
+            <a href="/tags/UNIT/">UNIT</a>
+            
+        </div>
+        
+    </article>
+    
+    <p style="text-align: center">本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+    
+    
+        <div class="adsense_post_left">
+            
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:160px;height:600px"
+         data-ad-client=""
+         data-ad-slot=""></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </div>
+        <div class="adsense_post_right">
+            
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:160px;height:600px"
+         data-ad-client=""
+         data-ad-slot=""></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </div>
+        <p>
+            
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client=""
+         data-ad-slot=""
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </p>
+    
+
+
+    
+    
+        <div id="disqus_thread"></div>
+        <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            var disqus_config = function () {
+                this.page.url = 'http://lijiarui.github.io/chatbot/2018-9-13-unit-2-5.html';
+                this.page.identifier = 'chatbot/2018-9-13-unit-2-5.html';
+            };
+            (function () { // DON'T EDIT BELOW THIS LINE
+                var d = document, disqus_shortname = 'lijiarui', s = d.createElement('script');
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+
+</div>
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about"  title="关于">关于</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="帮助" >帮助</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友链">友链</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="地图">地图</a>
+        </p>
+        <p>
+            本站已建立&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbsp天，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议创作</a><br/>
+            ©2017-<span id="cpYear"></span> 基于&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，主题采用&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，作者&nbsp<a href="https://lijiarui.github.io" target="_blank" rel="friend">李佳芮</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+        </p>
+    </div>
+</footer>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input"
+                   spellcheck="false"
+                   type="text"
+                   autocomplete="off"
+                   placeholder="请输入查询关键词"/>
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '01/20/2018',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+            localSearch: {
+                dbPath: '/search.xml',
+                trigger: 'auto',
+                topN: '1',
+                unescape: 'false'
+            }
+        });
+    });
+</script>
+</body>
+</html>

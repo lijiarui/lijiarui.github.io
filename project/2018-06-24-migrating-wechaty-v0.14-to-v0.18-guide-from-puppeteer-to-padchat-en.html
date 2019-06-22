@@ -1,0 +1,535 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://lijiarui.github.io/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+<link rel="dns-prefetch" href="http://lijiarui.github.io">
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+<link rel="prefetch" href="http://lijiarui.github.io">
+<link rel="prefetch" href="//www.google-analytics.com">
+
+    <link rel="dns-prefetch" href="//disqus.com">
+    <link rel="dns-prefetch" href="//lijiarui.disqus.com">
+    <link rel="prefetch" href="//disqus.com">
+    <link rel="prefetch" href="//lijiarui.disqus.com">
+
+
+<link rel="prerender" href="http://lijiarui.github.io">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://lijiarui.github.io">
+<meta name="author" content="Li jiarui">
+<link rel="stylesheet" href="/css/JSimple.css">
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+
+<title>migrating wechaty v0.14 to v0.18 guide - from puppeteer to padchat - 李佳芮de博客</title>
+
+<meta name="keywords" content="chatbot, 技术博客, 聊天机器人, 人工智能, 创业">
+
+<meta name="description " content="Wechaty has been updated to version 0.16(BETA) these days and begin to support all kinds of wechat solutions including web, ipad, ios, etc. My product based on wechaty has to migration from wechaty solution based on web to ipad solution.This blog introduces how to porting code from wechaty puppeteer to padchat.">
+
+    
+
+    
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="//www.googletagmanager.com/gtag/js?id=UA-114589636-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-114589636-1');
+        </script>
+    
+    <!-- put your likes here. -->
+
+
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="芮">芮</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/about" title="关于本站">
+            <i class="fa fa-user"></i>
+            <span>关于本站</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <!-- <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a> -->
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">李佳芮の博客</h1>
+        <h3 class="cover-siteTitle">时间看得见</h3>
+        <p class="cover-siteDesc">一个现实的理想主义者</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-weibo">
+        <a href="https://weibo.com/u/2175505900?refer_flag=1001030101_" target="_blank" title="weibo" ref="friend">
+            <i class="fa fa-weibo"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-weixin">
+        <a href="http://lijiarui.github.io" target="_blank" title="weixin" ref="friend">
+            <i class="fa fa-weixin"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/lijiarui" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-telegram">
+        <a href="https://www.jianshu.com/u/ac5aaa7ad293" target="_blank" title="telegram" ref="friend">
+            <i class="fa fa-telegram"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最近</a></li>
+        
+            
+                <li class="">
+                    <a href="/categories/chatbot" data-name="chatbot">chatbot</a>
+                </li>
+            
+                <li class="active">
+                    <a href="/categories/project" data-name="project">project</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/presentation" data-name="presentation">presentation</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/thought" data-name="thought">thought</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/tech" data-name="技术">技术</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/reading" data-name="读书">读书</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text"
+               readonly="readonly"
+               id="local-search-input-tip"
+               placeholder="读物检索" />
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://www.botorange.com"
+                   target="_blank">
+                    <img width="48" src="/images/avatar.jpg" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://blog.botorange.com"
+                       target="_blank">李佳芮</a>
+                    <span title="最后编辑于&nbsp;2018-06-30">2018-06-30</span>
+                </p>
+                <p>一个现实的理想主义者</p>
+            </div>
+            <h2 class="post-title">Migrating Wechaty v0.14 to v0.18 Guide - From Puppeteer To Padchat</h2>
+            <div class="post-meta">
+                本文共计13143个字 |
+                您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <blockquote>
+<p>Author: <a href="https://github.com/lijiarui" target="_blank" rel="noopener">@lijiarui</a> Founder of BotOrange, Author of Wechaty.</p>
+</blockquote>
+<p>Wechaty has been updated to version 0.16(BETA) these days and begin to support all kinds of wechat solutions including web, ipad, ios, etc. My product based on wechaty has to migration from wechaty solution based on web to ipad solution.</p>
+<p>This blog introduces how to porting code from wechaty puppeteer to padchat.</p>
+<p><img src="/img/2018/code-migration-en.png" alt="code"></p>
+<h1 id="1-Puppeteer-VS-Padchat"><a href="#1-Puppeteer-VS-Padchat" class="headerlink" title="1. Puppeteer VS Padchat"></a>1. Puppeteer VS Padchat</h1><p><strong>Puppet System</strong> means to connect Wechaty API to any kinds of Puppets, including Web, iPad, Android, Windows Hook and ios. Different implements of these puppets are totally different, without the puppet, using one API to bridge all implement is very difficult, so we had Puppet System.</p>
+<p><img src="https://github.com/Chatie/wechaty/wiki/image/abstract-info.png" alt=""></p>
+<ul>
+<li>Puppeteer<br>A solution based on Web Wechat</li>
+<li>Padchat<br>A solution based on Ipad Wechat</li>
+</ul>
+<p>You can find more in this blog: <a href="https://blog.chatie.io/wechaty-new-release-version-0.16/" target="_blank" rel="noopener">Wechaty New Version 0.16(BETA, with superpower) Released</a></p>
+<h1 id="2-How-to-run-puppet-padchat"><a href="#2-How-to-run-puppet-padchat" class="headerlink" title="2. How to run puppet-padchat"></a>2. How to run puppet-padchat</h1><p>Wechaty will start with puppeteer(web solution) by default, if you want to change to padchat, you need to set the environmental variable. </p>
+<p>See more in wechaty wiki: <a href="https://github.com/Chatie/wechaty/wiki/Puppet#2-run" target="_blank" rel="noopener">How to run a new wecahty-puppet-padchat</a></p>
+<h2 id="Start-with-Github-repo"><a href="#Start-with-Github-repo" class="headerlink" title="Start with Github repo"></a>Start with Github repo</h2><h3 id="1-Pull-the-latest-code"><a href="#1-Pull-the-latest-code" class="headerlink" title="1. Pull the latest code:"></a>1. Pull the latest code:</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git pull</span><br><span class="line">rm -rf package-lock.json</span><br><span class="line">rm -rf node_modules/</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<h3 id="2-Get-Token"><a href="#2-Get-Token" class="headerlink" title="2. Get Token"></a>2. Get Token</h3><p>Participate in our alpha test here: <a href="https://github.com/Chatie/wechaty/issues/1296" target="_blank" rel="noopener">Wechaty v0.17 Padchat Testing: Win32/iPad/Android/iOS/API Puppets Support are coming!</a> and Get <code>WECHATY_PUPPET_PADCHAT_TOKEN</code></p>
+<h3 id="3-Set-environment-variable-and-run"><a href="#3-Set-environment-variable-and-run" class="headerlink" title="3. Set environment variable and run"></a>3. Set environment variable and run</h3><p>Remeber to set <code>WECHATY_PUPPET=padchat</code> to change from puppeteer to padchat</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">WECHATY_PUPPET_PADCHAT_TOKEN=your padchat token WECHATY_PUPPET=padchat  node examples/ding-dong-bot.js</span><br></pre></td></tr></table></figure>
+<h2 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h2><h3 id="1-Install"><a href="#1-Install" class="headerlink" title="1. Install"></a>1. Install</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install wechaty@next</span><br></pre></td></tr></table></figure>
+<h3 id="2-Get-token"><a href="#2-Get-token" class="headerlink" title="2. Get token"></a>2. Get token</h3><p>Participate in our alpha test here: <a href="https://github.com/Chatie/wechaty/issues/1296" target="_blank" rel="noopener">Wechaty v0.17 Padchat Testing: Win32/iPad/Android/iOS/API Puppets Support are coming!</a> and Get <code>WECHATY_PUPPET_PADCHAT_TOKEN</code></p>
+<h3 id="3-Set-environment-variable-and-run-1"><a href="#3-Set-environment-variable-and-run-1" class="headerlink" title="3. Set environment variable and run"></a>3. Set environment variable and run</h3><p>Remeber to set <code>WECHATY_PUPPET=padchat</code> to change from puppeteer to padchat</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">WECHATY_PUPPET_PADCHAT_TOKEN=your padchat token WECHATY_PUPPET=padchat   node examples/ding-dong-bot.js</span><br></pre></td></tr></table></figure>
+<h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><h3 id="1-Install-1"><a href="#1-Install-1" class="headerlink" title="1. Install"></a>1. Install</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull zixia/wechaty:latest</span><br></pre></td></tr></table></figure>
+<h3 id="2-Get-Token-1"><a href="#2-Get-Token-1" class="headerlink" title="2. Get Token"></a>2. Get Token</h3><p>Participate in our alpha test here: <a href="https://github.com/Chatie/wechaty/issues/1296" target="_blank" rel="noopener">Wechaty v0.17 Padchat Testing: Win32/iPad/Android/iOS/API Puppets Support are coming!</a> and Get <code>WECHATY_PUPPET_PADCHAT_TOKEN</code></p>
+<h3 id="3-Set-environment-variable-and-run-2"><a href="#3-Set-environment-variable-and-run-2" class="headerlink" title="3. Set environment variable and run"></a>3. Set environment variable and run</h3><ul>
+<li>Remeber to set <code>WECHATY_PUPPET=padchat</code> to change from puppeteer to padchat</li>
+<li>Remove wechaty in <code>node_module</code> if exist.</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run -t -i  -e WECHATY_PUPPET="padchat" -e WECHATY_PUPPET_PADCHAT_TOKEN="your token"  --volume="$(pwd)":/bot --name=wechaty zixia/wechaty:latest examples/ding-dong-bot.ts</span><br></pre></td></tr></table></figure>
+<h1 id="3-Check-Code"><a href="#3-Check-Code" class="headerlink" title="3. Check Code"></a>3. Check Code</h1><p>Wechaty is written by typescript, all with strong typing. Since to change all wechaty code, I change my logic product to strong typing.</p>
+<p>We need tools to help us check our code errors. I use <strong>TSLint</strong> to help me to check typescript code and use VS CODE as my IDE.</p>
+<h2 id="Why-we-need-to-check-code"><a href="#Why-we-need-to-check-code" class="headerlink" title="Why we need to check code"></a>Why we need to check code</h2><p>Maybe you think JavaScript is so flexible so it needs to be checked, but typescript has been able to check out a lot of problems when compiling. Why do we still need to check the code? </p>
+<p>This is because TypeScript focuses on the type of match, not the code style. When there are more and more people on our team, the same logic may be totally different in different people:</p>
+<ul>
+<li>Four spaces indentation or two spaces indentation?</li>
+<li>Should we disable <code>var</code>?</li>
+<li>Should all the interface name begin with <code>I</code>?</li>
+<li>Should it be mandatory to use <code>===</code> instead of <code>==</code>?</li>
+<li>Should we need a semicolon?</li>
+</ul>
+<p>TypeScript will not concern these problems, but these affect the efficiency of multi-person collaboration when developing, and how easy the code to read and maintain.</p>
+<p><a href="https://ts.xcatliu.com/engineering/lint.html" target="_blank" rel="noopener">This blog</a> explain why we need to check code in typescript.</p>
+<p>In one word, though code errors are more important than the uniform code style when a project becomes bigger and more and more developers join in, the code style constraints are still very important.</p>
+<h2 id="Using-TSLint"><a href="#Using-TSLint" class="headerlink" title="Using TSLint"></a>Using TSLint</h2><p>TSLint is an extensible static analysis tool that checks TypeScript code for readability, maintainability, and functionality errors. It is widely supported across modern editors &amp; build systems and can be customized with your own lint rules, configurations, and formatters. Learn more in <a href="https://palantir.github.io/tslint/" target="_blank" rel="noopener">TSLint Website</a></p>
+<h3 id="1-Install-2"><a href="#1-Install-2" class="headerlink" title="1. Install"></a>1. Install</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install --save-dev tslint</span><br><span class="line">npm install tslint-config-standard</span><br></pre></td></tr></table></figure>
+<h3 id="2-Config-File"><a href="#2-Config-File" class="headerlink" title="2. Config File"></a>2. Config File</h3><p>Create config file <code>tslint.json</code> </p>
+<p>I suggest to refer wechaty config about <code>tslint</code> and <code>tsconfig</code></p>
+<ul>
+<li><a href="https://github.com/Chatie/wechaty/blob/master/tslint.json" target="_blank" rel="noopener">tslint config file in wechaty</a></li>
+<li><a href="https://github.com/Chatie/wechaty/blob/master/tsconfig.json" target="_blank" rel="noopener">tsconfig config file in wechaty</a></li>
+</ul>
+<p>Here are some tips about wehcaty config:</p>
+<ul>
+<li>“strict” : true<br>Enable all strict type checking options.<br>Enabling –strict enables –noImplicitAny, –noImplicitThis, –alwaysStrict, –strictNullChecks, –strictFunctionTypes and –strictPropertyInitialization</li>
+<li>“noEmitOnError”              : true<br>Do not emit outputs if any errors were reported.</li>
+<li>“noUnusedLocals”             : true<br>Report errors on unused locals.</li>
+<li>“noImplicitReturns”          : true<br>Report error when not all code paths in function return a value.</li>
+<li>“noFallthroughCasesInSwitch” : true<br>Report errors for fallthrough cases in switch statement.</li>
+<li>“strictNullChecks”           : true<br>In strict null checking mode, the null and undefined values are not in the domain of every type and are only assignable to themselves and any (the one exception being that undefined is also assignable to void).</li>
+<li>“noImplicitAny”              : true<br>Raise error on expressions and declarations with an implied any type.<br>Related issue: <a href="https://github.com/Chatie/wechaty/issues/1383" target="_blank" rel="noopener">ts-node 7.0 breaking change: Skip <code>files</code> by default</a></li>
+<li>“no-floating-promises”: true<br>Check the floating promise。Related issue: <a href="https://github.com/Chatie/wechaty/issues/1346" target="_blank" rel="noopener">Prevent the Floating Promise in the Async/Await Code</a></li>
+<li>“noUnusedParameters”         : true<br>  Report errors on unused parameters.。</li>
+<li>“noImplicitThis”             : true<br>Raise error on this expression with an implied any type.</li>
+</ul>
+<p>see more in <a href="https://www.typescriptlang.org/docs/handbook/compiler-options.html" target="_blank" rel="noopener">official website</a></p>
+<h3 id="3-Add-tslint-script-for-package-json"><a href="#3-Add-tslint-script-for-package-json" class="headerlink" title="3. Add tslint script for package.json"></a>3. Add tslint script for package.json</h3><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">        <span class="attr">"lint"</span>: <span class="string">"tslint --project . src/**/*.ts src/**/*.tsx"</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>-- project .</code> require all tslint to use <code>tsconfig.json</code> configuration of the current directory to get the information. </p>
+<p>Then run <code>npm run lint</code> will check the whole code.</p>
+<h4 id="4-Add-TSLint-to-VSCode"><a href="#4-Add-TSLint-to-VSCode" class="headerlink" title="4. Add TSLint to VSCode"></a>4. Add TSLint to VSCode</h4><p>Search <code>tslint</code> and install a plugin for vscode. It is enabled by default.</p>
+<h4 id="5-Sweet-Tips"><a href="#5-Sweet-Tips" class="headerlink" title="5. Sweet Tips"></a>5. Sweet Tips</h4><p>I also recommend another plugin in vscode: <code>editorconfig</code>: EditorConfig helps developers define and maintain consistent coding styles between different editors and IDEs. see more: <a href="https://editorconfig.org/" target="_blank" rel="noopener">Official EditorConfig Website</a></p>
+<p>You can find wechaty editorconfig in <a href="https://github.com/Chatie/wechaty/blob/master/.editorconfig" target="_blank" rel="noopener">.editorconfig</a></p>
+<h1 id="4-BREAKING-CHANGES"><a href="#4-BREAKING-CHANGES" class="headerlink" title="4. BREAKING CHANGES"></a>4. BREAKING CHANGES</h1><p>After upgrade wechaty, see more in<a href="https://blog.chatie.io/wechaty-new-release-version-0.16/" target="_blank" rel="noopener">blog</a>. Although we are trying to minimize API changes, there are some breaking changes. I really suggest you reading <a href="https://github.com/chatie/wechaty/blob/master/CHANGELOG.md" target="_blank" rel="noopener">CHANGE LOG</a>. Also, I list some important changes here:</p>
+<h2 id="bot-init-change-to-bot-start"><a href="#bot-init-change-to-bot-start" class="headerlink" title="bot.init() change to  bot.start()"></a>bot.init() change to  bot.start()</h2><h2 id="bot-quit-change-to-bot-stop"><a href="#bot-quit-change-to-bot-stop" class="headerlink" title="bot.quit() change to bot.stop()"></a>bot.quit() change to bot.stop()</h2><h2 id="FriendRequest-change-to-Friendship"><a href="#FriendRequest-change-to-Friendship" class="headerlink" title="FriendRequest change to Friendship"></a>FriendRequest change to Friendship</h2><p><code>FriendRequest</code> class refactored.</p>
+<h3 id="Before-v0-14-or-below"><a href="#Before-v0-14-or-below" class="headerlink" title="Before (v0.14 or below)"></a>Before (v0.14 or below)</h3><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line">wechaty.on(<span class="string">'friend'</span>, <span class="function">(<span class="params">contact, request</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!request) &#123;</span><br><span class="line">    <span class="comment">// this is a friend request confirmation event</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// this is a friend request</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="After-v0-16-or-above"><a href="#After-v0-16-or-above" class="headerlink" title="After (v0.16 or above)"></a>After (v0.16 or above)</h3><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line">wechaty.on(<span class="string">'friendship'</span>, <span class="function"><span class="params">request</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">switch</span> (request.type()) &#123;</span><br><span class="line">    <span class="keyword">case</span> FriendRequest.Type.RECEIVE:</span><br><span class="line">      <span class="comment">// this is a friend request request</span></span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">case</span> FriendRequest.Type.CONFIRM:</span><br><span class="line">      <span class="comment">// this is a friend request confirmation</span></span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>Related link:</p>
+<ul>
+<li><a href="https://github.com/Chatie/wechaty/blob/master/examples/friend-bot.ts" target="_blank" rel="noopener">friend-bot.ts</a></li>
+<li><a href="https://github.com/Chatie/wechaty/issues/1196" target="_blank" rel="noopener">BREAKING CHANGE: v0.16 on(‘friend`) arguments changed!</a></li>
+<li><a href="https://github.com/Chatie/wechaty/issues/1312" target="_blank" rel="noopener">BREAKING CHANGES v0.16: FriendRequest class will be replaced with Friendship</a></li>
+</ul>
+<h2 id="Message-content-change-to-Message-text"><a href="#Message-content-change-to-Message-text" class="headerlink" title="Message.content() change to Message.text()"></a>Message.content() change to Message.text()</h2><p>From v0.16, Message.content() will be deprecated.<br>From v0.18, Message.content() will be removed.</p>
+<p>Related Link:</p>
+<ul>
+<li><a href="https://github.com/Chatie/wechaty/issues/1163" target="_blank" rel="noopener">BREAKING CHANGE: v0.16 will replace <code>Message.content()</code> with <code>Message.text()</code></a></li>
+</ul>
+<h2 id="Remove-MediaMessage-class"><a href="#Remove-MediaMessage-class" class="headerlink" title="Remove MediaMessage class"></a>Remove <code>MediaMessage</code> class</h2><p>From v0.16, MediaMessage will be deprecated.<br>From v0.18, MediaMessage will be removed.</p>
+<p>Use Message instead.</p>
+<p>Migration Example<br><figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="deletion">- bot.say(new MediaMessage('/image.png')</span></span><br><span class="line"><span class="addition">+ bot.say(new Message('/image.png')</span></span><br></pre></td></tr></table></figure></p>
+<p>Related issue</p>
+<ul>
+<li><a href="https://github.com/Chatie/wechaty/issues/1164" target="_blank" rel="noopener">BREAKING CHANGE: v0.16 will remove <code>MediaMessage</code> class</a></li>
+</ul>
+<h3 id="A-useful-tip-to-send-the-image"><a href="#A-useful-tip-to-send-the-image" class="headerlink" title="A useful tip to send the image"></a>A useful tip to send the image</h3><p><a href="https://www.npmjs.com/package/file-box" target="_blank" rel="noopener">FileBox</a>, FileBox is a virtual container for packing a file data into it for future readers, and easily transport between servers with the least payload, no mater than where it is (local path, remote URL, or cloud storage).</p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fileBox = FileBox.fromStream(</span><br><span class="line">fs.createReadStream(BOT_QR_CODE_IMAGE_FILE),</span><br><span class="line">BOT_QR_CODE_IMAGE_FILE,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h2 id="Wechaty-self-change-to-Wechaty-userSelf"><a href="#Wechaty-self-change-to-Wechaty-userSelf" class="headerlink" title="Wechaty self() change to Wechaty.userSelf()"></a>Wechaty self() change to Wechaty.userSelf()</h2><p>Related issue:</p>
+<ul>
+<li><a href="https://github.com/Chatie/wechaty/issues/1369" target="_blank" rel="noopener">BREAKING CHANGE v0.16 Wechaty.self() eprecated, use Wechaty.userSelf() instead</a></li>
+</ul>
+<h2 id="Contact-personal-and-Contact-official-change-to-Contact-type"><a href="#Contact-personal-and-Contact-official-change-to-Contact-type" class="headerlink" title="Contact.personal() and Contact.official() change to Contact.type()"></a>Contact.personal() and Contact.official() change to Contact.type()</h2><h3 id="Before"><a href="#Before" class="headerlink" title="Before"></a>Before</h3><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> isPersonal = contact.personal()</span><br><span class="line"><span class="keyword">const</span> isOfficial = contact.official()</span><br></pre></td></tr></table></figure>
+<h3 id="After"><a href="#After" class="headerlink" title="After"></a>After</h3><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Return the type of the Contact</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @returns ContactType - Contact.Type.PERSONAL for personal account, Contact.Type.OFFICIAL for official account</span></span><br><span class="line"><span class="comment"> * @example</span></span><br><span class="line"><span class="comment"> * const isOfficial = contact.type() === Contact.Type.OFFICIAL</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">type</span> = Contact.type()</span><br></pre></td></tr></table></figure>
+<p>Related issue</p>
+<ul>
+<li><a href="https://github.com/Chatie/wechaty/issues/1366" target="_blank" rel="noopener">BREAKING CHANGE v0.16 Contact.personal() and Contact.official() deprecated, use Contact.type() instead</a></li>
+</ul>
+<h2 id="Room-add-return-from-Promise-to-Promise"><a href="#Room-add-return-from-Promise-to-Promise" class="headerlink" title="Room.add() return from Promise to Promise"></a>Room.add() return from Promise<boolean> to Promise<void></void></boolean></h2><p>Related issue:</p>
+<ul>
+<li><a href="https://github.com/Chatie/wechaty/issues/1362" target="_blank" rel="noopener">BREAKING CHANGE v0.16 room.add return Promise<void> instead of return Promise<boolean></boolean></void></a></li>
+</ul>
+<h2 id="Room-topic-change-from-Sycn-to-Async"><a href="#Room-topic-change-from-Sycn-to-Async" class="headerlink" title="Room.topic() change from Sycn to Async"></a>Room.topic() change from Sycn to Async</h2><h3 id="Before-1"><a href="#Before-1" class="headerlink" title="Before"></a>Before</h3><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> topic = room.topic()</span><br></pre></td></tr></table></figure>
+<h3 id="After-1"><a href="#After-1" class="headerlink" title="After"></a>After</h3><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> topic = <span class="keyword">await</span> room.topic()</span><br></pre></td></tr></table></figure>
+<p>Related issue:</p>
+<ul>
+<li><a href="https://github.com/Chatie/wechaty/issues/1295" target="_blank" rel="noopener">BREAKING CHANGE: v0.16 <code>Room.topic()</code> change from Sycn to Async</a></li>
+</ul>
+<h2 id="Room-alias-contact-change-from-Sycn-to-Async"><a href="#Room-alias-contact-change-from-Sycn-to-Async" class="headerlink" title="Room.alias(contact) change from Sycn to Async"></a>Room.alias(contact) change from Sycn to Async</h2><h3 id="Before-2"><a href="#Before-2" class="headerlink" title="Before"></a>Before</h3><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> alias = room.alias(contact)</span><br></pre></td></tr></table></figure>
+<h3 id="After-2"><a href="#After-2" class="headerlink" title="After"></a>After</h3><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> alias = <span class="keyword">await</span> room.alias(contact)</span><br></pre></td></tr></table></figure>
+<p>Related issue:</p>
+<ul>
+<li><a href="https://github.com/Chatie/wechaty/issues/1293" target="_blank" rel="noopener">BREAKING CHANGE: v0.16 <code>Room.alias(contact)</code> change from Sycn to Async</a></li>
+</ul>
+<h2 id="Room-memberList-change-from-Sycn-to-Async"><a href="#Room-memberList-change-from-Sycn-to-Async" class="headerlink" title="Room.memberList() change from Sycn to Async"></a>Room.memberList() change from Sycn to Async</h2><h3 id="Before-3"><a href="#Before-3" class="headerlink" title="Before"></a>Before</h3><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> memberList = room.memberList()</span><br></pre></td></tr></table></figure>
+<h3 id="After-3"><a href="#After-3" class="headerlink" title="After"></a>After</h3><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> memberList = <span class="keyword">await</span> room.memberList()</span><br></pre></td></tr></table></figure>
+<p>Related Issue:</p>
+<ul>
+<li><a href="https://github.com/Chatie/wechaty/issues/1290" target="_blank" rel="noopener">BREAKING CHANGE: v0.16 <code>Room.memberList()</code> change from Sycn to Async</a></li>
+</ul>
+<h2 id="Room-member-from-sync-to-async"><a href="#Room-member-from-sync-to-async" class="headerlink" title="Room.member() from sync to async"></a>Room.member() from sync to async</h2><h3 id="Before-4"><a href="#Before-4" class="headerlink" title="Before"></a>Before</h3><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> contact = room.member(<span class="string">'Huan'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="After-4"><a href="#After-4" class="headerlink" title="After"></a>After</h3><figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="deletion">- const contact = room.member('Huan')</span></span><br><span class="line"><span class="addition">+ const contact = await room.member('Huan')</span></span><br></pre></td></tr></table></figure>
+<p>Related Issue:</p>
+<ul>
+<li><a href="https://github.com/Chatie/wechaty/issues/1258" target="_blank" rel="noopener">BREAKING CHANGES: v0.16 <code>Room.member()</code> from <code>sync</code> to <code>async</code></a></li>
+</ul>
+<h2 id="Room-has-contact-change-from-Sycn-to-Async"><a href="#Room-has-contact-change-from-Sycn-to-Async" class="headerlink" title="Room.has(contact) change from Sycn to Async"></a>Room.has(contact) change from Sycn to Async</h2><p>WARNING: This change will let us make more mistakes:</p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (room.has(contact)) &#123;</span><br><span class="line">  <span class="built_in">console</span>.error(<span class="string">'here will always be executed because Promise === true'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Before-5"><a href="#Before-5" class="headerlink" title="Before"></a>Before</h3><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> exist = room.has(contact)</span><br></pre></td></tr></table></figure>
+<h3 id="After-5"><a href="#After-5" class="headerlink" title="After"></a>After</h3><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> exist = <span class="keyword">await</span> room.has(contact)</span><br></pre></td></tr></table></figure>
+<p>Related Link:</p>
+<ul>
+<li><a href="https://github.com/Chatie/wechaty/issues/1289" target="_blank" rel="noopener">BREAKING CHANGE: v0.16 <code>Room.has(contact)</code> change from Sycn to Async</a></li>
+<li><a href="https://www.meziantou.net/2017/11/20/detect-missing-await-in-typescript" target="_blank" rel="noopener">Detect missing await in TypeScript</a></li>
+</ul>
+<h2 id="Message-mention-change-from-Sync-to-Async"><a href="#Message-mention-change-from-Sync-to-Async" class="headerlink" title="Message.mention() change from Sync to Async"></a>Message.mention() change from Sync to Async</h2><p>BREAKING CHANGE: v0.16 <code>Message.mention()</code> change from <code>sync</code> to <code>async</code></p>
+<h3 id="Before-6"><a href="#Before-6" class="headerlink" title="Before"></a>Before</h3><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> mentionList = message.mention()</span><br></pre></td></tr></table></figure>
+<h3 id="After-6"><a href="#After-6" class="headerlink" title="After"></a>After</h3><figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="deletion">- const mentionList = message.mention()</span></span><br><span class="line"><span class="addition">+ const mentionList = await message.mention()</span></span><br></pre></td></tr></table></figure>
+<p>Related issue:</p>
+<ul>
+<li><a href="https://github.com/Chatie/wechaty/issues/1259" target="_blank" rel="noopener">BREAKING CHANGE: v0.16 <code>Message.mention()</code> change from <code>sync</code> to <code>async</code></a></li>
+</ul>
+<h2 id="scan-Event-args-will-become-different"><a href="#scan-Event-args-will-become-different" class="headerlink" title="scan Event args will become different"></a><code>scan</code> Event args will become different</h2><p>The good news is: the old code seems will run without problem, because it will just do nothing: </p>
+<p><code>const loginUrl = url.replace(/\/qrcode\//, &#39;/l/&#39;)</code></p>
+<h3 id="Before-7"><a href="#Before-7" class="headerlink" title="Before"></a>Before</h3><p><a href="https://github.com/Chatie/wechaty/blob/860e85ec776ac20e92751ec4b67e0d539ef40a16/examples/ding-dong-bot.ts#L74-L77" target="_blank" rel="noopener">https://github.com/Chatie/wechaty/blob/860e85ec776ac20e92751ec4b67e0d539ef40a16/examples/ding-dong-bot.ts#L74-L77</a></p>
+<h3 id="After-7"><a href="#After-7" class="headerlink" title="After"></a>After</h3><p><a href="https://github.com/Chatie/wechaty/blob/07008dff17ccc46b347ba28b85af167984573ea0/examples/ding-dong-bot.ts#L74-L76" target="_blank" rel="noopener">https://github.com/Chatie/wechaty/blob/07008dff17ccc46b347ba28b85af167984573ea0/examples/ding-dong-bot.ts#L74-L76</a></p>
+<p>Notice that we deleted the <del><code>const loginUrl = url.replace(/\/qrcode\//, &#39;/l/&#39;)</code></del></p>
+<p>Related Issues:</p>
+<ul>
+<li><a href="https://github.com/Chatie/wechaty/issues/1262" target="_blank" rel="noopener">BREAKING CHANGE: v0.16 <code>scan</code> event args will be different!</a></li>
+</ul>
+<h2 id="Class-cannot-be-instantiated-directly"><a href="#Class-cannot-be-instantiated-directly" class="headerlink" title="Class cannot be instantiated directly!"></a>Class cannot be instantiated directly!</h2><h3 id="Error-Message"><a href="#Error-Message" class="headerlink" title="Error Message"></a>Error Message</h3><ol>
+<li>Error: the class cannot be instantiated directly!</li>
+<li>Error: must not use the global Message/Contact/Room. use a cloned child via clone class instead</li>
+</ol>
+<p>Currently, the <code>Contact</code>, <code>FriendRequest</code>, <code>Message</code>, and <code>Room</code> classes will not be able to instantiate directly, because they must attach with a Puppet.</p>
+<p>They need to be <code>cloneClass()</code>-ed first, then attach the puppet, and at last they will be ready for use by:</p>
+<ol>
+<li><code>wechaty.Contact</code>, or</li>
+<li><code>puppet.Contact</code>, etc.</li>
+</ol>
+<h3 id="Do-Not"><a href="#Do-Not" class="headerlink" title="~Do Not~"></a><del>~Do Not</del>~</h3><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Room &#125; <span class="keyword">from</span> <span class="string">'wechaty'</span></span><br><span class="line"><span class="keyword">const</span> room = <span class="keyword">await</span> Room.create(...)</span><br></pre></td></tr></table></figure>
+<p>The above code will throw an error.</p>
+<h3 id="Do"><a href="#Do" class="headerlink" title="Do"></a>Do</h3><figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="deletion">- import &#123; Room &#125; from 'wechaty'</span></span><br><span class="line"><span class="addition">+ import &#123; Wechaty &#125; from 'wechaty'</span></span><br><span class="line"></span><br><span class="line"><span class="deletion">- const room = await Room.create(...)</span></span><br><span class="line"><span class="addition">+ const wechaty = new Wechaty()</span></span><br><span class="line"><span class="addition">+ const room = await wechaty.Room.create(...)</span></span><br></pre></td></tr></table></figure>
+<p>So does Contact, FriendRequest, and Message.</p>
+<p>Related Link</p>
+<ol>
+<li>Wechaty Multi-Instance Support #518</li>
+<li>NPM <a href="https://www.npmjs.com/package/clone-class" target="_blank" rel="noopener">clone-class</a></li>
+<li><a href="https://github.com/zixia/node-clone-class/issues/5" target="_blank" rel="noopener">https://github.com/zixia/node-clone-class/issues/5</a></li>
+</ol>
+<p>Related issue</p>
+<ul>
+<li><a href="https://github.com/Chatie/wechaty/issues/1217" target="_blank" rel="noopener">Error: class can not be instanciated directly! </a></li>
+<li><a href="https://github.com/Chatie/wechaty/issues/1364" target="_blank" rel="noopener">BREAKING CHANGE v0.16 Contact, FriendRequest, Message, and Room classes will not be able to instantiate directly</a></li>
+<li><a href="https://github.com/Chatie/wechaty/issues/1161" target="_blank" rel="noopener">Error: static puppet not found</a></li>
+<li><a href="https://github.com/Chatie/wechaty/issues/518" target="_blank" rel="noopener">Wechaty Multi-Instance Suport</a></li>
+<li>NPM <a href="https://www.npmjs.com/package/clone-class" target="_blank" rel="noopener">clone-class</a></li>
+<li><a href="https://github.com/zixia/node-clone-class/issues/5" target="_blank" rel="noopener">https://github.com/zixia/node-clone-class/issues/5</a></li>
+</ul>
+<h2 id="Message-ext-return-‘-ext’-instead-of-‘ext’-before"><a href="#Message-ext-return-‘-ext’-instead-of-‘ext’-before" class="headerlink" title="Message.ext() return ‘.ext’ instead of ‘ext’ before"></a>Message.ext() return ‘.ext’ instead of ‘ext’ before</h2><p>According to the <code>ext()</code> methods behavior in Node/Python/C# etc, the <code>ext()</code> always return the filename extension that including the dot(<code>.</code>).</p>
+<p>So the following BREAKING CHANGE was made in v0.15:</p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> ext = message.ext()</span><br><span class="line"><span class="comment">// assume the filename is `test.txt`</span></span><br></pre></td></tr></table></figure>
+<h3 id="Before-v0-14-or-earlieer"><a href="#Before-v0-14-or-earlieer" class="headerlink" title="Before (v0.14 or earlieer)"></a>Before (v0.14 or earlieer)</h3><p><code>assert(ext === &#39;txt&#39;)</code></p>
+<h3 id="After-v0-16-or-later"><a href="#After-v0-16-or-later" class="headerlink" title="After (v0.16 or later)"></a>After (v0.16 or later)</h3><p><code>assert(ext === &#39;.txt&#39;)</code></p>
+<p>Related Link</p>
+<ul>
+<li><a href="https://github.com/Chatie/wechaty/issues/1168" target="_blank" rel="noopener">BREAKING CHANGE: v0.16 Message.ext() return ‘.ext’ instead of ‘ext’ before</a></li>
+</ul>
+<p>Hmmm… That’s all and wish you can have a good coding experience, thanks!</p>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/wechaty/">wechaty</a>
+            
+            <a href="/tags/wechaty-puppet-padchat/">wechaty-puppet-padchat</a>
+            
+        </div>
+        
+    </article>
+    
+    <p style="text-align: center">本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+    
+    
+        <div class="adsense_post_left">
+            
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:160px;height:600px"
+         data-ad-client=""
+         data-ad-slot=""></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </div>
+        <div class="adsense_post_right">
+            
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:160px;height:600px"
+         data-ad-client=""
+         data-ad-slot=""></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </div>
+        <p>
+            
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client=""
+         data-ad-slot=""
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </p>
+    
+
+
+    
+    
+        <div id="disqus_thread"></div>
+        <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            var disqus_config = function () {
+                this.page.url = 'http://lijiarui.github.io/project/2018-06-24-migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-en.html';
+                this.page.identifier = 'project/2018-06-24-migrating-wechaty-v0.14-to-v0.18-guide-from-puppeteer-to-padchat-en.html';
+            };
+            (function () { // DON'T EDIT BELOW THIS LINE
+                var d = document, disqus_shortname = 'lijiarui', s = d.createElement('script');
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+
+</div>
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about"  title="关于">关于</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="帮助" >帮助</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友链">友链</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="地图">地图</a>
+        </p>
+        <p>
+            本站已建立&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbsp天，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议创作</a><br/>
+            ©2017-<span id="cpYear"></span> 基于&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，主题采用&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，作者&nbsp<a href="https://lijiarui.github.io" target="_blank" rel="friend">李佳芮</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+        </p>
+    </div>
+</footer>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input"
+                   spellcheck="false"
+                   type="text"
+                   autocomplete="off"
+                   placeholder="请输入查询关键词"/>
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '01/20/2018',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+            localSearch: {
+                dbPath: '/search.xml',
+                trigger: 'auto',
+                topN: '1',
+                unescape: 'false'
+            }
+        });
+    });
+</script>
+</body>
+</html>

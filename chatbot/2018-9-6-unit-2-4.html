@@ -1,0 +1,443 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://lijiarui.github.io/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+<link rel="dns-prefetch" href="http://lijiarui.github.io">
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+<link rel="prefetch" href="http://lijiarui.github.io">
+<link rel="prefetch" href="//www.google-analytics.com">
+
+    <link rel="dns-prefetch" href="//disqus.com">
+    <link rel="dns-prefetch" href="//lijiarui.disqus.com">
+    <link rel="prefetch" href="//disqus.com">
+    <link rel="prefetch" href="//lijiarui.disqus.com">
+
+
+<link rel="prerender" href="http://lijiarui.github.io">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://lijiarui.github.io">
+<meta name="author" content="Li jiarui">
+<link rel="stylesheet" href="/css/JSimple.css">
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+
+<title>连载 | 2.4 五步创建一个对话系统 - 李佳芮de博客</title>
+
+<meta name="keywords" content="chatbot, 技术博客, 聊天机器人, 人工智能, 创业">
+
+<meta name="description " content="本章我会列出搭建对话系统的五个步骤">
+
+    
+
+    
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="//www.googletagmanager.com/gtag/js?id=UA-114589636-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-114589636-1');
+        </script>
+    
+    <!-- put your likes here. -->
+
+
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="芮">芮</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/about" title="关于本站">
+            <i class="fa fa-user"></i>
+            <span>关于本站</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <!-- <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a> -->
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">李佳芮の博客</h1>
+        <h3 class="cover-siteTitle">时间看得见</h3>
+        <p class="cover-siteDesc">一个现实的理想主义者</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-weibo">
+        <a href="https://weibo.com/u/2175505900?refer_flag=1001030101_" target="_blank" title="weibo" ref="friend">
+            <i class="fa fa-weibo"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-weixin">
+        <a href="http://lijiarui.github.io" target="_blank" title="weixin" ref="friend">
+            <i class="fa fa-weixin"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/lijiarui" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-telegram">
+        <a href="https://www.jianshu.com/u/ac5aaa7ad293" target="_blank" title="telegram" ref="friend">
+            <i class="fa fa-telegram"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最近</a></li>
+        
+            
+                <li class="active">
+                    <a href="/categories/chatbot" data-name="chatbot">chatbot</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/project" data-name="project">project</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/presentation" data-name="presentation">presentation</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/thought" data-name="thought">thought</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/tech" data-name="技术">技术</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/reading" data-name="读书">读书</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text"
+               readonly="readonly"
+               id="local-search-input-tip"
+               placeholder="读物检索" />
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://lijiarui.github.io"
+                   target="_blank">
+                    <img width="48" src="/images/avatar.jpg" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://www.botorange.com"
+                       target="_blank">李佳芮</a>
+                    <span title="最后编辑于&nbsp;2018-09-06">2018-09-06</span>
+                </p>
+                <p>一个现实的理想主义者</p>
+            </div>
+            <h2 class="post-title">连载 | 2.4 五步创建一个对话系统</h2>
+            <div class="post-meta">
+                本文共计3573个字 |
+                您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <p><strong>以下为视频文字内容：</strong></p>
+<p>欢迎大家来到第二章的第四节，<strong>五步搭建一个对话系统</strong>。</p>
+<p><img src="/img/2018/unit-2-4-1.jpeg" alt="image"></p>
+<ul>
+<li><strong>对话的六个步骤</strong></li>
+</ul>
+<p>说到在计算机领域如何搭建一个对话系统，我们可以先从现实生活中的对话系统开始。</p>
+<p>在现实生活中，人与人之间的对话通常有下面几个步骤：</p>
+<ol>
+<li><p>打开沟通的渠道，建立沟通的基础：A向B发送一条消息；</p>
+</li>
+<li><p>B向A表达要进行对话的意愿；</p>
+</li>
+<li><p>建立语言的表意，A和B基于一系列既有认知和潜在的背景上下文建立联系；</p>
+</li>
+<li><p>进行扩充，A和B基于它们之间的互动进行学习和积累；</p>
+</li>
+<li><p>达成一致，如果没有达成一致，就进一步的修复和改善；</p>
+</li>
+<li><p>进行行动或者互动，对话的结果可以引发有效的行动，达成一些潜在的目标。</p>
+</li>
+</ol>
+<p>以上是我们抽象的一些步骤，在计算机领域中又是如何搭建对话系统呢？</p>
+<p><strong>总共需要分五个步骤。</strong></p>
+<p><img src="/img/2018/unit-2-4-2.jpeg" alt="image"></p>
+<ul>
+<li><strong>定义对话系统</strong>  </li>
+</ul>
+<p><strong>第一个是定义对话系统</strong>，通常会分为四个步骤。</p>
+<p><strong>首先是确定场景边界</strong>。比如我要做一个差旅机器人，我们需要知道这个聊天机器人的场景边界在哪里，换句话说功能有哪些，是只能定机票，酒店，火车票的一种或者几种，还是所有的任务都能完成。以及要确定机器人是否支持闲聊功能。</p>
+<p><strong>第二步要梳理业务要素和知识库</strong>，同样用机票酒店预订机器人举例子，我们需要知道具体的机票酒店信息，包括时间地点等等。在后续章节中我们会继续的详细介绍，这些都是要梳理到的业务要素。</p>
+<p>那什么是知识库呢，比如说用户问“什么叫经停航班”，那么机器人需要有能力再库中匹配到相应的回答出来，这就叫知识库。</p>
+<p><strong>第三步要撰写故事线</strong>，这就想一个编剧编写剧本一样，需要把场景中每个人说的话通过一个完整的故事线体现出来。</p>
+<p>同样当我们做一个对话系统的时候，也需要把一个场景下机器人和人的完整对话写出来，这也叫故事线。在差旅机器人的例子中，故事线就是从最开始，“你好我要订一张北京到上海的机票”，到机器人最后说：“好的，已经收集到你所有的信息了。我已经帮您订票完毕” 的完整话术。</p>
+<p><strong>一问一答的整个过程叫做故事线</strong>。最简单完整故事线，我们称之为愉悦路线，具体的撰写的方法和要点，我会在稍后的课程里边进一步细讲。</p>
+<p><strong>第四部分叫抽取对话流程</strong>，换句话说，画出对话<strong>流程图</strong>。</p>
+<p>比如订机票酒店的机器人，从第一步用户说到了不同的话不同的参数，到下一步要跳转到哪一步。这个和在GUI，或者做app的产品、网页的产品的之前需要先画交互图是一个逻辑：用户点击了不同的按钮后后应该执行什么操作。</p>
+<p>在对话系统里，当用户触发了某些的参数或产生某种行为，也会触发聊天机器人的行为或者回答。这个时候我们需要制作一个流程图，方便后面的系统搭建，具体细节后面我也会进一步仔细讲解。</p>
+<p>第二步叫<strong>富集数据资源</strong>，那什么叫富集数据资源或者说有哪些资源类型呢？</p>
+<p><img src="/img/2018/unit-2-4-3.jpeg" alt="image"></p>
+<ul>
+<li><strong>富集数据资源</strong></li>
+</ul>
+<p><strong>第一个就是词典词槽</strong>，比如说我们要做一个电影票的机器人，那我们是不是要把电影、电影院这些都收集好，这个就叫做词典词槽值。把具体的电影名、电影院名收集好作为词典值。</p>
+<p><strong>第二个是对话样本</strong>，对话样本就是一问一答的对话。我们的目标就是要找到足够多的这种对话样本。</p>
+<p><strong>第三个是问答对</strong>，像刚刚我们说的“经停航班”的问答叫做问答对。</p>
+<p>如何富集呢？其实有很多种方法，我这里简单的列了三点，后面我们也会具体的教大家。</p>
+<p>第一种就是在指定的业务场景中提取数据，或者我们先拍脑子给出一些具体的数据。</p>
+<p>第二种是在对话日志中进一步分析，当系统上线以后用户和机器人会产生真实的对话交互，我们在这种真实的对话交互中，再进行二次的抽取以完善我们的对话系统。</p>
+<p>第三个是官方的数据库，比如电影院、机票、酒店，这些其实是一些开放的语料库，以及一些航空公司或者院线的信息。它们的数据库能够爬取或者直接下载，换句话说，我们可以从官方数据库中获取词槽词典。</p>
+<ul>
+<li><strong>搭建系、训练、评估和调优。</strong></li>
+</ul>
+<p>通常搭建系统可以有两大种方式去搭建。</p>
+<p><img src="/img/2018/unit-2-4-4.jpeg" alt="image"></p>
+<p><strong>一种是用很多很厉害的对话系统工程师，用代码的方式搭建整个的系统搭建</strong>。包括进行系统的训练，算法和工程上的实现。这当然非常棒，不过花费的成本是很多公司承担不起的。</p>
+<p><strong>第二种我们可以用第三方工具实现</strong>，如百度的UNIT。我们用了百度的UNIT，不懂代码的业务人员通过可视化界面一步步的操作进行系统的搭建，完成最核心的对话系统的一部分，进而完成整个对话系统的实现。</p>
+<p><img src="/img/2018/unit-2-4-5.jpeg" alt="image"></p>
+<p>对话系统的搭建系统、训练、评估和调优通常情况下还有一些小的细节要和大家介绍。</p>
+<p>当你搭建完了对话系统以后，可以找一些搭建系统之外的人，不告诉他任何背景信息让他进行对话测试，多测试几遍就能发现一些你想不到的有趣问题。</p>
+<p>比如哪个对话任务完成起来有困难，或者是用户在和系统进行语音交互的过程中，给用户的感受是怎么样的。通过这种方式收集主观反馈，知道他们在哪里卡住了，在什么地方不顺畅，进行进一步的优化。这些是上线之前的。</p>
+<p>其实这些信息在你上线之后从用户那里也能够收集到。但由于每个人的对话方式和行为习惯不一样，建议还是要找到一些团队之外的人，至少说10-20个来先测试对话系统。这样在上线之后，系统才会更加拟人化，让用户觉得机器人还没那么笨一些。</p>
+<p><img src="/img/2018/unit-2-4-6.jpeg" alt="image"></p>
+<ul>
+<li><strong>系统接入：全渠道API接入</strong>  </li>
+</ul>
+<p><strong>第四步我们要做的叫做系统接入：全渠道的API接入</strong>。</p>
+<p>经常会有人问我：“我们的对话机器人更适合放在哪里？”，其实回答很简单：<strong>用户在哪里，我们的机器人就放在哪里，我们的服务就接入到哪里</strong>。</p>
+<p>比如可以接入到DuerOS里边，也可以接入到微信、微博、京东、阿里旺旺、小程序，甚至可以接到我们的电话里，网页和app中。</p>
+<p>这一块是需要工程化的操作的，当创建完语言模型后，就会抽象出一个一进一出的API。用户每说一句话，系统返回一句话。开发者只要把API一步步的对接到这些不同的系统里边就可以完成了。</p>
+<p>也就是说，把搭建好的语言模型插到不同的message app里，叫做系统接入。</p>
+<p><img src="/img/2018/unit-2-4-7.jpeg" alt="image"></p>
+<ul>
+<li><strong>系统接入：通用模块</strong>  </li>
+</ul>
+<p>同时系统接入还有第二个部分，也是很多人会经常忽略却非常重要的，有三个模块。</p>
+<p>1.<strong>智能的人机协作</strong> 我们知道现在的机器人一定不是100%的智能，也不可能100%的解决用户的需求。当用户已经呈现出不满意，或者用户的反馈已经不好，需要人工接入的时候。我们的系统要能够判断出来并做一个迅速切换。把机器人切换到人上面，人接管之后也需要知道用户和机器人交流的上下文。</p>
+<p><strong>2. 用户评价 </strong>那么每一次机器人完成一个任务后可以给用户推送一个反馈，比如“您对我的服务满意吗？0到10分，你打几分？”</p>
+<p>通过用户的评价能帮助我们发现对话系统的问题，以进行进一步的优化，优化之后再上线后还可以通过用户的评价系统了解优化之后提升的效果。</p>
+<p>比如平均分是从3分提升到6分，还是从6分提升到了7分，或者从7分又降低到了4分。这个有助于我们持续优化对话系统。</p>
+<p><strong>3. 数据化的商业决策</strong>，根据用户数据，引导商业上决策。</p>
+<p>我们需要要多推荐哪个产品，举个金融消费类的例子，比如通过用户情绪判断多推荐哪一个保险用户购买转化率会比较高。以上是系统接入的部分 。</p>
+<p><img src="/img/2018/unit-2-4-8.jpeg" alt="image"></p>
+<ul>
+<li><strong>运营迭代</strong>  </li>
+</ul>
+<p><strong>最后一部分叫**</strong>运营迭代<strong>**，记录与观察机器人和用户的交流应答，沉淀用户信息。</strong></p>
+<p>举个例子，包括消息类型的统计、用户情感的分析，在统计中查看热点业务问题的答案命中次数。<strong>根据统计结果可以更好的调整客服工作策略，甚至进一步调整企业市场的宣传重点</strong>。</p>
+<p>这个是根据我刚刚在说第四部分一些小的模块中，结合这些模块的数据做数据分析，进行下一步的运营迭代。</p>
+<p><img src="/img/2018/unit-2-4-9.jpeg" alt="image"></p>
+<p>我们也可以像传统的GUI设计中一样，设置对话漏斗，层层追踪信息转化的比例，了解用户在哪一层丢失了，用户在哪一类对话中放弃了，就着重优化这一句话说的方式并进行对话流的修改。</p>
+<p>比如机器人问：“你想去哪里？”，还是问“你想订哪里的机票。”</p>
+<p>虽然看起来是一个意思，但是每种问法产生的效果是不一样的。通过数据帮助我们优化机器人和用户交流的方式。</p>
+<p><img src="/img/2018/unit-2-4-10.jpeg" alt="image"></p>
+<ul>
+<li><strong>对话系统的生命周期</strong>  </li>
+</ul>
+<p><strong>最后给大家介绍一下对话系统的生命周期，对话系统不是从第一步到第五步完成后就结束了，而是一个周而复始循环的过程</strong>。</p>
+<p>它的生命周期和传统的软件开发有相似的地方也有不同的地方，着重介绍几个不同的点。</p>
+<p><strong>首先</strong>，传统软件开发在设计了产品文档后就可以做开发了，而对话系统在产品文档和开发中间要加入对话脚本，也就是故事线的设计。</p>
+<p><strong>另外</strong>，传统软件上线后的测试可能不需要考虑多个平台，而对话系统的设计需要加入适配不同的消息平台的控制机制。</p>
+<p><strong>最后</strong>，对话系统的分析中要善于利用线上的对话日志，通过用户在对话过程中的纠正、反馈来优化对话模型的对话理解效果，让机器人越来越聪明。</p>
+<p>这一课给大家讲了如何搭建一个对话系统，<strong>也希望大家知道对话系统不是五步就完成了。是需要五步之后再不停的优化，我们要小步快跑，快速迭代</strong>。</p>
+<p>最后希望每一个人都能够通过五步搭建出你喜欢的对话系统，谢谢大家，我们下期再见！</p>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/chatbot/">chatbot</a>
+            
+            <a href="/tags/百度/">百度</a>
+            
+            <a href="/tags/UNIT/">UNIT</a>
+            
+        </div>
+        
+    </article>
+    
+    <p style="text-align: center">本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+    
+    
+        <div class="adsense_post_left">
+            
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:160px;height:600px"
+         data-ad-client=""
+         data-ad-slot=""></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </div>
+        <div class="adsense_post_right">
+            
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:160px;height:600px"
+         data-ad-client=""
+         data-ad-slot=""></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </div>
+        <p>
+            
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client=""
+         data-ad-slot=""
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </p>
+    
+
+
+    
+    
+        <div id="disqus_thread"></div>
+        <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            var disqus_config = function () {
+                this.page.url = 'http://lijiarui.github.io/chatbot/2018-9-6-unit-2-4.html';
+                this.page.identifier = 'chatbot/2018-9-6-unit-2-4.html';
+            };
+            (function () { // DON'T EDIT BELOW THIS LINE
+                var d = document, disqus_shortname = 'lijiarui', s = d.createElement('script');
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+
+</div>
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about"  title="关于">关于</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="帮助" >帮助</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友链">友链</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="地图">地图</a>
+        </p>
+        <p>
+            本站已建立&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbsp天，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议创作</a><br/>
+            ©2017-<span id="cpYear"></span> 基于&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，主题采用&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，作者&nbsp<a href="https://lijiarui.github.io" target="_blank" rel="friend">李佳芮</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+        </p>
+    </div>
+</footer>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input"
+                   spellcheck="false"
+                   type="text"
+                   autocomplete="off"
+                   placeholder="请输入查询关键词"/>
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '01/20/2018',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+            localSearch: {
+                dbPath: '/search.xml',
+                trigger: 'auto',
+                topN: '1',
+                unescape: 'false'
+            }
+        });
+    });
+</script>
+</body>
+</html>
