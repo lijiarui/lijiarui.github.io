@@ -27,8 +27,7 @@ jobs:
     - run: git submodule update
     - run: rm -fr public/
     - run: |
-        git branch
-        git remote -v
+        git fetch origin master
         git worktree add -B master public origin/master
     - run: npx hexo generate
     - run: |
