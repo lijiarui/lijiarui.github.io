@@ -1,0 +1,411 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://lijiarui.github.io/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+<link rel="dns-prefetch" href="http://lijiarui.github.io">
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+<link rel="prefetch" href="http://lijiarui.github.io">
+<link rel="prefetch" href="//www.google-analytics.com">
+
+    <link rel="dns-prefetch" href="//disqus.com">
+    <link rel="dns-prefetch" href="//lijiarui.disqus.com">
+    <link rel="prefetch" href="//disqus.com">
+    <link rel="prefetch" href="//lijiarui.disqus.com">
+
+
+<link rel="prerender" href="http://lijiarui.github.io">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://lijiarui.github.io">
+<meta name="author" content="Li jiarui">
+<link rel="stylesheet" href="/css/JSimple.css">
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+
+<title>using jsdoc to sync the doc with the latest code - 李佳芮de博客</title>
+
+<meta name="keywords" content="chatbot, 技术博客, 聊天机器人, 人工智能, 创业">
+
+<meta name="description " content="JSDoc&#39;s purpose is to document the API of your JavaScript application or library. It is assumed that you will want to document things like modules, namespaces, classes, methods, method parameters, and so on.">
+
+    
+
+    
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="//www.googletagmanager.com/gtag/js?id=UA-114589636-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-114589636-1');
+        </script>
+    
+    <!-- put your likes here. -->
+
+
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="芮">芮</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/about" title="关于本站">
+            <i class="fa fa-user"></i>
+            <span>关于本站</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <!-- <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a> -->
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">李佳芮の博客</h1>
+        <h3 class="cover-siteTitle">时间看得见</h3>
+        <p class="cover-siteDesc">一个现实的理想主义者</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-weibo">
+        <a href="https://weibo.com/u/2175505900?refer_flag=1001030101_" target="_blank" title="weibo" ref="friend">
+            <i class="fa fa-weibo"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-weixin">
+        <a href="http://lijiarui.github.io" target="_blank" title="weixin" ref="friend">
+            <i class="fa fa-weixin"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/lijiarui" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-telegram">
+        <a href="https://www.jianshu.com/u/ac5aaa7ad293" target="_blank" title="telegram" ref="friend">
+            <i class="fa fa-telegram"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最近</a></li>
+        
+            
+                <li class>
+                    <a href="/categories/chatbot" data-name="chatbot">chatbot</a>
+                </li>
+            
+                <li class="active">
+                    <a href="/categories/project" data-name="project">project</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/presentation" data-name="presentation">presentation</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/thought" data-name="thought">thought</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/tech" data-name="技术">技术</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/reading" data-name="读书">读书</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text" readonly="readonly" id="local-search-input-tip" placeholder="读物检索">
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://www.botorange.com" target="_blank">
+                    <img width="48" src="/images/avatar.jpg" alt="avatar">
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://blog.botorange.com" target="_blank">李佳芮</a>
+                    <span title="最后编辑于&nbsp;2017-09-20">2017-09-20</span>
+                </p>
+                <p>一个现实的理想主义者</p>
+            </div>
+            <h2 class="post-title">Using Jsdoc to sync the doc with the latest code</h2>
+            <div class="post-meta">
+                本文共计7379个字 |
+                您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <p>In order to sync the doc with the latest code, it’s best to use <a href="https://github.com/jsdoc3/jsdoc" target="_blank" rel="noopener">jsdoc</a> to describe the API and use <a href="https://github.com/jsdoc2md/jsdoc-to-markdown" target="_blank" rel="noopener">jsdoc-to-markdown</a> to generate markdown format documents to the docs directory.</p>
+<p><img src="/img/2017/add-wechaty-jsdoc-automate-all-the-things.jpg" alt="automate all the things"></p>
+<p>Yes, we planned to do this for nearly a year… </p>
+<p>Thanks to <a href="https://github.com/zixia" target="_blank" rel="noopener">@Huan</a>, <a href="https://github.com/ax4" target="_blank" rel="noopener">@ax4</a>,<a href="https://github.com/hczhcz" target="_blank" rel="noopener">@hczhcz</a>, <a href="https://github.com/kis87988" target="_blank" rel="noopener">@William</a>, by the end of August, we finally convert all the doc to jsdoc. And I’d like to share some jsdoc experience here.</p>
+<blockquote>
+<p>We need to document them better, not only the public but also the internal modules and methods.<br>Finally we decided to use the classic <a href="http://usejsdoc.org/" title="jsdoc" target="_blank" rel="noopener">jsdoc</a> to embed document in TypeScript, then generate document to <a href="https://github.com/Chatie/wechaty/tree/master/docs" title="docs/" target="_blank" rel="noopener">docs/</a> by <a href="https://github.com/jsdoc2md/jsdoc-to-markdown" title="jsdoc2md" target="_blank" rel="noopener">jsdoc2md</a>.<br>– @Huan said in <a href="https://github.com/Chatie/wechaty/issues/73" title="issue 73" target="_blank" rel="noopener">issue 73</a> in Nov 2016.</p>
+</blockquote>
+<p>At first, we write the doc in <a href="https://github.com/Chatie/wechaty/wiki" title="wiki" target="_blank" rel="noopener">wiki</a>, and it lasts for nearly a year…..</p>
+<p>A lot of developers use wiki to learn wechaty, but the wiki’s performance is not good, it cannot update automatically and doesn’t base on user’s most demand.</p>
+<blockquote>
+<ul>
+<li>some minor fix (such as the different naming <a href="https://github.com/wechaty/wechaty/wiki/API#message-class" target="_blank" rel="noopener">Message Class</a> &amp; <a href="https://github.com/wechaty/wechaty/wiki/API#class-room" target="_blank" rel="noopener">Class Room</a>) </li>
+<li>improvement on the formatting, e.g. the level setting of each title </li>
+<li>maybe, add an index for better guiding<br>– In Feb 2017, <a href="https://github.com/ax4" target="_blank" rel="noopener">@ax4</a> creat an <a href="https://github.com/Chatie/wechaty/issues/252" title="issue" target="_blank" rel="noopener">issue</a> and expressed his willingness to contribute the document.</li>
+</ul>
+</blockquote>
+<p>I like <a href="https://github.com/ax4" target="_blank" rel="noopener">@ax4</a>‘s idea about the document guide:   </p>
+<ul>
+<li><strong>First:</strong> Learn the awesome features of Wechaty</li>
+<li><strong>Second:</strong> See more advanced functions</li>
+<li><strong>Third:</strong> Reach the boundary? Help us develop Wechaty</li>
+</ul>
+<p>Thanks for <a href="https://github.com/ax4" target="_blank" rel="noopener">@ax4</a>‘s suggestion and we decide to do the doc as soon as possible.</p>
+<h1 id="JsDoc-amp-amp-jsdoc2md"><a href="#JsDoc-amp-amp-jsdoc2md" class="headerlink" title="JsDoc &amp;&amp; jsdoc2md"></a>JsDoc &amp;&amp; jsdoc2md</h1><p><a href="http://usejsdoc.org/" target="_blank" rel="noopener">JsDoc</a> is an API documentation generator for Javascript<br><a href="https://github.com/jsdoc2md/jsdoc-to-markdown" target="_blank" rel="noopener">jsdoc-to-markdown</a> is a tool to help developers create markdown API document from jsdoc-commented </p>
+<h2 id="JsDoc"><a href="#JsDoc" class="headerlink" title="JsDoc"></a>JsDoc</h2><p>JSDoc’s purpose is to document the API of your JavaScript application or library. It is assumed that you will want to document things like modules, namespaces, classes, methods, method parameters, and so on.</p>
+<p>JSDoc comments should generally be placed immediately before the code being documented. Each comment must start with a <code>/**</code> sequence in order to be recognized by the JSDoc parser. Comments beginning with <code>/*</code>, <code>/***</code>, or more than 3 stars will be ignored. This is a feature to allow you to suppress parsing of comment blocks.</p>
+<p>The simplest documentation is just a description</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/** This is a description of the foo function. */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h4><ul>
+<li><a href="http://www.2ality.com/2011/08/jsdoc-intro.html" target="_blank" rel="noopener">jsdoc Introduction</a></li>
+<li><a href="http://usejsdoc.org/" target="_blank" rel="noopener">jsdoc English document</a></li>
+<li><a href="http://www.css88.com/doc/jsdoc/" target="_blank" rel="noopener">jsdoc Chinese document</a></li>
+<li><strong>Document This</strong><br> I use vscode as my editor, and use <a href="https://marketplace.visualstudio.com/items?itemName=joelday.docthis" target="_blank" rel="noopener">Document This</a><br>  “Document This” is a Visual Studio Code extension that automatically generates detailed JSDoc comments for both TypeScript and JavaScript files. You can use Ctrl+Alt+D and again Ctrl+Alt+D to generates documentation for whatever the caret is on or inside of. </li>
+</ul>
+<h2 id="jsdoc2md"><a href="#jsdoc2md" class="headerlink" title="jsdoc2md"></a>jsdoc2md</h2><p>Generates markdown API documentation from jsdoc annotated source code. Useful for injecting API docs into project README files.</p>
+<p>When you document your code using valid jscode comments and run jsdoc command (e.g. <code>jsdoc2md example.js</code>), then you can get a markdown output easily.</p>
+<p>At first, I just write all of jsdoc in the code and link <a href="https://github.com/Chatie/wechaty/blob/master/docs/index.md" target="_blank" rel="noopener">wechaty/docs/index.md</a> to the users, but I cannot sync <code>README.md</code> file with the code and make readme as simple as it can, so I have to do some else.</p>
+<p>First, I should know how jsdoc2md works.</p>
+<h3 id="How-jsdoc2md-works"><a href="#How-jsdoc2md-works" class="headerlink" title="How jsdoc2md works"></a>How jsdoc2md works</h3><p>This is the main use case (render documentation) sequence:</p>
+<ol>
+<li>User runs <code>jsdoc2md example.js</code>.</li>
+<li><a href="https://github.com/jsdoc2md/jsdoc-api" target="_blank" rel="noopener">jsdoc-api</a> is used to obtain the raw jsdoc data for the input source code provided. (a kind of JSON output)</li>
+<li>this data is transformed into something suitable for passing into a template by <a href="https://github.com/jsdoc2md/jsdoc-parse" target="_blank" rel="noopener">jsdoc-parse</a> (which also adds support for the jsdoc2md-specific tags like <code>@typicalname</code>, <code>@done</code>, <code>@category</code> etc).</li>
+<li>the resulting template data is passed into <a href="https://github.com/jsdoc2md/dmd" target="_blank" rel="noopener">dmd</a>. This output is returned to the user.</li>
+</ol>
+<p>In order to pick function name from the full api doc, I learnt about <a href="https://github.com/jsdoc2md/dmd" target="_blank" rel="noopener">dmd</a>, it is the default output templates for <a href="https://github.com/jsdoc2md/jsdoc-to-markdown" target="_blank" rel="noopener">jsdoc-to-markdown</a>. It contains <a href="http://handlebarsjs.com/" target="_blank" rel="noopener">handlebars</a> partials and helpers intended to transform <a href="https://github.com/jsdoc2md/jsdoc-parse" target="_blank" rel="noopener">jsdoc-parse</a> output into markdown API document.</p>
+<p>For the wechaty document, I change two following dmd partials:</p>
+<ul>
+<li>link.hbs</li>
+<li>sig-link-parent.hbs</li>
+</ul>
+<h1 id="Wechaty-Progress-on-JsDoc-amp-amp-jsdoc2md"><a href="#Wechaty-Progress-on-JsDoc-amp-amp-jsdoc2md" class="headerlink" title="Wechaty Progress on JsDoc &amp;&amp; jsdoc2md"></a>Wechaty Progress on JsDoc &amp;&amp; jsdoc2md</h1><h2 id="Discussion-history"><a href="#Discussion-history" class="headerlink" title="Discussion history"></a>Discussion history</h2><h3 id="Related-Issue"><a href="#Related-Issue" class="headerlink" title="Related Issue"></a>Related Issue</h3><p><a href="https://github.com/zixia" target="_blank" rel="noopener">@Huan</a>, <a href="https://github.com/ax4" target="_blank" rel="noopener">@ax4</a>,<a href="https://github.com/hczhcz" target="_blank" rel="noopener">@hczhcz</a>, <a href="https://github.com/kis87988" target="_blank" rel="noopener">@William</a> and I talked a lot about wechaty document on the following issues: </p>
+<ul>
+<li><strong>issue73:</strong> <a href="https://github.com/chatie/wechaty/issues/73" target="_blank" rel="noopener">[doc] To Embed Document in Wechaty Code for Generating Automaticly</a>   </li>
+<li><strong>issue252:</strong> <a href="https://github.com/chatie/wechaty/issues/252" target="_blank" rel="noopener">[doc] Contribute to the doc editing[ jsdoc / jsdoc2md / typedoc ]</a>    </li>
+</ul>
+<h3 id="Related-PR"><a href="#Related-PR" class="headerlink" title="Related PR"></a>Related PR</h3><p>Also, <a href="https://github.com/hczhcz" target="_blank" rel="noopener">@hczhcz</a> and <a href="https://github.com/ax4" target="_blank" rel="noopener">@ax4</a> and I contribute a lot on the document:  </p>
+<ul>
+<li><strong>PR378:</strong> <a href="https://github.com/Chatie/wechaty/issues/378" target="_blank" rel="noopener">jsdoc2md may flush some pieces of the embedded doc</a>   </li>
+<li><strong>PR380:</strong> <a href="https://github.com/Chatie/wechaty/issues/380" target="_blank" rel="noopener">fix jsdoc flush issue #378 and minor fix on the doc examples</a>  </li>
+<li><strong>PR640:</strong> <a href="https://github.com/Chatie/wechaty/pull/640" target="_blank" rel="noopener">add documentation TODO entries</a>    </li>
+<li><strong>PR725:</strong> <a href="https://github.com/Chatie/wechaty/pull/725" target="_blank" rel="noopener">add wechaty document</a>   </li>
+<li><strong>PR321:</strong> <a href="https://github.com/Chatie/wechaty/pull/321" target="_blank" rel="noopener">Add JsDoc for Class Contact</a></li>
+</ul>
+<h2 id="Doc-basic-line"><a href="#Doc-basic-line" class="headerlink" title="Doc basic line"></a>Doc basic line</h2><p>For the convenience of developers, our doc guideline as follows:</p>
+<ol>
+<li>Simple and clear</li>
+<li>Generate markdown for better readable version control and GitHub page hosting.</li>
+</ol>
+<h2 id="Auto-doc-working-flow"><a href="#Auto-doc-working-flow" class="headerlink" title="Auto-doc working flow"></a>Auto-doc working flow</h2><ol>
+<li>Develop in TypeScript</li>
+<li>Embedded doc insert in TypeScript</li>
+<li>Compile TypeScript into JavaScript, using <code>npm run dist</code></li>
+<li>Run jsdoc / jsdoc2md, using <code>npm run doc</code></li>
+<li>Get the final doc, in <a href="https://github.com/Chatie/wechaty/blob/master/docs/index.md" target="_blank" rel="noopener">index.md</a>, config it to <a href="http://chatie.io/wechaty" target="_blank" rel="noopener">chatie.io/wechaty</a></li>
+</ol>
+<h2 id="Wechaty-Jsdoc-file"><a href="#Wechaty-Jsdoc-file" class="headerlink" title="Wechaty Jsdoc file"></a>Wechaty Jsdoc file</h2><p>We embed doc into the following file:</p>
+<ul>
+<li><a href="https://github.com/Chatie/wechaty/blob/master/src/wechaty.ts" target="_blank" rel="noopener">src/wechaty.ts</a></li>
+<li><a href="https://github.com/Chatie/wechaty/blob/master/src/message.ts" target="_blank" rel="noopener">src/message.ts</a></li>
+<li><a href="https://github.com/Chatie/wechaty/blob/master/src/room.ts" target="_blank" rel="noopener">src/room.ts</a></li>
+<li><a href="https://github.com/Chatie/wechaty/blob/master/src/contact.ts" target="_blank" rel="noopener">src/contact.ts</a></li>
+<li><a href="https://github.com/Chatie/wechaty/blob/master/src/friend-request.ts" target="_blank" rel="noopener">src/friend-request.ts</a></li>
+</ul>
+<h2 id="Wechaty-jsdoc2md-progress"><a href="#Wechaty-jsdoc2md-progress" class="headerlink" title="Wechaty jsdoc2md progress"></a>Wechaty jsdoc2md progress</h2><h3 id="1-Generate-jsdoc2md-file"><a href="#1-Generate-jsdoc2md-file" class="headerlink" title="1. Generate jsdoc2md file"></a>1. Generate jsdoc2md file</h3><p>Using the following command can generate document easily.<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">jsdoc2md dist/src/&#123;wechaty,room,contact,friend-request,message&#125;.js dist/src/puppet-web/friend-request.js&gt;&gt; docs/index.md</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-Use-template-to-Sync-Readme-with-api-doc"><a href="#2-Use-template-to-Sync-Readme-with-api-doc" class="headerlink" title="2. Use template to Sync Readme with api doc"></a>2. Use template to Sync Readme with api doc</h3><p>Actually, the first step is enough, but I think we need insert and sync all of the API docs into README, so I use a template by the following command:<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">jsdoc2md --template docs/partials/README.hbs dist/src/&#123;wechaty,room,contact,friend-request,message&#125;.js dist/src/puppet-web/friend-request.js&gt;&gt; README.md</span><br></pre></td></tr></table></figure></p>
+<p>Then add the partials<br><figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">&#123;&#123;&gt;member-<span class="built_in">index</span>-<span class="keyword">list</span>~&#125;&#125;</span><br><span class="line">``` </span><br><span class="line"><span class="keyword">to</span> show the API directory, because the full doc <span class="keyword">is</span> too big <span class="keyword">to</span> <span class="keyword">put</span> in README, <span class="built_in">and</span> it <span class="keyword">is</span> not necessary.</span><br><span class="line"></span><br><span class="line">### <span class="number">3</span>. Linkable Code References</span><br><span class="line"></span><br><span class="line">After the second step, I found the link jsdoc2md generate <span class="keyword">is</span> <span class="keyword">an</span> anchor link(`#`), it means I cannot link it <span class="keyword">to</span> other pages(http://chatie.io/wechaty), this <span class="keyword">is</span> very inconvenient <span class="keyword">for</span> readers.   </span><br><span class="line">Inspired by [[jsdoc2md-issue-<span class="number">123</span>](http<span class="variable">s:</span>//github.<span class="keyword">com</span>/jsdoc2md/jsdoc-<span class="keyword">to</span>-markdown/issues/<span class="number">123</span>)], [@KevinAst](http<span class="variable">s:</span>//github.<span class="keyword">com</span>/KevinAst) using jsdoc-<span class="keyword">to</span>-markdown wrote <span class="keyword">a</span> beatutiful doc: [astx-redux-util](http<span class="variable">s:</span>//astx-redux-util.js.org/<span class="number">1.0</span>.<span class="number">0</span>/).    </span><br><span class="line">I found maybe I can created <span class="keyword">a</span> custom partial too.   </span><br><span class="line">Then I override the following templates in `docs/partials/overrides`, adding http://chatie.io/wechaty in the link:</span><br><span class="line">* link.hbs</span><br><span class="line">* <span class="keyword">sig</span>-link-parent.hbs</span><br><span class="line"></span><br><span class="line">This <span class="keyword">is</span> the reason why I <span class="built_in">add</span> the following script in `package.json` :</span><br></pre></td></tr></table></figure></p>
+<p>jsdoc2md –partial docs/partials/overrides/*.hbs –template docs/partials/README.hbs dist/src/{wechaty,room,contact,friend-request,message}.js dist/src/puppet-web/friend-request.js&gt;&gt; README.md<br><figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">`<span class="comment">--partial` command override `link.hbs` and `sig-link-parent.hbs`</span></span><br><span class="line"></span><br><span class="line">Then, all done!</span><br><span class="line"></span><br><span class="line"><span class="comment"># To Contributor: How to add jsdoc when contributing</span></span><br><span class="line"></span><br><span class="line">For other developers, I tried my best <span class="built_in">to</span> make <span class="keyword">it</span> easier <span class="built_in">to</span> <span class="built_in">add</span> doc, just <span class="keyword">the</span> following <span class="number">2</span> steps:</span><br><span class="line"><span class="comment">### 1. Add jsdoc in your code like the following shows.</span></span><br></pre></td></tr></table></figure></p>
+<p>/*<em> This is a description of the foo function. </em>/<br>function foo() {<br>}<br><figure class="highlight clean"><table><tr><td class="code"><pre><span class="line">### <span class="number">2.</span> Run the following command</span><br></pre></td></tr></table></figure></p>
+<p>npm run doc<br><code>`</code></p>
+<p>Then you can find the generated jsdoc here: <a href="https://github.com/Chatie/wechaty/blob/master/docs/index.md" target="_blank" rel="noopener">wechaty/docs/index.md</a></p>
+<p>Cheers!</p>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/wechaty/">wechaty</a>
+            
+            <a href="/tags/技术探索/">技术探索</a>
+            
+            <a href="/tags/jsdoc/">jsdoc</a>
+            
+        </div>
+        
+    </article>
+    
+    <p style="text-align: center">本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+    
+    
+        <div class="adsense_post_left">
+            
+    <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client data-ad-slot></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </div>
+        <div class="adsense_post_right">
+            
+    <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client data-ad-slot></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </div>
+        <p>
+            
+    <ins class="adsbygoogle" style="display:block" data-ad-client data-ad-slot data-ad-format="auto" data-full-width-responsive="true"></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </p>
+    
+
+
+    
+    
+        <div id="disqus_thread"></div>
+        <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            var disqus_config = function () {
+                this.page.url = 'http://lijiarui.github.io/project/2017-09-20-add-wechaty-jsdoc.html';
+                this.page.identifier = 'project/2017-09-20-add-wechaty-jsdoc.html';
+            };
+            (function () { // DON'T EDIT BELOW THIS LINE
+                var d = document, disqus_shortname = 'lijiarui', s = d.createElement('script');
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+
+</div>
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about" title="关于">关于</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="帮助">帮助</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友链">友链</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="地图">地图</a>
+        </p>
+        <p>
+            本站已建立&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbsp天，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议创作</a><br>
+            ©2017-<span id="cpYear"></span> 基于&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，主题采用&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，作者&nbsp<a href="https://lijiarui.github.io" target="_blank" rel="friend">李佳芮</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+        </p>
+    </div>
+</footer>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input" spellcheck="false" type="text" autocomplete="off" placeholder="请输入查询关键词">
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '01/20/2018',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+            localSearch: {
+                dbPath: '/search.xml',
+                trigger: 'auto',
+                topN: '1',
+                unescape: 'false'
+            }
+        });
+    });
+</script>
+</body>
+</html>
