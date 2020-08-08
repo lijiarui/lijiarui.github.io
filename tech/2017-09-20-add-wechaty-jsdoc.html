@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html class="no-js" lang="zh-CN">
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <!--[if lte IE 9]>
 <meta http-equiv="refresh" content="0;url=http://lijiarui.github.io/warn.html">
 <![endif]-->
@@ -122,37 +122,34 @@
         <li><a href="/">最近</a></li>
         
             
-                <li class="">
+                <li class>
                     <a href="/categories/chatbot" data-name="chatbot">chatbot</a>
                 </li>
             
-                <li class="">
+                <li class>
                     <a href="/categories/project" data-name="project">project</a>
                 </li>
             
-                <li class="">
+                <li class>
                     <a href="/categories/presentation" data-name="presentation">presentation</a>
                 </li>
             
-                <li class="">
+                <li class>
                     <a href="/categories/thought" data-name="thought">thought</a>
                 </li>
             
-                <li class="">
+                <li class>
                     <a href="/categories/tech" data-name="技术">技术</a>
                 </li>
             
-                <li class="">
+                <li class>
                     <a href="/categories/reading" data-name="读书">读书</a>
                 </li>
             
         
         <li class="page-search">
     <form id="search" class="search-form">
-        <input type="text"
-               readonly="readonly"
-               id="local-search-input-tip"
-               placeholder="读物检索" />
+        <input type="text" readonly="readonly" id="local-search-input-tip" placeholder="读物检索">
         <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
     </form>
 </li>
@@ -163,20 +160,18 @@
     <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
         <div class="post-header">
             <div class="post-author clearfix">
-                <a class="avatar fleft" href="https://www.botorange.com"
-                   target="_blank">
-                    <img width="48" src="/images/avatar.jpg" alt="avatar"/>
+                <a class="avatar fleft" href="https://www.botorange.com" target="_blank">
+                    <img width="48" src="/images/avatar.jpg" alt="avatar">
                 </a>
                 <p><span class="label">作者</span>
-                    <a href="https://blog.botorange.com"
-                       target="_blank">李佳芮</a>
+                    <a href="https://blog.botorange.com" target="_blank">李佳芮</a>
                     <span title="最后编辑于&nbsp;2017-09-20">2017-09-20</span>
                 </p>
                 <p>一个现实的理想主义者</p>
             </div>
             <h2 class="post-title">Using Jsdoc to sync the doc with the latest code</h2>
             <div class="post-meta">
-                本文共计7381个字 |
+                本文共计7379个字 |
                 您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
@@ -267,10 +262,10 @@
 </ul>
 <h2 id="Wechaty-jsdoc2md-progress"><a href="#Wechaty-jsdoc2md-progress" class="headerlink" title="Wechaty jsdoc2md progress"></a>Wechaty jsdoc2md progress</h2><h3 id="1-Generate-jsdoc2md-file"><a href="#1-Generate-jsdoc2md-file" class="headerlink" title="1. Generate jsdoc2md file"></a>1. Generate jsdoc2md file</h3><p>Using the following command can generate document easily.<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">jsdoc2md dist/src/&#123;wechaty,room,contact,friend-request,message&#125;.js dist/src/puppet-web/friend-request.js&gt;&gt; docs/index.md</span><br></pre></td></tr></table></figure></p>
 <h3 id="2-Use-template-to-Sync-Readme-with-api-doc"><a href="#2-Use-template-to-Sync-Readme-with-api-doc" class="headerlink" title="2. Use template to Sync Readme with api doc"></a>2. Use template to Sync Readme with api doc</h3><p>Actually, the first step is enough, but I think we need insert and sync all of the API docs into README, so I use a template by the following command:<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">jsdoc2md --template docs/partials/README.hbs dist/src/&#123;wechaty,room,contact,friend-request,message&#125;.js dist/src/puppet-web/friend-request.js&gt;&gt; README.md</span><br></pre></td></tr></table></figure></p>
-<p>Then add the partials<br><figure class="highlight oxygene"><table><tr><td class="code"><pre><span class="line"><span class="comment">&#123;&#123;&gt;member-index-list~&#125;</span>&#125;</span><br><span class="line">``` </span><br><span class="line"><span class="keyword">to</span> show the API directory, because the full doc <span class="keyword">is</span> too big <span class="keyword">to</span> put <span class="keyword">in</span> README, <span class="keyword">and</span> it <span class="keyword">is</span> <span class="keyword">not</span> necessary.</span><br><span class="line"></span><br><span class="line">### <span class="number">3</span>. Linkable Code References</span><br><span class="line"></span><br><span class="line">After the second <span class="keyword">step</span>, I found the link jsdoc2md generate <span class="keyword">is</span> an anchor link(`#`), it means I cannot link it <span class="keyword">to</span> other pages(http:<span class="comment">//chatie.io/wechaty), this is very inconvenient for readers.   </span></span><br><span class="line">Inspired <span class="keyword">by</span> [[jsdoc2md-issue-<span class="number">123</span>](https:<span class="comment">//github.com/jsdoc2md/jsdoc-to-markdown/issues/123)], [@KevinAst](https://github.com/KevinAst) using jsdoc-to-markdown wrote a beatutiful doc: [astx-redux-util](https://astx-redux-util.js.org/1.0.0/).    </span></span><br><span class="line">I found maybe I can created a custom <span class="keyword">partial</span> too.   </span><br><span class="line"><span class="keyword">Then</span> I <span class="keyword">override</span> the following templates <span class="keyword">in</span> `docs/partials/overrides`, adding http:<span class="comment">//chatie.io/wechaty in the link:</span></span><br><span class="line">* link.hbs</span><br><span class="line">* sig-link-parent.hbs</span><br><span class="line"></span><br><span class="line">This <span class="keyword">is</span> the reason why I <span class="keyword">add</span> the following script <span class="keyword">in</span> `package.json` :</span><br></pre></td></tr></table></figure></p>
-<p>jsdoc2md –partial docs/partials/overrides/*.hbs –template docs/partials/README.hbs dist/src/{wechaty,room,contact,friend-request,message}.js dist/src/puppet-web/friend-request.js&gt;&gt; README.md<br><figure class="highlight oxygene"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">`--<span class="keyword">partial</span>` command <span class="keyword">override</span> `link.hbs` <span class="keyword">and</span> `sig-link-parent.hbs`</span><br><span class="line"></span><br><span class="line"><span class="keyword">Then</span>, all done!</span><br><span class="line"></span><br><span class="line"># <span class="keyword">To</span> Contributor: How <span class="keyword">to</span> <span class="keyword">add</span> jsdoc when contributing</span><br><span class="line"></span><br><span class="line"><span class="keyword">For</span> other developers, I tried my best <span class="keyword">to</span> make it easier <span class="keyword">to</span> <span class="keyword">add</span> doc, just the following <span class="number">2</span> steps:</span><br><span class="line">### <span class="number">1</span>. <span class="keyword">Add</span> jsdoc <span class="keyword">in</span> your code like the following shows.</span><br></pre></td></tr></table></figure></p>
-<p>/<em>* This is a description of the foo function. </em>/<br>function foo() {<br>}<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## 2. Run the following command</span></span></span><br></pre></td></tr></table></figure></p>
-<p>npm run doc<br>```</p>
+<p>Then add the partials<br><figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">&#123;&#123;&gt;member-<span class="built_in">index</span>-<span class="keyword">list</span>~&#125;&#125;</span><br><span class="line">``` </span><br><span class="line"><span class="keyword">to</span> show the API directory, because the full doc <span class="keyword">is</span> too big <span class="keyword">to</span> <span class="keyword">put</span> in README, <span class="built_in">and</span> it <span class="keyword">is</span> not necessary.</span><br><span class="line"></span><br><span class="line">### <span class="number">3</span>. Linkable Code References</span><br><span class="line"></span><br><span class="line">After the second step, I found the link jsdoc2md generate <span class="keyword">is</span> <span class="keyword">an</span> anchor link(`#`), it means I cannot link it <span class="keyword">to</span> other pages(http://chatie.io/wechaty), this <span class="keyword">is</span> very inconvenient <span class="keyword">for</span> readers.   </span><br><span class="line">Inspired by [[jsdoc2md-issue-<span class="number">123</span>](http<span class="variable">s:</span>//github.<span class="keyword">com</span>/jsdoc2md/jsdoc-<span class="keyword">to</span>-markdown/issues/<span class="number">123</span>)], [@KevinAst](http<span class="variable">s:</span>//github.<span class="keyword">com</span>/KevinAst) using jsdoc-<span class="keyword">to</span>-markdown wrote <span class="keyword">a</span> beatutiful doc: [astx-redux-util](http<span class="variable">s:</span>//astx-redux-util.js.org/<span class="number">1.0</span>.<span class="number">0</span>/).    </span><br><span class="line">I found maybe I can created <span class="keyword">a</span> custom partial too.   </span><br><span class="line">Then I override the following templates in `docs/partials/overrides`, adding http://chatie.io/wechaty in the link:</span><br><span class="line">* link.hbs</span><br><span class="line">* <span class="keyword">sig</span>-link-parent.hbs</span><br><span class="line"></span><br><span class="line">This <span class="keyword">is</span> the reason why I <span class="built_in">add</span> the following script in `package.json` :</span><br></pre></td></tr></table></figure></p>
+<p>jsdoc2md –partial docs/partials/overrides/*.hbs –template docs/partials/README.hbs dist/src/{wechaty,room,contact,friend-request,message}.js dist/src/puppet-web/friend-request.js&gt;&gt; README.md<br><figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">`<span class="comment">--partial` command override `link.hbs` and `sig-link-parent.hbs`</span></span><br><span class="line"></span><br><span class="line">Then, all done!</span><br><span class="line"></span><br><span class="line"><span class="comment"># To Contributor: How to add jsdoc when contributing</span></span><br><span class="line"></span><br><span class="line">For other developers, I tried my best <span class="built_in">to</span> make <span class="keyword">it</span> easier <span class="built_in">to</span> <span class="built_in">add</span> doc, just <span class="keyword">the</span> following <span class="number">2</span> steps:</span><br><span class="line"><span class="comment">### 1. Add jsdoc in your code like the following shows.</span></span><br></pre></td></tr></table></figure></p>
+<p>/*<em> This is a description of the foo function. </em>/<br>function foo() {<br>}<br><figure class="highlight clean"><table><tr><td class="code"><pre><span class="line">### <span class="number">2.</span> Run the following command</span><br></pre></td></tr></table></figure></p>
+<p>npm run doc<br><code>`</code></p>
 <p>Then you can find the generated jsdoc here: <a href="https://github.com/Chatie/wechaty/blob/master/docs/index.md" target="_blank" rel="noopener">wechaty/docs/index.md</a></p>
 <p>Cheers!</p>
 
@@ -298,10 +293,7 @@
     
         <div class="adsense_post_left">
             
-    <ins class="adsbygoogle"
-         style="display:inline-block;width:160px;height:600px"
-         data-ad-client=""
-         data-ad-slot=""></ins>
+    <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client data-ad-slot></ins>
 
 <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
@@ -310,10 +302,7 @@
         </div>
         <div class="adsense_post_right">
             
-    <ins class="adsbygoogle"
-         style="display:inline-block;width:160px;height:600px"
-         data-ad-client=""
-         data-ad-slot=""></ins>
+    <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client data-ad-slot></ins>
 
 <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
@@ -322,12 +311,7 @@
         </div>
         <p>
             
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client=""
-         data-ad-slot=""
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
+    <ins class="adsbygoogle" style="display:block" data-ad-client data-ad-slot data-ad-format="auto" data-full-width-responsive="true"></ins>
 
 <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
@@ -369,14 +353,14 @@
     <footer class="footer">
     <div class="footer-inner" style="text-align: center">
         <p>
-            <a href="/about"  title="关于">关于</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/about" title="关于">关于</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
             <!-- 自定义链接 -->
-            <a href="/help" title="帮助" >帮助</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/help" title="帮助">帮助</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
             <a href="/links" title="友链">友链</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
             <a href="/sitemap.xml" title="地图">地图</a>
         </p>
         <p>
-            本站已建立&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbsp天，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议创作</a><br/>
+            本站已建立&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbsp天，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议创作</a><br>
             ©2017-<span id="cpYear"></span> 基于&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
             ，主题采用&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
             ，作者&nbsp<a href="https://lijiarui.github.io" target="_blank" rel="friend">李佳芮</a>
@@ -397,11 +381,7 @@
             <i class="fa fa-times-circle"></i>
         </span>
         <div class="local-search-input-wrapper">
-            <input id="local-search-input"
-                   spellcheck="false"
-                   type="text"
-                   autocomplete="off"
-                   placeholder="请输入查询关键词"/>
+            <input id="local-search-input" spellcheck="false" type="text" autocomplete="off" placeholder="请输入查询关键词">
         </div>
     </div>
     <div id="local-search-result"></div>
