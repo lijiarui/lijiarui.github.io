@@ -57,21 +57,24 @@ index_generator:
   order_by: -date
   
 # Category & Tag
-default_category: chatbot
+default_category: thought
 category_map:
-  chatbot: chatbot
-  presentation: presentation
-  project: project
-  技术随笔: tech
+  interview: interview
   thought: thought
+  presentation: presentation
+  chatbot: chatbot
+  project: project
   读书笔记: reading
 tag_map:
   创业: startup
   人工智能: ai
   wechaty: wechaty
   桔子互动: botorange
+  句子互动: juzibot
   团队管理: team
   计划: plan
+  微信: wechat
+  技术: tech
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date

@@ -5,12 +5,13 @@ avatar: /images/avatar.jpg
 authorLink: 'https://www.botorange.com'
 authorAbout: 'https://blog.botorange.com'
 authorDesc: 一个现实的理想主义者
-categories: tech
+categories: project
 date: 2017-09-20 13:05:17
 keywords:
 tags: 
   - 技术探索
   - wechaty
+  - jsdoc
 description: JSDoc's purpose is to document the API of your JavaScript application or library. It is assumed that you will want to document things like modules, namespaces, classes, methods, method parameters, and so on.
 photos:
   - /img/2017/add-wechaty-jsdoc-automate-all-the-things.jpg

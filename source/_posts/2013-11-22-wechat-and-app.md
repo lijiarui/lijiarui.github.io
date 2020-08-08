@@ -5,9 +5,11 @@ avatar: /images/avatar.jpg
 authorLink: 'https://lijiarui.github.io'
 authorAbout: 'https://www.botorange.com'
 authorDesc: 一个现实的理想主义者
-categories: tech
+categories: thought
 date: 2013-11-22 06:14:01
-tags:
+tags: 
+  - 微信
+  - 技术
 keywords:
 description: 研究了一阵微信，前两天去了移动互联网开发者大会，关于现阶段移动互联网的两大热门－－－－微信公众帐号和原生APP发表点小评论。 
 photos:
