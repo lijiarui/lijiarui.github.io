@@ -25,4 +25,13 @@ jobs:
     - run: npm install
     - run: git submodule init
     - run: git submodule update
+    - run: rm -fr public/
+    - run: git worktree add -B master public origin/master
     - run: npx hexo generate
+    - run: |
+      cd public
+      git add .
+      git commit -m "Update master"
+      git config --global user.name 'GitHub Action'
+      git config --global user.email 'ruiruibupt@gmail.com'
+      git push
