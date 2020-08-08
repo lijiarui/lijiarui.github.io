@@ -56,5 +56,5 @@ GitHub 6,000+ Stars 开源项目 Wechaty 联合作者，创建并管理覆盖全
 - [豆瓣](https://www.douban.com/people/83079271/) 心情不好碎碎念的排遣文字，很多仅限我一人可见，挺无聊的东西
 - [简书](https://www.jianshu.com/u/ac5aaa7ad293) 我也不知道具体会写什么
 - [Github](https://github.com/lijiarui) 欢迎 Follow 我
-- 微信: ruirui_0914 由于好友太多，朋友圈都是官方信息, 请谨慎添加
+- 微信: ruirui_0914 由于好友太多，朋友圈都是官方信息, 请谨慎添加。
 - 邮箱：ruiruibupt@gmail.com
