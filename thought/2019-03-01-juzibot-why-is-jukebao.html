@@ -1,0 +1,430 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://lijiarui.github.io/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+<link rel="dns-prefetch" href="http://lijiarui.github.io">
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+<link rel="prefetch" href="http://lijiarui.github.io">
+<link rel="prefetch" href="//www.google-analytics.com">
+
+    <link rel="dns-prefetch" href="//disqus.com">
+    <link rel="dns-prefetch" href="//lijiarui.disqus.com">
+    <link rel="prefetch" href="//disqus.com">
+    <link rel="prefetch" href="//lijiarui.disqus.com">
+
+
+<link rel="prerender" href="http://lijiarui.github.io">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://lijiarui.github.io">
+<meta name="author" content="Li Jiarui">
+<link rel="stylesheet" href="/css/JSimple.css">
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+
+<title>基于微信生态的 intercom | 我为什么做句客宝 - 李佳芮de博客</title>
+
+<meta name="keywords" content="chatbot, 技术博客, 聊天机器人, 人工智能, 创业">
+
+<meta name="description " content="我希望能像 Intercom那样，帮助企业高效管理用户，快速获客并提高转化。">
+
+    
+
+    
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="//www.googletagmanager.com/gtag/js?id=UA-114589636-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-114589636-1');
+        </script>
+    
+    <!-- put your likes here. -->
+
+
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="芮">芮</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/about" title="关于本站">
+            <i class="fa fa-user"></i>
+            <span>关于本站</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <!-- <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a> -->
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">李佳芮の博客</h1>
+        <h3 class="cover-siteTitle">时间看得见</h3>
+        <p class="cover-siteDesc">一个现实的理想主义者</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-weibo">
+        <a href="https://weibo.com/u/2175505900?refer_flag=1001030101_" target="_blank" title="weibo" ref="friend">
+            <i class="fa fa-weibo"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-weixin">
+        <a href="http://lijiarui.github.io" target="_blank" title="weixin" ref="friend">
+            <i class="fa fa-weixin"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/lijiarui" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-telegram">
+        <a href="https://www.jianshu.com/u/ac5aaa7ad293" target="_blank" title="telegram" ref="friend">
+            <i class="fa fa-telegram"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最近</a></li>
+        
+            
+                <li class>
+                    <a href="/categories/chatbot" data-name="chatbot">chatbot</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/project" data-name="project">project</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/presentation" data-name="presentation">presentation</a>
+                </li>
+            
+                <li class="active">
+                    <a href="/categories/thought" data-name="thought">thought</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/tech" data-name="技术">技术</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/reading" data-name="读书">读书</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text" readonly="readonly" id="local-search-input-tip" placeholder="读物检索">
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://www.botorange.com" target="_blank">
+                    <img width="48" src="/images/avatar.jpg" alt="avatar">
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://blog.botorange.com" target="_blank">李佳芮</a>
+                    <span title="最后编辑于&nbsp;2019-03-01">2019-03-01</span>
+                </p>
+                <p>一个现实的理想主义者</p>
+            </div>
+            <h2 class="post-title">基于微信生态的 Intercom | 我为什么做句客宝</h2>
+            <div class="post-meta">
+                本文共计2930个字 |
+                您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <p>我希望能像 <a href="https://www.intercom.com/" target="_blank" rel="noopener">Intercom</a> 那样，帮助企业高效管理用户，快速获客并提高转化。</p>
+<p>2016 年，我做了<a href="/lijiarui-why-wuli-dream/">舞哩</a>，这是一个舞蹈视频教学平台，帮助热爱舞蹈的人快速找到一个渠道学习成品舞舞蹈。在原创了几百个视频，数千万的播放后，我建了几个舞蹈交流微信群，而随着公众号的粉丝破万后，用户的管理耗费了我大量的精力。</p>
+<p>我的做法是在公众号上放一个舞哩助手微信号的二维码，让用户通过添加舞哩助手为好友，然后验证通过后邀请用户加入到微信群中，早期这些都是手工完成的。当我有一次出国玩，没有带小助手的手机，回国后看到上百条好友请求，我决定要把这些自动化。</p>
+<p>那个时候我梳理了我的需求，只有以下3个：</p>
+<ol>
+<li>自动通过好友请求。</li>
+<li>当我的粉丝和我微信聊天的时候，能通过关键词进行自动回复。毕竟问题80%都是一样的。</li>
+<li>自动的把他们拉进群里。</li>
+</ol>
+<p>然后我遇见了<a href="https://github.com/chatie/wechaty" target="_blank" rel="noopener">wechaty</a>,只要几十行代码，就可以满足我的需求。最主要的是，上面机械化的流水操作，机器人做的比人工要好很多。</p>
+<p>在我实现了这些基础的功能后，我还希望保存所有的聊天信息，团队里面的人可以和我一同管理这个账号，系统帮我找到最活跃的用户，清理潜水用户，通过用户的活跃度给群成员定级，并找到大区管理员，管理员可以在手机上有更高级的查询工作。。。</p>
+<h3 id="帮助企业高效管理用户，快速获客并提高转化"><a href="#帮助企业高效管理用户，快速获客并提高转化" class="headerlink" title="帮助企业高效管理用户，快速获客并提高转化"></a>帮助企业高效管理用户，快速获客并提高转化</h3><p>从2013年开始，我一直基于微信生态为企业提供产品和技术服务，我知道，这是一个机会。</p>
+<p>我认为企业最痛的地方是<strong>来自新客户的售前转化</strong>。当企业做了大量的内容营销及广告投放后，获取到了新的注册用户，转化率的高低直接决定了企业的增长。</p>
+<p>现阶段，我还没有看到一个好用的基于微信生态的售前转化流程化管理工具。单纯的功能工具很多，但功能点无法解决问题，流程化的工具和方法论才是企业真正需要的。</p>
+<p>以下是一个获客场景的解决方案：</p>
+<h4 id="第一阶段，目标是初次认识，了解用户并辅助用户完成基本任务"><a href="#第一阶段，目标是初次认识，了解用户并辅助用户完成基本任务" class="headerlink" title="第一阶段，目标是初次认识，了解用户并辅助用户完成基本任务"></a>第一阶段，目标是初次认识，了解用户并辅助用户完成基本任务</h4><ol>
+<li>用户在官网注册留下联系方式，机器人自动添加用户为好友。</li>
+<li>机器人按照写好的脚本通过3-8轮对话收集用户信息。</li>
+<li>发放一个优惠券，留住客户关系。</li>
+<li>引导用户完成企业给用户的任务：邀请用户入群或进行二次传播。</li>
+</ol>
+<h4 id="第二阶段：主动式响应"><a href="#第二阶段：主动式响应" class="headerlink" title="第二阶段：主动式响应"></a>第二阶段：主动式响应</h4><ol>
+<li>全面的推送，一个月1-2次，以信息发布为主</li>
+<li>二次召回用户，针对初次添加好友、群内活跃、付费意愿等多个维度进行召回。</li>
+</ol>
+<p>这里也有一些细节需要考虑：</p>
+<ul>
+<li>不同的对象：<ul>
+<li>定期召回：找到一段时间不联系的有意向老客户</li>
+<li>近期（如3天）有过互动交流的客户，不再发送</li>
+<li>客户退群后，不再发送信息</li>
+</ul>
+</li>
+<li>发送的内容：<ul>
+<li>用机器分析这个用户喜欢什么时间聊天，什么口吻对话</li>
+<li>带着用户的昵称和不同的口吻，让用户觉得这不是在群发，而是企业在认真的对待一个老朋友</li>
+</ul>
+</li>
+<li>发送的时间：<ul>
+<li>天维度：根据用户互动频率决定哪天发送。</li>
+<li>小时维度：根据用户说话时间决定什么时候发送，让用户在最闲的时候看到消息。举个例子，用户经常上午开会，如果选择下午发送信息，转化率会更高。</li>
+</ul>
+</li>
+<li>群发的过程：<ul>
+<li>发送状态监控</li>
+<li>及时回复：用户回复群发消息时，企业需要及时回复，这个地方是需要机器人配合的。举个例子，如果群发了200个用户，即使是 10% 的回复率，一个人已经很难处理了，可以提供的相关工具如下：<ul>
+<li>分流的客服系统</li>
+<li>机器人的自动多轮对话脚本</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>发送结束：<ul>
+<li>统计多少个好友把你删了，一方面不应该继续骚扰，另一方面反应了话术和频率可能存在问题</li>
+<li>统计多少个好友只是简单的回复，针对性的安排机器人二次跟进</li>
+<li>统计多少个好友有明确的付费意向</li>
+</ul>
+</li>
+</ul>
+<h4 id="第三阶段：随时沟通"><a href="#第三阶段：随时沟通" class="headerlink" title="第三阶段：随时沟通"></a>第三阶段：随时沟通</h4><ol>
+<li>机器回答不了的问题，能够第一时间转接给人工处理。</li>
+<li>机器回答的时候，明确告知用户这是机器，并在回复的时候有个尾巴 “来自我的机器人助理”。</li>
+</ol>
+<h4 id="第四阶段：分析与检索"><a href="#第四阶段：分析与检索" class="headerlink" title="第四阶段：分析与检索"></a>第四阶段：分析与检索</h4><ol>
+<li>与用户的聊天内容可检索，并进行后续质检。</li>
+<li>用户承担的对话进行分析，总结提高转化率的话术。</li>
+<li>机器统计在群和私聊场景下的工作质量，辅助企业绩效考核。</li>
+</ol>
+<h3 id="企业微信带来的新机会"><a href="#企业微信带来的新机会" class="headerlink" title="企业微信带来的新机会"></a>企业微信带来的新机会</h3><p>我在 2019 年初，在美国期间写过一篇文章<a href="https://rui.juzi.bot/thought/2019-1-19-what-is-botorange.html" target="_blank" rel="noopener">桔子互动是一家什么样的公司</a>,在第三部分详细的介绍了我对微信生态的理解，关于企业微信的部分，我摘抄在这里：</p>
+<blockquote>
+<p>张小龙在总结微信8年公开课上对企业微信的定位是：不是局限于企业内部的通讯，而是让每一个企业员工成为企业服务的窗口。人就是服务，而且是认证的服务。</p>
+<p>现实生活中，我们更希望有个人来帮你做一些事情，而不是去打开一个APP或者小程序，因为人更有灵活性， 并且服务是更到位的，比如去网上订一个酒店，如果你要改变日期或者退订，通过APP是很麻烦的，这个时候你更希望联系人工客服，人的界面也是友好的; 如果一个4S店的员工用企业微信加了你，你可以认为这个人就是你的小程序，当你点进与他的对话界面，因为对方是企业微信的用户，你会看到他的对话界面下是4S店的服务菜单，你可以直接在这里使用服务，有点像公众号底下的菜单，你也可以直接和他说话，消息能够得到及时的回复。当你下次要找4S店的时候，你的第一选择是打开和这个人的对话，而不是去找4S店的小程序。这里其实给企业一个机会，企业可以让所有员工变成一个对外服务的窗口，带着你的小程序到处跑。企业微信让员工带着小程序直接提供服务，顾客的忠诚度很高。</p>
+<p>在过去五年，微信个人号逐步在企业中承担了上面的服务，随着企业微信的开放，我们基于个人号hack 提供的工具，可以在企业微信上名正言顺的使用。因此企业微信这样的发展方向，给我们带来了巨大的机会。</p>
+<p>具体机会体现在下面3点：</p>
+<ul>
+<li><p>小程序+企业微信，让 GUI + CUI 混合的多种交互方式在微信中成为可能，这是一个更加高效的获取服务的形式。</p>
+</li>
+<li><p>智能机器人和人协作，帮助企业员工及时回复</p>
+</li>
+<li><p>导出企业和用户的私聊及群聊数据，并基于对话记录分析用户。</p>
+</li>
+</ul>
+</blockquote>
+<p>在我看来，<strong>随着企业微信生态的逐渐开放，私域流量的下一个黄金十年，在企业微信。</strong></p>
+<p><img src="/img/2019/03-juzibot-why-is-jukebao/wechat-work.jpg" alt="WechatWork"></p>
+<p>因此有今天的句客宝：</p>
+<p><img src="/img/2019/03-juzibot-why-is-jukebao/jukebao.png" alt="Jukebao"></p>
+<h3 id="对未来智能客服中机器的展望"><a href="#对未来智能客服中机器的展望" class="headerlink" title="对未来智能客服中机器的展望"></a>对未来智能客服中机器的展望</h3><h4 id="产品层面"><a href="#产品层面" class="headerlink" title="产品层面"></a>产品层面</h4><ul>
+<li>真正的智能客服，要有基于数据的推理能力，基于用户的行为分析，知道什么时候该说什么话，而不是单纯的说话</li>
+<li>产品需要主动式响应，而非被动式响应。做法是AI引发话题，人去跟进，而非人去主动引发，AI响应，这是人机协作最好的方式。</li>
+<li>如果一个商业行为（企业服务）没有分析和归纳，就不会有优化，更不会有增长。</li>
+<li>给企业一个分析报表没有用，核心是如何指导工作方向，这里的工作方向一定是具体化、细粒度的才有意义。</li>
+</ul>
+<h4 id="人机协作"><a href="#人机协作" class="headerlink" title="人机协作"></a>人机协作</h4><ul>
+<li>机器擅长效率、记录、并发、信息共享</li>
+<li>人擅长理解、思考、归纳、分析、总结</li>
+<li>如果堆人就能解决的问题，这算是一个有解的问题，企业为这个买单的意愿不一定高，因为人没有学习成本。</li>
+<li>如果堆人解决不了的问题，机器还能解决的问题，企业买单意愿非常强，比如机器的记录，进而帮助人辅助决策</li>
+</ul>
+<p>最后，我想说，做产品应该持续注意2件事：</p>
+<ol>
+<li>控制自己的贪婪是一件很重要的事情，只有控制住贪婪，才能剔除掉不属于你的客户，而不会被这些客户牵着鼻子开发了很多本不应该有的功能。</li>
+<li>不忘初心，方得始终。有的时候走了太远，你会忘记为什么而出发。</li>
+</ol>
+<p>本文已做删减，更多相关内容详见：</p>
+<ul>
+<li><a href="https://rui.juzi.bot/thought/2019-1-19-what-is-botorange.html" target="_blank" rel="noopener">桔子互动是一家什么样的公司</a></li>
+<li><a href="https://rui.juzi.bot/chatbot/2016-11-20-wechaty-wuli-usecase.html" target="_blank" rel="noopener">一个舞娘如何用6行代码写出微信聊天机器人</a></li>
+</ul>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/startup/">创业</a>
+            
+            <a href="/tags/Intercom/">Intercom</a>
+            
+            <a href="/tags/句客宝/">句客宝</a>
+            
+            <a href="/tags/微信生态/">微信生态</a>
+            
+        </div>
+        
+    </article>
+    
+    <p style="text-align: center">本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+    
+    
+        <div class="adsense_post_left">
+            
+    <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client data-ad-slot></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </div>
+        <div class="adsense_post_right">
+            
+    <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client data-ad-slot></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </div>
+        <p>
+            
+    <ins class="adsbygoogle" style="display:block" data-ad-client data-ad-slot data-ad-format="auto" data-full-width-responsive="true"></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </p>
+    
+
+
+    
+    
+        <div id="disqus_thread"></div>
+        <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            var disqus_config = function () {
+                this.page.url = 'http://lijiarui.github.io/thought/2019-03-01-juzibot-why-is-jukebao.html';
+                this.page.identifier = 'thought/2019-03-01-juzibot-why-is-jukebao.html';
+            };
+            (function () { // DON'T EDIT BELOW THIS LINE
+                var d = document, disqus_shortname = 'lijiarui', s = d.createElement('script');
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+
+</div>
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about" title="关于">关于</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="帮助">帮助</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友链">友链</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="地图">地图</a>
+        </p>
+        <p>
+            本站已建立&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbsp天，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议创作</a><br>
+            ©2017-<span id="cpYear"></span> 基于&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，主题采用&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，作者&nbsp<a href="https://lijiarui.github.io" target="_blank" rel="friend">李佳芮</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+        </p>
+    </div>
+</footer>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input" spellcheck="false" type="text" autocomplete="off" placeholder="请输入查询关键词">
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '01/20/2018',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+            localSearch: {
+                dbPath: '/search.xml',
+                trigger: 'auto',
+                topN: '1',
+                unescape: 'false'
+            }
+        });
+    });
+</script>
+</body>
+</html>
