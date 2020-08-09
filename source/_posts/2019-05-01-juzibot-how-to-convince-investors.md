@@ -18,6 +18,8 @@ photos:
 
 ---
 
+![yc-w19](/img/2019/05-juzibot-how-to-convince-investors/yc-w19.jpg)
+
 > 今年1月到3月，句子互动参加了 Y Combinator W19 batch. 这是一段非常美好的旅程，在Demo Day 结束后，我们迅速拿到了TSVC(清谷资本) 和阿尔法公社的投资。非常感谢我们在 YC 的导师陆奇，Eric Migicovsky，Aaron Harris 和 Holly Liu 和所有 YC 的校友，也感谢清谷资本和阿尔法公社的信任。
 
 ![founders](/img/2019/05-juzibot-how-to-convince-investors/founders.jpg)

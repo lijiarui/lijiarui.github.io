@@ -16,6 +16,8 @@ photos:
   - /img/2020/04-juzibot-chatbot-0-1/luqi.png
 ---
 
+![luqi](/img/2020/04-juzibot-chatbot-0-1/luqi.png)
+
 > 由奇绩创坛创始人、前百度总裁、前微软全球执行副总裁陆奇博士作序，句子互动创始人[李佳芮](https://pre-angel.com/peoples/jiarui-li/)、聊天对话领域资深投资人[李卓桓](https://pre-angel.com/peoples/zhuohuan-li/)、资深互联网从业者李云军合著的的[《Chatbot从0到1：对话式交互设计实践指南》](https://item.jd.com/12630213.html)付梓出版。
 
 在序言中，陆奇博士以资深对话式交互专家和投资人的视角，以面向未来的视野，展望了聊天机器人（Chatbot）行业和技术的发展。
