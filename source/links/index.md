@@ -17,5 +17,3 @@ comments: false
 - [简书](https://www.jianshu.com/u/ac5aaa7ad293) 打算渐渐把技术随手记的东西从印象笔记迁移到简书，因为markdown太舒服
 - [github](https://github.com/lijiarui) 我也不知道为啥我就那么喜欢看follower人数往上涨。。。
 - 微信: ruirui_0914 由于好友太多，朋友圈都是官方信息, 请谨慎添加
-
-
