@@ -2,7 +2,7 @@
 title:  为何写作 && 为何建站
 author: 李佳芮
 avatar: /images/avatar.jpg
-authorLink: 'https://lijiarui.github.io'
+authorLink: 'https://rui.juzi.bot'
 authorAbout: 'https://www.juzibot.com'
 authorDesc: 一个现实的理想主义者
 date: 2018-02-07 13:23:07

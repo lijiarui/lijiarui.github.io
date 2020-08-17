@@ -2,7 +2,7 @@
 title: 关于微信公众帐号等微应用和手机app等原生应用的一些小感慨
 author: 李佳芮
 avatar: /images/avatar.jpg
-authorLink: 'https://lijiarui.github.io'
+authorLink: 'https://rui.juzi.bot'
 authorAbout: 'https://www.botorange.com'
 authorDesc: 一个现实的理想主义者
 categories: thought

@@ -2,7 +2,7 @@
 title: 重庆大学生网络创新创业大赛训练营，“寻找我的合伙人”分享
 author: 李佳芮
 avatar: /images/avatar.jpg
-authorLink: 'https://lijiarui.github.io'
+authorLink: 'https://rui.juzi.bot'
 authorAbout: 'https://www.botorange.com'
 authorDesc: 一个现实的理想主义者
 categories: presentation

@@ -2,7 +2,7 @@
 title: 微信封杀营销外挂：我对微信生态的思考
 author: 李佳芮
 avatar: /images/avatar.jpg
-authorLink: 'https://lijiarui.github.io'
+authorLink: 'https://rui.juzi.bot'
 authorAbout: 'https://www.botorange.com'
 authorDesc: 一个现实的理想主义者
 categories: thought

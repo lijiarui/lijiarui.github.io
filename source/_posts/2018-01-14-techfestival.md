@@ -2,7 +2,7 @@
 title: 女性科技节-从0到1打造你的个人智能助理
 author: 李佳芮
 avatar: /images/avatar.jpg
-authorLink: 'https://lijiarui.github.io'
+authorLink: 'https://rui.juzi.bot'
 authorAbout: 'https://www.botorange.com'
 authorDesc: 一个现实的理想主义者
 categories: presentation

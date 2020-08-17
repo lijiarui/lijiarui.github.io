@@ -15,7 +15,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://lijiarui.github.io
+url: https://rui.juzi.bot
 root: /
 # permalink: :year/:month/:day/:title/
 permalink: :category/:title.html
@@ -98,7 +98,7 @@ theme: jsimple
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
 - type: git
-  repo: https://github.com/lijiarui/lijiarui.github.io.git
+  repo: https://github.com/lijiarui/rui.juzi.bot.git
   branch: master
 
 # Include/Exclude Files/Folders
