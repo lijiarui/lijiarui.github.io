@@ -128,6 +128,28 @@ PreAngel是一支专注于人工智能技术创业项目的天使基金，核心
 
 附最后的彩蛋，北京站直播视频回放地址，各位童鞋认真学习起来吧！
 
-{% include iframe.html src="https://www.youtube.com/watch?v=jKbMFxDw0T4?start=210" %}
+<div class="zoom-container" style="
+    position: relative;
+    padding-bottom:56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe
+    src="https://www.youtube.com/watch?v=jKbMFxDw0T4?start=210"
+    width='560'
+    height='315'
+    allowfullscreen
+    webkitallowfullscreen
+    frameborder="0"
+    style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    "
+  ></iframe>
+</div>
 
 附录： [国内用户，B站地址](https://www.bilibili.com/video/av80153181/)
