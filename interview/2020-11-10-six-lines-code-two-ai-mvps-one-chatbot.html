@@ -1,0 +1,342 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=https://rui.juzi.bot/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+<meta http-equiv="X-DNS-Prefetch-Control" content="on">
+<link rel="dns-prefetch" href="https://rui.juzi.bot">
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+<link rel="prefetch" href="https://rui.juzi.bot">
+<link rel="prefetch" href="//www.google-analytics.com">
+
+    <link rel="dns-prefetch" href="//disqus.com">
+    <link rel="dns-prefetch" href="//lijiarui.disqus.com">
+    <link rel="prefetch" href="//disqus.com">
+    <link rel="prefetch" href="//lijiarui.disqus.com">
+
+
+<link rel="prerender" href="https://rui.juzi.bot">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=https://rui.juzi.bot">
+<meta name="author" content="Li Jiarui">
+<link rel="stylesheet" href="/css/JSimple.css">
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+
+<title>microsoft mvp blog: six lines of code. two mvps. one chatbot. - 李佳芮de博客</title>
+
+<meta name="keywords" content="chatbot, 技术博客, 聊天机器人, 人工智能, 创业">
+
+<meta name="description " content="As Microsoft MVPs, we are always excited to hear “Thank you for sharing. Your project helps us to understand how AI-related projects can make a positive difference in the world">
+
+    
+
+    
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="//www.googletagmanager.com/gtag/js?id=UA-114589636-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-114589636-1');
+        </script>
+    
+    <!-- put your likes here. -->
+
+
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="芮">芮</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/about" title="关于本站">
+            <i class="fa fa-user"></i>
+            <span>关于本站</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <!-- <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a> -->
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">李佳芮の博客</h1>
+        <h3 class="cover-siteTitle">时间看得见</h3>
+        <p class="cover-siteDesc">一个现实的理想主义者</p>
+        <div class="cover-sns">
+            
+    &nbsp;&nbsp;<div class="btn btn-weibo">
+        <a href="https://weibo.com/u/2175505900?refer_flag=1001030101_" target="_blank" title="weibo" ref="friend">
+            <i class="fa fa-weibo"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-weixin">
+        <a href="https://rui.juzi.bot" target="_blank" title="weixin" ref="friend">
+            <i class="fa fa-weixin"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-github">
+        <a href="https://github.com/lijiarui" target="_blank" title="github" ref="friend">
+            <i class="fa fa-github"></i>
+        </a>
+    </div>
+
+    &nbsp;&nbsp;<div class="btn btn-telegram">
+        <a href="https://www.jianshu.com/u/ac5aaa7ad293" target="_blank" title="telegram" ref="friend">
+            <i class="fa fa-telegram"></i>
+        </a>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最近</a></li>
+        
+            
+                <li class>
+                    <a href="/categories/chatbot" data-name="chatbot">chatbot</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/project" data-name="project">project</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/presentation" data-name="presentation">presentation</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/thought" data-name="thought">thought</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/tech" data-name="技术">技术</a>
+                </li>
+            
+                <li class>
+                    <a href="/categories/reading" data-name="读书">读书</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <input type="text" readonly="readonly" id="local-search-input-tip" placeholder="读物检索">
+        <button type="button" disabled="disabled" class="search-form-submit"><i class="fa fa-search"></i></button>
+    </form>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="https://rui.juzi.bot" target="_blank">
+                    <img width="48" src="/images/avatar.jpg" alt="avatar">
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="https://www.juzibot.com" target="_blank">李佳芮</a>
+                    <span title="最后编辑于&nbsp;2020-11-10">2020-11-10</span>
+                </p>
+                <p>一个现实的理想主义者</p>
+            </div>
+            <h2 class="post-title">Microsoft MVP Blog: Six Lines Of Code. Two MVPs. One Chatbot.</h2>
+            <div class="post-meta">
+                本文共计3030个字 |
+                您是第&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <p><strong>Six lines of code. Two MVPs. One chatbot.</strong></p>
+<p>This is the proposition behind Wechaty, a RPA SDK which enables for bot development with just six lines of JavaScript, Python, Go, and Java, and cross-platform support including Linux, Windows, MacOS, and Docker.</p>
+<p>Created by AI MVPs <a href="https://mvp.microsoft.com/en-us/mvp/jiarui%20li-5003226" target="_blank" rel="noopener">Jiarui Li</a> and <a href="https://mvp.microsoft.com/en-us/mvp/Huan%20%E2%80%86%20LI-5003061" target="_blank" rel="noopener">Huan Li</a>, the open-source repository on GitHub has enabled more than 10,000 developers from countries around the world to make AI chatbots and connect to each other.</p>
+<p>“We found that although the chatbot has become one of the hot spots of the internet and something which has been integrating and affecting everyone’s lives, for most developers it remained really difficult to build a chatbot,” the Chinese duo says.</p>
+<p>“Now, thanks to Microsoft AI techniques like BotFramework and Cognitive Service, developers can build a chatbot quickly without any mathematical and algorithmic skills. With Wechaty, developers can use basic software and engineering skills to build an intelligent chatbot at a very low cost.”</p>
+<p>For developers, Wechaty helps raise working efficiency and save time in three ways.</p>
+<p>First, developers save the time of creating a basic framework, which usually takes three to six months. Second, the open-source ecosystem enables developers to leverage the work of others in their solutions. Third, Wechaty supports dozens of instant messaging platforms, so one chatbot can be migrated seamlessly between WeChat, WeChat Work, Gitter, WhatsApp, DingDing, Telegram, and others.</p>
+<p>Launching in 2016, the duo has since built Microsoft AI plugins for Wechaty and given several tech talks at Microsoft Summit. Moreover, the duo has published a book, titled “Chatbot Zero to One: Practice Guide to Conversational Interaction Design,” in order to share their experience of building a chatbot using Microsoft technology.</p>
+<p>During its history, Wechaty has been updated 24 times, attracted about 10,000 developers, and received more than 100 contributors.</p>
+<p>“We built Wechaty to provide the community with a good communication platform,” the duo says. “They are passionate to test, find problems, and submit the quantity of pull requests to help Wechaty repair and grow in return. Certainly, we could say that without these fantastic contributors and community, we could not have today’s high-quality Wechaty!”</p>
+<p>Wechaty actively supports this community with hundreds of technical blogs and videos, docs, and case studies available on the <a href="https://wechaty.js.org" target="_blank" rel="noopener">official website</a>. Further, the team organizes <a href="https://www.bot5.ml" target="_blank" rel="noopener">Bot Friday</a>, a weekly club for chatbot builders and chatbot entrepreneurs which discusses and explores technical problems.</p>
+<p>“As Microsoft MVPs, we are always excited to hear “Thank you for sharing. Your project helps us to understand how AI-related projects can make a positive difference in the world’,” the duo says.</p>
+<p>“In the future, we have a great vision to upgrade Wechaty from a Conversational SDK to SaaS, which will offer a more convenient and efficient service to everyone.”</p>
+<p>For more on Wechaty, check out their <a href="https://github.com/wechaty/wechaty" target="_blank" rel="noopener">Github</a>.</p>
+<blockquote>
+<p>Source: <a href="https://techcommunity.microsoft.com/t5/microsoft-mvp-award-program-blog/six-lines-of-code-two-mvps-one-chatbot/ba-p/1861785" target="_blank" rel="noopener">Microsoft MVP Award Program Blog</a></p>
+</blockquote>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/juzibot/">句子互动</a>
+            
+            <a href="/tags/微软/">微软</a>
+            
+            <a href="/tags/AI/">AI</a>
+            
+            <a href="/tags/Wechaty/">Wechaty</a>
+            
+            <a href="/tags/Chatbot/">Chatbot</a>
+            
+            <a href="/tags/MVP/">MVP</a>
+            
+        </div>
+        
+    </article>
+    
+    <p style="text-align: center">本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+    
+    
+        <div class="adsense_post_left">
+            
+    <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client data-ad-slot></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </div>
+        <div class="adsense_post_right">
+            
+    <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client data-ad-slot></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </div>
+        <p>
+            
+    <ins class="adsbygoogle" style="display:block" data-ad-client data-ad-slot data-ad-format="auto" data-full-width-responsive="true"></ins>
+
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </p>
+    
+
+
+    
+    
+        <div id="disqus_thread"></div>
+        <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            var disqus_config = function () {
+                this.page.url = 'https://rui.juzi.bot/interview/2020-11-10-six-lines-code-two-ai-mvps-one-chatbot.html';
+                this.page.identifier = 'interview/2020-11-10-six-lines-code-two-ai-mvps-one-chatbot.html';
+            };
+            (function () { // DON'T EDIT BELOW THIS LINE
+                var d = document, disqus_shortname = 'lijiarui', s = d.createElement('script');
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+
+
+</div>
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner" style="text-align: center">
+        <p>
+            <a href="/about" title="关于">关于</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="帮助">帮助</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友链">友链</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/sitemap.xml" title="地图">地图</a>
+        </p>
+        <p>
+            本站已建立&nbsp<a href="/timeline" id="siteBuildingTime"></a>&nbsp天，<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="licence">采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议创作</a><br>
+            ©2017-<span id="cpYear"></span> 基于&nbsp<a href="http://hexo.io" target="_blank" rel="nofollow">Hexo</a>
+            ，主题采用&nbsp&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank" rel="bookmark">JSimple</a>
+            ，作者&nbsp<a href="https://rui.juzi.bot" target="_blank" rel="friend">李佳芮</a>
+            ，Hosted by <a href="https://pages.github.com/" target="_blank" rel="nofollow">GitHub Pages</a>
+        </p>
+    </div>
+</footer>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<!-- search pop -->
+<div class="popup search-popup local-search-popup">
+    <div class="local-search-header clearfix">
+        <span class="search-icon">
+            <i class="fa fa-search"></i>
+        </span>
+        <span class="popup-btn-close">
+            <i class="fa fa-times-circle"></i>
+        </span>
+        <div class="local-search-input-wrapper">
+            <input id="local-search-input" spellcheck="false" type="text" autocomplete="off" placeholder="请输入查询关键词">
+        </div>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '01/20/2018',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+            localSearch: {
+                dbPath: '/search.xml',
+                trigger: 'auto',
+                topN: '1',
+                unescape: 'false'
+            }
+        });
+    });
+</script>
+</body>
+</html>
