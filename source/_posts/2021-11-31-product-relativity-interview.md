@@ -21,7 +21,7 @@ photos:
 
 > 本文为播客节目《产品相对论》对句子互动CEO李佳芮的专访逐字稿，阐述了句子互动视角下的SCRM行业、基于微信生态的企业营销趋势、企业数字化转型、私域流量运营等。
 
-播客内容： [社交裂变、私域运营…爆发式增长的SCRM行业——专访福布斯U30、句子互动创始人**李佳芮**](https://www.listennotes.com/podcasts/%E4%BA%A7%E5%93%81%E7%9B%B8%E5%AF%B9%E8%AE%BA/%E7%A4%BE%E4%BA%A4%E8%A3%82%E5%8F%98%E7%A7%81%E5%9F%9F%E8%BF%90%E8%90%A5%E7%88%86%E5%8F%91%E5%BC%8F%E5%A2%9E%E9%95%BF%E7%9A%84scrm%E8%A1%8C%E4%B8%9A%E4%B8%93%E8%AE%BF%E7%A6%8F%E5%B8%83%E6%96%AFu30%E5%8F%A5%E5%AD%90-gicOX31FUlQ/)
+播客内容： [社交裂变、私域运营…爆发式增长的SCRM行业——专访福布斯U30、句子互动创始人李佳芮](https://www.listennotes.com/podcasts/%E4%BA%A7%E5%93%81%E7%9B%B8%E5%AF%B9%E8%AE%BA/%E7%A4%BE%E4%BA%A4%E8%A3%82%E5%8F%98%E7%A7%81%E5%9F%9F%E8%BF%90%E8%90%A5%E7%88%86%E5%8F%91%E5%BC%8F%E5%A2%9E%E9%95%BF%E7%9A%84scrm%E8%A1%8C%E4%B8%9A%E4%B8%93%E8%AE%BF%E7%A6%8F%E5%B8%83%E6%96%AFu30%E5%8F%A5%E5%AD%90-gicOX31FUlQ/)
 
 ## KeyPoint
 
