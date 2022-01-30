@@ -2,7 +2,7 @@
 title: 神策数据CEO桑文锋：To B企业的“铁人四项”——产品、营销、服务和组织要齐头并进丨未来科技营
 author: 桑文锋
 avatar: /images/avatar.jpg
-authorLink: 'https://www.juzibot.com'
+authorLink: 'https://rui.juzi.bot'
 authorAbout: 'https://rui.juzi.bot'
 authorDesc: 一个现实的理想主义者
 categories: saas
