@@ -5,7 +5,7 @@ avatar: /images/avatar.jpg
 authorLink: 'https://www.juzibot.com'
 authorAbout: 'https://rui.juzi.bot'
 authorDesc: 一个现实的理想主义者
-categories: saas
+categories: interview
 date: 2021-11-31 13:05:17
 keywords:
 tags: 

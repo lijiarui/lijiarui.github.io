@@ -2,8 +2,8 @@
 title: 写在2021年的最后一天
 author: 李佳芮
 avatar: /images/avatar.jpg
-authorLink: 'https://www.botorange.com'
-authorAbout: 'https://blog.botorange.com'
+authorLink: 'https://www.juzibot.com'
+authorAbout: 'https://rui.juzi.bot'
 authorDesc: 一个现实的理想主义者
 categories: thought
 date: 2022-1-1 18:04:13
