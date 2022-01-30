@@ -11,8 +11,9 @@ keywords:
 tags: 
   - 句子互动
   - 创业
-  - saas
-  - chatbot
+  - SaaS
+  - Chatbot
+  - SCRM
 description: 微信已经逐渐取代了传统的电话短信，成为新一代的运营商，过去所有基于电话短信的业务都值得在微信上重新做一遍；企微生态会在5年之后达到一个终局，大概会有3-5家纯做企微生态的上市公司；SaaS本质上卖的是最佳实践，你需要能带着方法论入场，告诉你的客户这东西怎么玩，你才会有机会做成。
 photos:
   - /img/2021/11-product-relativity-interview/teaser.jpeg
