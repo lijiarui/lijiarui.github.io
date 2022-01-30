@@ -1,5 +1,5 @@
 ---
-title: 社交裂变、私域运营…爆发式增长的SCRM行业——专访句子互动创始人**李佳芮**
+title: 社交裂变、私域运营…爆发式增长的SCRM行业——专访句子互动创始人李佳芮
 author: 李佳芮
 avatar: /images/avatar.jpg
 authorLink: 'https://www.juzibot.com'
