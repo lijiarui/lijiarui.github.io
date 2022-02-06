@@ -24,9 +24,29 @@ photos:
 > 如今，女性创业者在中国的创业者中已占据不小的比重，女性企业家也早已不是屈指可数。IT 行业的女性在创业中会遇到哪些挑战？又有哪些优势？
 本期 Coding Ladies，我们邀请到了句子互动创始人&CEO 李佳芮，与光辉城市联合创始人&CTO 朱一婷，同时也是两位微软最有价值专家，来跟大家聊聊女性创业之路上的挑战、经历与感悟。希望通过本期活动，可以给 IT 行业的女性从业者带来一些启发。
 
-<iframe
-src="//player.bilibili.com/player.html?aid=252717146&bvid=BV12Y411h7kX&cid=470147717&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true">
-</iframe>
+<div class="zoom-container" style="
+    position: relative;
+    padding-bottom:56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+">
+  <iframe
+    src="//player.bilibili.com/player.html?aid=252717146&bvid=BV12Y411h7kX&cid=470147717&page=1"
+    width='560'
+    height='315'
+    allowfullscreen
+    webkitallowfullscreen
+    frameborder="0"
+    style="
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    "
+  ></iframe>
+</div>
 
 以下是 PPT 内容：
 
