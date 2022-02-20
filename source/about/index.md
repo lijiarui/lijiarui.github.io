@@ -11,7 +11,7 @@ description: 我是谁？
 photos:
 comments: false
 ---
-#### 关于作者
+## 关于作者
 
 - 连续创业者，九年微信生态开发和营销经验，深谙微信生态，自诩最懂微信生态的 SaaS 产品人，入选「福布斯」中国 30 岁以下精英榜单和中关村 30 位高精尖领域创业青年榜单。
 - 北京邮电大学计算机本硕，[Y Combinator](https://www.ycombinator.com/companies/juzibot) 校友，读研期间开始创业。
@@ -35,7 +35,7 @@ comments: false
 
 是一个现实的理想主义者，相信时间看得见。
 
-#### 为何写写作
+## 为何写作
 
 我是一个喜欢写东西的人。
 
@@ -47,7 +47,7 @@ comments: false
 
 感谢写作。
 
-#### 为何建站
+## 为何建站
 
 我发现当我刚刚认识一个合作伙伴的时候，总是先从他的博客认识他，想知道这几年他的经历，他内心经历了哪些事情，他研究了哪些方向，他为什么要走到现在的路。  
 
@@ -55,7 +55,7 @@ comments: false
 
 所以我搭建了这个博客。  
 
-我是一个做chatbot的创业者，我的公司是[句子互动](https://www.juzibot.com)  如果你对我有兴趣，无论是合作还是应聘亦或购买产品，欢迎随时发邮件给我：rui@juzi.bot, 发邮件请注明来源。
+我是一个九年资深 SaaS 创业者，我的公司是[句子互动](https://www.juzibot.com)  如果你对我有兴趣，无论是合作还是应聘亦或购买产品，欢迎随时发邮件给我：rui@juzi.bot, 发邮件请注明来源。
 
 > 加入字节最好的时间是 2016 年，加入美团最好的时间是 2015 年；
 > 加入句子互动最好的时间，是在今天。
@@ -68,7 +68,7 @@ comments: false
 - [销售招聘：做最难且最有价值的事情，月入五万不画饼](https://k0auuqcihb.feishu.cn/docs/doccn84c4AtE2Y1d2TsSLJoYvKf)
 - [更多热门招聘岗位](https://www.zhipin.com/gongsi/382ff359e4cf775f0nR50t--Fw~~.html?ka=company-intro)
 
-#### 我的连接
+## 联系我
 
 - [微博](https://weibo.com/u/2175505900) 健身打卡用的，也会偶尔发个感想，这里会比朋友圈的我更真实，因为人少。
 - [豆瓣](https://www.douban.com/people/83079271/) 心情不好碎碎念的排遣文字，很多仅限我一人可见，挺无聊的东西
