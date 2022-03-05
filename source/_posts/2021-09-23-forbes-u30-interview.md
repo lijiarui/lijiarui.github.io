@@ -78,4 +78,4 @@ photos:
 
 让机器做机器擅长的事情，让人类发挥人类的特长，共享未来。  
 
-> 原文链接：https://mp.weixin.qq.com/s/ivXJ4U_jRNtX1VnWfOwgaQ
+> 原文链接：<http://www.forbeschina.com/billionaires/57511>
