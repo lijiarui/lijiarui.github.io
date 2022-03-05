@@ -15,7 +15,7 @@ tags:
 keywords:
 description: Global AI Bootcamp是微软发起的全球AI开发者训练营活动，旨在凝聚全球的开发者共同学习交流，共同推进人工智能行业快速发展。在2019年12月14日同一天内，全球几十个国家，130个城市，上万人共同参与了这场AI人的狂欢盛会。当日18点30分，AI Bootcamp北京站也在宇宙中心五道口PNP创业孵化器内如期开幕，近百名中国AI开发者参与活动，聆听八位业内专家倾囊分享。
 photos:
-  - /img/2019/microsoft-ai-global-training-camp/image-1.png
+  - /img/2019/12-microsoft-ai-global-training-camp/image-1.png
 ---
 
 Global AI Bootcamp是微软发起的全球AI开发者训练营活动，旨在凝聚全球的开发者共同学习交流，共同推进人工智能行业快速发展。在2019年12月14日同一天内，全球几十个国家，130个城市，上万人共同参与了这场AI人的狂欢盛会。当日18点30分，AI Bootcamp北京站也在宇宙中心五道口PNP创业孵化器内如期开幕，近百名中国AI开发者参与活动，聆听八位业内专家倾囊分享。
@@ -23,7 +23,7 @@ Global AI Bootcamp是微软发起的全球AI开发者训练营活动，旨在凝
 - Global AI Bootcamp: <https://globalai.community/global-ai-bootcamp>
 - Global AI Bootcamp Beijing: <https://globalai.community/global-ai-bootcamp/china-beijing>
 
-![global-bootcamp](/img/2019/microsoft-ai-global-training-camp/image-1.png)
+![global-bootcamp](/img/2019/12-microsoft-ai-global-training-camp/image-1.png)
 
 本次北京站Microsoft AI Bootcamp是由三位微软AI MVP共同发起与组织，三位分别是:
 
@@ -31,27 +31,27 @@ Global AI Bootcamp是微软发起的全球AI开发者训练营活动，旨在凝
 - Microsoft Data&AI 解决方案架构师, 前 Microsoft MVP 陈堰平
 - Microsoft AI MVP, 句子互动创始人&CEO 李佳芮。
 
-![image-2](/img/2019/microsoft-ai-global-training-camp/image-2.png)
+![image-2](/img/2019/12-microsoft-ai-global-training-camp/image-2.png)
 
 现场共有八位来自不同AI领域的嘉宾进行了分享，主题内容涵盖了从基础层到应用层的方方面面，因为分享内容过于精彩，多位嘉宾超时分享，小编在文章最后献上了活动全程直播视频回放，足足5小时，没来现场的开发者们可以远程学习了。
 
-![image-3](/img/2019/microsoft-ai-global-training-camp/image-3.png)
+![image-3](/img/2019/12-microsoft-ai-global-training-camp/image-3.png)
 
 ## 活动签到
 
 Wish you were here.
 
-![pnp](/img/2019/microsoft-ai-global-training-camp/image-5.png)
+![pnp](/img/2019/12-microsoft-ai-global-training-camp/image-5.png)
 
-![register](/img/2019/microsoft-ai-global-training-camp/image-4.png)
+![register](/img/2019/12-microsoft-ai-global-training-camp/image-4.png)
 
 ### 1.主办方致辞
 
 微软AI MVP
 
-![image-6](/img/2019/microsoft-ai-global-training-camp/image-6.png)
-![image-7](/img/2019/microsoft-ai-global-training-camp/image-7.png)
-![image-8](/img/2019/microsoft-ai-global-training-camp/image-8.png)
+![image-6](/img/2019/12-microsoft-ai-global-training-camp/image-6.png)
+![image-7](/img/2019/12-microsoft-ai-global-training-camp/image-7.png)
+![image-8](/img/2019/12-microsoft-ai-global-training-camp/image-8.png)
 
 ### 2.上半场嘉宾分享
 
@@ -60,11 +60,11 @@ Wish you were here.
 - 兰州大学博士  武强
 - VMware软件工程师  张一赫
 
-![image-9](/img/2019/microsoft-ai-global-training-camp/image-9.png)
-![image-10](/img/2019/microsoft-ai-global-training-camp/image-10.png)
-![image-11](/img/2019/microsoft-ai-global-training-camp/image-11.png)
-![image-12](/img/2019/microsoft-ai-global-training-camp/image-12.png)
-![image-13](/img/2019/microsoft-ai-global-training-camp/image-13.png)
+![image-9](/img/2019/12-microsoft-ai-global-training-camp/image-9.png)
+![image-10](/img/2019/12-microsoft-ai-global-training-camp/image-10.png)
+![image-11](/img/2019/12-microsoft-ai-global-training-camp/image-11.png)
+![image-12](/img/2019/12-microsoft-ai-global-training-camp/image-12.png)
+![image-13](/img/2019/12-microsoft-ai-global-training-camp/image-13.png)
 
 ### 3.下半场嘉宾分享
 
@@ -73,26 +73,26 @@ Wish you were here.
 - 句子互动创始人  李佳芮
 - 微软Data&AI架构师  陈堰平
 
-![image-14](/img/2019/microsoft-ai-global-training-camp/image-14.png)
-![image-15](/img/2019/microsoft-ai-global-training-camp/image-15.png)
-![image-16](/img/2019/microsoft-ai-global-training-camp/image-16.png)
-![image-17](/img/2019/microsoft-ai-global-training-camp/image-17.png)
+![image-14](/img/2019/12-microsoft-ai-global-training-camp/image-14.png)
+![image-15](/img/2019/12-microsoft-ai-global-training-camp/image-15.png)
+![image-16](/img/2019/12-microsoft-ai-global-training-camp/image-16.png)
+![image-17](/img/2019/12-microsoft-ai-global-training-camp/image-17.png)
 
 ### 4.开发者互动提问
 
 现场讨论相当热烈，十几位开发者提出了自己的问题，与嘉宾进行互动，并获得了微软礼品。坚持听讲到最后的童鞋还获得了微软Azure Pass。
 
-![image-18](/img/2019/microsoft-ai-global-training-camp/image-18.png)
-![image-19](/img/2019/microsoft-ai-global-training-camp/image-19.png)
-![image-20](/img/2019/microsoft-ai-global-training-camp/image-20.png)
-![image-21](/img/2019/microsoft-ai-global-training-camp/image-21.png)
-![image-22](/img/2019/microsoft-ai-global-training-camp/image-22.png)
-![image-23](/img/2019/microsoft-ai-global-training-camp/image-23.png)
-![image-24](/img/2019/microsoft-ai-global-training-camp/image-24.png)
+![image-18](/img/2019/12-microsoft-ai-global-training-camp/image-18.png)
+![image-19](/img/2019/12-microsoft-ai-global-training-camp/image-19.png)
+![image-20](/img/2019/12-microsoft-ai-global-training-camp/image-20.png)
+![image-21](/img/2019/12-microsoft-ai-global-training-camp/image-21.png)
+![image-22](/img/2019/12-microsoft-ai-global-training-camp/image-22.png)
+![image-23](/img/2019/12-microsoft-ai-global-training-camp/image-23.png)
+![image-24](/img/2019/12-microsoft-ai-global-training-camp/image-24.png)
 
 经过五个小时的分享与讨论，活动在大家高喊“AI MVP”的声音中落下帷幕。
 
-![image-25](/img/2019/microsoft-ai-global-training-camp/image-25.png)
+![image-25](/img/2019/12-microsoft-ai-global-training-camp/image-25.png)
 
 本次活动由Microsoft MVP & DataFun & Plug and Play & Pre-Angel & 句子互动全程落地支持。
 
