@@ -33,7 +33,7 @@ photos:
 
 ![lijiarui](/img/2021/09-microsoft-bitbear-talk/lijiarui.png)
 
-![quandinghua](/img/2021/09-microsoft-bitbear-talk/quandinghua.png)
+![duanqinghua](/img/2021/09-microsoft-bitbear-talk/duanqinghua.png)
 
 **比特熊**：在之前的看电影系列，比特熊对佳芮老师已经有了许多接触！是非常有闪光点的程序员小姐姐。不仅主理着句子互动公司，很多活动中也总能见到佳芮的身影。
 比特熊比较好奇的是清华老师简介里有一句“最懂金融的AI工程师” ，这句话的含义需要本尊来给我解一解。
