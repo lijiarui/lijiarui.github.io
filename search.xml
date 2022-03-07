@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Connecting Women in Tech - 开源中国 - 李佳芮分享女性开源力量</title>
+      <link href="/thought/2022-03-08-osc-women-in-tech.html"/>
+      <url>/thought/2022-03-08-osc-women-in-tech.html</url>
+      
+        <content type="html"><![CDATA[<p>1921 年 9 月， 第二届国际共产主义妇女代表会议决定将 3 月 8 日定为国际妇女节，以庆祝妇女在经济、政治和社会等领域作出的贡献与成就。时至今日，女性的确在各行各业发挥了“半边天”的作用，其中就包括 IT 行业/开源领域。借此机会，OSCHINA 邀您分享女性开源力量，共贺女神节！</p><h3 id="自我介绍"><a href="#自我介绍" class="headerlink" title="自我介绍"></a>自我介绍</h3><ul><li>最懂微信生态的 SaaS 产品人，九年微信生态开发和营销经验，入选「福布斯」中国 30 岁以下精英榜单和中关村 30 位高精尖领域创业青年榜单，科创中国2021年青年创业榜</li><li>连续创业者，读研期间开始创业，曾经入选 Y Combinator 创业营</li><li>产品技术专家，微软人工智能最具价值专家，和百度联手打造《从0到1搭建对话式AI机器人》系列课程，出版中文首本对话式交互图书： 《Chatbot从0到1:对话式交互设计实践指南》，全球最大的对话式交互 RPA SDK 开源框架 Wechaty 联合作者。</li><li>句子互动是私域生态，发展最快、服务最多头部客户的企业微信 SaaS 服务商之一，致力于打造下一代跨平台营销云。 我们的产品、帮助企业10倍提升私域运营效率，助力企业解决获客、转化、复购全流程问题。 客户覆盖电商，线下门店，互联网平台等，包括欧莱雅，宝洁，元气森林，泡泡玛特、美团点评、腾讯广告、薇娅等，其中80%客户来自口碑传播。</li></ul><h3 id="作为女性，我们能为开源世界贡献怎样的力量？"><a href="#作为女性，我们能为开源世界贡献怎样的力量？" class="headerlink" title="作为女性，我们能为开源世界贡献怎样的力量？"></a>作为女性，我们能为开源世界贡献怎样的力量？</h3><p>作为一个创业者，一个开源人，一个产品技术专家，我认为这些事情是不分男女，人和人的差别之大，早已超过了性别的差异。所以这个问题不应该是作为女性能贡献什么力量，而是作为一个独立的个体，我们能为开源世界贡献什么力量。</p><p>那我的回答是，我们先做好自己，然后再做榜样。当开源的世界是一个纯粹的世界，当大家做事都是高效协同，价值导向的时候，其实就已经是最大的力量了。</p><p>具体来到我们自己做事，我很认可apache的原则： If it didn’t happened on the list, it didn’t happen, 在开源的世界，我们自己是否能所有事情都在线上的文档清晰的沟通清楚，能不能在在开源的世界从想法、交流、开发流水线和视频会议都全部的公开和存档，能不能把这些基础的事情做好，做一个价值导向，坦诚率真的人，做一个价值导向，坦诚率真的项目。</p><div class="video-container" style="    position: relative;    padding-bottom:56.25%;    padding-top:30px;    height:0;    overflow:hidden;"><br><iframe width="560" height="315" src="https://www.youtube.com/embed/JaBObasX2_o?start=85" frameborder="0" allowfullscreen style="    position: absolute;    top:0;    left:0;    width:100%;    height:100%;"></iframe></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> thought </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 句子互动 </tag>
+            
+            <tag> 开源 </tag>
+            
+            <tag> 开源中国 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>句子互动 CEO 入选 2021 科创中国·青年创业榜</title>
       <link href="/thought/2022-2-15-kechuangzhongguo-2021.html"/>
       <url>/thought/2022-2-15-kechuangzhongguo-2021.html</url>
@@ -1838,7 +1867,7 @@
       <link href="/project/2018-5-1-wechaty-puppet-padchat.html"/>
       <url>/project/2018-5-1-wechaty-puppet-padchat.html</url>
       
-        <content type="html"><![CDATA[<h1 id="WECHATY-PUPPET-PADCHAT"><a href="#WECHATY-PUPPET-PADCHAT" class="headerlink" title="WECHATY-PUPPET-PADCHAT"></a>WECHATY-PUPPET-PADCHAT</h1><p>项目地址：<a href="https://github.com/lijiarui/wechaty-puppet-padchat" target="_blank" rel="noopener">https://github.com/lijiarui/wechaty-puppet-padchat</a></p><p><a href="/README-en.md"><img src="https://img.shields.io/badge/-English%20Version-blue.svg" alt="English Version"></a></p><p><a href="https://github.com/chatie/wechaty" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Powered%20By-Wechaty-blue.svg" alt="Powered by Wechaty"></a><br><a href="https://www.npmjs.com/package/wechaty-puppet-padchat" target="_blank" rel="noopener"><img src="https://badge.fury.io/js/wechaty-puppet-padchat.svg" alt="NPM Version"></a><br><a href="https://www.npmjs.com/package/wechaty-puppet-padchat?activeTab=versions" target="_blank" rel="noopener"><img src="https://img.shields.io/npm/v/wechaty-puppet-padchat/next.svg" alt="npm (tag)"></a><br><a href="https://www.typescriptlang.org/" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/%3C%2F%3E-TypeScript-blue.svg" alt="TypeScript"></a><br><a href="https://travis-ci.com/lijiarui/wechaty-puppet-padchat" target="_blank" rel="noopener"><img src="https://travis-ci.com/lijiarui/wechaty-puppet-padchat.svg?branch=master" alt="Linux/Mac Build Status"></a> <a href="https://greenkeeper.io/" target="_blank" rel="noopener"><img src="https://badges.greenkeeper.io/lijiarui/wechaty-puppet-padchat.svg" alt="Greenkeeper badge"></a></p><p><img src="https://raw.githubusercontent.com/Chatie/wechaty/master/docs/images/wechaty-logo-en.png" alt="Wechaty Logo"></p><p>这个模块是是通过WebSocket 连接一个协议服务器来控制iPad 微信，实现个人号的微信接口。</p><p>这个模块是基于<a href="https://github.com/Chatie/wechaty/" target="_blank" rel="noopener">Wechaty</a> 的子模块，专门针对ipad 接入的。wechaty 是一个开源的的 <strong>个人号</strong> 微信机器人接口，是一个使用Typescript 构建的Node.js 应用。支持多种微信接入方案，包括网页，ipad，ios，windows， android 等。同时支持<a href="https://travis-ci.com/chatie/wechaty" target="_blank" rel="noopener">Linux</a>, <a href="https://ci.appveyor.com/project/chatie/wechaty" target="_blank" rel="noopener">Windows</a>, <a href="https://travis-ci.com/chatie/wechaty" target="_blank" rel="noopener">Darwin(OSX/Mac)</a> 和 <a href="https://app.shippable.com/github/Chatie/wechaty" target="_blank" rel="noopener">Docker</a> 多个平台。</p><p>只需要6行代码，你就可以 <strong>通过个人号</strong> 搭建一个 <strong>微信机器人功能</strong> ，用来自动管理微信消息。</p><p>更多功能包括：</p><ul><li>消息处理：关键词回复</li><li>群管理：自动入群，拉人，踢人</li><li>自动处理好友请求</li><li>智能对话：通过简单配置，即可加入智能对话系统，完成指定任务</li><li>… 请自行开脑洞</li></ul><p>详情请看<a href="https://github.com/chatie/wechaty" target="_blank" rel="noopener">Wechaty</a>项目 <a href="https://badge.fury.io/js/wechaty" target="_blank" rel="noopener"><img src="https://badge.fury.io/js/wechaty.svg" alt="NPM Version"></a> <a href="https://hub.docker.com/r/zixia/wechaty/" target="_blank" rel="noopener"><img src="https://img.shields.io/docker/pulls/zixia/wechaty.svg?maxAge=2592000" alt="Docker Pulls"></a> <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/&lt;%2F&gt;-TypeScript-blue.svg" alt="TypeScript"></a> <a href="https://greenkeeper.io/" target="_blank" rel="noopener"><img src="https://badges.greenkeeper.io/Chatie/wechaty.svg" alt="Greenkeeper badge"></a></p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install wechaty</span><br><span class="line">npm install wechaty-puppet-padchat</span><br></pre></td></tr></table></figure><h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Wechaty &#125; <span class="keyword">from</span> <span class="string">'wechaty'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> WECHATY_PUPPET_PADCHAT_TOKEN = <span class="string">'your-token-here'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> puppet = <span class="string">'wechaty-puppet-padchat'</span> <span class="comment">// 使用ipad 的方式接入。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> puppetOptions = &#123;</span><br><span class="line">  token: WECHATY_PUPPET_PADCHAT_TOKEN,</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line"><span class="keyword">const</span> bot = <span class="keyword">new</span> Wechaty(&#123;</span><br><span class="line">  puppet,</span><br><span class="line">  puppetOptions,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置完成</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行 wechaty</span></span><br><span class="line">bot</span><br><span class="line">.on(<span class="string">'scan'</span>, <span class="function">(<span class="params">qrcode, status</span>) =&gt;</span> <span class="built_in">console</span>.log(<span class="string">`Scan QR Code to login: <span class="subst">$&#123;status&#125;</span>\nhttps://api.qrserver.com/v1/create-qr-code/?data=<span class="subst">$&#123;<span class="built_in">encodeURIComponent</span>(qrcode)&#125;</span>`</span>))</span><br><span class="line">.on(<span class="string">'login'</span>,            <span class="function"><span class="params">user</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">`User <span class="subst">$&#123;user&#125;</span> logined`</span>))</span><br><span class="line">.on(<span class="string">'message'</span>,       <span class="function"><span class="params">message</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">`Message: <span class="subst">$&#123;message&#125;</span>`</span>))</span><br><span class="line">.start()</span><br></pre></td></tr></table></figure><h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">./node_modules/.bin/ts-node examples/wechaty-padchat-bot.ts</span><br></pre></td></tr></table></figure><h2 id="获取Token"><a href="#获取Token" class="headerlink" title="获取Token"></a>获取Token</h2><p><img src="/img/2018/contact.gif" alt="contact"></p><p><a href="https://github.com/lijiarui/wechaty-puppet-padchat/wiki/%E8%B4%AD%E4%B9%B0token" target="_blank" rel="noopener">了解更多Token 相关内容</a></p><h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><p><a href="https://docs.chatie.io/" target="_blank" rel="noopener">https://docs.chatie.io/</a></p><h2 id="AUTHOR"><a href="#AUTHOR" class="headerlink" title="AUTHOR"></a>AUTHOR</h2><p>Jiarui LI <a href="mailto:&#114;&#117;&#105;&#x40;&#99;&#104;&#x61;&#x74;&#105;&#x65;&#46;&#105;&#x6f;" target="_blank" rel="noopener">&#114;&#117;&#105;&#x40;&#99;&#104;&#x61;&#x74;&#105;&#x65;&#46;&#105;&#x6f;</a></p><h2 id="LICENSE"><a href="#LICENSE" class="headerlink" title="LICENSE"></a>LICENSE</h2><p>Apache-2.0</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="WECHATY-PUPPET-PADCHAT"><a href="#WECHATY-PUPPET-PADCHAT" class="headerlink" title="WECHATY-PUPPET-PADCHAT"></a>WECHATY-PUPPET-PADCHAT</h1><p>项目地址：<a href="https://github.com/lijiarui/wechaty-puppet-padchat" target="_blank" rel="noopener">https://github.com/lijiarui/wechaty-puppet-padchat</a></p><p><a href="/README-en.md"><img src="https://img.shields.io/badge/-English%20Version-blue.svg" alt="English Version"></a></p><p><a href="https://github.com/chatie/wechaty" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Powered%20By-Wechaty-blue.svg" alt="Powered by Wechaty"></a><br><a href="https://www.npmjs.com/package/wechaty-puppet-padchat" target="_blank" rel="noopener"><img src="https://badge.fury.io/js/wechaty-puppet-padchat.svg" alt="NPM Version"></a><br><a href="https://www.npmjs.com/package/wechaty-puppet-padchat?activeTab=versions" target="_blank" rel="noopener"><img src="https://img.shields.io/npm/v/wechaty-puppet-padchat/next.svg" alt="npm (tag)"></a><br><a href="https://www.typescriptlang.org/" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/%3C%2F%3E-TypeScript-blue.svg" alt="TypeScript"></a><br><a href="https://travis-ci.com/lijiarui/wechaty-puppet-padchat" target="_blank" rel="noopener"><img src="https://travis-ci.com/lijiarui/wechaty-puppet-padchat.svg?branch=master" alt="Linux/Mac Build Status"></a> <a href="https://greenkeeper.io/" target="_blank" rel="noopener"><img src="https://badges.greenkeeper.io/lijiarui/wechaty-puppet-padchat.svg" alt="Greenkeeper badge"></a></p><p><img src="https://raw.githubusercontent.com/Chatie/wechaty/master/docs/images/wechaty-logo-en.png" alt="Wechaty Logo"></p><p>这个模块是是通过WebSocket 连接一个协议服务器来控制iPad 微信，实现个人号的微信接口。</p><p>这个模块是基于<a href="https://github.com/Chatie/wechaty/" target="_blank" rel="noopener">Wechaty</a> 的子模块，专门针对ipad 接入的。wechaty 是一个开源的的 <strong>个人号</strong> 微信机器人接口，是一个使用Typescript 构建的Node.js 应用。支持多种微信接入方案，包括网页，ipad，ios，windows， android 等。同时支持<a href="https://travis-ci.com/chatie/wechaty" target="_blank" rel="noopener">Linux</a>, <a href="https://ci.appveyor.com/project/chatie/wechaty" target="_blank" rel="noopener">Windows</a>, <a href="https://travis-ci.com/chatie/wechaty" target="_blank" rel="noopener">Darwin(OSX/Mac)</a> 和 <a href="https://app.shippable.com/github/Chatie/wechaty" target="_blank" rel="noopener">Docker</a> 多个平台。</p><p>只需要6行代码，你就可以 <strong>通过个人号</strong> 搭建一个 <strong>微信机器人功能</strong> ，用来自动管理微信消息。</p><p>更多功能包括：</p><ul><li>消息处理：关键词回复</li><li>群管理：自动入群，拉人，踢人</li><li>自动处理好友请求</li><li>智能对话：通过简单配置，即可加入智能对话系统，完成指定任务</li><li>… 请自行开脑洞</li></ul><p>详情请看<a href="https://github.com/chatie/wechaty" target="_blank" rel="noopener">Wechaty</a>项目 <a href="https://badge.fury.io/js/wechaty" target="_blank" rel="noopener"><img src="https://badge.fury.io/js/wechaty.svg" alt="NPM Version"></a> <a href="https://hub.docker.com/r/zixia/wechaty/" target="_blank" rel="noopener"><img src="https://img.shields.io/docker/pulls/zixia/wechaty.svg?maxAge=2592000" alt="Docker Pulls"></a> <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/&lt;%2F&gt;-TypeScript-blue.svg" alt="TypeScript"></a> <a href="https://greenkeeper.io/" target="_blank" rel="noopener"><img src="https://badges.greenkeeper.io/Chatie/wechaty.svg" alt="Greenkeeper badge"></a></p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install wechaty</span><br><span class="line">npm install wechaty-puppet-padchat</span><br></pre></td></tr></table></figure><h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Wechaty &#125; <span class="keyword">from</span> <span class="string">'wechaty'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> WECHATY_PUPPET_PADCHAT_TOKEN = <span class="string">'your-token-here'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> puppet = <span class="string">'wechaty-puppet-padchat'</span> <span class="comment">// 使用ipad 的方式接入。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> puppetOptions = &#123;</span><br><span class="line">  token: WECHATY_PUPPET_PADCHAT_TOKEN,</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line"><span class="keyword">const</span> bot = <span class="keyword">new</span> Wechaty(&#123;</span><br><span class="line">  puppet,</span><br><span class="line">  puppetOptions,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置完成</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行 wechaty</span></span><br><span class="line">bot</span><br><span class="line">.on(<span class="string">'scan'</span>, <span class="function">(<span class="params">qrcode, status</span>) =&gt;</span> <span class="built_in">console</span>.log(<span class="string">`Scan QR Code to login: <span class="subst">$&#123;status&#125;</span>\nhttps://api.qrserver.com/v1/create-qr-code/?data=<span class="subst">$&#123;<span class="built_in">encodeURIComponent</span>(qrcode)&#125;</span>`</span>))</span><br><span class="line">.on(<span class="string">'login'</span>,            <span class="function"><span class="params">user</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">`User <span class="subst">$&#123;user&#125;</span> logined`</span>))</span><br><span class="line">.on(<span class="string">'message'</span>,       <span class="function"><span class="params">message</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">`Message: <span class="subst">$&#123;message&#125;</span>`</span>))</span><br><span class="line">.start()</span><br></pre></td></tr></table></figure><h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">./node_modules/.bin/ts-node examples/wechaty-padchat-bot.ts</span><br></pre></td></tr></table></figure><h2 id="获取Token"><a href="#获取Token" class="headerlink" title="获取Token"></a>获取Token</h2><p><img src="/img/2018/contact.gif" alt="contact"></p><p><a href="https://github.com/lijiarui/wechaty-puppet-padchat/wiki/%E8%B4%AD%E4%B9%B0token" target="_blank" rel="noopener">了解更多Token 相关内容</a></p><h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><p><a href="https://docs.chatie.io/" target="_blank" rel="noopener">https://docs.chatie.io/</a></p><h2 id="AUTHOR"><a href="#AUTHOR" class="headerlink" title="AUTHOR"></a>AUTHOR</h2><p>Jiarui LI <a href="mailto:&#x72;&#117;&#105;&#x40;&#99;&#x68;&#97;&#x74;&#x69;&#101;&#x2e;&#105;&#x6f;" target="_blank" rel="noopener">&#x72;&#117;&#105;&#x40;&#99;&#x68;&#97;&#x74;&#x69;&#101;&#x2e;&#105;&#x6f;</a></p><h2 id="LICENSE"><a href="#LICENSE" class="headerlink" title="LICENSE"></a>LICENSE</h2><p>Apache-2.0</p>]]></content>
       
       
       <categories>
@@ -2357,9 +2386,9 @@
       
         <tags>
             
-            <tag> 舞哩 </tag>
-            
             <tag> 舞蹈 </tag>
+            
+            <tag> 舞哩 </tag>
             
             <tag> wechaty </tag>
             
@@ -2415,11 +2444,11 @@
             
             <tag> 创业 </tag>
             
+            <tag> 舞蹈 </tag>
+            
             <tag> 舞哩 </tag>
             
             <tag> 自媒体 </tag>
-            
-            <tag> 舞蹈 </tag>
             
         </tags>
       
@@ -2446,9 +2475,9 @@
             
             <tag> 创业 </tag>
             
-            <tag> 舞哩 </tag>
-            
             <tag> 舞蹈 </tag>
+            
+            <tag> 舞哩 </tag>
             
         </tags>
       
@@ -2598,9 +2627,9 @@
             
             <tag> 创业 </tag>
             
-            <tag> 蛮蛮互动 </tag>
-            
             <tag> startup </tag>
+            
+            <tag> 蛮蛮互动 </tag>
             
         </tags>
       
