@@ -17,7 +17,6 @@ comments: false
 - **连续创业者**，[Y Combinator](https://www.ycombinator.com/companies/juzibot) 校友，北京邮电大学计算机本硕，读研期间开始创业。
 - **产品技术专家**，微软人工智能最具价值专家，和百度联手打造[《从0到1搭建对话式AI机器人》](https://ai.baidu.com/unit/home#/train)系列课程，出版中文首本对话式交互图书： [《Chatbot从0到1:对话式交互设计实践指南》](https://item.jd.com/12630213.html)，全球最大的对话式交互 RPA SDK 开源框架 [Wechaty](http://github.com/wechaty/wechaty) 联合作者。
 - **热爱一切运动**，比如马拉松、瑜伽、舞蹈、攀岩、游泳、泰拳、滑雪。任何我没尝试过的运动，都有兴趣去尝试。
-- 个人博客地址：<http://rui.juzi.bot>
 
 2017年创立句子互动，专注基于微信生态提供智能营销服务。同年入选百度AI加速器，次年和百度联手打造[《从0到1搭建聊天机器人》系列课程](https://ai.baidu.com/support/video)。2019年成腾讯云智能对话平台合作伙伴。公司先后获得 PreAngel、Plug and Play、Y Combination、TSVC（清谷资本）和阿尔法公社、真成投资等多家中美机构天使投资。
 
