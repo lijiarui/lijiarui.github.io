@@ -65,9 +65,9 @@ Facebook 中国大陆首期加速器成员企业，百度 AI 加速器首期成�
 
 期待你加入句子互动：
 
+- 跨境业务商业化负责人（直接加我微信联系: ruirui_0914）
 - [产品技术招聘：全栈、后端开发 - Github 万星 Star  开源项目](https://k0auuqcihb.feishu.cn/docs/doccn18HZBOz5OI3Jwixeusll0f)
 - [销售招聘：做最难且最有价值的事情，月入五万不画饼](https://k0auuqcihb.feishu.cn/docs/doccn84c4AtE2Y1d2TsSLJoYvKf)
-- [更多热门招聘岗位](https://www.zhipin.com/gongsi/382ff359e4cf775f0nR50t--Fw~~.html?ka=company-intro)
 
 ## 我喜欢的工作方式
 
