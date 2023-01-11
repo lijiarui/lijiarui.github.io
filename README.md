@@ -15,8 +15,8 @@ hexo deploy
 Do some small change so fork to my repo: [lijiarui/hexo-theme-jsimple](https://github.com/lijiarui/hexo-theme-jsimple)
 
 ```sh
-git clone https://github.com/lijiarui/blog.git
-cd blog
+git clone https://github.com/lijiarui/lijiarui.github.io
+cd lijiarui.github.io
 git clone https://github.com/lijiarui/hexo-theme-jsimple themes/jsimple
 ```
 
