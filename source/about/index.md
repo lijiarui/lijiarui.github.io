@@ -17,7 +17,7 @@ comments: false
 
 - **九年微信生态开发和营销经验**，深谙微信生态，最懂微信生态的 SaaS 产品人。
 - **连续创业者**，[Y Combinator](https://www.ycombinator.com/companies/juzibot) 校友，北京邮电大学计算机本硕，读研期间开始创业。
-- **产品技术专家**，出版中文首本对话式交互图书： [《Chatbot从0到1:对话式交互设计实践指南》](https://item.jd.com/12630213.html)，全球最大的对话式交互 IM(WhatsApp/微信/企业微信/…) RPA SDK 开源框架 [Wechaty](http://github.com/wechaty/wechaty) 联合作者。
+- **产品技术专家** 出版中文首本对话式交互图书： [《Chatbot从0到1:对话式交互设计实践指南》](https://item.jd.com/12630213.html)，全球最大的对话式交互 RPA SDK 开源框架 [Wechaty](http://github.com/wechaty/wechaty) 联合作者，Wechaty 支持只切换一个环境变量就可以接入不同的 IM ，包括 WhatsApp、微信、企业微信、飞书、Tiktok 等。
 - **热爱一切运动**，比如马拉松、瑜伽、舞蹈、攀岩、游泳、泰拳、滑雪。任何我没尝试过的运动，都有兴趣去尝试。
 
 2017 年创立[句子互动](https://juzibot.com/)，专注基于微信生态提供智能营销服务，句子互动基于微信、企业微信提供营销自动化的 SaaS 工具，致力于打造下一代对话式营销云。
