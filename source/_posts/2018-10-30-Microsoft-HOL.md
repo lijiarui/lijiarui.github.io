@@ -1,5 +1,5 @@
 ---
-title: MicroSoft Tech Summit-快速搭建一个聊天机器人
+title: Microsoft Tech Summit-快速搭建一个聊天机器人
 author: 李佳芮
 avatar: /images/avatar.jpg
 authorLink: 'https://www.botorange.com'
@@ -9,7 +9,7 @@ categories: presentation
 date: 2018-10-30 22:57:52 +0800
 tags:
   - LUIS
-  - MicroSoft
+  - Microsoft
   - 聊天机器人
   - wechaty
 keywords:
