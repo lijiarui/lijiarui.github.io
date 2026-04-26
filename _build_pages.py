@@ -114,8 +114,57 @@ def load_posts():
         p["_excerpt"] = make_excerpt(p.get("text", ""))
         p["_tags"] = [t["name"] for t in p.get("tags", [])]
         p["_cover"] = extract_cover(p["path"]) if cat == "presentation" else None
+        p["_uploaded"] = False
     posts.sort(key=lambda p: p.get("date", ""), reverse=True)
     return posts
+
+
+SLIDE_DATE_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})[-_ ](.+)$")
+
+
+def slugify(s):
+    s = re.sub(r"[^\w一-鿿-]+", "-", s)
+    return re.sub(r"-+", "-", s).strip("-").lower()
+
+
+def scan_uploaded_slides():
+    """Scan files/slides/ for .pdf/.pptx/.ppt and return slide records."""
+    folder = ROOT / "files" / "slides"
+    if not folder.exists():
+        return []
+    out = []
+    for fp in sorted(folder.iterdir()):
+        if fp.is_dir() or fp.name.startswith("."):
+            continue
+        ext = fp.suffix.lower()
+        if ext not in (".pdf", ".pptx", ".ppt"):
+            continue
+        stem = fp.stem
+        m = SLIDE_DATE_RE.match(stem)
+        if m:
+            date = m.group(1)
+            title = m.group(2).replace("-", " ").replace("_", " ")
+        else:
+            import datetime
+            mtime = datetime.date.fromtimestamp(fp.stat().st_mtime)
+            date = mtime.isoformat()
+            title = stem.replace("-", " ").replace("_", " ")
+        slug = slugify(stem) or "slide"
+        out.append({
+            "title": title.strip(),
+            "_cat": "presentation",
+            "_cat_label": "演讲",
+            "_date": date,
+            "_year": date[:4],
+            "_tags": [ext.lstrip(".").upper()],
+            "_cover": None,
+            "_uploaded": True,
+            "_source_file": "/files/slides/" + fp.name,
+            "_format": ext.lstrip("."),
+            "_slug": slug,
+            "path": f"slides/files/{slug}/index.html",
+        })
+    return out
 
 
 def sidebar(posts, slide_posts):
@@ -360,23 +409,36 @@ def build_blog(posts):
 
 
 def build_slides(posts):
-    slide_posts = [p for p in posts if p["_cat"] == "presentation"]
+    historical = [p for p in posts if p["_cat"] == "presentation"]
+    uploaded = scan_uploaded_slides()
+    slide_posts = sorted(historical + uploaded, key=lambda p: p["_date"], reverse=True)
     blog_posts = [p for p in posts if p["_cat"] != "presentation"]
 
     def card(p):
-        if p["_cover"]:
+        is_upload = p.get("_uploaded")
+        if p.get("_cover"):
             cover_html = (
                 f'<div class="ppt-cover">'
                 f'<img src="{escape(p["_cover"])}" alt="" loading="lazy">'
                 f'</div>'
             )
+        elif is_upload:
+            fmt = p.get("_format", "pdf").upper()
+            cover_html = (
+                '<div class="ppt-cover ppt-cover-fallback ppt-cover-upload">'
+                f'<span class="ppt-cover-fmt">{escape(fmt)}</span>'
+                '</div>'
+            )
         else:
             initial = escape(p["title"][0]) if p["title"] else ""
             cover_html = f'<div class="ppt-cover ppt-cover-fallback"><span>{initial}</span></div>'
         tags_html = ""
-        if p["_tags"]:
+        tags = list(p.get("_tags", []))
+        if is_upload:
+            tags = ["可预览"] + tags
+        if tags:
             tags_html = '<div class="ppt-tags">' + "".join(
-                f'<span class="ppt-tag">#{escape(t)}</span>' for t in p["_tags"][:6]
+                f'<span class="ppt-tag">#{escape(t)}</span>' for t in tags[:6]
             ) + "</div>"
         return (
             '<li><a href="/' + escape(p["path"]) + '">'
@@ -392,12 +454,15 @@ def build_slides(posts):
     cards_html = "\n".join(card(p) for p in slide_posts)
     side_html = sidebar(blog_posts, slide_posts)
 
+    upload_count = len(uploaded)
+    intro_extra = f"，新上传 {upload_count} 份可在线预览" if upload_count else ""
+
     body = f"""{topnav("slides")}
 
 <div class="wrap">
 <div class="page-intro">
   <h1>分享 PPT</h1>
-  <p>过去做过的 PPT 分享，多数和 Chatbot、Wechaty、开源、创业相关。共 {len(slide_posts)} 份。</p>
+  <p>过去做过的 PPT 分享，多数和 Chatbot、Wechaty、开源、创业相关。共 {len(slide_posts)} 份{intro_extra}。</p>
 </div>
 
 <div class="cols">
@@ -414,6 +479,73 @@ def build_slides(posts):
 
     head = HEAD.format(title="分享 PPT · 李佳芮", desc="李佳芮 PPT 分享合集")
     write("slides/index.html", head + body)
+
+    # Build viewer pages for each uploaded slide
+    for u in uploaded:
+        build_slide_viewer(u, blog_posts, slide_posts)
+
+
+def build_slide_viewer(u, blog_posts, slide_posts):
+    """Build /slides/files/<slug>/index.html with embedded PDF/PPTX preview."""
+    src = u["_source_file"]
+    title = u["title"]
+    fmt = u["_format"]
+
+    if fmt == "pdf":
+        viewer_html = (
+            f'<iframe class="slide-viewer" src="{escape(src)}#view=FitH" '
+            f'title="{escape(title)}" allowfullscreen></iframe>'
+        )
+        download_html = f'<a class="slide-download" href="{escape(src)}" download>下载 PDF ↓</a>'
+        local_note = ""
+    else:  # pptx / ppt — Office Online viewer requires public URL
+        # Use placeholder; on GH Pages https://lijiarui.github.io/files/slides/foo.pptx works.
+        # On localhost the iframe will not render (Office can't reach 127.0.0.1).
+        viewer_html = (
+            '<div class="slide-viewer" id="ppt-viewer-host">'
+            '<div class="slide-viewer-msg">PPT 预览需要公网 URL（Office Online viewer 限制），'
+            '本地预览看不到，请推到 GitHub Pages 后访问。</div>'
+            '<noscript>需要 JavaScript 才能预览 PPT。</noscript>'
+            '</div>'
+            '<script>'
+            '(function(){'
+            'var host=location.hostname;'
+            'if(host&&host!=="localhost"&&host!=="127.0.0.1"){'
+            'var enc=encodeURIComponent(location.origin+' + json.dumps(src) + ');'
+            'var u="https://view.officeapps.live.com/op/embed.aspx?src="+enc;'
+            'document.getElementById("ppt-viewer-host").innerHTML='
+            '\'<iframe class="slide-viewer" src="\'+u+\'" allowfullscreen></iframe>\';'
+            '}'
+            '})();'
+            '</script>'
+        )
+        download_html = f'<a class="slide-download" href="{escape(src)}" download>下载 {fmt.upper()} ↓</a>'
+        local_note = ""
+
+    side_html = sidebar(blog_posts, [p for p in slide_posts if p["_cat"] == "presentation"])
+
+    body = f"""{topnav("slides")}
+
+<div class="wrap-wide">
+<div class="slide-viewer-page">
+  <div class="slide-viewer-head">
+    <div>
+      <a href="/slides/" class="slide-back">← 返回所有分享</a>
+      <h1>{escape(title)}</h1>
+      <div class="slide-meta"><time>{escape(u["_date"])}</time> · {fmt.upper()}</div>
+    </div>
+    <div class="slide-actions">
+      {download_html}
+    </div>
+  </div>
+  {viewer_html}
+</div>
+</div>
+
+{FOOT}"""
+
+    head = HEAD.format(title=f"{escape(title)} · 分享 PPT", desc=f"{escape(title)} – PPT 在线预览")
+    write(u["path"], head + body)
 
 
 def build_claude(posts):

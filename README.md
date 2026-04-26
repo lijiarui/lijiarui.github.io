@@ -43,6 +43,17 @@ python3 _rewrite_posts.py  # 重建文章详情页（如有改动）
 
 **改头像 / 公众号二维码**：替换 `images/avatar.jpg` / `images/wechat-qr.jpg`。如浏览器有缓存，把 `_build_pages.py` 和 `_rewrite_posts.py` 里的 `?v=2` 改成更大数字强刷一次即可。
 
+**新增 PPT / PDF 分享**（最常用流程）：
+
+1. 把文件丢到 `files/slides/` 目录，文件名建议格式：`YYYY-MM-DD-标题.pdf` 或 `YYYY-MM-DD-标题.pptx`
+   - 例：`2025-04-27-juzibot-pitch.pdf`
+   - 不带日期前缀也行，会用文件修改时间
+2. 跑 `python3 _build_pages.py`
+3. `/slides/` 列表自动多出一张橙色"PDF/PPTX"封面卡，进去就是在线预览
+4. **PDF 任何环境都能本地预览**（浏览器内置）
+5. **PPT/PPTX 必须推到 GitHub 后才能预览**——预览走 Office Online viewer，需要公网 URL，本地 127.0.0.1 看不到（页面会显示提示）
+6. 强烈建议导出为 PDF 上传——加载快、显示稳定、跨设备一致
+
 **改侧栏文案 / nav / 微信号**：改 `_build_pages.py` 和 `_rewrite_posts.py` 里 `sidebar()` / `topnav()` 这两个函数，跑一遍两个脚本。
 
 ## 评论系统：LiveRe（来必力）
