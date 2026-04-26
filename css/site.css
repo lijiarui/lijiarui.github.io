@@ -520,7 +520,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   transform: translateY(-1px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
 }
-.ppt-grid a {
+.ppt-grid a.ppt-card-link {
   display: grid;
   grid-template-columns: 240px 1fr;
   color: var(--ink);
@@ -603,7 +603,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 }
 
 @media (max-width: 600px) {
-  .ppt-grid a {
+  .ppt-grid a.ppt-card-link {
     grid-template-columns: 1fr;
   }
   .ppt-cover {
@@ -721,17 +721,82 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 }
 .slide-download:hover { background: var(--accent-hover); color: #fff; text-decoration: none; }
 
+.slide-bottom-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+.slide-bottom-actions .slide-download { flex: 1 1 200px; text-align: center; }
+.slide-open-new {
+  flex: 1 1 200px;
+  text-align: center;
+  display: inline-block;
+  padding: 8px 18px;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  color: var(--ink);
+  font-size: 14px;
+  text-decoration: none;
+  background: var(--bg);
+  transition: all .15s;
+}
+.slide-open-new:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* Download corner button on PPT cards */
+.ppt-card { position: relative; }
+.ppt-card-link { display: block; }
+.ppt-card-download {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  z-index: 2;
+  transition: background .15s, transform .15s;
+  backdrop-filter: blur(4px);
+}
+.ppt-card-download:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: scale(1.08);
+  text-decoration: none;
+}
+
 iframe.slide-viewer {
   width: 100%;
-  height: calc(100vh - 220px);
-  min-height: 500px;
   border: 1px solid var(--rule);
   border-radius: 6px;
   background: var(--bg-soft);
+  display: block;
+}
+/* PDF preview can scroll multi-page → tall is fine */
+iframe.slide-viewer-pdf {
+  height: calc(100vh - 220px);
+  min-height: 500px;
+}
+/* PPT preview is single 16:9 slide via Office viewer → match aspect to avoid black bars */
+iframe.slide-viewer-ppt,
+.slide-viewer-ppt {
+  aspect-ratio: 16 / 10;
+  height: auto;
+  min-height: 240px;
 }
 #ppt-viewer-host {
   width: 100%;
-  min-height: 500px;
   border: 1px solid var(--rule);
   border-radius: 6px;
   background: var(--bg-soft);
@@ -794,17 +859,15 @@ iframe.slide-viewer {
   .slide-description h3 { font-size: 15px; margin: 1.2em 0 0.4em; }
   .slide-tags { gap: 5px; margin-top: 8px; }
   .slide-tag { font-size: 11px; padding: 2px 7px; }
-  iframe.slide-viewer {
-    height: 70vh;
-    min-height: 320px;
-    border-radius: 4px;
-  }
-  #ppt-viewer-host { min-height: 320px; }
+  iframe.slide-viewer { border-radius: 4px; }
+  iframe.slide-viewer-pdf { height: 70vh; min-height: 320px; }
+  iframe.slide-viewer-ppt,
+  .slide-viewer-ppt { aspect-ratio: 16 / 10; min-height: 200px; }
   .slide-viewer-msg { padding: 36px 18px; font-size: 13px; }
 }
 
 @media (max-width: 420px) {
-  iframe.slide-viewer { height: 60vh; min-height: 280px; }
+  iframe.slide-viewer-pdf { height: 60vh; min-height: 280px; }
 }
 
 /* ---------- Filter bar ---------- */

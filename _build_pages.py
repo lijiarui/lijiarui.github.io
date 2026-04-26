@@ -574,15 +574,25 @@ def build_slides(posts, uploaded):
             tags_html = '<div class="ppt-tags">' + "".join(
                 f'<span class="ppt-tag">#{escape(t)}</span>' for t in tags[:6]
             ) + "</div>"
+        download_corner = ""
+        if is_upload and p.get("_source_file"):
+            download_corner = (
+                f'<a class="ppt-card-download" href="{escape(p["_source_file"])}" '
+                f'download title="下载 {escape(p.get("_format", "").upper())}" '
+                f'onclick="event.stopPropagation();">↓</a>'
+            )
         return (
-            '<li><a href="/' + escape(p["path"]) + '">'
+            '<li class="ppt-card">'
+            + '<a class="ppt-card-link" href="/' + escape(p["path"]) + '">'
             + cover_html
             + '<div class="ppt-body">'
             + f'<h3>{escape(p["title"])}</h3>'
             + f'<div class="ppt-meta"><time>{escape(p["_date"])}</time></div>'
             + tags_html
             + '</div>'
-            + '</a></li>'
+            + '</a>'
+            + download_corner
+            + '</li>'
         )
 
     cards_html = "\n".join(card(p) for p in slide_posts)
@@ -627,13 +637,13 @@ def build_slide_viewer(u, blog_posts, slide_posts):
 
     if fmt == "pdf":
         viewer_html = (
-            f'<iframe class="slide-viewer" src="{escape(src)}#view=FitH" '
+            f'<iframe class="slide-viewer slide-viewer-pdf" src="{escape(src)}#view=FitH" '
             f'title="{escape(title)}" allowfullscreen></iframe>'
         )
         download_html = f'<a class="slide-download" href="{escape(src)}" download>下载 PDF ↓</a>'
     else:
         viewer_html = (
-            '<div class="slide-viewer" id="ppt-viewer-host">'
+            '<div class="slide-viewer slide-viewer-ppt" id="ppt-viewer-host">'
             '<div class="slide-viewer-msg">PPT 预览需要公网 URL（Office Online viewer 限制），'
             '本地预览看不到，请推到 GitHub Pages 后访问。</div>'
             '<noscript>需要 JavaScript 才能预览 PPT。</noscript>'
@@ -645,7 +655,7 @@ def build_slide_viewer(u, blog_posts, slide_posts):
             'var enc=encodeURIComponent(location.origin+' + json.dumps(src) + ');'
             'var u="https://view.officeapps.live.com/op/embed.aspx?src="+enc;'
             'document.getElementById("ppt-viewer-host").innerHTML='
-            '\'<iframe class="slide-viewer" src="\'+u+\'" allowfullscreen></iframe>\';'
+            '\'<iframe class="slide-viewer slide-viewer-ppt" src="\'+u+\'" allowfullscreen></iframe>\';'
             '}'
             '})();'
             '</script>'
@@ -681,6 +691,10 @@ def build_slide_viewer(u, blog_posts, slide_posts):
   </div>
   {desc_html}
   {viewer_html}
+  <div class="slide-bottom-actions">
+    <a class="slide-download" href="{escape(src)}" download>下载 {fmt.upper()} ↓</a>
+    <a class="slide-open-new" href="{escape(src)}" target="_blank" rel="noopener">在新标签页打开 ↗</a>
+  </div>
 </div>
 </div>
 
