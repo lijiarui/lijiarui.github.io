@@ -54,6 +54,12 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   padding: 0 28px;
 }
 
+.wrap-wide {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
 /* ---------- Top header ---------- */
 .topnav {
   background: var(--bg);
