@@ -7,7 +7,19 @@ then wraps them in the new layout (top nav + sidebar + footer).
 import json
 import re
 from collections import Counter
-from html import escape, unescape
+from html import escape
+from html import unescape as _unescape
+
+
+def unescape(s):
+    """Unescape repeatedly until stable — handles previously double-escaped strings."""
+    if s is None:
+        return s
+    prev = None
+    while prev != s:
+        prev = s
+        s = _unescape(s)
+    return s
 from pathlib import Path
 
 ROOT = Path(__file__).parent
@@ -292,6 +304,7 @@ def build_post_page(post_meta, parsed, side_html, newer, older):
 {FOOT}"""
 
     desc = re.sub(r"<[^>]+>", "", body)[:120].replace("\n", " ").strip()
+    desc = unescape(desc)
     head = HEAD.format(title=escape(title), desc=escape(desc))
     return head + body_html
 
@@ -322,6 +335,7 @@ def build_page(parsed, side_html, page_meta):
 {FOOT}"""
 
     desc = re.sub(r"<[^>]+>", "", body)[:120].replace("\n", " ").strip()
+    desc = unescape(desc)
     head = HEAD.format(title=escape(title), desc=escape(desc))
     return head + body_html
 

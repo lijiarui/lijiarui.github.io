@@ -1,126 +1,61 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.9.0">
-    <meta charset="utf-8">
-    <title>404 - Not Found</title>
-    <link rel="icon" href="/images/favicon.png">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            outline: none;
-            font-family: \5FAE\8F6F\96C5\9ED1, 宋体;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            -khtml-user-select: none;
-            user-select: none;
-            cursor: default;
-            font-weight: lighter;
-        }
-
-        .center {
-            margin: 0 auto;
-            color: #fff;
-            font-weight: bolder;
-            font-size: 72px;
-        }
-
-        .whole {
-            width: 100%;
-            height: 100%;
-            line-height: 100%;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            z-index: -1000;
-            overflow: hidden;
-        }
-
-        .whole img {
-            width: 100%;
-            height: 100%;
-        }
-
-        .mask {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: #000;
-            opacity: 0.6;
-            filter: alpha(opacity=60);
-        }
-
-        .b {
-            width: 100%;
-            text-align: center;
-            height: 400px;
-            position: absolute;
-            top: 50%;
-            margin-top: -230px
-        }
-
-        .a {
-            width: 150px;
-            height: 50px;
-            margin-top: 30px
-        }
-
-        .a a {
-            display: block;
-            float: left;
-            width: 150px;
-            height: 50px;
-            background: #fff;
-            text-align: center;
-            line-height: 50px;
-            font-size: 18px;
-            border-radius: 25px;
-            color: #333
-        }
-
-        .a a:hover {
-            color: #000;
-            box-shadow: #fff 0 0 20px
-        }
-
-        p {
-            color: #fff;
-            margin-top: 40px;
-            font-size: 24px;
-        }
-
-        #num {
-            margin: 0 5px;
-            font-weight: bold;
-        }
-    </style>
-    <script type="text/javascript">
-        var num = 10;
-        function redirect() {
-            num--;
-            document.getElementById("num").innerHTML = num;
-            if (num < 0) {
-                document.getElementById("num").innerHTML = 0;
-                location.href = "https://rui.juzi.bot";
-            }
-        }
-        setInterval("redirect()", 1000);
-    </script>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>页面不存在 · 李佳芮的博客</title>
+<link rel="stylesheet" href="/css/site.css">
+<link rel="shortcut icon" href="/images/favicon.png">
+<style>
+  .nf-page { text-align: center; padding: 120px 24px 80px; }
+  .nf-page .nf-num {
+    font-size: 96px; font-weight: 800; color: var(--accent);
+    line-height: 1; letter-spacing: -0.04em;
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  .nf-page h1 { font-size: 24px; font-weight: 700; color: var(--ink); margin: 18px 0 10px; }
+  .nf-page p { color: var(--ink-soft); font-size: 15px; margin: 0 0 28px; }
+  .nf-page .nf-actions a {
+    display: inline-block; padding: 10px 20px; margin: 0 6px 8px;
+    background: var(--bg-soft); border: 1px solid var(--rule); border-radius: 4px;
+    color: var(--ink); text-decoration: none; font-size: 14px; transition: all .15s;
+  }
+  .nf-page .nf-actions a:hover { border-color: var(--accent); color: var(--accent); }
+</style>
 </head>
+<body>
+<header class="topnav"><div class="wrap row">
+<div class="brand"><a href="/">李佳芮</a><span class="tagline">时间看得见</span></div>
+<nav>
+<a href="/">首页</a>
+<a href="/blog/">博客</a>
+<a href="/claude/">Claude 永动机</a>
+<a href="/slides/">分享 PPT</a>
+<a href="/about/">关于</a>
+<a href="https://github.com/lijiarui" target="_blank" rel="noopener" class="nav-ext">GitHub ↗</a>
+</nav>
+</div></header>
 
-<body onload="redirect();">
-<div class="whole">
-    <img src="/images/404-bg.jpg">
-    <div class="mask"></div>
+<div class="wrap">
+<div class="nf-page">
+  <div class="nf-num">404</div>
+  <h1>这个地方什么也没有。</h1>
+  <p>页面不存在，或者已经搬走了。</p>
+  <div class="nf-actions">
+    <a href="/">回首页</a>
+    <a href="/blog/">看博客</a>
+    <a href="/slides/">看 PPT</a>
+  </div>
 </div>
-<div class="b">
-    <h1 class="center">Ignorance is bliss.</h1>
-    <p><br><br><br><br>
-        return to home page after<span id="num"></span>seconds...
-    </p>
 </div>
-</body>
-</html>
+
+<footer class="site-foot"><div class="wrap">
+<a href="https://github.com/lijiarui">GitHub</a>
+<a href="https://juzibot.com">句子互动</a>
+<a href="/blog/">博客</a>
+<a href="/claude/">Claude 永动机</a>
+<a href="/slides/">分享 PPT</a>
+<a href="/about/">关于</a>
+<div class="copyright">© Li Jiarui · 时间看得见</div>
+</div></footer>
+</body></html>

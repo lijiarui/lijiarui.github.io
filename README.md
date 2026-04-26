@@ -7,12 +7,16 @@
 ```
 .
 ├── index.html              # 首页（自动生成）
+├── 404.html                # 404 页（手写）
 ├── blog/index.html         # 博客列表页（自动生成）
 ├── slides/index.html       # 分享 PPT 页（自动生成）
+├── slides/files/<slug>/    # 上传 PPT 的预览页（自动生成）
 ├── claude/index.html       # Claude 永动机页（自动生成）
 ├── about/index.html        # 关于页（rewriter 改造）
-├── thought/, chatbot/...   # 8 个分类目录，共 106 篇文章
-├── content.json            # 全站元数据（Hexo 时代留下的，rewriter 仍依赖）
+├── thought/, chatbot/...   # 8 个分类目录，共 109 篇文章
+├── files/slides/           # 你上传的 PPT/PDF + 可选 .md 描述
+├── img/slides/             # 自动生成的 PPT 第一页封面图（缓存）
+├── content.json            # 全站元数据（rewriter 与 build 都依赖）
 ├── search-index.json       # 站内搜索索引（自动生成）
 ├── css/site.css            # 全站样式
 ├── js/search.js            # 客户端搜索
@@ -20,7 +24,8 @@
 ├── images/wechat-qr.jpg    # 公众号二维码
 ├── img/                    # 文章配图（按年份分目录）
 ├── _build_pages.py         # 生成首页 / 博客 / 分享 PPT / Claude / 搜索索引
-└── _rewrite_posts.py       # 重写 106 篇文章详情页 + about 页
+├── _rewrite_posts.py       # 重写 109 篇文章详情页 + about 页
+└── _publish_feishu.py      # 把飞书 wiki 文章拉下来转成博客（一次性脚本）
 ```
 
 ## 本地预览
@@ -48,11 +53,31 @@ python3 _rewrite_posts.py  # 重建文章详情页（如有改动）
 1. 把文件丢到 `files/slides/` 目录，文件名建议格式：`YYYY-MM-DD-标题.pdf` 或 `YYYY-MM-DD-标题.pptx`
    - 例：`2025-04-27-juzibot-pitch.pdf`
    - 不带日期前缀也行，会用文件修改时间
-2. 跑 `python3 _build_pages.py`
-3. `/slides/` 列表自动多出一张橙色"PDF/PPTX"封面卡，进去就是在线预览
-4. **PDF 任何环境都能本地预览**（浏览器内置）
-5. **PPT/PPTX 必须推到 GitHub 后才能预览**——预览走 Office Online viewer，需要公网 URL，本地 127.0.0.1 看不到（页面会显示提示）
-6. 强烈建议导出为 PDF 上传——加载快、显示稳定、跨设备一致
+2. **可选**：在同一目录建一个 `<同名>.md` 文件覆盖标题、加标签和描述：
+
+   ```markdown
+   ---
+   title: 你想要的中文标题（覆盖文件名）
+   tags: 创业, AI, 产品
+   date: 2025-04-27
+   ---
+
+   一段描述。支持 **加粗**、[链接](https://...)、列表、引用、标题。
+   会展示在详情页 PPT 预览上方。
+   ```
+
+3. 跑 `python3 _build_pages.py`
+4. `/slides/` 列表自动多出一张卡——封面是 PPT 第一页（自动 qlmanage 抽取，缓存到 `img/slides/`），点进去是描述 + 在线预览
+5. 首页"最近在写"也会按日期混入新上传的 PPT
+6. **PDF 任何环境都能本地预览**（浏览器内置）
+7. **PPT/PPTX 必须推到 GitHub 后才能预览**——走 Office Online viewer，需要公网 URL，本地 127.0.0.1 看不到（页面会显示提示）
+8. 强烈建议导出为 PDF 上传——加载快、显示稳定、跨设备一致
+
+**从飞书把文章发布为博客**：
+
+1. 在 `_publish_feishu.py` 里编辑 `ARTICLES` 列表，添加：源 markdown 路径（先用 `lark-cli docs +fetch --doc <wiki url>` 拉下来）、slug、日期、分类、标签
+2. 跑 `python3 _publish_feishu.py` → `python3 _rewrite_posts.py` → `python3 _build_pages.py`
+3. 文章自动注册到 `content.json`，进 feed / search / 列表页
 
 **改侧栏文案 / nav / 微信号**：改 `_build_pages.py` 和 `_rewrite_posts.py` 里 `sidebar()` / `topnav()` 这两个函数，跑一遍两个脚本。
 
@@ -105,4 +130,12 @@ git push origin main
 
 - 2012-2023：Hexo 静态生成，主题 JSimple
 - 2026-04：完全重构，去掉 Hexo 主题，改成手写 CSS + Python 脚本生成
+- 2026-04：评论从 Disqus 迁移到 LiveRe，新增搜索、PPT 上传预览、Claude 永动机栏目
 - 旧首页备份在 `index-old.html`，旧文章备份在 `/tmp/posts-backup.tar.gz`（如未清理）
+
+## 依赖
+
+- Python 3 (built-in stdlib)
+- `markdown` (pip3 install markdown) — 用于 `_publish_feishu.py` 把 Markdown 转 HTML
+- macOS `qlmanage` (内置) — 用于自动抽取 PPT/PDF 第一页作封面
+- `lark-cli` (npm install -g @larksuite/cli) — 用于拉飞书文档
