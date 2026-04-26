@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """Generate index.html, blog/index.html, slides/index.html, claude/index.html
 and search-index.json from content.json."""
+import datetime
 import json
 import re
+import subprocess
 from collections import Counter
 from html import escape
 from pathlib import Path
@@ -127,41 +129,170 @@ def slugify(s):
     return re.sub(r"-+", "-", s).strip("-").lower()
 
 
+def parse_md_sidecar(path):
+    """Parse .md with YAML-ish frontmatter. Returns (meta_dict, body_text)."""
+    if not path.exists():
+        return {}, ""
+    text = path.read_text(encoding="utf-8")
+    if not text.lstrip().startswith("---"):
+        return {}, text.strip()
+    rest = text.lstrip()[3:]
+    if "---" not in rest:
+        return {}, text.strip()
+    fm_text, body = rest.split("---", 1)
+    meta = {}
+    for line in fm_text.split("\n"):
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        if ":" in line:
+            k, v = line.split(":", 1)
+            meta[k.strip().lower()] = v.strip().strip('"').strip("'")
+    return meta, body.strip()
+
+
+def render_inline_md(text):
+    text = escape(text)
+    text = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", text)
+    text = re.sub(r"`([^`]+)`", r"<code>\1</code>", text)
+    text = re.sub(
+        r"\[([^\]]+)\]\(([^)]+)\)",
+        lambda m: f'<a href="{escape(m.group(2), quote=True)}">{m.group(1)}</a>',
+        text,
+    )
+    return text
+
+
+def render_md(text):
+    if not text or not text.strip():
+        return ""
+    blocks = re.split(r"\n\s*\n", text.strip())
+    html = []
+    for block in blocks:
+        block = block.strip()
+        if not block:
+            continue
+        m = re.match(r"^(#{1,6})\s+(.+)", block)
+        if m:
+            level = min(len(m.group(1)) + 1, 6)
+            html.append(f"<h{level}>{render_inline_md(m.group(2))}</h{level}>")
+            continue
+        if block.startswith(">"):
+            inner_lines = [re.sub(r"^>\s?", "", l) for l in block.split("\n")]
+            inner = "<br>".join(render_inline_md(l) for l in inner_lines)
+            html.append(f"<blockquote>{inner}</blockquote>")
+            continue
+        if re.match(r"^[-*]\s", block):
+            items = re.split(r"\n(?=[-*]\s)", block)
+            lis_parts = []
+            for i in items:
+                if not i.strip():
+                    continue
+                cleaned = re.sub(r"^[-*]\s+", "", i.strip())
+                lis_parts.append(f"<li>{render_inline_md(cleaned)}</li>")
+            html.append(f"<ul>{''.join(lis_parts)}</ul>")
+            continue
+        if re.match(r"^\d+\.\s", block):
+            items = re.split(r"\n(?=\d+\.\s)", block)
+            lis_parts = []
+            for i in items:
+                if not i.strip():
+                    continue
+                cleaned = re.sub(r"^\d+\.\s+", "", i.strip())
+                lis_parts.append(f"<li>{render_inline_md(cleaned)}</li>")
+            html.append(f"<ol>{''.join(lis_parts)}</ol>")
+            continue
+        rendered = render_inline_md(block).replace("\n", "<br>")
+        html.append(f"<p>{rendered}</p>")
+    return "\n".join(html)
+
+
+def generate_cover(src_path, slug):
+    """Use qlmanage to extract first-page thumbnail. Returns URL path or None."""
+    out_dir = ROOT / "img" / "slides"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    target = out_dir / f"{slug}.png"
+    if target.exists() and target.stat().st_mtime > src_path.stat().st_mtime:
+        return f"/img/slides/{slug}.png"
+    try:
+        subprocess.run(
+            ["qlmanage", "-t", "-s", "1200", "-o", str(out_dir), str(src_path)],
+            capture_output=True, timeout=60, check=False,
+        )
+    except (subprocess.SubprocessError, FileNotFoundError):
+        return None
+    tmp = out_dir / f"{src_path.name}.png"
+    if tmp.exists():
+        if target.exists():
+            target.unlink()
+        tmp.rename(target)
+        return f"/img/slides/{slug}.png"
+    return None
+
+
 def scan_uploaded_slides():
-    """Scan files/slides/ for .pdf/.pptx/.ppt and return slide records."""
+    """Scan files/slides/ for .pdf/.pptx/.ppt and return slide records.
+
+    Each slide can have an optional sidecar .md with YAML frontmatter:
+      ---
+      title: 自定义标题
+      tags: 标签1, 标签2
+      date: 2025-04-27
+      ---
+      Markdown 描述正文（多段、支持加粗/链接/列表）
+    """
     folder = ROOT / "files" / "slides"
     if not folder.exists():
         return []
     out = []
     for fp in sorted(folder.iterdir()):
-        if fp.is_dir() or fp.name.startswith("."):
+        if fp.is_dir() or fp.name.startswith(".") or fp.suffix.lower() == ".md":
             continue
         ext = fp.suffix.lower()
         if ext not in (".pdf", ".pptx", ".ppt"):
             continue
         stem = fp.stem
+        slug = slugify(stem) or "slide"
+
+        # Default title and date from filename
         m = SLIDE_DATE_RE.match(stem)
         if m:
             date = m.group(1)
-            title = m.group(2).replace("-", " ").replace("_", " ")
+            title = m.group(2).replace("-", " ").replace("_", " ").strip()
         else:
-            import datetime
             mtime = datetime.date.fromtimestamp(fp.stat().st_mtime)
             date = mtime.isoformat()
-            title = stem.replace("-", " ").replace("_", " ")
-        slug = slugify(stem) or "slide"
+            title = stem.replace("-", " ").replace("_", " ").strip()
+
+        # Sidecar metadata override
+        meta, body_md = parse_md_sidecar(folder / f"{stem}.md")
+        if meta.get("title"):
+            title = meta["title"]
+        if meta.get("date"):
+            date = meta["date"]
+        tags = []
+        if meta.get("tags"):
+            tags = [t.strip() for t in re.split(r"[,，]", meta["tags"]) if t.strip()]
+
+        cover_url = generate_cover(fp, slug)
+        desc_html = render_md(body_md) if body_md else ""
+        excerpt = make_excerpt(body_md, 160) if body_md else ""
+
         out.append({
-            "title": title.strip(),
+            "title": title,
             "_cat": "presentation",
             "_cat_label": "演讲",
             "_date": date,
             "_year": date[:4],
-            "_tags": [ext.lstrip(".").upper()],
-            "_cover": None,
+            "_tags": tags,
+            "_cover": cover_url,
             "_uploaded": True,
             "_source_file": "/files/slides/" + fp.name,
             "_format": ext.lstrip("."),
             "_slug": slug,
+            "_description_md": body_md,
+            "_description_html": desc_html,
+            "_excerpt": excerpt,
             "path": f"slides/files/{slug}/index.html",
         })
     return out
@@ -270,17 +401,21 @@ def entry_html(p):
 </article>"""
 
 
-def build_index(posts):
+def build_index(posts, uploaded_slides):
     blog_posts = [p for p in posts if p["_cat"] != "presentation"]
-    slide_posts = [p for p in posts if p["_cat"] == "presentation"]
-    feed_posts = blog_posts[:8]
+    slide_posts_all = [p for p in posts if p["_cat"] == "presentation"] + uploaded_slides
+
+    # Feed mixes blog + uploaded slides (NOT historical Hexo presentations — those are 2015-2021 archive)
+    feed_source = blog_posts + uploaded_slides
+    feed_source.sort(key=lambda p: p["_date"], reverse=True)
+    feed_posts = feed_source[:8]
 
     feed_html = "\n".join(entry_html(p) for p in feed_posts)
-    side_html = sidebar(blog_posts, slide_posts)
+    side_html = sidebar(blog_posts, slide_posts_all)
 
     first_year = blog_posts[-1]["_year"] if blog_posts else ""
     last_year = blog_posts[0]["_year"] if blog_posts else ""
-    slide_first = slide_posts[-1]["_year"] if slide_posts else ""
+    slide_first = slide_posts_all[-1]["_year"] if slide_posts_all else ""
 
     home_cards = f"""<div class="home-cards">
   <a class="home-card" href="/blog/">
@@ -300,7 +435,7 @@ def build_index(posts):
     <span class="hc-arrow">→</span>
   </a>
   <a class="home-card" href="/slides/">
-    <div class="hc-num">{len(slide_posts)}</div>
+    <div class="hc-num">{len(slide_posts_all)}</div>
     <div class="hc-meta">
       <h3>分享 PPT</h3>
       <p>过往演讲与分享 · {slide_first} 起</p>
@@ -408,9 +543,8 @@ def build_blog(posts):
     write("blog/index.html", head + body)
 
 
-def build_slides(posts):
+def build_slides(posts, uploaded):
     historical = [p for p in posts if p["_cat"] == "presentation"]
-    uploaded = scan_uploaded_slides()
     slide_posts = sorted(historical + uploaded, key=lambda p: p["_date"], reverse=True)
     blog_posts = [p for p in posts if p["_cat"] != "presentation"]
 
@@ -497,10 +631,7 @@ def build_slide_viewer(u, blog_posts, slide_posts):
             f'title="{escape(title)}" allowfullscreen></iframe>'
         )
         download_html = f'<a class="slide-download" href="{escape(src)}" download>下载 PDF ↓</a>'
-        local_note = ""
-    else:  # pptx / ppt — Office Online viewer requires public URL
-        # Use placeholder; on GH Pages https://lijiarui.github.io/files/slides/foo.pptx works.
-        # On localhost the iframe will not render (Office can't reach 127.0.0.1).
+    else:
         viewer_html = (
             '<div class="slide-viewer" id="ppt-viewer-host">'
             '<div class="slide-viewer-msg">PPT 预览需要公网 URL（Office Online viewer 限制），'
@@ -520,9 +651,18 @@ def build_slide_viewer(u, blog_posts, slide_posts):
             '</script>'
         )
         download_html = f'<a class="slide-download" href="{escape(src)}" download>下载 {fmt.upper()} ↓</a>'
-        local_note = ""
 
     side_html = sidebar(blog_posts, [p for p in slide_posts if p["_cat"] == "presentation"])
+
+    desc_html = ""
+    if u.get("_description_html"):
+        desc_html = f'<div class="slide-description">{u["_description_html"]}</div>'
+
+    tags_html = ""
+    if u.get("_tags"):
+        tags_html = '<div class="slide-tags">' + "".join(
+            f'<span class="slide-tag">#{escape(t)}</span>' for t in u["_tags"]
+        ) + '</div>'
 
     body = f"""{topnav("slides")}
 
@@ -533,11 +673,13 @@ def build_slide_viewer(u, blog_posts, slide_posts):
       <a href="/slides/" class="slide-back">← 返回所有分享</a>
       <h1>{escape(title)}</h1>
       <div class="slide-meta"><time>{escape(u["_date"])}</time> · {fmt.upper()}</div>
+      {tags_html}
     </div>
     <div class="slide-actions">
       {download_html}
     </div>
   </div>
+  {desc_html}
   {viewer_html}
 </div>
 </div>
@@ -616,9 +758,11 @@ def build_search_index(posts):
 def main():
     posts = load_posts()
     print(f"loaded {len(posts)} posts")
-    build_index(posts)
+    uploaded = scan_uploaded_slides()
+    print(f"  + {len(uploaded)} uploaded slides")
+    build_index(posts, uploaded)
     build_blog(posts)
-    build_slides(posts)
+    build_slides(posts, uploaded)
     build_claude(posts)
     build_search_index(posts)
 
