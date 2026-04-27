@@ -1065,7 +1065,7 @@ iframe.slide-viewer-ppt,
 .post-head {
   margin-bottom: 28px;
   padding-bottom: 20px;
-  border-bottom: 1px dashed var(--rule);
+  border-bottom: 1px solid var(--rule);
 }
 .post-cat-line {
   margin-bottom: 12px;
@@ -1085,9 +1085,9 @@ iframe.slide-viewer-ppt,
   text-decoration: none;
 }
 .post-title-h1 {
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 700;
-  color: var(--ink);
+  color: var(--accent);
   line-height: 1.35;
   margin: 0 0 14px;
   letter-spacing: -0.01em;
@@ -1119,8 +1119,6 @@ iframe.slide-viewer-ppt,
 .post-content h1 { font-size: 24px; }
 .post-content h2 {
   font-size: 21px;
-  padding-bottom: 6px;
-  border-bottom: 1px solid var(--rule);
 }
 .post-content h3 { font-size: 18px; }
 .post-content h4 { font-size: 16px; }
@@ -1449,7 +1447,7 @@ iframe.slide-viewer-ppt,
 }
 
 @media (max-width: 720px) {
-  .post-title-h1 { font-size: 23px; }
+  .post-title-h1 { font-size: 24px; }
   .post-content { font-size: 15px; line-height: 1.8; }
   .post-content h1 { font-size: 21px; }
   .post-content h2 { font-size: 19px; }
