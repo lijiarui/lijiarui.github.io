@@ -189,6 +189,34 @@ def sidebar(posts, slide_posts):
 </aside>"""
 
 
+def clean_feishu_html(html):
+    """Convert Feishu custom tags in rendered HTML to standard HTML."""
+    # callout: <p><callout ...></p>TEXT</callout></p> → <div class="callout">TEXT</div>
+    html = re.sub(r'<p>\s*<callout[^>]*>\s*</p>', '<div class="callout">', html, flags=re.I)
+    html = re.sub(r'</callout>\s*</p>', '</div>', html, flags=re.I)
+    html = re.sub(r'<callout[^>]*>', '<div class="callout">', html, flags=re.I)
+    html = re.sub(r'</callout>', '</div>', html, flags=re.I)
+    # quote-container: strip wrapper only, keep inner content
+    html = re.sub(r'<p>\s*<quote-container[^>]*>\s*</p>', '', html, flags=re.I)
+    html = re.sub(r'</quote-container[^>]*>\s*</p>', '', html, flags=re.I)
+    html = re.sub(r'</?quote-container[^>]*>', '', html, flags=re.I)
+    # <text color="X"> → <span style="color:X">
+    def _text_to_span(m):
+        attrs = m.group(1)
+        color_m = re.search(r'color="([^"]+)"', attrs)
+        underline_m = re.search(r'underline="true"', attrs)
+        styles = []
+        if color_m:
+            styles.append(f'color:{color_m.group(1)}')
+        if underline_m:
+            styles.append('text-decoration:underline')
+        return f'<span style="{";".join(styles)}">' if styles else '<span>'
+    html = re.sub(r'<text\s+([^>]*)>', _text_to_span, html, flags=re.I)
+    html = re.sub(r'<text>', '<span>', html, flags=re.I)
+    html = re.sub(r'</text>', '</span>', html, flags=re.I)
+    return html
+
+
 def extract_post(html):
     """Parse the body, title, date, tags from either legacy or new HTML."""
     body = ""
@@ -201,7 +229,7 @@ def extract_post(html):
     ):
         m = re.search(pat, html, re.S)
         if m:
-            body = m.group(1).strip()
+            body = clean_feishu_html(m.group(1).strip())
             break
 
     # Title: legacy h2, or new h1 — unescape entities so we don't double-escape later

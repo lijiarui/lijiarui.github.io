@@ -23,7 +23,7 @@ CAT_LABEL = {
     "tech": "Tech",
 }
 
-EXCERPT_LEN = 160
+EXCERPT_LEN = 220
 
 SITE_URL = "https://rui.juzi.bot"
 
@@ -107,8 +107,22 @@ def topnav(active):
 """
 
 
+def strip_feishu_tags(text):
+    """Remove Feishu custom tags (callout, text, quote-container) keeping inner content."""
+    text = re.sub(r"<callout[^>]*>", "", text, flags=re.I)
+    text = re.sub(r"</callout>", "", text, flags=re.I)
+    text = re.sub(r"<quote-container[^>]*>", "", text, flags=re.I)
+    text = re.sub(r"</quote-container>", "", text, flags=re.I)
+    text = re.sub(r"<text[^>]*>", "", text, flags=re.I)
+    text = re.sub(r"</text>", "", text, flags=re.I)
+    # also strip any remaining HTML tags
+    text = re.sub(r"<[^>]+>", "", text)
+    return text
+
+
 def make_excerpt(text, n=EXCERPT_LEN):
-    text = re.sub(r"\s+", " ", text or "").strip()
+    text = strip_feishu_tags(text or "")
+    text = re.sub(r"\s+", " ", text).strip()
     if len(text) <= n:
         return text
     cut = text[:n]
@@ -148,7 +162,8 @@ def load_posts():
         p["_date"] = d[:10]
         p["_year"] = d[:4]
         p["_month"] = d[:7]
-        p["_excerpt"] = make_excerpt(p.get("text", ""))
+        raw = p.get("description") or p.get("text", "")
+        p["_excerpt"] = make_excerpt(raw)
         p["_tags"] = [t["name"] for t in p.get("tags", [])]
         p["_cover"] = extract_cover(p["path"]) if cat == "presentation" else None
         p["_uploaded"] = False

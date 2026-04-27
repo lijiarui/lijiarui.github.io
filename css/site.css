@@ -1097,6 +1097,19 @@ iframe.slide-viewer-ppt,
   color: var(--ink-mute);
 }
 
+/* ---------- Feishu callout block ---------- */
+.callout {
+  margin: 1.4em 0;
+  padding: 14px 18px;
+  background: rgba(210, 105, 17, 0.06);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 4px 4px 0;
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.75;
+}
+.callout p { margin: 0; }
+
 /* ---------- Markdown body ---------- */
 .post-content {
   font-size: 16px;
