@@ -574,13 +574,6 @@ def build_slides(posts, uploaded):
             tags_html = '<div class="ppt-tags">' + "".join(
                 f'<span class="ppt-tag">#{escape(t)}</span>' for t in tags[:6]
             ) + "</div>"
-        download_corner = ""
-        if is_upload and p.get("_source_file"):
-            download_corner = (
-                f'<a class="ppt-card-download" href="{escape(p["_source_file"])}" '
-                f'download title="下载 {escape(p.get("_format", "").upper())}" '
-                f'onclick="event.stopPropagation();">↓</a>'
-            )
         return (
             '<li class="ppt-card">'
             + '<a class="ppt-card-link" href="/' + escape(p["path"]) + '">'
@@ -591,7 +584,6 @@ def build_slides(posts, uploaded):
             + tags_html
             + '</div>'
             + '</a>'
-            + download_corner
             + '</li>'
         )
 
@@ -637,10 +629,9 @@ def build_slide_viewer(u, blog_posts, slide_posts):
 
     if fmt == "pdf":
         viewer_html = (
-            f'<iframe class="slide-viewer slide-viewer-pdf" src="{escape(src)}#view=FitH" '
+            f'<iframe class="slide-viewer slide-viewer-pdf" src="{escape(src)}#view=FitH&toolbar=0" '
             f'title="{escape(title)}" allowfullscreen></iframe>'
         )
-        download_html = f'<a class="slide-download" href="{escape(src)}" download>下载 PDF ↓</a>'
     else:
         viewer_html = (
             '<div class="slide-viewer slide-viewer-ppt" id="ppt-viewer-host">'
@@ -660,7 +651,6 @@ def build_slide_viewer(u, blog_posts, slide_posts):
             '})();'
             '</script>'
         )
-        download_html = f'<a class="slide-download" href="{escape(src)}" download>下载 {fmt.upper()} ↓</a>'
 
     side_html = sidebar(blog_posts, [p for p in slide_posts if p["_cat"] == "presentation"])
 
@@ -685,16 +675,9 @@ def build_slide_viewer(u, blog_posts, slide_posts):
       <div class="slide-meta"><time>{escape(u["_date"])}</time> · {fmt.upper()}</div>
       {tags_html}
     </div>
-    <div class="slide-actions">
-      {download_html}
-    </div>
   </div>
   {desc_html}
   {viewer_html}
-  <div class="slide-bottom-actions">
-    <a class="slide-download" href="{escape(src)}" download>下载 {fmt.upper()} ↓</a>
-    <a class="slide-open-new" href="{escape(src)}" target="_blank" rel="noopener">在新标签页打开 ↗</a>
-  </div>
 </div>
 </div>
 
