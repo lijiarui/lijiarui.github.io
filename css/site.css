@@ -695,6 +695,40 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   border: 1px solid var(--rule);
   color: var(--accent);
 }
+.slide-description img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5em auto;
+  border-radius: 6px;
+  border: 1px solid var(--rule);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+.slide-description table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.4em 0 1.6em;
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+.slide-description th,
+.slide-description td {
+  border: 1px solid var(--rule);
+  padding: 10px 14px;
+  text-align: left;
+  vertical-align: top;
+}
+.slide-description th {
+  background: var(--bg-soft);
+  font-weight: 600;
+  color: var(--ink);
+}
+.slide-description hr {
+  border: none;
+  border-top: 1px dashed var(--rule);
+  margin: 2em 0;
+}
+.slide-description strong { color: var(--ink); }
 
 .slide-tags {
   margin-top: 10px;

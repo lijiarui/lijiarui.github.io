@@ -275,10 +275,22 @@ def scan_uploaded_slides():
         tags = []
         if meta.get("tags"):
             tags = [t.strip() for t in re.split(r"[,，]", meta["tags"]) if t.strip()]
+        seo_description = meta.get("description", "")
 
         cover_url = generate_cover(fp, slug)
-        desc_html = render_md(body_md) if body_md else ""
-        excerpt = make_excerpt(body_md, 160) if body_md else ""
+        # Use python-markdown for rich rendering (tables, images, etc.)
+        if body_md:
+            try:
+                import markdown as _md
+                _converter = _md.Markdown(extensions=["extra", "sane_lists", "tables"])
+                # Strip the leading H1 (we render title separately in the page header)
+                body_md_for_render = re.sub(r"^#\s+[^\n]+\n+", "", body_md, count=1)
+                desc_html = _converter.convert(body_md_for_render)
+            except ImportError:
+                desc_html = render_md(body_md)
+        else:
+            desc_html = ""
+        excerpt = seo_description or (make_excerpt(body_md, 160) if body_md else "")
 
         out.append({
             "title": title,
@@ -295,6 +307,7 @@ def scan_uploaded_slides():
             "_description_md": body_md,
             "_description_html": desc_html,
             "_excerpt": excerpt,
+            "_seo_description": seo_description,
             "path": f"slides/files/{slug}/index.html",
         })
     return out
@@ -685,7 +698,8 @@ def build_slide_viewer(u, blog_posts, slide_posts):
 
 {FOOT}"""
 
-    head = HEAD.format(title=f"{escape(title)} · 分享 PPT", desc=f"{escape(title)} – PPT 在线预览")
+    seo_desc = u.get("_seo_description") or f"{title} – PPT 在线预览"
+    head = HEAD.format(title=f"{escape(title)} · 分享 PPT", desc=escape(seo_desc))
     write(u["path"], head + body)
 
 
