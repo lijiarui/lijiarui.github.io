@@ -730,7 +730,9 @@ def build_slide_viewer(u, blog_posts, slide_posts):
 
     body = f"""{topnav("slides")}
 
-<div class="wrap-wide">
+<div class="wrap">
+<div class="cols">
+<main class="post-main">
 <div class="slide-viewer-page">
   <div class="slide-viewer-head">
     <div>
@@ -742,6 +744,9 @@ def build_slide_viewer(u, blog_posts, slide_posts):
   </div>
   {desc_html}
   {viewer_html}
+</div>
+</main>
+{side_html}
 </div>
 </div>
 
