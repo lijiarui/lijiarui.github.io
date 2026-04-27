@@ -95,6 +95,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .topnav nav a {
   color: var(--ink-soft);
   text-decoration: none;
+  white-space: nowrap;
 }
 .topnav nav a:hover, .topnav nav a.active {
   color: var(--accent);
@@ -1501,10 +1502,12 @@ footer.site-foot .copyright {
 @media (max-width: 600px) {
   body { font-size: 14px; }
   .wrap { padding: 0 18px; }
-  .topnav .row { gap: 14px; }
+  .topnav .row { gap: 10px; }
   .topnav .brand { font-size: 17px; }
   .topnav .brand .tagline { display: none; }
-  .topnav nav { gap: 14px; font-size: 13px; }
+  .topnav nav { gap: 10px; font-size: 13px; }
+  .topnav nav a.nav-ext { display: none; }
+  .home-cards { display: none; }
   .page-intro h1 { font-size: 22px; }
   .entry-title { font-size: 19px; }
   .entry-excerpt { font-size: 14px; line-height: 1.8; }
