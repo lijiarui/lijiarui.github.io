@@ -478,7 +478,7 @@ def build_index(posts, uploaded_slides):
     # Feed mixes blog + uploaded slides (NOT historical Hexo presentations — those are 2015-2021 archive)
     feed_source = blog_posts + uploaded_slides
     feed_source.sort(key=lambda p: p["_date"], reverse=True)
-    feed_posts = feed_source[:8]
+    feed_posts = feed_source[:12]
 
     feed_html = "\n".join(entry_html(p) for p in feed_posts)
     side_html = sidebar(blog_posts, slide_posts_all)
