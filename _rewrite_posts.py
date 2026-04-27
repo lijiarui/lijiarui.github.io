@@ -58,6 +58,7 @@ FOOT = """<footer class="site-foot"><div class="wrap">
 <a href="/blog/">博客</a>
 <a href="/claude/">Claude 永动机</a>
 <a href="/slides/">分享 PPT</a>
+<a href="/yearly/">年度思考</a>
 <a href="/about/">关于</a>
 <div class="copyright">© Li Jiarui · 时间看得见</div>
 </div></footer>
@@ -72,6 +73,7 @@ def topnav():
         ("blog", "/blog/", "博客"),
         ("claude", "/claude/", "Claude 永动机"),
         ("slides", "/slides/", "分享 PPT"),
+        ("yearly", "/yearly/", "年度思考"),
         ("about", "/about/", "关于"),
     ]
     links = "".join(f'<a href="{href}">{label}</a>' for _, href, label in items)
@@ -242,19 +244,9 @@ def build_post_page(post_meta, parsed, side_html, newer, older):
 
     comments_block = """<section class="post-comments">
   <h3>评论</h3>
-  <div id="lv-container" data-id="city" data-uid="AwCdtY6RULKUsR5ehN3E">
-    <noscript>请启用 JavaScript 查看评论</noscript>
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
-  </div>
+  <livere-comment client-id="AwCdtY6RULKUsR5ehN3E"></livere-comment>
+  <script type="module" src="https://www.livere.org/livere-widget.js"></script>
+  <noscript>请启用 JavaScript 查看评论</noscript>
 </section>"""
 
     word_html = ""

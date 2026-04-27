@@ -1,141 +1,176 @@
 # lijiarui.github.io
 
-李佳芮的个人博客。GitHub Pages 静态站，2026 重构。
+李佳芮的个人博客。这份 README 是给我自己看的——下次回来不知道东西放哪、怎么发的，翻这里。
 
-## 目录结构
+---
 
-```
-.
-├── index.html              # 首页（自动生成）
-├── 404.html                # 404 页（手写）
-├── blog/index.html         # 博客列表页（自动生成）
-├── slides/index.html       # 分享 PPT 页（自动生成）
-├── slides/files/<slug>/    # 上传 PPT 的预览页（自动生成）
-├── claude/index.html       # Claude 永动机页（自动生成）
-├── about/index.html        # 关于页（rewriter 改造）
-├── thought/, chatbot/...   # 8 个分类目录，共 109 篇文章
-├── files/slides/           # 你上传的 PPT/PDF + 可选 .md 描述
-├── img/slides/             # 自动生成的 PPT 第一页封面图（缓存）
-├── content.json            # 全站元数据（rewriter 与 build 都依赖）
-├── search-index.json       # 站内搜索索引（自动生成）
-├── css/site.css            # 全站样式
-├── js/search.js            # 客户端搜索
-├── images/avatar.jpg       # 站点头像
-├── images/wechat-qr.jpg    # 公众号二维码
-├── img/                    # 文章配图（按年份分目录）
-├── _build_pages.py         # 生成首页 / 博客 / 分享 PPT / Claude / 搜索索引
-├── _rewrite_posts.py       # 重写 109 篇文章详情页 + about 页
-└── _publish_feishu.py      # 把飞书 wiki 文章拉下来转成博客（一次性脚本）
-```
+## 我要做什么？
 
-## 本地预览
+### 1. 写一篇新博客
 
-```bash
-python3 -m http.server 8080 --bind 127.0.0.1
-open http://127.0.0.1:8080/
-```
+**步骤**：
 
-## 内容更新
-
-**新增 / 编辑文章**：直接修改 `content.json` 的对应条目，再跑：
-
-```bash
-python3 _build_pages.py    # 重建首页 / 列表页 / 搜索索引
-python3 _rewrite_posts.py  # 重建文章详情页（如有改动）
-```
-
-两个脚本都是幂等的，重复跑没事。
-
-**改头像 / 公众号二维码**：替换 `images/avatar.jpg` / `images/wechat-qr.jpg`。如浏览器有缓存，把 `_build_pages.py` 和 `_rewrite_posts.py` 里的 `?v=2` 改成更大数字强刷一次即可。
-
-**新增 PPT / PDF 分享**（最常用流程）：
-
-1. 把文件丢到 `files/slides/` 目录，文件名建议格式：`YYYY-MM-DD-标题.pdf` 或 `YYYY-MM-DD-标题.pptx`
-   - 例：`2025-04-27-juzibot-pitch.pdf`
-   - 不带日期前缀也行，会用文件修改时间
-2. **可选**：在同一目录建一个 `<同名>.md` 文件覆盖标题、加标签和描述：
+1. 在 `posts/` 文件夹新建一个 `.md` 文件（参考 `posts/TEMPLATE.md`）
+2. 文件名格式：`YYYY-MM-DD-英文-slug.md`
+3. 文件开头加 frontmatter，正文用 Markdown：
 
    ```markdown
    ---
-   title: 你想要的中文标题（覆盖文件名）
-   tags: 创业, AI, 产品
-   date: 2025-04-27
+   title: 你想要的中文标题
+   date: 2026-04-27
+   category: thought
+   tags: 创业, AI, 思考
    ---
 
-   一段描述。支持 **加粗**、[链接](https://...)、列表、引用、标题。
-   会展示在详情页 PPT 预览上方。
+   正文从这里开始，支持完整 Markdown。
    ```
 
-3. 跑 `python3 _build_pages.py`
-4. `/slides/` 列表自动多出一张卡——封面是 PPT 第一页（自动 qlmanage 抽取，缓存到 `img/slides/`），点进去是描述 + 在线预览
-5. 首页"最近在写"也会按日期混入新上传的 PPT
-6. **PDF 任何环境都能本地预览**（浏览器内置）
-7. **PPT/PPTX 必须推到 GitHub 后才能预览**——走 Office Online viewer，需要公网 URL，本地 127.0.0.1 看不到（页面会显示提示）
-8. 强烈建议导出为 PDF 上传——加载快、显示稳定、跨设备一致
+4. 跑：
+   ```bash
+   python3 build.py
+   ```
+5. 看一眼本地 http://127.0.0.1:8080/
+6. 推到线上：`git add -A && git commit -m '新文章' && git push`
 
-**从飞书把文章发布为博客**：
+**`category` 可选值**（决定文章放哪个分区）：
+- `thought` — 思考（最常用）
+- `reading` — 读书笔记
+- `chatbot` — Chatbot 相关
+- `project` — 项目记录
+- `saas` — SaaS 相关
+- `interview` — 访谈
+- `microsoft` — 微软相关
+- `presentation` — 演讲（一般用 `files/slides/` 上传 PPT 而不是这个）
 
-1. 在 `_publish_feishu.py` 里编辑 `ARTICLES` 列表，添加：源 markdown 路径（先用 `lark-cli docs +fetch --doc <wiki url>` 拉下来）、slug、日期、分类、标签
-2. 跑 `python3 _publish_feishu.py` → `python3 _rewrite_posts.py` → `python3 _build_pages.py`
-3. 文章自动注册到 `content.json`，进 feed / search / 列表页
+**自动逻辑**：
+- 标题里有 `写在 XX 年的最后一天`、`XX 年思想切片`、`写在句子互动的 XX 年` 的，会自动打 `年度思考` 标签，并出现在 `/yearly/` 页面
+- 文章会自动进首页"最近在写"feed、`/blog/` 列表页和站内搜索
 
-**改侧栏文案 / nav / 微信号**：改 `_build_pages.py` 和 `_rewrite_posts.py` 里 `sidebar()` / `topnav()` 这两个函数，跑一遍两个脚本。
+---
 
-## 评论系统：LiveRe（来必力）
+### 2. 上传一份 PPT 或 PDF 分享
 
-**为什么选它**：免费、国内访问快、支持游客评论（无需登录）、自带邮件通知。
-缺点：免费版评论区底部有"由 LiveRe 提供"小 footer，去不掉。
+**步骤**：
 
-**当前状态**：已接入。UID = `AwCdtY6RULKUsR5ehN3E`（Site: RUI 的博客）。
-106 篇文章详情页底部都已嵌入 LiveRe `<div id="lv-container" data-id="city" data-uid="...">`。
+1. 把 `.pdf` 或 `.pptx` 文件丢到 `files/slides/`
+2. 文件名建议：`YYYY-MM-DD-标题.pdf`（例：`2025-04-27-juzibot-pitch.pdf`）
+3. **可选**：在同一目录建一个同名 `.md` 文件，写自定义标题、标签和描述：
 
-**LiveRe 管理后台**：
+   ```markdown
+   ---
+   title: 你想要的标题（覆盖文件名）
+   tags: 创业, AI, 演讲
+   ---
 
-- 登录入口：https://www.livere.com/ （右上角"登录"，账号 `rui@juzi.bot`）
-- 我的站点 / 我的设置：https://livere.com/myhome
-- 评论管理（看 / 删 / 审核所有评论）：登录后导航到 "评论管理"
-- 通知设置（开关邮件通知）：登录后导航到 "通知设置"
-- 颜色 / 主题定制：登录后导航到 "外观设置 / 主题颜色"
-- 站点配色已配为站点橙色 `#d26911`，详见 README "颜色"段落或 `css/site.css`
+   一段描述。会出现在详情页 PPT 预览上方。支持 Markdown。
+   ```
 
-**剩余你要在 LiveRe 后台手动配置**：
+4. 跑 `python3 build.py`
+5. `/slides/` 列表自动多出一张卡，封面是 PPT 第一页（自动从 macOS qlmanage 抽取）
+6. 推到线上：`git add -A && git commit -m '新分享' && git push`
 
-1. **开"游客评论"**：基本设置 → 找"游客评论"/"匿名评论"开关 → 开启。这样访客填昵称+邮箱+网址就能发，不强制 SNS 登录
-2. **开邮件通知**：通知设置 → 新评论邮件通知 → 收件箱填 `rui@juzi.bot`
-3. **关键词过滤 / 先审后发**（推荐）：评论管理 → 开审核，避免被刷垃圾
-4. **本地 127.0.0.1 看不到评论是正常的**——LiveRe referer 校验不过，必须推到 https://lijiarui.github.io 后才能真测试
+**注意**：
+- **PDF** 在本地 + 线上都能预览
+- **PPT/PPTX** 必须推到 GitHub 后才能预览（Office Online viewer 需要公网 URL）
+- 强烈建议导出 PDF 上传——加载快、显示稳一致
 
-**关于微信登录**：LiveRe 城市版不支持，2026 年也没有现成方案能给静态博客接微信 OAuth（备案 + 开放平台 + 公司主体 + 后端三件套缺一不可）。建议：博客评论用 LiveRe 游客模式覆盖基础互动，深度互动引到公众号文章评论。
+---
 
-**换 UID 流程**（如果哪天换站或重新申请）：
+### 3. 从飞书把现成文档拉过来发
+
+如果文章已经写在飞书 wiki/docx 里：
+
+1. 编辑 `_publish_feishu.py` 的 `ARTICLES` 列表，加一行：
+   ```python
+   ("https://juzihudong.feishu.cn/wiki/<token>",
+    "2026-04-27-my-slug", "2026-04-27", "thought", ["年度思考", "标签2"]),
+   ```
+2. 跑：
+   ```bash
+   python3 _publish_feishu.py    # 拉 markdown + 自动下载图片到 img/posts/<slug>/
+   python3 build.py              # 重建整站
+   ```
+3. 推到线上
+
+图片处理：脚本会自动找飞书的 `<image token="..."/>` 标签，调 `lark-cli docs +media-download` 下载，按格式存到 `img/posts/<slug>/<token>.<ext>`，并替换正文里的引用。**图片不会遗漏**。
+
+---
+
+## 目录速查（我自己写内容时去哪改）
+
+| 我要 | 改这里 |
+|---|---|
+| 写新博客 | `posts/<date>-<slug>.md` |
+| 上传 PPT/PDF | `files/slides/<date>-<title>.<pdf\|pptx>` |
+| 给 PPT 加描述 | `files/slides/<同名>.md` |
+| 从飞书拉文章 | 编辑 `_publish_feishu.py` 的 `ARTICLES` 列表 |
+| 改头像 | 替换 `images/avatar.jpg`（再把 `?v=2` 在脚本里改成 `?v=3` 强刷缓存） |
+| 改公众号二维码 | 替换 `images/wechat-qr.jpg` |
+| 改侧栏简介 | `_build_pages.py` 的 `sidebar()` 函数（搜 `about-box`） |
+| 改顶栏链接 | `_build_pages.py` 和 `_rewrite_posts.py` 的 `topnav()` 函数 |
+| 改全站颜色 | `css/site.css` 顶部的 `:root { --accent: ... }` |
+| 改 LiveRe UID | `_rewrite_posts.py` 里 `client-id="AwCdtY6RULKUsR5ehN3E"` 全局替换 |
+
+## 工作流命令速查
 
 ```bash
-sed -i '' 's/AwCdtY6RULKUsR5ehN3E/新UID/g' _rewrite_posts.py
-python3 _rewrite_posts.py
+# 唯一需要记住的命令：
+python3 build.py
+
+# 它会顺序跑：
+# 1. _publish_posts.py     发布 posts/*.md
+# 2. _rewrite_posts.py     渲染所有文章详情页
+# 3. _build_pages.py       重建首页/列表/搜索/年度思考
+
+# 本地预览：
+python3 -m http.server 8080 --bind 127.0.0.1
+open http://127.0.0.1:8080/
+
+# 推到线上：
+git add -A && git commit -m '...' && git push
 ```
 
-## 部署
+---
 
-GitHub Pages 自动从 `main` 分支根目录部署。本地确认无误后：
+## 评论系统（LiveRe）
 
-```bash
-git add -A
-git commit -m "update content"
-git push origin main
-```
+**当前状态**：已接入。UID = `AwCdtY6RULKUsR5ehN3E`，Site = "RUI 的博客"。
 
-几分钟内 https://lijiarui.github.io 生效。
+**LiveRe 后台**：
+- 登录入口：https://www.livere.com/（账号 `rui@juzi.bot`）
+- 我的设置：https://livere.com/myhome
+- 评论管理：登录后导航到"评论管理"
+- 通知设置：登录后导航到"通知设置"
+- 配色：站点橙色 `#d26911`，已配好
+
+**已配置开关**（如果要改）：
+- 游客评论：必须开（不强制 SNS 登录，访客填昵称+邮箱+网址即可）
+- 邮件通知：发到 `rui@juzi.bot`
+- 关键词过滤 / 先审后发：建议开
+
+**关于微信登录**：LiveRe 城市版不支持。要做的话需要备案 + 微信开放平台 + 公司主体 + 自架后端。投入太大，现状是博客评论用 LiveRe 游客模式覆盖基础互动，深度互动引到公众号文章评论。
+
+---
+
+## 小心，这些东西不要乱碰
+
+- **`content.json`** 是博客元数据的来源，构建脚本依赖它。新文章会被脚本自动加进去，但不要手改（除非确定）
+- **`tags/`** 目录是历史 Hexo 时代的产物，case-collision 在 macOS 上 git 总会显示 `M`，忽略即可
+- **旧首页备份在 `index-old.html`**，回滚用
+- **历史 109 篇文章的 HTML 文件**已经被 `_rewrite_posts.py` 改造过，不要再手编辑——改了下次构建会被覆盖。要永久改某篇旧文章，改 `content.json` 里对应的 `text` 字段（不推荐，太麻烦）
+
+---
+
+## 依赖
+
+- Python 3（系统自带）
+- `markdown`（一次性安装：`pip3 install markdown`）
+- macOS `qlmanage`（系统自带，用于从 PPT 第一页抽封面）
+- `lark-cli`（一次性安装：`npm install -g @larksuite/cli`，用于拉飞书文档）
+
+---
 
 ## 历史
 
 - 2012-2023：Hexo 静态生成，主题 JSimple
-- 2026-04：完全重构，去掉 Hexo 主题，改成手写 CSS + Python 脚本生成
-- 2026-04：评论从 Disqus 迁移到 LiveRe，新增搜索、PPT 上传预览、Claude 永动机栏目
-- 旧首页备份在 `index-old.html`，旧文章备份在 `/tmp/posts-backup.tar.gz`（如未清理）
-
-## 依赖
-
-- Python 3 (built-in stdlib)
-- `markdown` (pip3 install markdown) — 用于 `_publish_feishu.py` 把 Markdown 转 HTML
-- macOS `qlmanage` (内置) — 用于自动抽取 PPT/PDF 第一页作封面
-- `lark-cli` (npm install -g @larksuite/cli) — 用于拉飞书文档
+- 2026-04：完全重构——去掉 Hexo 主题，改成手写 CSS + Python 脚本生成 + LiveRe 评论 + PPT 上传预览 + 站内搜索 + 年度思考栏目

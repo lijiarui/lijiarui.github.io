@@ -870,6 +870,21 @@ iframe.slide-viewer-ppt,
   iframe.slide-viewer-pdf { height: 60vh; min-height: 280px; }
 }
 
+/* ---------- Yearly groups ---------- */
+.yearly-group {
+  margin-bottom: 36px;
+}
+.yearly-year {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 12px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--accent);
+  letter-spacing: -0.01em;
+  display: inline-block;
+}
+
 /* ---------- Filter bar ---------- */
 .filter-bar {
   display: flex;

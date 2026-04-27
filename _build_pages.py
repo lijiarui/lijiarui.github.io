@@ -44,6 +44,7 @@ FOOT = """<footer class="site-foot"><div class="wrap">
 <a href="/blog/">博客</a>
 <a href="/claude/">Claude 永动机</a>
 <a href="/slides/">分享 PPT</a>
+<a href="/yearly/">年度思考</a>
 <a href="/about/">关于</a>
 <div class="copyright">© Li Jiarui · 时间看得见</div>
 </div></footer>
@@ -58,6 +59,7 @@ def topnav(active):
         ("blog", "/blog/", "博客"),
         ("claude", "/claude/", "Claude 永动机"),
         ("slides", "/slides/", "分享 PPT"),
+        ("yearly", "/yearly/", "年度思考"),
         ("about", "/about/", "关于"),
     ]
     links = "".join(
@@ -687,6 +689,63 @@ def build_slide_viewer(u, blog_posts, slide_posts):
     write(u["path"], head + body)
 
 
+def build_yearly(posts):
+    """Build /yearly/ — annual reflection posts (tagged 年度思考)."""
+    yearly = [p for p in posts if "年度思考" in p.get("_tags", [])]
+    yearly.sort(key=lambda p: p["_date"], reverse=True)
+
+    blog_posts = [p for p in posts if p["_cat"] != "presentation"]
+    slide_posts = [p for p in posts if p["_cat"] == "presentation"]
+    side_html = sidebar(blog_posts, slide_posts)
+
+    if not yearly:
+        cards_html = '<p style="color:var(--ink-mute);">还没有年度思考类文章。</p>'
+    else:
+        # Group by year (use post date year)
+        by_year = {}
+        for p in yearly:
+            y = p["_year"]
+            by_year.setdefault(y, []).append(p)
+
+        groups = []
+        for y in sorted(by_year.keys(), reverse=True):
+            posts_in_year = by_year[y]
+            posts_html = "\n".join(
+                f'<li><time>{escape(p["_date"])}</time>'
+                f'<a href="/{escape(p["path"])}">{escape(p["title"])}</a>'
+                f'<span class="cat">{escape(p["_cat_label"])}</span></li>'
+                for p in posts_in_year
+            )
+            groups.append(
+                f'<section class="yearly-group">'
+                f'<h2 class="yearly-year">{escape(y)}</h2>'
+                f'<ul class="post-list">{posts_html}</ul>'
+                f'</section>'
+            )
+        cards_html = "\n".join(groups)
+
+    body = f"""{topnav("yearly")}
+
+<div class="wrap">
+<div class="page-intro">
+  <h1>年度思考</h1>
+  <p>每年我都写"写在 XX 年的最后一天 / 第一天"、"XX 年思想切片"、"写在句子互动的 XX 年"——这里把它们集中放在一起。共 {len(yearly)} 篇。</p>
+</div>
+
+<div class="cols">
+<main>
+{cards_html}
+</main>
+{side_html}
+</div>
+</div>
+
+{FOOT}"""
+
+    head = HEAD.format(title="年度思考 · 李佳芮", desc="李佳芮的年度复盘与思考切片合集")
+    write("yearly/index.html", head + body)
+
+
 def build_claude(posts):
     blog_posts = [p for p in posts if p["_cat"] != "presentation"]
     slide_posts = [p for p in posts if p["_cat"] == "presentation"]
@@ -761,6 +820,7 @@ def main():
     build_blog(posts)
     build_slides(posts, uploaded)
     build_claude(posts)
+    build_yearly(posts)
     build_search_index(posts)
 
 
