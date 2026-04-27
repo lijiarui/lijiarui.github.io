@@ -730,6 +730,110 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 }
 .slide-description strong { color: var(--ink); }
 
+/* Closing contact card */
+.contact-card {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 36px;
+  margin: 36px 0 12px;
+  padding: 32px;
+  background: linear-gradient(135deg, #1a1917 0%, #25231f 100%);
+  border-radius: 10px;
+  color: #ece8de;
+}
+.contact-qr-block {
+  text-align: center;
+}
+.contact-qr-block img {
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  margin: 0 auto 14px !important;
+  border: 4px solid #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35) !important;
+  display: block;
+}
+.contact-cap {
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0 0 14px !important;
+  letter-spacing: 0.05em;
+}
+.contact-id {
+  font-size: 14px;
+  color: #ece8de;
+  margin: 8px 0 12px !important;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+.contact-id code {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: var(--accent) !important;
+  padding: 2px 10px !important;
+  font-size: 13px;
+  font-weight: 600;
+}
+.contact-note {
+  font-size: 12.5px;
+  color: #b8b3a5;
+  margin: 0 !important;
+  line-height: 1.6;
+}
+.contact-note strong {
+  color: var(--accent) !important;
+}
+.contact-hiring h3 {
+  font-size: 15px !important;
+  font-weight: 700;
+  color: var(--accent) !important;
+  margin: 0 0 18px !important;
+  padding: 0 !important;
+  letter-spacing: 0.08em;
+  border: none !important;
+}
+.contact-hiring ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 0 22px !important;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 6px 14px;
+}
+.contact-hiring li {
+  font-size: 15px;
+  color: #ece8de;
+  font-weight: 500;
+  padding: 6px 0;
+  margin: 0 !important;
+}
+.contact-hiring li::before {
+  content: "·";
+  color: var(--accent);
+  margin-right: 8px;
+  font-weight: 700;
+}
+.contact-call {
+  font-size: 16px;
+  color: var(--accent) !important;
+  font-weight: 600 !important;
+  margin: 0 !important;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+@media (max-width: 720px) {
+  .contact-card {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 22px;
+  }
+  .contact-qr-block img { max-width: 200px; }
+  .contact-hiring ul { grid-template-columns: repeat(2, 1fr); }
+}
+
 .slide-tags {
   margin-top: 10px;
   display: flex;

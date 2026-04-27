@@ -1,18 +1,15 @@
 #!/usr/bin/env python3
-"""Pull articles from Feishu wiki/docx, download embedded images, and publish.
+"""Pull articles from Feishu wiki/docx, download embedded images, write to posts/.
 
 For each URL in ARTICLES:
 1. Fetch markdown via lark-cli docs +fetch
 2. Find <image token="..."/> references
 3. Download each image to img/posts/<slug>/<token>.<ext>
-4. Replace <image token="..."/> with <img src="...">
-5. Generate Hexo-stub HTML at <category>/<date>-<slug>.html
-6. Register / update entry in content.json (dedup by path)
+4. Replace <image token="..."/> with ![alt](url)
+5. Write posts/<slug>.md with frontmatter (the canonical source — no Hexo stub)
 
 Run after this:
-  python3 _rewrite_posts.py && python3 _build_pages.py
-or just:
-  python3 build.py
+  python3 build.py    # picks up the new posts/*.md and publishes
 """
 import json
 import re
@@ -27,6 +24,8 @@ ROOT = Path(__file__).parent
 
 # Each: (url, slug, date, category, [tags...])
 ARTICLES = [
+    # (url, slug, date, category, [tags])
+    # 历史已发布的（再跑会更新）
     ("https://juzihudong.feishu.cn/wiki/CfI9wD3Jti4F0rk3uCGcwqK2nJb",
      "2025-12-31-last-day-of-2025", "2025-12-31", "thought", ["年度思考", "总结"]),
     ("https://juzihudong.feishu.cn/wiki/JODGwBjJSi4jEYkpjKTcBoqxnsd",
@@ -45,6 +44,10 @@ ARTICLES = [
      "2023-12-31-last-day-of-2023", "2023-12-31", "thought", ["年度思考", "总结"]),
     ("https://juzihudong.feishu.cn/wiki/PZJaw0cK7iuTglkyc76cnxg9nge",
      "2023-12-31-2023-thought-slices", "2023-12-31", "thought", ["年度思考", "思考切片", "创业"]),
+    # 2021 感恩节
+    ("https://juzihudong.feishu.cn/wiki/D8FUwy0R9i4Kw1kFcFkcfEI9njd",
+     "2021-11-25-juzibot-thanksgiving-2021", "2021-11-25", "thought",
+     ["句子互动", "团队", "感恩节"]),
 ]
 
 
@@ -159,12 +162,27 @@ def md_to_plain_text(md_body):
     return text.strip()
 
 
-def main():
-    cj_path = ROOT / "content.json"
-    data = json.loads(cj_path.read_text())
-    existing_paths = {p["path"]: i for i, p in enumerate(data["posts"])}
+def make_description_from_md(text, n=150):
+    plain = re.sub(r"!\[[^\]]*\]\([^)]+\)", "", text)
+    plain = re.sub(r"```.*?```", "", plain, flags=re.S)
+    plain = re.sub(r"`[^`]+`", "", plain)
+    plain = re.sub(r"<[^>]+>", "", plain)
+    plain = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", plain)
+    plain = re.sub(r"[#>*_\-]", "", plain)
+    plain = re.sub(r"\s+", " ", plain).strip()
+    if len(plain) <= n:
+        return plain
+    cut = plain[:n]
+    for sep in ["。", "！", "？", "；", "，"]:
+        idx = cut.rfind(sep)
+        if idx > n * 0.6:
+            return cut[: idx + 1]
+    return cut + "…"
 
-    converter = md_lib.Markdown(extensions=["extra", "sane_lists"])
+
+def main():
+    posts_dir = ROOT / "posts"
+    posts_dir.mkdir(parents=True, exist_ok=True)
 
     published = 0
     for url, slug, date_short, category, tags in ARTICLES:
@@ -175,96 +193,37 @@ def main():
             print(f"  ✗ fetch failed: {e}")
             continue
 
-        # Extract title from first # line if present
+        # Extract title from first # line
         title_m = re.search(r"^#\s+(.+)", raw, re.M)
         title = title_m.group(1).strip() if title_m else slug
 
-        # Download images and replace
+        # Download images and replace tokens with markdown image refs
         md_with_imgs, n_imgs = process_images(raw, slug)
         if n_imgs:
-            print(f"  + downloaded {n_imgs} images")
+            print(f"  + downloaded {n_imgs} images → img/posts/{slug}/")
 
         body_md = clean_md(md_with_imgs)
-        body_html = converter.convert(body_md)
-        converter.reset()
-        plain = md_to_plain_text(body_md)
+        description = make_description_from_md(body_md)
 
-        path = f"{category}/{slug}.html"
-        date_iso = f"{date_short}T10:00:00.000Z"
-
-        tags_html = "\n".join(
-            f'    <a href="/tags/{escape(t)}/">{escape(t)}</a>' for t in tags
+        # Write to posts/<slug>.md (canonical source)
+        tags_str = ", ".join(tags)
+        frontmatter = (
+            "---\n"
+            f"title: {title}\n"
+            f"date: {date_short}\n"
+            f"category: {category}\n"
+            f"tags: {tags_str}\n"
+            f"slug: {slug}\n"
+            f"description: {description}\n"
+            "---\n\n"
         )
-        html = HEXO_TEMPLATE.format(
-            title=escape(title),
-            date_short=escape(date_short),
-            word_count=len(plain),
-            body_html=body_html,
-            tags_html=tags_html,
-        )
-        out_path = ROOT / path
-        out_path.parent.mkdir(parents=True, exist_ok=True)
-        out_path.write_text(html, encoding="utf-8")
-        print(f"  wrote {path} ({len(html):,} bytes)")
-
-        post_entry = {
-            "title": title,
-            "slug": slug,
-            "date": date_iso,
-            "updated": date_iso,
-            "comments": True,
-            "path": path,
-            "link": "",
-            "permalink": f"https://rui.juzi.bot/{path}",
-            "excerpt": "",
-            "text": plain,
-            "categories": [{
-                "name": category,
-                "slug": category,
-                "permalink": f"https://rui.juzi.bot/categories/{category}/",
-            }],
-            "tags": [{
-                "name": t,
-                "slug": t,
-                "permalink": f"https://rui.juzi.bot/tags/{t}/",
-            } for t in tags],
-            "keywords": [{
-                "name": category,
-                "slug": category,
-                "permalink": f"https://rui.juzi.bot/categories/{category}/",
-            }],
-        }
-        if path in existing_paths:
-            data["posts"][existing_paths[path]] = post_entry
-            print(f"  ↻ updated content.json entry")
-        else:
-            data["posts"].insert(0, post_entry)
-            existing_paths[path] = 0
-            print(f"  + new content.json entry")
+        out_md = posts_dir / f"{slug}.md"
+        out_md.write_text(frontmatter + body_md + "\n", encoding="utf-8")
+        print(f"  wrote posts/{slug}.md ({len(body_md):,} chars)")
         published += 1
 
-    # Also tag historical "年度思考" posts already in content.json
-    yearly_pattern = re.compile(
-        r"(写在\s*\d{4}\s*年的最后一天|写在\s*\d{4}\s*年的第一天|"
-        r"\d{4}\s*年.*?(?:思想切片|思考切片)|"
-        r"写在句子互动的\s*\d{4}\s*年)"
-    )
-    tagged_count = 0
-    for p in data["posts"]:
-        title = p.get("title", "")
-        if yearly_pattern.search(title):
-            existing = {t["name"] for t in p.get("tags", [])}
-            if "年度思考" not in existing:
-                p.setdefault("tags", []).insert(0, {
-                    "name": "年度思考",
-                    "slug": "年度思考",
-                    "permalink": "https://rui.juzi.bot/tags/%E5%B9%B4%E5%BA%A6%E6%80%9D%E8%80%83/",
-                })
-                tagged_count += 1
-                print(f"  + tagged 年度思考: {title}")
-
-    cj_path.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")))
-    print(f"\npublished {published} articles, retro-tagged {tagged_count} historical")
+    print(f"\n✓ published {published} articles to posts/")
+    print("  next: python3 build.py")
 
 
 if __name__ == "__main__":
