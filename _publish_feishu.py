@@ -47,7 +47,7 @@ ARTICLES = [
     # 2021 感恩节
     ("https://juzihudong.feishu.cn/wiki/D8FUwy0R9i4Kw1kFcFkcfEI9njd",
      "2021-11-25-juzibot-thanksgiving-2021", "2021-11-25", "thought",
-     ["句子互动", "团队", "感恩节"]),
+     ["年度思考", "句子互动", "团队", "感恩节"]),
 ]
 
 
