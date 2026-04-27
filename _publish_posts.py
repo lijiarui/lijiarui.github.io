@@ -146,15 +146,22 @@ def main():
         date_short = date[:10]
         date_iso = f"{date_short}T10:00:00.000Z"
 
-        # Slug: from frontmatter, or filename (stripping date prefix)
-        slug = meta.get("slug")
-        if not slug:
-            slug = re.sub(r"^\d{4}-\d{2}-\d{2}[-_ ]", "", fp.stem)
-        slug = slugify_title(slug)
-
-        path = f"{category}/{date_short}-{slug}.html"
-        if path.startswith("/"):
-            path = path[1:]
+        # Slug: explicit frontmatter slug = canonical filename stem.
+        # If no slug, derive from filename (with date prefix logic for new posts).
+        explicit_slug = meta.get("slug")
+        if explicit_slug:
+            # Treat as canonical full stem — no date prefix munging
+            slug = explicit_slug
+            path = f"{category}/{slug}.html"
+        else:
+            # Filename-based: if filename already has date prefix (any digit count for m/d), use as-is
+            stem = fp.stem
+            if re.match(r"^\d{4}-\d{1,2}-\d{1,2}([-_].+)?$", stem):
+                slug = stem
+                path = f"{category}/{stem}.html"
+            else:
+                slug = slugify_title(stem)
+                path = f"{category}/{date_short}-{slug}.html"
 
         # Tags
         tags = []
@@ -164,6 +171,13 @@ def main():
         body_html = converter.convert(body_md)
         converter.reset()
         plain = md_to_plain_text(body_md)
+
+        # Description (SEO): from frontmatter, or auto-generate from body
+        description = meta.get("description") or ""
+        if not description:
+            description = plain[:150].replace("\n", " ").strip()
+            if len(plain) > 150:
+                description = description.rstrip() + "…"
 
         tags_html = "\n".join(
             f'    <a href="/tags/{escape(t)}/">{escape(t)}</a>' for t in tags
@@ -192,6 +206,7 @@ def main():
             "link": "",
             "permalink": f"https://rui.juzi.bot/{path}",
             "excerpt": "",
+            "description": description,
             "text": plain,
             "categories": [{
                 "name": category,
@@ -212,10 +227,9 @@ def main():
 
         if path in existing_paths:
             data["posts"][existing_paths[path]] = post_entry
-            print(f"  ↻ updated {path} ← {fp.name}")
         else:
             data["posts"].insert(0, post_entry)
-            print(f"  + published {path} ← {fp.name}")
+            existing_paths[path] = 0
         published += 1
 
     cj_path.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")))

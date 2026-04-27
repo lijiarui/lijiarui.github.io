@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>一个舞娘如何用6行代码写出微信聊天机器人 · 李佳芮的博客</title>
-<meta name="description" content="作者：@lijiarui, Entrepreneur, Wechaty Author 我一直和我的小伙伴在业余时间拍摄舞蹈教学视频，叫“舞哩”，原创了几百个视频，近千万的播放，所以就建了微信群来和粉丝交流。  1. 与微信机器人的结缘当微信">
+<meta name="description" content="作者：@ lijiarui , Entrepreneur, Wechaty Author 我一直和我的小伙伴在业余时间拍摄舞蹈教学视频，叫“舞哩”，原创了几百个视频，近千万的播放，所以就建了微信群来和粉丝交流。">
 <link rel="stylesheet" href="/css/site.css">
 <link rel="shortcut icon" href="/images/favicon.png">
 </head>
@@ -25,14 +25,15 @@
     </div>
     <h1 class="post-title-h1">一个舞娘如何用6行代码写出微信聊天机器人</h1>
     <div class="post-byline">
-      <time>2016-11-20</time>
+      <time>2016-11-20</time> · 全文 3967 字
     </div>
   </header>
   <div class="post-content markdown-body">
-<p>作者：@<a href="https://github.com/lijiarui" target="_blank" rel="noopener">lijiarui</a>, Entrepreneur, <a href="https://github.com/orgs/Chatie/teams/contributor" target="_blank" rel="noopener">Wechaty Author</a></p>
+<p>作者：@<a href="https://github.com/lijiarui">lijiarui</a>, Entrepreneur, <a href="https://github.com/orgs/Chatie/teams/contributor">Wechaty Author</a></p>
 <p>我一直和我的小伙伴在业余时间拍摄舞蹈教学视频，叫“舞哩”，原创了几百个视频，近千万的播放，所以就建了微信群来和粉丝交流。</p>
-<p><img src="/img/2016/wechaty-wuli-usecase-ruirui-dance.jpg" alt="RuiRui"></p>
-<h2 id="1-与微信机器人的结缘"><a href="#1-与微信机器人的结缘" class="headerlink" title="1. 与微信机器人的结缘"></a>1. 与微信机器人的结缘</h2><p>当微信群超过100人以后，就必须要靠群主来手工拉人了，所以我在pad上注册了一个微信小号，让大家通过加小号进微信群，每天晚上9点，我登上这个小号，通过所有的好友请求，然后拉他们进来。有的时候会有几十个好友请求，我就先按一遍通过，然后用手机把这些新好友拍成照片，对照照片去通讯录里一个一个的找到这些好友，拉到微信群里。</p>
+<p><img alt="RuiRui" src="/img/2016/wechaty-wuli-usecase-ruirui-dance.jpg" /></p>
+<h2>1. 与微信机器人的结缘</h2>
+<p>当微信群超过100人以后，就必须要靠群主来手工拉人了，所以我在pad上注册了一个微信小号，让大家通过加小号进微信群，每天晚上9点，我登上这个小号，通过所有的好友请求，然后拉他们进来。有的时候会有几十个好友请求，我就先按一遍通过，然后用手机把这些新好友拍成照片，对照照片去通讯录里一个一个的找到这些好友，拉到微信群里。</p>
 <p>直到有一次我出国玩，觉得Pad太沉了就没有带，这意味着有10天无法处理微信小号，等我回来以后，我发现了一个非常悲剧的事情……大概100多个好友请求，仅仅只是拍下这些好友请求，我就得拍好几十张照片！</p>
 <p>这明明就是一些机械化的流水作业啊！这怎么能让一个程序员去完成呢？于是我开始梳理了我的需求，其实只有三个：</p>
 <ol>
@@ -41,8 +42,10 @@
 <li>自动的把他们拉进群里。</li>
 </ol>
 <p>所以我在GitHub上找到了Wechaty，发现只要几十行代码，就可以满足我的需求。最主要的是，机械化的流水操作，机器人做的比人工要好很多。</p>
-<h2 id="2-一款简单的微信机器人框架介绍"><a href="#2-一款简单的微信机器人框架介绍" class="headerlink" title="2. 一款简单的微信机器人框架介绍"></a>2. 一款简单的微信机器人框架介绍</h2><p>GitHub上与微信机器人相关的开源项目有很多，通过JavaScript、Electron、Go、Perl、Python等等都可以实现。</p>
-<p>因为我只对JavaScript比较熟悉，所以选择了Wechaty，他是使用Typescript进行编写的Node项目，是一个专门为个人微信号搭建的bot框架，使用Wechaty的API，只需要6行Javascript代码就可以搭建一个最简单的微信机器人，支持 Linux, Windows, Darwin(OSX/Mac) 和Docker。<br><img src="/img/2016/wechaty-wuli-usecase-wechaty-pic.jpeg" alt="wechaty-pic"></p>
+<h2>2. 一款简单的微信机器人框架介绍</h2>
+<p>GitHub上与微信机器人相关的开源项目有很多，通过JavaScript、Electron、Go、Perl、Python等等都可以实现。</p>
+<p>因为我只对JavaScript比较熟悉，所以选择了Wechaty，他是使用Typescript进行编写的Node项目，是一个专门为个人微信号搭建的bot框架，使用Wechaty的API，只需要6行Javascript代码就可以搭建一个最简单的微信机器人，支持 Linux, Windows, Darwin(OSX/Mac) 和Docker。<br />
+<img alt="wechaty-pic" src="/img/2016/wechaty-wuli-usecase-wechaty-pic.jpeg" /></p>
 <p>我特别喜欢Wechaty的一点是，我不用关心任何实现逻辑，仅仅用JS写业务逻辑层面的事情，就可以了。当我把我需要做什么想清楚以后，JS实现起来，是非常简单便捷的。</p>
 <p>Wechaty基本的实现原理，是通过Chrome实时监听微信网页版的各类信息，然后将抓取的信息封装成接口，供开发者使用。 她有9个基本的事件，基本上涵盖了我们Web微信上的所有事件，分别是：</p>
 <ol>
@@ -57,24 +60,40 @@
 <li>room-topic事件会在群名称被修改时被触发</li>
 </ol>
 <p>另外，Wechaty将机器人、联系人、微信群、好友请求封装成类，分别是Wechaty、Contact、Message、和FriendRequest，这样我只要import这些包，就可以直接使用这些类里面的函数模拟微信的各种操作了。比如给指定的人发送消息，我只要用contact.say(‘hello’) 就可以了。Wechaty里面的函数名称起的非常人性化，使用JS进行业务逻辑编写的时候，读代码像和读英文文档一样流畅舒服。</p>
-<h2 id="3-如何安装Wechaty"><a href="#3-如何安装Wechaty" class="headerlink" title="3. 如何安装Wechaty"></a>3. 如何安装Wechaty</h2><p>安装Wechaty有两种方式：</p>
+<h2>3. 如何安装Wechaty</h2>
+<p>安装Wechaty有两种方式：</p>
 <ol>
 <li>Docker</li>
 <li>NPM</li>
 </ol>
 <p>非常推荐使用Docker安装Wechaty，虽然我最开始是使用第二种方式，也正是因为我两种方式都试过，才会深深感慨出“Docker大法好” 。</p>
 <p>两种方式的安装—Docker和NPM 我在这里进行简单的介绍：</p>
-<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><p>安装Docker以后（可以点击这里查看如何安装docker），运行下面的命令，Wechaty就已经成功安装在电脑上了。</p>
-<p><code>docker run -ti --rm --volume=&quot;$(pwd)&quot;:/bot zixia/wechaty run demo</code></p>
-<p>首次运行以后会有如下的截图：<br><img src="/img/2016/wechaty-wuli-usecase-docker-pull.jpeg" alt="docker-pull"></p>
-<p>Docker会自动的将相关的包部署到电脑里面，安装成功后，以后再运行就会是如下的截图了：<br><img src="/img/2016/wechaty-wuli-usecase-run-ding.jpeg" alt="run-ding"></p>
+<h3>Docker</h3>
+<p>安装Docker以后（可以点击这里查看如何安装docker），运行下面的命令，Wechaty就已经成功安装在电脑上了。</p>
+<p><code>docker run -ti --rm --volume="$(pwd)":/bot zixia/wechaty run demo</code></p>
+<p>首次运行以后会有如下的截图：<br />
+<img alt="docker-pull" src="/img/2016/wechaty-wuli-usecase-docker-pull.jpeg" /></p>
+<p>Docker会自动的将相关的包部署到电脑里面，安装成功后，以后再运行就会是如下的截图了：<br />
+<img alt="run-ding" src="/img/2016/wechaty-wuli-usecase-run-ding.jpeg" /></p>
 <p>Wechaty的编写者对这种特殊字体的热爱到疯狂的地步了，为了让大家了解的更清楚，我就把所有截图内容也就都放上来了。</p>
 <p>通常情况下，我会将这串命令alias给wechaty：</p>
-<p><code>alias wechaty=&#39;docker run -t -i --rm -e WECHATY_LOG=&quot;silly&quot; --volume=&quot;$(pwd)&quot;:/bot zixia/wechaty:0.5.9’</code></p>
+<p><code>alias wechaty='docker run -t -i --rm -e WECHATY_LOG="silly" --volume="$(pwd)":/bot zixia/wechaty:0.5.9’</code></p>
 <p>并加入-e WECHATY_LOG=”silly” 和后面的版本号：zixia/wechaty:0.5.9，然后这样运行：</p>
 <p><code>wechaty run demo</code></p>
 <p>-e WECHATY_LOG=”silly” 是为了把wechaty的系统日志都打印出来，方便发现问题和代码调试，zixia/wechaty:0.5.9 在后面加了版本号，因为作者经常更新代码，最近的代码偶尔会出问题，0.5.9是我认为相对比较稳定的版本。</p>
-<h3 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> npm install --save wechaty</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> node mybot.js</span></span><br></pre></td></tr></table></figure>
+<h3>NPM</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$ npm install --save wechaty $ node mybot.js</code></td>
+</tr>
+</tbody>
+</table>
 <p>有以下几点值得注意的是：</p>
 <ol>
 <li>Wechaty需要的Node版本最少在6以上，我现在在使用7。</li>
@@ -84,43 +103,73 @@
 </ol>
 <p>关于服务器的说明</p>
 <p>Wechaty依赖的很多包都在墙外，建议使用国外的VPS，我使用的是digitalocean 如果只是跑一个机器人服务的话，建议使2GB/2 CPUs 以上的配置，一个机器人服务会占用1G内存左右，如果配上swap的话，短期使用也可以。</p>
-<h2 id="4-如何使用wechaty"><a href="#4-如何使用wechaty" class="headerlink" title="4. 如何使用wechaty"></a>4. 如何使用wechaty</h2><p>环境部署好以后下面6行代码，就可以成功的实现基础的bot功能：将微信机器人收到的所有消息打印出来：<br><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">const &#123; Wechaty &#125; = require('wechaty')</span><br><span class="line"></span><br><span class="line">Wechaty.instance()</span><br><span class="line">.on('scan', (url, code) =&gt; console.log(`Scan QR Code to login: $&#123;code&#125;\n$&#123;url&#125;`))</span><br><span class="line">.on('login',  user =&gt; console.log(`User $&#123;user.name()&#125; logined`))</span><br><span class="line">.on('message',  message =&gt; console.log(`Message: $&#123;message.content()&#125;`))</span><br><span class="line">.init()</span><br></pre></td></tr></table></figure></p>
+<h2>4. 如何使用wechaty</h2>
+<p>环境部署好以后下面6行代码，就可以成功的实现基础的bot功能：将微信机器人收到的所有消息打印出来：  </p>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>const { Wechaty } = require('wechaty')  Wechaty.instance() .on('scan', (url, code) =&gt; console.log(`Scan QR Code to login: ${code}\n${url}`)) .on('login',  user =&gt; console.log(`User ${user.name()} logined`)) .on('message',  message =&gt; console.log(`Message: ${message.content()}`)) .init()</code></td>
+</tr>
+</tbody>
+</table>
 <p>下面对这段代码进行简单的介绍：</p>
 <ul>
-<li><p>scan事件：两个返回值</p>
+<li>
+<p>scan事件：两个返回值</p>
+</li>
+<li>
+<p>code：返回了扫描的状态</p>
 <ul>
-<li>code：返回了扫描的状态<ul>
 <li>0：初始状态</li>
 <li>200：已经成功登陆</li>
 <li>201：微信已经扫码，等待确认</li>
 <li>408：等待微信扫码中</li>
 </ul>
 </li>
-<li>url：登陆需要扫描的二维码图片的地址，你需要将这个url粘贴到浏览器中打开，进行扫码登陆</li>
-</ul>
+<li>
+<p>url：登陆需要扫描的二维码图片的地址，你需要将这个url粘贴到浏览器中打开，进行扫码登陆</p>
 </li>
-</ul>
-<ul>
-<li><p>login事件：返回的user，代表登陆的用户，返回的是一个Contact的类型，打印出来，是可以看到你当前登陆的用户昵称的。通过user.id()可以获取用户唯一id，user.name()可以获取用户的微信昵称，user.weixin()可以获取用户的微信号。</p>
+<li>
+<p>login事件：返回的user，代表登陆的用户，返回的是一个Contact的类型，打印出来，是可以看到你当前登陆的用户昵称的。通过user.id()可以获取用户唯一id，user.name()可以获取用户的微信昵称，user.weixin()可以获取用户的微信号。</p>
 </li>
-<li><p>message事件：返回的是message，代表收到的消息，是一个Message类型。通过message.content()可以获取到消息的内容，message.from()可以获取到消息的发送者，返回的是一个Contact类型。<br>以上只是一些简单的接口介绍，更多详细的接口文档可以点击查看：Wechaty的接口文档 接口文档还在更新中，如果希望更多接口，直接clone源码查看代码，你会发现很多惊喜好玩的小东西。</p>
-</li>
+<li>message事件：返回的是message，代表收到的消息，是一个Message类型。通过message.content()可以获取到消息的内容，message.from()可以获取到消息的发送者，返回的是一个Contact类型。<br />
+  以上只是一些简单的接口介绍，更多详细的接口文档可以点击查看：Wechaty的接口文档 接口文档还在更新中，如果希望更多接口，直接clone源码查看代码，你会发现很多惊喜好玩的小东西。</li>
 </ul>
 <p>除此之外，我还希望分享两个实用的Wechaty的工具：</p>
-<h3 id="qrcode-terminal"><a href="#qrcode-terminal" class="headerlink" title="qrcode-terminal"></a>qrcode-terminal</h3><p>仅仅把需要扫描的二维码图片作为链接打印在屏幕上，复制链接到浏览器中再去扫描，依然很麻烦，我更希望在terminal上直接扫描二维码登陆进来，这样才能到达demo中的炫酷效果，只需要两步：</p>
+<h3>qrcode-terminal</h3>
+<p>仅仅把需要扫描的二维码图片作为链接打印在屏幕上，复制链接到浏览器中再去扫描，依然很麻烦，我更希望在terminal上直接扫描二维码登陆进来，这样才能到达demo中的炫酷效果，只需要两步：</p>
 <p>1.安装依赖包：</p>
 <p><code>npm install qrcode-terminal</code></p>
 <p>2.稍微修改下scan事件后的代码就可以了：</p>
-<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">wechaty.on(<span class="string">'scan'</span>, <span class="function">(<span class="params">url, code</span>) =&gt;</span> &#123;  </span><br><span class="line"><span class="keyword">if</span> (!<span class="regexp">/201|200/</span>.test(<span class="built_in">String</span>(code)))&#123;</span><br><span class="line">   <span class="keyword">let</span> loginUrl = url.replace(<span class="regexp">/\/qrcode\//</span>, <span class="string">'/l/'</span>)</span><br><span class="line">   <span class="built_in">require</span>(<span class="string">'qrcode-terminal'</span>).generate(loginUrl)  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;url&#125;</span>\n[<span class="subst">$&#123;code&#125;</span>] Scan QR Code in above url to login: `</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h3 id="Server酱"><a href="#Server酱" class="headerlink" title="Server酱"></a>Server酱</h3><p>虽然机器人可以稳定的跑在VPS中，但是网页版微信会经常把用户踢下线，所以我需要知道Wechaty的各种异常情况，有一个简单的第三方工具：Server酱，他是一个能从服务器推报警和日志到手机的工具，非常简单易操作：</p>
-<p>1.用GitHub账号登入后，获得一个SCKEY（在「发送消息」页面） 按照引导，点击“微信推送”，扫码关注“方糖”后即可完成绑定<br>2.在login、logout、scan、和error事件触发后，将一些关键信息往 <a href="http://sc.ftqq.com/SCKEY.send" target="_blank" rel="noopener">http://sc.ftqq.com/SCKEY.send</a> 发Get请求，我自己的微信里就收到消息了。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wechaty.on('scan', (url, code) =&gt; {   if (!/201|200/.test(String(code))){    let loginUrl = url.replace(/\/qrcode\//, '/l/')    require('qrcode-terminal').generate(loginUrl)   }   console.log(`${url}\n[${code}] Scan QR Code in above url to login: `) })</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Server酱</h3>
+<p>虽然机器人可以稳定的跑在VPS中，但是网页版微信会经常把用户踢下线，所以我需要知道Wechaty的各种异常情况，有一个简单的第三方工具：Server酱，他是一个能从服务器推报警和日志到手机的工具，非常简单易操作：</p>
+<p>1.用GitHub账号登入后，获得一个SCKEY（在「发送消息」页面） 按照引导，点击“微信推送”，扫码关注“方糖”后即可完成绑定<br />
+2.在login、logout、scan、和error事件触发后，将一些关键信息往 <a href="http://sc.ftqq.com/SCKEY.send">http://sc.ftqq.com/SCKEY.send</a> 发Get请求，我自己的微信里就收到消息了。</p>
 <p>这样，当我的机器人出现各种异常情况，我随时随地都可以知道，需要再扫码进入的时候，方糖这公众号就会把二维码推到我的手机上，我只要用机器人的微信扫码就可以了。</p>
 <p>恩，就是这样，我实现了闭着眼镜就可以拉人的美梦中。</p>
-<h2 id="5-后续"><a href="#5-后续" class="headerlink" title="5. 后续"></a>5. 后续</h2><p>当我开始使用机器人做所有的重复操作的时候，对于加群的工作，我有了进一步的思考，比如我把很多微商拉入黑名单，他们再也无法进入我的微信群；另外我写了个功能，在微信群中加入了管理员功能，这样管理员即使不是群主，也可以把用户踢出微信群；有的时候脑洞大开，还会做个恶作剧，专门收集群友撤回信息，娱乐大众……</p>
+<h2>5. 后续</h2>
+<p>当我开始使用机器人做所有的重复操作的时候，对于加群的工作，我有了进一步的思考，比如我把很多微商拉入黑名单，他们再也无法进入我的微信群；另外我写了个功能，在微信群中加入了管理员功能，这样管理员即使不是群主，也可以把用户踢出微信群；有的时候脑洞大开，还会做个恶作剧，专门收集群友撤回信息，娱乐大众……</p>
 <p>忽然想起了一句话： “People should think, Bot should work”。 当机器能够帮助我们把机械化的工作完成之后，我们才会有更多的时间，思考真正有价值的事情。</p>
 <p>Wechaty解放了我的一些重复性工作，我也希望能为Wechaty做点什么，所以我现在在业余时间更新Wechaty的文档，有的时候也会分享一些我在使用Wechaty时候遇到的问题，希望帮助更多的人能够快速上手使用Wechaty。</p>
 <p>如果你对Wechaty感兴趣，希望一起交流，一起分享，共同学习，可以扫码添加”桔小秘”为好友，回复wechaty加入WECHATY DEVELOPERS’ HOME。也可以顺便体验下wechaty实现的小功能。</p>
-<p><img src="/img/2016/wechaty-wuli-usecase-qr-code.jpeg" alt="qr-code"></p>
+<p><img alt="qr-code" src="/img/2016/wechaty-wuli-usecase-qr-code.jpeg" /></p>
   </div>
   <div class="post-tags"><span class="post-tag">#舞蹈</span><span class="post-tag">#舞哩</span><span class="post-tag">#wechaty</span><span class="post-tag">#聊天机器人</span></div>
   <aside class="post-wechat">
@@ -169,7 +218,7 @@
 
 <div class="widget">
   <h3>近期文章</h3>
-  <ul><li><a href="/thought/2026-01-31-juzibot-2026.html">写在句子互动的 2026 年</a></li><li><a href="/thought/2025-12-31-2025-thought-slices.html">2025 年思想切片</a></li><li><a href="/thought/2025-12-31-last-day-of-2025.html">写在 2025 年的最后一天</a></li><li><a href="/thought/2025-01-31-juzibot-2025.html">写在句子互动的 2025 年</a></li><li><a href="/thought/2024-12-31-2024-thought-slices.html">2024 年思想切片</a></li><li><a href="/thought/2024-12-31-last-day-of-2024.html">写在 2024 年的最后一天</a></li><li><a href="/thought/2024-01-31-juzibot-2024.html">写在句子互动的 2024 年</a></li><li><a href="/thought/2023-12-31-2023-thought-slices.html">2023 年，一个创业者的 264 条思考切片</a></li></ul>
+  <ul><li><a href="/thought/2026-01-31-juzibot-2026.html">写在句子互动的 2026 年</a></li><li><a href="/thought/2025-12-31-last-day-of-2025.html">写在 2025 年的最后一天</a></li><li><a href="/thought/2025-12-31-2025-thought-slices.html">2025 年思想切片</a></li><li><a href="/thought/2025-01-31-juzibot-2025.html">写在句子互动的 2025 年</a></li><li><a href="/thought/2024-12-31-last-day-of-2024.html">写在 2024 年的最后一天</a></li><li><a href="/thought/2024-12-31-2024-thought-slices.html">2024 年思想切片</a></li><li><a href="/thought/2024-01-31-juzibot-2024.html">写在句子互动的 2024 年</a></li><li><a href="/thought/2023-12-31-last-day-of-2023.html">写在 2023 年的最后一天</a></li></ul>
 </div>
 
 <div class="widget">
@@ -179,7 +228,7 @@
 
 <div class="widget">
   <h3>归档</h3>
-  <ul><li><a href="/blog/#y2026">2026</a><span class="count">1</span></li><li><a href="/blog/#y2025">2025</a><span class="count">3</span></li><li><a href="/blog/#y2024">2024</a><span class="count">3</span></li><li><a href="/blog/#y2023">2023</a><span class="count">4</span></li><li><a href="/blog/#y2022">2022</a><span class="count">11</span></li><li><a href="/blog/#y2021">2021</a><span class="count">10</span></li><li><a href="/blog/#y2020">2020</a><span class="count">8</span></li><li><a href="/blog/#y2019">2019</a><span class="count">9</span></li><li><a href="/blog/#y2018">2018</a><span class="count">21</span></li><li><a href="/blog/#y2017">2017</a><span class="count">10</span></li><li><a href="/blog/#y2016">2016</a><span class="count">5</span></li><li><a href="/blog/#y2015">2015</a><span class="count">6</span></li><li><a href="/blog/#y2014">2014</a><span class="count">3</span></li><li><a href="/blog/#y2013">2013</a><span class="count">1</span></li><li><a href="/blog/#y2012">2012</a><span class="count">2</span></li></ul>
+  <ul><li><a href="/blog/#y2026">2026</a><span class="count">1</span></li><li><a href="/blog/#y2025">2025</a><span class="count">3</span></li><li><a href="/blog/#y2024">2024</a><span class="count">3</span></li><li><a href="/blog/#y2023">2023</a><span class="count">4</span></li><li><a href="/blog/#y2022">2022</a><span class="count">10</span></li><li><a href="/blog/#y2021">2021</a><span class="count">11</span></li><li><a href="/blog/#y2020">2020</a><span class="count">8</span></li><li><a href="/blog/#y2019">2019</a><span class="count">9</span></li><li><a href="/blog/#y2018">2018</a><span class="count">21</span></li><li><a href="/blog/#y2017">2017</a><span class="count">10</span></li><li><a href="/blog/#y2016">2016</a><span class="count">5</span></li><li><a href="/blog/#y2015">2015</a><span class="count">6</span></li><li><a href="/blog/#y2014">2014</a><span class="count">3</span></li><li><a href="/blog/#y2013">2013</a><span class="count">1</span></li><li><a href="/blog/#y2012">2012</a><span class="count">2</span></li></ul>
 </div>
 
 </aside>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>连载 | 3.6 设计UNIT对话逻辑 · 李佳芮的博客</title>
-<meta name="description" content="欢迎大家来到第三章的第六节，设计UNIT对话逻辑。 我们在上几章已经定义好了对话逻辑，接下来我们看一下怎么用UNIT来做所有的配置和设计。  梳理业务逻辑首先，根据我们之前学过的内容，第一步要梳理业务逻辑。 先做一些准备工作，磨刀不误砍柴工">
+<meta name="description" content="欢迎大家来到第三章的第六节，设计UNIT对话逻辑。 我们在上几章已经定义好了对话逻辑，接下来我们看一下怎么用UNIT来做所有的配置和设计。 梳理业务逻辑 首先，根据我们之前学过的内容，第一步要梳理业务逻辑。 先做一些准备工作，磨刀不误砍柴工。">
 <link rel="stylesheet" href="/css/site.css">
 <link rel="shortcut icon" href="/images/favicon.png">
 </head>
@@ -25,14 +25,15 @@
     </div>
     <h1 class="post-title-h1">连载 | 3.6 设计UNIT对话逻辑</h1>
     <div class="post-byline">
-      <time>2018-11-07</time>
+      <time>2018-11-07</time> · 全文 2206 字
     </div>
   </header>
   <div class="post-content markdown-body">
 <p>欢迎大家来到第三章的第六节，设计UNIT对话逻辑。</p>
 <p>我们在上几章已经定义好了对话逻辑，接下来我们看一下怎么用UNIT来做所有的配置和设计。</p>
-<p><img src="/img/2018/unit-3-6-1.jpeg" alt="image"></p>
-<p>梳理业务逻辑<br>首先，根据我们之前学过的内容，第一步要梳理业务逻辑。</p>
+<p><img alt="image" src="/img/2018/unit-3-6-1.jpeg" /></p>
+<p>梳理业务逻辑<br />
+首先，根据我们之前学过的内容，第一步要梳理业务逻辑。</p>
 <p>先做一些准备工作，磨刀不误砍柴工。</p>
 <p>对话Bot其实是在模拟你真实的业务场景，所以梳理业务的逻辑非常重要。</p>
 <p>我们需要知道用户通常有哪些目的，这些目的有没有关联，哪些信息是实现目的的关键要素。</p>
@@ -45,8 +46,9 @@
 <p>进一步去分析会发现，购买火车票的意图先要经过a和b，先查询车次和时间，再查询余票。</p>
 <p>我们以查询车票和时间为例，关键的信息有起点的城市、终点的城市。只有有了这些业务逻辑的梳理，才能在下一步中合理的构建出Bot技能的对话意图、词槽等对话系统中的必要信息。</p>
 <p>第二步，配置技能的对话意图或问答意图。</p>
-<p><img src="/img/2018/unit-3-6-2.jpeg" alt="image"></p>
-<p>配置技能的对话意图或问答意图<br>UNIT上的技能有预置的技能和自定义技能，整个配置技能目标是把业务逻辑交给对话系统，每一个意图都是由相关的意图组成。</p>
+<p><img alt="image" src="/img/2018/unit-3-6-2.jpeg" /></p>
+<p>配置技能的对话意图或问答意图<br />
+UNIT上的技能有预置的技能和自定义技能，整个配置技能目标是把业务逻辑交给对话系统，每一个意图都是由相关的意图组成。</p>
 <p>根据我们上一个步骤里，对业务逻辑的拆解完成技能下对每个对话意图、问答意图的具体配置。</p>
 <p>这个时候要思考，用户对话的对话意图是什么？</p>
 <p>要达成用户的对话意图，需要理解哪些关键信息？</p>
@@ -55,19 +57,14 @@
 <p>这种对话意图的定义，类似于产品设计里的功能需求分析。</p>
 <p>同样以订票为例，如图所示，它的对话意图名是BOOK_TICKET，别名是订票。我们要添加相关的词槽，有user_time、user_from、user_to和trainnumber，这是一些词槽别名。</p>
 <p>澄清话术就是怎么去问用户信息，“你什么时间出发”“从哪出发”“要到哪”。</p>
-<p><img src="/img/2018/unit-3-6-3.jpeg" alt="image"></p>
+<p><img alt="image" src="/img/2018/unit-3-6-3.jpeg" /></p>
 <p>配置技能的对话意图或问答意图需要以下五步：</p>
 <ol>
-<li><p>新建对话意图；</p>
-</li>
-<li><p>添加词槽；</p>
-</li>
-<li><p>设置Bot的回应；</p>
-</li>
-<li><p>新建问答意图；</p>
-</li>
-<li><p>设置预置技能（例如：闲聊、问候、指令等等）；</p>
-</li>
+<li>新建对话意图；</li>
+<li>添加词槽；</li>
+<li>设置Bot的回应；</li>
+<li>新建问答意图；</li>
+<li>设置预置技能（例如：闲聊、问候、指令等等）；</li>
 </ol>
 <p>以下是一些补充说明：</p>
 <p>后续实操课程会专门讲解新建对话意图。</p>
@@ -80,28 +77,34 @@
 <p>引导至问答意图：让用户直接在目标问答意图下提问并获取答案，它更像一个Q&amp;A，就是一个我们之前说的问答型的这种。</p>
 <p>比如说我问：“什么是经停航班”，然后有一个回答。</p>
 <p>这些在后续的实操中都会有讲。</p>
-<p><img src="/img/2018/unit-3-6-4.jpeg" alt="image"></p>
-<p>标注对话数据<br>在效果优化训练数据中尽量多的添加对话模版和对话样板，这样搭建的机器人会更贴近真实的业务场景。对话Bot就像一个儿童，教的越多越聪明。</p>
+<p><img alt="image" src="/img/2018/unit-3-6-4.jpeg" /></p>
+<p>标注对话数据<br />
+在效果优化训练数据中尽量多的添加对话模版和对话样板，这样搭建的机器人会更贴近真实的业务场景。对话Bot就像一个儿童，教的越多越聪明。</p>
 <p>具体的方法下面简单介绍一下，后续的实操会详细介绍。</p>
-<p>第一步，配置对话模版；<br>举个例子：“明天上午去北京的机票”，在这里把明天上午做成模版，配置好以后，当用户有类似 “明天上午XXXX” 这样的话术出现时，系统会自动匹配。比较适用于样本少，快速识别不同表达方式的用户需求。</p>
-<p>第二步，标注对话样本；<br>在这一阶段，把收集到的对话数据导入到UNIT的平台，依次标注意图、词槽，供后续的学习，让机器人有更好的对话理解泛化能力。</p>
-<p>第三步是添加问答对；<br>在需求分析的阶段，收集整理问答的数据。比如把退款相关的问答对导入到问答集中。</p>
+<p>第一步，配置对话模版；<br />
+举个例子：“明天上午去北京的机票”，在这里把明天上午做成模版，配置好以后，当用户有类似 “明天上午XXXX” 这样的话术出现时，系统会自动匹配。比较适用于样本少，快速识别不同表达方式的用户需求。</p>
+<p>第二步，标注对话样本；<br />
+在这一阶段，把收集到的对话数据导入到UNIT的平台，依次标注意图、词槽，供后续的学习，让机器人有更好的对话理解泛化能力。</p>
+<p>第三步是添加问答对；<br />
+在需求分析的阶段，收集整理问答的数据。比如把退款相关的问答对导入到问答集中。</p>
 <p>补充说明一下，不是每个场景都需要同时添加上面的三种训练数据，具体场景具体选择即可。</p>
-<p><img src="/img/2018/unit-3-6-5.jpeg" alt="image"></p>
+<p><img alt="image" src="/img/2018/unit-3-6-5.jpeg" /></p>
 <p>关于如何选择不同的方式：</p>
 <p>如果你的场景是任务型，同时缺少对话样本。你就要先去配置对话模版，快速达到一定的效果后，再从日志中筛选出更多的对话样本。</p>
 <p>如果一开始你就有大量真实的对话样本，这时你可以把对话模版和对话样本一起上，进而快速达到一个很好的效果。</p>
 <p>如果你还有问答对话的时候，你只要添加问答对就可以了。</p>
-<p><img src="/img/2018/unit-3-6-6.jpeg" alt="image"></p>
-<p>训练/体验<br>将对话模版对话样板等配置好后，系统会自动训练生成模型，然后把模型放在沙盒中，就可以与自己定制的对话系统对话了。</p>
+<p><img alt="image" src="/img/2018/unit-3-6-6.jpeg" /></p>
+<p>训练/体验<br />
+将对话模版对话样板等配置好后，系统会自动训练生成模型，然后把模型放在沙盒中，就可以与自己定制的对话系统对话了。</p>
 <p>UNIT背后的深度学习和对话管理技术会帮你快速训练bot的对话能力。</p>
 <p>机器人是一个反复验证、发现问题、优化配置，补充对话样本的一个循环过程，反复优化，逐步升级，机器越来越聪明。</p>
-<p><img src="/img/2018/unit-3-6-7.png" alt="image"></p>
+<p><img alt="image" src="/img/2018/unit-3-6-7.png" /></p>
 <p>这里为大家展示训练和体验的过程。在UNIT上线后，机器人会用户每句话的动作和意图给识别出来，同时可以在这里继续编辑和查看JSON。</p>
 <p>除此之外，还可以进行反问频率、Bot频率等的评级，并重制对话。</p>
 <p>因为UNIT体验的工具做的非常完善，在这里建议大家将刚刚搭建的Bot在UNIT的后台先进行训练。</p>
-<p><img src="/img/2018/unit-3-6-8.jpeg" alt="image"></p>
-<p>应用调用<br>UNIT已经和百度的其它AI技术打通了，创建一个应用以后可以方便的调用百度AI的语音图像识别的所有能力。</p>
+<p><img alt="image" src="/img/2018/unit-3-6-8.jpeg" /></p>
+<p>应用调用<br />
+UNIT已经和百度的其它AI技术打通了，创建一个应用以后可以方便的调用百度AI的语音图像识别的所有能力。</p>
 <p>这是本章的讲解，谢谢大家！</p>
   </div>
   <div class="post-tags"><span class="post-tag">#chatbot</span><span class="post-tag">#百度</span><span class="post-tag">#UNIT</span></div>
@@ -151,7 +154,7 @@
 
 <div class="widget">
   <h3>近期文章</h3>
-  <ul><li><a href="/thought/2026-01-31-juzibot-2026.html">写在句子互动的 2026 年</a></li><li><a href="/thought/2025-12-31-2025-thought-slices.html">2025 年思想切片</a></li><li><a href="/thought/2025-12-31-last-day-of-2025.html">写在 2025 年的最后一天</a></li><li><a href="/thought/2025-01-31-juzibot-2025.html">写在句子互动的 2025 年</a></li><li><a href="/thought/2024-12-31-2024-thought-slices.html">2024 年思想切片</a></li><li><a href="/thought/2024-12-31-last-day-of-2024.html">写在 2024 年的最后一天</a></li><li><a href="/thought/2024-01-31-juzibot-2024.html">写在句子互动的 2024 年</a></li><li><a href="/thought/2023-12-31-2023-thought-slices.html">2023 年，一个创业者的 264 条思考切片</a></li></ul>
+  <ul><li><a href="/thought/2026-01-31-juzibot-2026.html">写在句子互动的 2026 年</a></li><li><a href="/thought/2025-12-31-last-day-of-2025.html">写在 2025 年的最后一天</a></li><li><a href="/thought/2025-12-31-2025-thought-slices.html">2025 年思想切片</a></li><li><a href="/thought/2025-01-31-juzibot-2025.html">写在句子互动的 2025 年</a></li><li><a href="/thought/2024-12-31-last-day-of-2024.html">写在 2024 年的最后一天</a></li><li><a href="/thought/2024-12-31-2024-thought-slices.html">2024 年思想切片</a></li><li><a href="/thought/2024-01-31-juzibot-2024.html">写在句子互动的 2024 年</a></li><li><a href="/thought/2023-12-31-last-day-of-2023.html">写在 2023 年的最后一天</a></li></ul>
 </div>
 
 <div class="widget">
@@ -161,7 +164,7 @@
 
 <div class="widget">
   <h3>归档</h3>
-  <ul><li><a href="/blog/#y2026">2026</a><span class="count">1</span></li><li><a href="/blog/#y2025">2025</a><span class="count">3</span></li><li><a href="/blog/#y2024">2024</a><span class="count">3</span></li><li><a href="/blog/#y2023">2023</a><span class="count">4</span></li><li><a href="/blog/#y2022">2022</a><span class="count">11</span></li><li><a href="/blog/#y2021">2021</a><span class="count">10</span></li><li><a href="/blog/#y2020">2020</a><span class="count">8</span></li><li><a href="/blog/#y2019">2019</a><span class="count">9</span></li><li><a href="/blog/#y2018">2018</a><span class="count">21</span></li><li><a href="/blog/#y2017">2017</a><span class="count">10</span></li><li><a href="/blog/#y2016">2016</a><span class="count">5</span></li><li><a href="/blog/#y2015">2015</a><span class="count">6</span></li><li><a href="/blog/#y2014">2014</a><span class="count">3</span></li><li><a href="/blog/#y2013">2013</a><span class="count">1</span></li><li><a href="/blog/#y2012">2012</a><span class="count">2</span></li></ul>
+  <ul><li><a href="/blog/#y2026">2026</a><span class="count">1</span></li><li><a href="/blog/#y2025">2025</a><span class="count">3</span></li><li><a href="/blog/#y2024">2024</a><span class="count">3</span></li><li><a href="/blog/#y2023">2023</a><span class="count">4</span></li><li><a href="/blog/#y2022">2022</a><span class="count">10</span></li><li><a href="/blog/#y2021">2021</a><span class="count">11</span></li><li><a href="/blog/#y2020">2020</a><span class="count">8</span></li><li><a href="/blog/#y2019">2019</a><span class="count">9</span></li><li><a href="/blog/#y2018">2018</a><span class="count">21</span></li><li><a href="/blog/#y2017">2017</a><span class="count">10</span></li><li><a href="/blog/#y2016">2016</a><span class="count">5</span></li><li><a href="/blog/#y2015">2015</a><span class="count">6</span></li><li><a href="/blog/#y2014">2014</a><span class="count">3</span></li><li><a href="/blog/#y2013">2013</a><span class="count">1</span></li><li><a href="/blog/#y2012">2012</a><span class="count">2</span></li></ul>
 </div>
 
 </aside>

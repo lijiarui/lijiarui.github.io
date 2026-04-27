@@ -295,8 +295,11 @@ def build_post_page(post_meta, parsed, side_html, newer, older):
 
 {FOOT}"""
 
-    desc = re.sub(r"<[^>]+>", "", body)[:120].replace("\n", " ").strip()
-    desc = unescape(desc)
+    # SEO description: prefer explicit description from content.json (set via posts/*.md frontmatter)
+    desc = post_meta.get("description") or ""
+    if not desc:
+        desc = re.sub(r"<[^>]+>", "", body)[:150].replace("\n", " ").strip()
+        desc = unescape(desc)
     head = HEAD.format(title=escape(title), desc=escape(desc))
     return head + body_html
 

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ChatBot Framework-Wechaty · 李佳芮的博客</title>
-<meta name="description" content="Hello, ChatBot Developers! Wechaty is a easy to use ChatBot Framework which can help you write the worlds smallest chat">
+<meta name="description" content="Hello, ChatBot Developers! Wechaty is a easy to use ChatBot Framework which can help you write the worlds smallest chatbot . Maybe you are very intere…">
 <link rel="stylesheet" href="/css/site.css">
 <link rel="shortcut icon" href="/images/favicon.png">
 </head>
@@ -25,40 +25,49 @@
     </div>
     <h1 class="post-title-h1">ChatBot Framework-Wechaty</h1>
     <div class="post-byline">
-      <time>2016-10-01</time>
+      <time>2016-10-01</time> · 全文 920 字
     </div>
   </header>
   <div class="post-content markdown-body">
-<p><img src="https://raw.githubusercontent.com/Chatie/wechaty/master/docs/images/wechaty-logo-en.png" alt="Wechaty Logo"></p>
+<p><img alt="Wechaty Logo" src="https://raw.githubusercontent.com/Chatie/wechaty/master/docs/images/wechaty-logo-en.png" /></p>
 <p>Hello, ChatBot Developers!</p>
 <p>Wechaty is a easy to use <strong>ChatBot Framework</strong> which can help you write <strong>the worlds smallest chatbot</strong>. Maybe you are very interesting in ChatBot industory, or you just want to get your own wechat personal account robot, Wechaty will always be your friend.</p>
-<p>Visit Wechaty Github: <a href="https://github.com/chatie/wechaty" target="_blank" rel="noopener">https://github.com/chatie/wechaty</a><br>Visit Wechaty Blog: <a href="http://blog.chatie.io/" target="_blank" rel="noopener">http://blog.chatie.io/</a></p>
+<p>Visit Wechaty Github: <a href="https://github.com/chatie/wechaty">https://github.com/chatie/wechaty</a><br />
+Visit Wechaty Blog: <a href="http://blog.chatie.io/">http://blog.chatie.io/</a></p>
 <p>In this video, I will show you how to getting started with Wechaty through a 10 minutes live coding tutorial, with Wechaty Docker Runtime. (Event Node.js Party #18, Beijing)</p>
 <p>For visiters come from China who can not visit YouTube.com, this video is also hosted on YouKu.com &amp; Tencent Video</p>
-<div class="video-container" style="
-    position: relative;
-    padding-bottom:56.25%;
-    padding-top:30px;
-    height:0;
-    overflow:hidden;
-"><br><iframe width="560" height="315" src="https://www.youtube.com/embed/IUDuxHaV9bQ?start=85" frameborder="0" allowfullscreen style="
-    position: absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-"></iframe></div>
-
 <ul>
-<li><a href="http://v.youku.com/v_show/id_XMTkyNDgzMjY5Ng==.html" target="_blank" rel="noopener">Getting Started with Wechaty @ YouKu</a></li>
-<li><a href="https://v.qq.com/x/page/b0363p9kg3q.html" target="_blank" rel="noopener">Getting Started with Wechaty @ Tencent</a></li>
+<li><a href="http://v.youku.com/v_show/id_XMTkyNDgzMjY5Ng==.html">Getting Started with Wechaty @ YouKu</a></li>
+<li><a href="https://v.qq.com/x/page/b0363p9kg3q.html">Getting Started with Wechaty @ Tencent</a></li>
 </ul>
-<p>Learn more about how to use Wechaty: <a href="https://github.com/wechaty/wechaty/wiki/GettingStarted" target="_blank" rel="noopener">https://github.com/wechaty/wechaty/wiki/GettingStarted</a></p>
+<p>Learn more about how to use Wechaty: <a href="https://github.com/wechaty/wechaty/wiki/GettingStarted">https://github.com/wechaty/wechaty/wiki/GettingStarted</a></p>
 <p>Code in the video:</p>
-<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123;Wechaty, Room&#125; <span class="keyword">from</span> <span class="string">'wechaty'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> bot = Wechaty.instance()</span><br><span class="line"></span><br><span class="line">bot</span><br><span class="line">.on(<span class="string">'scan'</span>, <span class="function">(<span class="params">url, code</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> loginUrl = url.replace(<span class="string">'qrcode'</span>, <span class="string">'l'</span>)</span><br><span class="line">    <span class="built_in">require</span>(<span class="string">'qrcode-terminal'</span>).generate(loginUrl)</span><br><span class="line">    <span class="built_in">console</span>.log(url)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">.on(<span class="string">'login'</span>, <span class="function"><span class="params">user</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;user&#125;</span> login`</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">.on(<span class="string">'friend'</span>, <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params">contact, request</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(request)&#123;</span><br><span class="line">        <span class="keyword">await</span> request.accept()</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`Contact: <span class="subst">$&#123;contact.name()&#125;</span> send request <span class="subst">$&#123;request.hello&#125;</span>`</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">.on(<span class="string">'message'</span>, <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params">m</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> contact = m.from()</span><br><span class="line">    <span class="keyword">const</span> content = m.content()</span><br><span class="line">    <span class="keyword">const</span> room = m.room()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(room)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`Room: <span class="subst">$&#123;room.topic()&#125;</span> Contact: <span class="subst">$&#123;contact.name()&#125;</span> Content: <span class="subst">$&#123;content&#125;</span>`</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`Contact: <span class="subst">$&#123;contact.name()&#125;</span> Content: <span class="subst">$&#123;content&#125;</span>`</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(m.self())&#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(<span class="regexp">/hello/</span>.test(content))&#123;</span><br><span class="line">        m.say(<span class="string">"hello how are you"</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(<span class="regexp">/room/</span>.test(content))&#123;</span><br><span class="line">        <span class="keyword">let</span> keyroom = <span class="keyword">await</span> Room.find(&#123;topic: <span class="string">"test"</span>&#125;)</span><br><span class="line">        <span class="keyword">if</span>(keyroom)&#123;</span><br><span class="line">            <span class="keyword">await</span> keyroom.add(contact)</span><br><span class="line">            <span class="keyword">await</span> keyroom.say(<span class="string">"welcome!"</span>, contact)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(<span class="regexp">/out/</span>.test(content))&#123;</span><br><span class="line">        <span class="keyword">let</span> keyroom = <span class="keyword">await</span> Room.find(&#123;topic: <span class="string">"test"</span>&#125;)</span><br><span class="line">        <span class="keyword">if</span>(keyroom)&#123;</span><br><span class="line">            <span class="keyword">await</span> keyroom.say(<span class="string">"Remove from the room"</span>, contact)</span><br><span class="line">            <span class="keyword">await</span> keyroom.del(contact)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">.init()</span><br></pre></td></tr></table></figure>
-<p>docker command:    </p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">docker <span class="builtin-name">run</span> -ti <span class="attribute">--volume</span>=<span class="string">"<span class="variable">$(pwd)</span>"</span>:/bot --rm zixia/wechaty mybot.ts</span><br></pre></td></tr></table></figure>
-<p><a href="https://github.com/lijiarui/Getting-Started-with-Wechaty---Live-Coding-Tutorial" title="Click here to get the repo" target="_blank" rel="noopener">Click here to get the repo</a></p>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>import {Wechaty, Room} from 'wechaty'  const bot = Wechaty.instance()  bot .on('scan', (url, code)=&gt;{     let loginUrl = url.replace('qrcode', 'l')     require('qrcode-terminal').generate(loginUrl)     console.log(url) })  .on('login', user=&gt;{     console.log(`${user} login`) })  .on('friend', async function (contact, request){     if(request){         await request.accept()         console.log(`Contact: ${contact.name()} send request ${request.hello}`)     } })  .on('message', async function(m){     const contact = m.from()     const content = m.content()     const room = m.room()      if(room){         console.log(`Room: ${room.topic()} Contact: ${contact.name()} Content: ${content}`)     } else{         console.log(`Contact: ${contact.name()} Content: ${content}`)     }      if(m.self()){         return     }      if(/hello/.test(content)){         m.say("hello how are you")     }      if(/room/.test(content)){         let keyroom = await Room.find({topic: "test"})         if(keyroom){             await keyroom.add(contact)             await keyroom.say("welcome!", contact)         }     }      if(/out/.test(content)){         let keyroom = await Room.find({topic: "test"})         if(keyroom){             await keyroom.say("Remove from the room", contact)             await keyroom.del(contact)         }     } })  .init()</code></td>
+</tr>
+</tbody>
+</table>
+<p>docker command:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>docker run -ti --volume="$(pwd)":/bot --rm zixia/wechaty mybot.ts</code></td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://github.com/lijiarui/Getting-Started-with-Wechaty---Live-Coding-Tutorial" title="Click here to get the repo">Click here to get the repo</a></p>
   </div>
   <div class="post-tags"><span class="post-tag">#wechaty</span></div>
   <aside class="post-wechat">
@@ -107,7 +116,7 @@
 
 <div class="widget">
   <h3>近期文章</h3>
-  <ul><li><a href="/thought/2026-01-31-juzibot-2026.html">写在句子互动的 2026 年</a></li><li><a href="/thought/2025-12-31-2025-thought-slices.html">2025 年思想切片</a></li><li><a href="/thought/2025-12-31-last-day-of-2025.html">写在 2025 年的最后一天</a></li><li><a href="/thought/2025-01-31-juzibot-2025.html">写在句子互动的 2025 年</a></li><li><a href="/thought/2024-12-31-2024-thought-slices.html">2024 年思想切片</a></li><li><a href="/thought/2024-12-31-last-day-of-2024.html">写在 2024 年的最后一天</a></li><li><a href="/thought/2024-01-31-juzibot-2024.html">写在句子互动的 2024 年</a></li><li><a href="/thought/2023-12-31-2023-thought-slices.html">2023 年，一个创业者的 264 条思考切片</a></li></ul>
+  <ul><li><a href="/thought/2026-01-31-juzibot-2026.html">写在句子互动的 2026 年</a></li><li><a href="/thought/2025-12-31-last-day-of-2025.html">写在 2025 年的最后一天</a></li><li><a href="/thought/2025-12-31-2025-thought-slices.html">2025 年思想切片</a></li><li><a href="/thought/2025-01-31-juzibot-2025.html">写在句子互动的 2025 年</a></li><li><a href="/thought/2024-12-31-last-day-of-2024.html">写在 2024 年的最后一天</a></li><li><a href="/thought/2024-12-31-2024-thought-slices.html">2024 年思想切片</a></li><li><a href="/thought/2024-01-31-juzibot-2024.html">写在句子互动的 2024 年</a></li><li><a href="/thought/2023-12-31-last-day-of-2023.html">写在 2023 年的最后一天</a></li></ul>
 </div>
 
 <div class="widget">
@@ -117,7 +126,7 @@
 
 <div class="widget">
   <h3>归档</h3>
-  <ul><li><a href="/blog/#y2026">2026</a><span class="count">1</span></li><li><a href="/blog/#y2025">2025</a><span class="count">3</span></li><li><a href="/blog/#y2024">2024</a><span class="count">3</span></li><li><a href="/blog/#y2023">2023</a><span class="count">4</span></li><li><a href="/blog/#y2022">2022</a><span class="count">11</span></li><li><a href="/blog/#y2021">2021</a><span class="count">10</span></li><li><a href="/blog/#y2020">2020</a><span class="count">8</span></li><li><a href="/blog/#y2019">2019</a><span class="count">9</span></li><li><a href="/blog/#y2018">2018</a><span class="count">21</span></li><li><a href="/blog/#y2017">2017</a><span class="count">10</span></li><li><a href="/blog/#y2016">2016</a><span class="count">5</span></li><li><a href="/blog/#y2015">2015</a><span class="count">6</span></li><li><a href="/blog/#y2014">2014</a><span class="count">3</span></li><li><a href="/blog/#y2013">2013</a><span class="count">1</span></li><li><a href="/blog/#y2012">2012</a><span class="count">2</span></li></ul>
+  <ul><li><a href="/blog/#y2026">2026</a><span class="count">1</span></li><li><a href="/blog/#y2025">2025</a><span class="count">3</span></li><li><a href="/blog/#y2024">2024</a><span class="count">3</span></li><li><a href="/blog/#y2023">2023</a><span class="count">4</span></li><li><a href="/blog/#y2022">2022</a><span class="count">10</span></li><li><a href="/blog/#y2021">2021</a><span class="count">11</span></li><li><a href="/blog/#y2020">2020</a><span class="count">8</span></li><li><a href="/blog/#y2019">2019</a><span class="count">9</span></li><li><a href="/blog/#y2018">2018</a><span class="count">21</span></li><li><a href="/blog/#y2017">2017</a><span class="count">10</span></li><li><a href="/blog/#y2016">2016</a><span class="count">5</span></li><li><a href="/blog/#y2015">2015</a><span class="count">6</span></li><li><a href="/blog/#y2014">2014</a><span class="count">3</span></li><li><a href="/blog/#y2013">2013</a><span class="count">1</span></li><li><a href="/blog/#y2012">2012</a><span class="count">2</span></li></ul>
 </div>
 
 </aside>
