@@ -1,0 +1,14 @@
+# 个人 TODO 文件，不上线
+todo-seo.md
+todo*.md
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.pyc
