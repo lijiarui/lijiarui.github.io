@@ -39,6 +39,8 @@ CAT_LABEL = {
 POST_DIRS = ["chatbot", "interview", "microsoft", "presentation",
              "project", "reading", "saas", "thought"]
 
+SITE_URL = "https://rui.juzi.bot"
+
 HEAD = """<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -46,8 +48,26 @@ HEAD = """<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title} · 李佳芮的博客</title>
 <meta name="description" content="{desc}">
+<meta name="author" content="李佳芮">
+<meta name="keywords" content="{keywords}">
+<link rel="canonical" href="{canonical}">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{desc}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{canonical}">
+<meta property="og:image" content="{og_image}">
+<meta property="og:site_name" content="李佳芮的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="李佳芮">
+<meta property="article:published_time" content="{date_iso}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{title}">
+<meta name="twitter:description" content="{desc}">
+<meta name="twitter:image" content="{og_image}">
 <link rel="stylesheet" href="/css/site.css">
 <link rel="shortcut icon" href="/images/favicon.png">
+<link rel="alternate" type="application/rss+xml" title="李佳芮的博客 RSS" href="/feed.xml">
+{ld_json}
 </head>
 <body>
 """
@@ -59,6 +79,7 @@ FOOT = """<footer class="site-foot"><div class="wrap">
 <a href="/claude/">Claude 永动机</a>
 <a href="/slides/">分享 PPT</a>
 <a href="/yearly/">年度思考</a>
+<a href="/feed.xml">RSS</a>
 <a href="/about/">关于</a>
 <div class="copyright">© Li Jiarui · 时间看得见</div>
 </div></footer>
@@ -156,6 +177,13 @@ def sidebar(posts, slide_posts):
 <div class="widget">
   <h3>归档</h3>
   <ul>{year_html}</ul>
+</div>
+
+<div class="widget">
+  <h3>订阅</h3>
+  <ul>
+    <li><a href="/feed.xml" title="RSS Feed">RSS Feed <span class="rss-badge">📡</span></a></li>
+  </ul>
 </div>
 
 </aside>"""
@@ -300,7 +328,49 @@ def build_post_page(post_meta, parsed, side_html, newer, older):
     if not desc:
         desc = re.sub(r"<[^>]+>", "", body)[:150].replace("\n", " ").strip()
         desc = unescape(desc)
-    head = HEAD.format(title=escape(title), desc=escape(desc))
+
+    canonical = f"{SITE_URL}/{post_meta['path']}"
+    keywords = ", ".join([t["name"] for t in post_meta.get("tags", [])][:8])
+
+    # OG image: first <img> in body, else avatar
+    og_image_match = re.search(r'<img[^>]+src="([^"]+)"', body)
+    og_image = og_image_match.group(1) if og_image_match else "/images/avatar.jpg"
+    if og_image.startswith("/"):
+        og_image = SITE_URL + og_image
+
+    # JSON-LD structured data
+    import json as _json
+    ld_data = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": title,
+        "description": desc,
+        "image": og_image,
+        "url": canonical,
+        "datePublished": post_meta.get("date", "")[:10],
+        "dateModified": post_meta.get("updated", post_meta.get("date", ""))[:10],
+        "author": {"@type": "Person", "name": "李佳芮", "url": SITE_URL},
+        "publisher": {
+            "@type": "Person",
+            "name": "李佳芮",
+            "logo": {"@type": "ImageObject", "url": f"{SITE_URL}/images/avatar.jpg"},
+        },
+        "mainEntityOfPage": canonical,
+        "keywords": keywords,
+    }
+    ld_json = (
+        f'<script type="application/ld+json">{_json.dumps(ld_data, ensure_ascii=False)}</script>'
+    )
+
+    head = HEAD.format(
+        title=escape(title),
+        desc=escape(desc),
+        canonical=escape(canonical),
+        og_image=escape(og_image),
+        keywords=escape(keywords),
+        date_iso=escape(post_meta.get("date", "")[:10]),
+        ld_json=ld_json,
+    )
     return head + body_html
 
 
@@ -331,7 +401,17 @@ def build_page(parsed, side_html, page_meta):
 
     desc = re.sub(r"<[^>]+>", "", body)[:120].replace("\n", " ").strip()
     desc = unescape(desc)
-    head = HEAD.format(title=escape(title), desc=escape(desc))
+    path = page_meta.get("path", "")
+    canonical = f"{SITE_URL}/{path}" if path else SITE_URL
+    head = HEAD.format(
+        title=escape(title),
+        desc=escape(desc),
+        canonical=escape(canonical),
+        og_image=escape(f"{SITE_URL}/images/avatar.jpg"),
+        keywords="",
+        date_iso="",
+        ld_json="",
+    )
     return head + body_html
 
 

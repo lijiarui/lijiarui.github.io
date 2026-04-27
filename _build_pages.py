@@ -25,6 +25,8 @@ CAT_LABEL = {
 
 EXCERPT_LEN = 160
 
+SITE_URL = "https://rui.juzi.bot"
+
 HEAD = """<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -32,11 +34,41 @@ HEAD = """<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
+<meta name="author" content="李佳芮">
+<link rel="canonical" href="{canonical}">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{desc}">
+<meta property="og:type" content="{og_type}">
+<meta property="og:url" content="{canonical}">
+<meta property="og:image" content="{og_image}">
+<meta property="og:site_name" content="李佳芮的博客">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{title}">
+<meta name="twitter:description" content="{desc}">
+<meta name="twitter:image" content="{og_image}">
 <link rel="stylesheet" href="/css/site.css">
 <link rel="shortcut icon" href="/images/favicon.png">
+<link rel="alternate" type="application/rss+xml" title="李佳芮的博客 RSS" href="/feed.xml">
 </head>
 <body>
 """
+
+
+def make_head(title, desc, path="/", og_image=None, og_type="website"):
+    """Render HEAD with full SEO meta. path is site-relative; og_image is site-relative or full URL."""
+    canonical = SITE_URL + ("/" if not path.startswith("/") else "") + path.lstrip("/")
+    if not og_image:
+        og_image = SITE_URL + "/images/avatar.jpg"
+    elif og_image.startswith("/"):
+        og_image = SITE_URL + og_image
+    return HEAD.format(
+        title=escape(title),
+        desc=escape(desc),
+        canonical=escape(canonical),
+        og_image=escape(og_image),
+        og_type=escape(og_type),
+    )
 
 FOOT = """<footer class="site-foot"><div class="wrap">
 <a href="https://github.com/lijiarui">GitHub</a>
@@ -45,6 +77,7 @@ FOOT = """<footer class="site-foot"><div class="wrap">
 <a href="/claude/">Claude 永动机</a>
 <a href="/slides/">分享 PPT</a>
 <a href="/yearly/">年度思考</a>
+<a href="/feed.xml">RSS</a>
 <a href="/about/">关于</a>
 <div class="copyright">© Li Jiarui · 时间看得见</div>
 </div></footer>
@@ -389,6 +422,13 @@ def sidebar(posts, slide_posts):
 </div>
 
 <div class="widget">
+  <h3>订阅</h3>
+  <ul>
+    <li><a href="/feed.xml" title="RSS Feed">RSS Feed <span class="rss-badge">📡</span></a></li>
+  </ul>
+</div>
+
+<div class="widget">
   <h3>外站</h3>
   <ul>
     <li><a href="https://github.com/lijiarui">GitHub</a></li>
@@ -476,9 +516,10 @@ def build_index(posts, uploaded_slides):
 
 {FOOT}"""
 
-    head = HEAD.format(
+    head = make_head(
         title="李佳芮的博客 · 时间看得见",
-        desc="句子互动创始人李佳芮的个人博客：创业、产品、读书",
+        desc="句子互动创始人李佳芮的个人博客 · 创业、产品、读书 · Agentic AI、企业级 AI、SaaS 创业实践",
+        path="/",
     )
     write("index.html", head + body)
 
@@ -554,7 +595,11 @@ def build_blog(posts):
 
 {FOOT}"""
 
-    head = HEAD.format(title="博客 · 李佳芮", desc="李佳芮博客文章列表")
+    head = make_head(
+        title="博客 · 李佳芮",
+        desc=f"李佳芮的全部博客文章 · 共 {len(blog_posts)} 篇 · 创业、产品、读书、SaaS 实践与思考",
+        path="/blog/",
+    )
     write("blog/index.html", head + body)
 
 
@@ -628,7 +673,11 @@ def build_slides(posts, uploaded):
 
 {FOOT}"""
 
-    head = HEAD.format(title="分享 PPT · 李佳芮", desc="李佳芮 PPT 分享合集")
+    head = make_head(
+        title="分享 PPT · 李佳芮",
+        desc=f"李佳芮 PPT 分享合集，共 {len(slide_posts)} 份 · Chatbot、Wechaty、开源、Agentic AI、创业演讲",
+        path="/slides/",
+    )
     write("slides/index.html", head + body)
 
     # Build viewer pages for each uploaded slide
@@ -699,7 +748,14 @@ def build_slide_viewer(u, blog_posts, slide_posts):
 {FOOT}"""
 
     seo_desc = u.get("_seo_description") or f"{title} – PPT 在线预览"
-    head = HEAD.format(title=f"{escape(title)} · 分享 PPT", desc=escape(seo_desc))
+    og_image = u["_cover"] if u.get("_cover") else "/images/avatar.jpg"
+    head = make_head(
+        title=f"{title} · 分享 PPT",
+        desc=seo_desc,
+        path=u["path"],
+        og_image=og_image,
+        og_type="article",
+    )
     write(u["path"], head + body)
 
 
@@ -756,7 +812,11 @@ def build_yearly(posts):
 
 {FOOT}"""
 
-    head = HEAD.format(title="年度思考 · 李佳芮", desc="李佳芮的年度复盘与思考切片合集")
+    head = make_head(
+        title="年度思考 · 李佳芮",
+        desc=f"李佳芮历年的年度复盘与思考切片合集 · 共 {len(yearly)} 篇 · 创业、组织、产品、生活的年度反思",
+        path="/yearly/",
+    )
     write("yearly/index.html", head + body)
 
 
@@ -801,11 +861,129 @@ def build_claude(posts):
 
 {FOOT}"""
 
-    head = HEAD.format(
+    head = make_head(
         title="Claude 永动机 · 李佳芮",
-        desc="用 Claude Code 跑长任务的实践与笔记",
+        desc="用 Claude Code 跑长任务、做小工具、自动化日常工作的实践笔记",
+        path="/claude/",
     )
     write("claude/index.html", head + body)
+
+
+def build_rss(posts, uploaded):
+    """Generate /feed.xml — RSS 2.0 feed for blog readers."""
+    from email.utils import formatdate
+    import datetime as _dt
+
+    SITE_URL = "https://rui.juzi.bot"
+
+    items = []
+    for p in posts:
+        if p["_cat"] == "presentation":
+            continue
+        items.append({
+            "title": p["title"],
+            "link": f"{SITE_URL}/{p['path']}",
+            "date": p["_date"],
+            "category": p["_cat_label"],
+            "description": p.get("description") or p.get("_excerpt") or "",
+        })
+    for u in uploaded:
+        items.append({
+            "title": u["title"],
+            "link": f"{SITE_URL}/{u['path']}",
+            "date": u["_date"],
+            "category": u["_cat_label"],
+            "description": u.get("_seo_description") or u.get("_excerpt") or "",
+        })
+
+    items.sort(key=lambda x: x["date"], reverse=True)
+    items = items[:30]
+
+    def rfc822(date_str):
+        try:
+            d = _dt.datetime.strptime(date_str, "%Y-%m-%d")
+            return formatdate(d.timestamp(), localtime=False)
+        except Exception:
+            return formatdate(localtime=False)
+
+    items_xml = "\n".join(
+        "<item>"
+        f"<title>{escape(it['title'])}</title>"
+        f"<link>{escape(it['link'])}</link>"
+        f"<guid isPermaLink=\"true\">{escape(it['link'])}</guid>"
+        f"<pubDate>{rfc822(it['date'])}</pubDate>"
+        f"<category>{escape(it['category'])}</category>"
+        f"<description><![CDATA[{it['description']}]]></description>"
+        "</item>"
+        for it in items
+    )
+
+    last_build = formatdate(localtime=False)
+    rss = f"""<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>李佳芮的博客</title>
+<link>{SITE_URL}</link>
+<description>句子互动创始人李佳芮的博客 · 创业、产品、读书</description>
+<language>zh-CN</language>
+<lastBuildDate>{last_build}</lastBuildDate>
+<atom:link href="{SITE_URL}/feed.xml" rel="self" type="application/rss+xml" />
+{items_xml}
+</channel>
+</rss>"""
+    write("feed.xml", rss)
+
+
+def build_sitemap(posts, uploaded):
+    """Generate /sitemap.xml — for search engines."""
+    urls = []
+    static = [
+        ("", "1.0"),  # home
+        ("blog/", "0.9"),
+        ("yearly/", "0.8"),
+        ("slides/", "0.8"),
+        ("claude/", "0.5"),
+        ("about/", "0.6"),
+    ]
+    for slug, prio in static:
+        urls.append((SITE_URL + "/" + slug, prio, ""))
+
+    for p in posts:
+        urls.append((
+            f"{SITE_URL}/{p['path']}",
+            "0.7",
+            p.get("date", "")[:10],
+        ))
+    for u in uploaded:
+        urls.append((
+            f"{SITE_URL}/{u['path']}",
+            "0.7",
+            u["_date"],
+        ))
+
+    items = "\n".join(
+        f"<url><loc>{escape(loc)}</loc>"
+        + (f"<lastmod>{escape(lm)}</lastmod>" if lm else "")
+        + f"<priority>{prio}</priority></url>"
+        for loc, prio, lm in urls
+    )
+    sitemap = f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{items}
+</urlset>"""
+    write("sitemap.xml", sitemap)
+
+
+def build_robots():
+    """Generate /robots.txt."""
+    robots = f"""User-agent: *
+Allow: /
+Disallow: /index-old.html
+Disallow: /warn.html
+
+Sitemap: {SITE_URL}/sitemap.xml
+"""
+    write("robots.txt", robots)
 
 
 def build_search_index(posts):
@@ -835,6 +1013,9 @@ def main():
     build_slides(posts, uploaded)
     build_claude(posts)
     build_yearly(posts)
+    build_rss(posts, uploaded)
+    build_sitemap(posts, uploaded)
+    build_robots()
     build_search_index(posts)
 
 

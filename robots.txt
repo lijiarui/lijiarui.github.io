@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /index-old.html
+Disallow: /warn.html
+
+Sitemap: https://rui.juzi.bot/sitemap.xml

@@ -342,6 +342,10 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   text-decoration: none;
 }
 .sidebar a:hover { color: var(--accent); }
+.sidebar .rss-badge {
+  margin-left: 4px;
+  font-size: 12px;
+}
 .sidebar .count {
   color: var(--ink-faint);
   font-size: 12px;
