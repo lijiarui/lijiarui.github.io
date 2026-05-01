@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /index-old.html
 Disallow: /warn.html
+Disallow: /dashboard/
 
 Sitemap: https://rui.juzi.bot/sitemap.xml

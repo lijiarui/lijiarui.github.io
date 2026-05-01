@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>站点数据 · rui.juzi.bot</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg: #fafaf7;
+  --bg-card: #ffffff;
+  --bg-soft: #f3efe8;
+  --ink: #1f1f1f;
+  --ink-soft: #4a4a4a;
+  --ink-mute: #888;
+  --rule: #e5e1d8;
+  --accent: #D26911;
+  --accent-soft: rgba(210, 105, 17, 0.08);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: var(--bg); color: var(--ink); font-size: 14px; line-height: 1.5;
+}
+.dashboard { max-width: 1400px; margin: 0 auto; padding: 32px 28px 64px; }
+
+header.top {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 32px; padding-bottom: 18px; border-bottom: 1px solid var(--rule);
+}
+.top h1 { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+.top h1 small { font-size: 13px; font-weight: 400; color: var(--ink-mute); margin-left: 12px; }
+.top-meta { display: flex; align-items: center; gap: 14px; font-size: 12px; color: var(--ink-mute); }
+.demo-badge {
+  background: var(--accent-soft); color: var(--accent);
+  padding: 3px 8px; border-radius: 3px; font-weight: 600; letter-spacing: 0.04em;
+}
+
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 28px; }
+.kpi { background: var(--bg-card); border: 1px solid var(--rule); border-radius: 8px; padding: 18px 20px; }
+.kpi-label { font-size: 11px; color: var(--ink-mute); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
+.kpi-value { font-size: 32px; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; line-height: 1.1; }
+.kpi-delta { margin-top: 6px; font-size: 12px; color: var(--ink-mute); font-variant-numeric: tabular-nums; }
+.kpi-delta.up { color: #2d7d4f; }
+.kpi-delta.down { color: #b04545; }
+
+.row { display: grid; gap: 18px; margin-bottom: 18px; }
+.row-2 { grid-template-columns: 2fr 1fr; }
+.row-equal { grid-template-columns: 1fr 1fr; }
+
+.card { background: var(--bg-card); border: 1px solid var(--rule); border-radius: 8px; padding: 18px 20px; }
+.card h3 { margin: 0 0 4px; font-size: 14px; font-weight: 700; }
+.card .sub { font-size: 12px; color: var(--ink-mute); margin-bottom: 16px; }
+.chart-wrap { position: relative; height: 280px; }
+
+table.pages { width: 100%; border-collapse: collapse; font-size: 13px; }
+table.pages th, table.pages td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule); }
+table.pages th { font-size: 11px; font-weight: 600; color: var(--ink-mute); letter-spacing: 0.05em; text-transform: uppercase; }
+table.pages td.num { text-align: right; font-variant-numeric: tabular-nums; color: var(--ink-soft); }
+table.pages td a { color: var(--ink); text-decoration: none; border-bottom: 1px solid transparent; }
+table.pages td a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+
+.bar-list { display: flex; flex-direction: column; gap: 10px; }
+.bar-row { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px; }
+.bar-name { font-size: 13px; }
+.bar-value { font-size: 12px; color: var(--ink-mute); font-variant-numeric: tabular-nums; }
+.bar-track { grid-column: 1 / -1; height: 6px; background: var(--bg-soft); border-radius: 3px; overflow: hidden; margin-top: 2px; }
+.bar-fill { height: 100%; background: var(--accent); border-radius: 3px; }
+
+footer.note {
+  margin-top: 36px; padding-top: 18px; border-top: 1px dashed var(--rule);
+  font-size: 12px; color: var(--ink-mute); line-height: 1.7;
+}
+footer.note ul { padding-left: 18px; margin: 6px 0; }
+footer.note strong { color: var(--ink-soft); }
+
+@media (max-width: 900px) {
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .row-2, .row-equal { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="dashboard">
+
+<header class="top">
+  <h1>站点数据 <small>rui.juzi.bot · 李佳芮的博客</small></h1>
+  <div class="top-meta">
+    <span class="demo-badge">演示数据</span>
+    <span id="updated"></span>
+  </div>
+</header>
+
+<div class="kpi-grid">
+  <div class="kpi"><div class="kpi-label">今日 UV</div><div class="kpi-value">287</div><div class="kpi-delta up">↑ 8.4% vs 昨日</div></div>
+  <div class="kpi"><div class="kpi-label">今日 PV</div><div class="kpi-value">542</div><div class="kpi-delta up">↑ 5.2% vs 昨日</div></div>
+  <div class="kpi"><div class="kpi-label">累计 PV</div><div class="kpi-value">152,348</div><div class="kpi-delta">所有时间</div></div>
+  <div class="kpi"><div class="kpi-label">在线文章</div><div class="kpi-value">116</div><div class="kpi-delta">含演讲与思考</div></div>
+</div>
+
+<div class="row">
+  <div class="card">
+    <h3>30 天访问趋势</h3>
+    <div class="sub">UV / PV，按天</div>
+    <div class="chart-wrap"><canvas id="trend"></canvas></div>
+  </div>
+</div>
+
+<div class="row row-2">
+  <div class="card">
+    <h3>搜索引擎</h3>
+    <div class="sub">最近 30 天，按搜索流量来源</div>
+    <div id="search-bars" class="bar-list"></div>
+  </div>
+  <div class="card">
+    <h3>流量来源</h3>
+    <div class="sub">按渠道分布</div>
+    <div class="chart-wrap" style="height:240px"><canvas id="sources"></canvas></div>
+  </div>
+</div>
+
+<div class="row row-equal">
+  <div class="card">
+    <h3>热门文章</h3>
+    <div class="sub">最近 30 天，PV Top 10</div>
+    <table class="pages">
+      <thead><tr><th>文章</th><th class="num">UV</th><th class="num">PV</th></tr></thead>
+      <tbody id="pages-body"></tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h3>访客地域</h3>
+    <div class="sub">最近 30 天，Top 10</div>
+    <div id="region-bars" class="bar-list"></div>
+  </div>
+</div>
+
+<div class="row row-equal">
+  <div class="card">
+    <h3>设备分布</h3>
+    <div class="sub">最近 30 天，UV</div>
+    <div class="chart-wrap" style="height:200px"><canvas id="devices"></canvas></div>
+  </div>
+  <div class="card">
+    <h3>文章分类访问</h3>
+    <div class="sub">最近 30 天，PV</div>
+    <div id="category-bars" class="bar-list"></div>
+  </div>
+</div>
+
+<footer class="note">
+  <p><strong>这是一个设计预览。</strong>所有数字都是 mock 的，不代表真实统计。</p>
+  <p>下一步把它连真实数据，三条路径供选：</p>
+  <ul>
+    <li><strong>Umami Cloud（推荐自定义大屏）</strong>：免费 10 万事件/月，有 REST API，可以把数据直接拉进这个页面。一行 beacon 脚本到博客 head</li>
+    <li><strong>Cloudflare Web Analytics</strong>：免费、隐私友好、零配置；juzi.bot 应该已经在 CF 上了，开关一开即用。但只能用 CF 自己的面板，没公开 API 给自定义大屏</li>
+    <li><strong>百度统计 + 谷歌 GA4 双埋</strong>：覆盖国内 + 国外，最经典；但要做自定义大屏需要走 OAuth + Reporting API，最复杂</li>
+  </ul>
+  <p>如果选 Umami Cloud，我可以下一步帮你：① 在博客所有页面 head 加一行 beacon ② 把这个大屏的 mock 数据替换成 Umami API 调用 ③ 部署到比如 <code>https://rui.juzi.bot/dashboard/</code> 加密码保护或 noindex。</p>
+</footer>
+
+</div>
+
+<script>
+const today = new Date();
+const fmt = d => d.toISOString().slice(0, 10);
+
+const trend = (() => {
+  const arr = [];
+  for (let i = 29; i >= 0; i--) {
+    const d = new Date(today);
+    d.setDate(d.getDate() - i);
+    const base = 220 + Math.sin(i / 4) * 60 + (Math.random() - 0.5) * 50;
+    const uv = Math.max(80, Math.round(base));
+    arr.push({ date: fmt(d), uv, pv: Math.round(uv * (1.7 + Math.random() * 0.5)) });
+  }
+  return arr;
+})();
+
+const sources = [
+  { name: '直接访问', value: 35 },
+  { name: '搜索引擎', value: 32 },
+  { name: '社交媒体', value: 22 },
+  { name: '外部链接', value: 11 },
+];
+
+const searchEngines = [
+  { name: 'Google',     value: 4521 },
+  { name: '百度',        value: 3217 },
+  { name: 'Bing',       value: 412 },
+  { name: 'DuckDuckGo', value: 89 },
+  { name: 'Yandex',     value: 23 },
+];
+
+const topPages = [
+  { path: '/thought/2026-01-31-juzibot-2026.html',                    title: '写在句子互动的 2026 年',                  uv: 5102, pv: 8421 },
+  { path: '/slides/files/2026-04-25-ai-organization-pku/index.html',  title: '重新发明组织 —— AI 原生时代…',           uv: 3782, pv: 6128 },
+  { path: '/about/',                                                  title: '关于',                                  uv: 2914, pv: 3540 },
+  { path: '/thought/2025-01-31-juzibot-2025.html',                    title: '写在句子互动的 2025 年',                  uv: 2618, pv: 3924 },
+  { path: '/thought/2025-12-31-2025-thought-slices.html',             title: '2025 年思想切片',                        uv: 1942, pv: 2381 },
+  { path: '/thought/2024-12-31-last-day-of-2024.html',                title: '写在 2024 年的最后一天',                  uv: 1428, pv: 1932 },
+  { path: '/blog/',                                                   title: '博客索引',                              uv: 1284, pv: 1819 },
+  { path: '/',                                                        title: '首页',                                  uv: 1097, pv: 1542 },
+  { path: '/slides/',                                                 title: '分享 PPT',                              uv:  824, pv: 1207 },
+  { path: '/yearly/',                                                 title: '年度思考',                              uv:  612, pv:  829 },
+];
+
+const regions = [
+  { name: '北京',   value: 12450 },
+  { name: '上海',   value:  8927 },
+  { name: '广东',   value:  6841 },
+  { name: '浙江',   value:  4218 },
+  { name: '江苏',   value:  3105 },
+  { name: '四川',   value:  2483 },
+  { name: '海外',   value:  2104 },
+  { name: '湖北',   value:  1734 },
+  { name: '陕西',   value:  1287 },
+  { name: '其他',   value:  4203 },
+];
+
+const devices = [
+  { name: 'Mobile',  value: 64 },
+  { name: 'Desktop', value: 32 },
+  { name: 'Tablet',  value:  4 },
+];
+
+const categories = [
+  { name: '思考',     value: 18421 },
+  { name: 'Chatbot',  value:  9217 },
+  { name: '演讲',     value:  7843 },
+  { name: '访谈',     value:  4129 },
+  { name: '项目',     value:  3187 },
+  { name: '读书',     value:  2415 },
+  { name: 'SaaS',     value:  1208 },
+];
+
+document.getElementById('updated').textContent = '刷新时间 ' + new Date().toLocaleString('zh-CN');
+
+new Chart(document.getElementById('trend'), {
+  type: 'line',
+  data: {
+    labels: trend.map(t => t.date.slice(5)),
+    datasets: [
+      { label: 'UV', data: trend.map(t => t.uv), borderColor: '#D26911', backgroundColor: 'rgba(210, 105, 17, 0.08)', tension: 0.3, fill: true, borderWidth: 2, pointRadius: 0, pointHoverRadius: 4 },
+      { label: 'PV', data: trend.map(t => t.pv), borderColor: '#1f1f1f', backgroundColor: 'rgba(0,0,0,0)', tension: 0.3, borderWidth: 1.5, pointRadius: 0, pointHoverRadius: 4 },
+    ],
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: 'bottom', align: 'end', labels: { boxWidth: 12, boxHeight: 12, padding: 12, font: { size: 12 } } } },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 11 }, maxRotation: 0, autoSkipPadding: 18 } },
+      y: { beginAtZero: true, grid: { color: '#eee' }, ticks: { font: { size: 11 } } },
+    },
+    interaction: { intersect: false, mode: 'index' },
+  },
+});
+
+new Chart(document.getElementById('sources'), {
+  type: 'doughnut',
+  data: { labels: sources.map(s => s.name), datasets: [{ data: sources.map(s => s.value), backgroundColor: ['#D26911', '#E8A55F', '#5B7A8C', '#9CA3AF'], borderWidth: 0 }] },
+  options: { responsive: true, maintainAspectRatio: false, cutout: '65%', plugins: { legend: { position: 'right', labels: { boxWidth: 10, boxHeight: 10, padding: 10, font: { size: 12 } } } } },
+});
+
+new Chart(document.getElementById('devices'), {
+  type: 'doughnut',
+  data: { labels: devices.map(d => d.name), datasets: [{ data: devices.map(d => d.value), backgroundColor: ['#D26911', '#1f1f1f', '#cfcfcf'], borderWidth: 0 }] },
+  options: { responsive: true, maintainAspectRatio: false, cutout: '65%', plugins: { legend: { position: 'right', labels: { boxWidth: 10, boxHeight: 10, padding: 10, font: { size: 12 } } } } },
+});
+
+function makeBars(containerId, items) {
+  const max = Math.max(...items.map(i => i.value));
+  const html = items.map(i => `
+    <div>
+      <div class="bar-row">
+        <span class="bar-name">${i.name}</span>
+        <span class="bar-value">${i.value.toLocaleString()}</span>
+      </div>
+      <div class="bar-track"><div class="bar-fill" style="width:${(i.value / max * 100).toFixed(1)}%"></div></div>
+    </div>
+  `).join('');
+  document.getElementById(containerId).innerHTML = html;
+}
+makeBars('search-bars', searchEngines);
+makeBars('region-bars', regions);
+makeBars('category-bars', categories);
+
+document.getElementById('pages-body').innerHTML = topPages.map(p => `
+  <tr>
+    <td><a href="https://rui.juzi.bot${p.path}" target="_blank" rel="noopener">${p.title}</a></td>
+    <td class="num">${p.uv.toLocaleString()}</td>
+    <td class="num">${p.pv.toLocaleString()}</td>
+  </tr>
+`).join('');
+</script>
+
+</body>
+</html>

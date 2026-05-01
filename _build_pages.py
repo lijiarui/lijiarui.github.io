@@ -1009,6 +1009,7 @@ def build_robots():
 Allow: /
 Disallow: /index-old.html
 Disallow: /warn.html
+Disallow: /dashboard/
 
 Sitemap: {SITE_URL}/sitemap.xml
 """
