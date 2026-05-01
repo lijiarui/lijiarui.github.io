@@ -68,6 +68,7 @@ HEAD = """<!doctype html>
 <link rel="shortcut icon" href="/images/favicon.png?v=3">
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png?v=3">
 <link rel="alternate" type="application/rss+xml" title="李佳芮的博客 RSS" href="/feed.xml">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="ad8bf824-0bb3-4a1a-9cc6-800a038b222f"></script>
 {ld_json}
 </head>
 <body>

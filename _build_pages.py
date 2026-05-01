@@ -51,6 +51,7 @@ HEAD = """<!doctype html>
 <link rel="shortcut icon" href="/images/favicon.png?v=3">
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png?v=3">
 <link rel="alternate" type="application/rss+xml" title="李佳芮的博客 RSS" href="/feed.xml">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="ad8bf824-0bb3-4a1a-9cc6-800a038b222f"></script>
 </head>
 <body>
 """
@@ -889,6 +890,13 @@ def build_claude(posts):
 </div>
 
 {FOOT}"""
+
+    head = make_head(
+        title="Claude 永动机 · 李佳芮",
+        desc="用 Claude Code 跑长任务、做小工具、自动化日常工作的实践笔记",
+        path="/claude/",
+    )
+    write("claude/index.html", head + body)
 
 
 def build_rss(posts, uploaded):
