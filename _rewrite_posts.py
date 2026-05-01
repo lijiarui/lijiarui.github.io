@@ -69,6 +69,15 @@ HEAD = """<!doctype html>
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png?v=3">
 <link rel="alternate" type="application/rss+xml" title="李佳芮的博客 RSS" href="/feed.xml">
 <script defer src="https://cloud.umami.is/script.js" data-website-id="ad8bf824-0bb3-4a1a-9cc6-800a038b222f"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {{
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?5454a88502f6c286882f8de764e762bf";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+}})();
+</script>
 {ld_json}
 </head>
 <body>
