@@ -864,35 +864,52 @@ def build_claude(posts):
     slide_posts = [p for p in posts if p["_cat"] == "presentation"]
     side_html = sidebar(blog_posts, slide_posts)
 
+    # 收集所有打了「Claude 永动机」tag 的文章
+    claude_posts = [p for p in posts if any(
+        "Claude 永动机" in t or "claude 永动机" in t.lower()
+        for t in p.get("_tags", [])
+    )]
+
+    # 临时兜底：手工挂上 2026-04-28-return-to-code（content.json 还没更新前先这样）
+    HARDCODED = [{
+        "title": "接近 10 年没写代码了，被 Claude Opus 4.5 拉了回来",
+        "path": "thought/2026-04-28-return-to-code.html",
+        "_date": "2026-04-28",
+        "_excerpt": "我十年没碰代码了。Claude Opus 4.5 把我拉了回来，不是因为模型多聪明，是因为激活成本被消掉了。我现在每天最稳定的工作方式是：脑子里想，嘴说出来，让 Claude 干，我 review。我把这件事叫「Claude 永动机」——而这里，将是我的下一代组织的试验田。",
+    }]
+    existing_paths = {p["path"] for p in claude_posts}
+    for h in HARDCODED:
+        if h["path"] not in existing_paths:
+            claude_posts.insert(0, h)
+
+    if claude_posts:
+        entries_html = "\n".join(
+            f'''<article class="entry">
+    <h2 class="entry-title"><a href="/{escape(p["path"])}">{escape(p["title"])}</a></h2>
+    <div class="entry-meta">{escape(p.get("_date",""))}</div>
+    <div class="entry-excerpt"><p>{escape(p.get("_excerpt",""))}</p></div>
+    <div class="entry-more"><a href="/{escape(p["path"])}">继续读 →</a></div>
+  </article>'''
+            for p in claude_posts
+        )
+    else:
+        entries_html = '''<article class="entry">
+    <h2 class="entry-title">还没开始填</h2>
+    <div class="entry-excerpt"><p>这个栏目正在写第一篇。</p></div>
+  </article>'''
+
     body = f"""{topnav("claude")}
 
 <div class="wrap">
 <div class="page-intro">
   <h1>Claude 永动机</h1>
-  <p>用 Claude Code 跑长任务、做小工具、自动化日常工作的实践笔记。</p>
-  <p>这一栏在持续填充。</p>
+  <p>只要我还在动脑，它就一直在动手。</p>
+  <p>用 Claude Code 跑长任务、做小工具、自动化日常工作的实践笔记。下一代组织的试验田。</p>
 </div>
 
 <div class="cols">
 <main>
-  <article class="entry">
-    <h2 class="entry-title">关于这个栏目</h2>
-    <div class="entry-excerpt">
-      <p>这是给 Claude Code 单独留的位置。我会把跑过的有意思的任务、写过的小工具、踩过的坑、用过的 Prompt 模式都放在这里——每条都是一个能复现的实验。</p>
-      <p>暂时是空的，内容会陆续搬上来。</p>
-    </div>
-  </article>
-
-  <article class="entry">
-    <h2 class="entry-title">计划放进来的内容</h2>
-    <div class="entry-excerpt">
-      <p>· 长任务：让 Claude 一次跑几十分钟到几小时的工作流</p>
-      <p>· 数据：从飞书拉数据、跑分析、产出文档的固定 Pipeline</p>
-      <p>· 自动化：邮件、日历、PR review 的小钩子</p>
-      <p>· Prompt：那些救过我命的 system prompt 与 skill</p>
-      <p>· 翻车：失败的实验和原因</p>
-    </div>
-  </article>
+{entries_html}
 </main>
 {side_html}
 </div>
