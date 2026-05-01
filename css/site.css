@@ -1261,6 +1261,51 @@ iframe.slide-viewer-ppt,
 .post-comments { max-width: 100%; overflow: hidden; }
 .post-comments iframe { max-width: 100% !important; }
 
+/* Related posts (article footer) */
+.post-related {
+  margin-top: 36px;
+  padding: 18px 22px;
+  background: var(--bg-soft);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+.post-related h3 {
+  margin: 0 0 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+}
+.post-related ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.post-related li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 14px;
+}
+.post-related a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  flex: 1;
+  min-width: 0;
+}
+.post-related a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.post-related-date {
+  color: var(--ink-mute);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
 /* Post tags (article footer) */
 .post-tags {
   margin-top: 32px;

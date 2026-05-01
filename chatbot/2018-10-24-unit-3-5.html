@@ -36,6 +36,7 @@ var _hmt = _hmt || [];
 })();
 </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "连载 | 3.5 抽取对话流程", "description": "欢迎大家来学习第三章的第五节，抽取对话流程。 如何抽取对话流程？简单来说就是进行流程图的绘制。 首先，绘制基础业务流程图。 业务流程图描述的是完整的业务流程，以业务处理过程为中心，一般没有数据的概念。", "image": "https://rui.juzi.bot/img/2018/unit-3-5-1.jpeg", "url": "https://rui.juzi.bot/chatbot/2018-10-24-unit-3-5.html", "datePublished": "2018-10-24", "dateModified": "2018-10-24", "author": {"@type": "Person", "name": "李佳芮", "url": "https://rui.juzi.bot"}, "publisher": {"@type": "Person", "name": "李佳芮", "logo": {"@type": "ImageObject", "url": "https://rui.juzi.bot/images/avatar.jpg"}}, "mainEntityOfPage": "https://rui.juzi.bot/chatbot/2018-10-24-unit-3-5.html", "keywords": "chatbot, 百度, UNIT"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首页", "item": "https://rui.juzi.bot/"}, {"@type": "ListItem", "position": 2, "name": "博客", "item": "https://rui.juzi.bot/blog/"}, {"@type": "ListItem", "position": 3, "name": "连载 | 3.5 抽取对话流程", "item": "https://rui.juzi.bot/chatbot/2018-10-24-unit-3-5.html"}]}</script>
 </head>
 <body>
 <header class="topnav"><div class="wrap row">
@@ -60,14 +61,14 @@ var _hmt = _hmt || [];
   <div class="post-content markdown-body">
 <p>欢迎大家来学习第三章的第五节，抽取对话流程。</p>
 <p>如何抽取对话流程？简单来说就是进行流程图的绘制。</p>
-<p><img alt="image" src="/img/2018/unit-3-5-1.jpeg" /><br />
+<p><img alt="image" src="/img/2018/unit-3-5-1.jpeg" / loading="lazy" decoding="async"><br />
 首先，绘制基础业务流程图。</p>
 <p>业务流程图描述的是完整的业务流程，以业务处理过程为中心，一般没有数据的概念。流程图以动作来推动业务进行，流程图更加关注的是业务实现具体要进行哪些操作，每一个动作构成的基本形式都是动词加名词，或者动词。例如支付界面，订票结果反馈，都是以动作为驱动的。</p>
 <p>如下图左侧的流程图，可以看到这是一个订票业务的基本流程，从顶端订票开始；然后航班查询、乘客信息收集流程、支付界面、订票结果反馈、订票流程结束。其中每一个步骤，都可以将其进一步细化，右侧的图就是细化航班查询选择流程后的结果。补充了收集用户提供的查询信息、查找并展示查询结果、用户选择航班等过程。</p>
 <p>左侧的流程图可以看出业务的基础脉络，具体的细节可以将左侧图的部分步骤拆解并细化。航班查询选择流程开始（长方形代表流程/步骤），然后机票查询信息收集流程（长方形和三角形的组合图形代表跨页引用），然后看是否有查询结果（菱形代表判定），如果有结果——展示查询结果，接着再跳到下一步——查询结果选择流程，然后航班查询选择流程结束。如果没有结果，对用户提示无结果，请求用户再提供其它槽值，如果提供，重复以上流程，如果没有提供，进入用户意图分析流程，即判定用户是不是有其它意图，而不是订机票。</p>
 <p>其次，还需要绘制跨职能流程图，也叫泳道图，是流程图的进阶。</p>
 <p>泳道图加入了泳道，表示不同的角色或岗位和部门等，在了解业务流程的时候，也清楚由谁执行该动作。</p>
-<p><img alt="image" src="/img/2018/unit-3-5-2.jpeg" /></p>
+<p><img alt="image" src="/img/2018/unit-3-5-2.jpeg" / loading="lazy" decoding="async"></p>
 <p>如上图，每一个动作都放在相应的模块下，对应了执行此动作的人或系统。这样对于业务流程中的不同角色的职责，也会有更加明确的认知。</p>
 <p>首先，用户这边发起了订票请求，查询条件。之后机器人桔小秘，获取查询条件，然后通过票务接口查询航班信息，每一步的操作都会反馈查询结果供用户选择。用户选择航班后，机器人再去收集乘客信息，到票务接口生成订单，之后到用户这里进行付款，然后再到票务接口生成航班信息，再到机器人展示已预定的航班信息，最后流程结束。</p>
 <p>相比业务流程图，跨职能流程图对业务的描述更加清晰。并且可以在旁边补充流程描述，例如，如上的流程，描述为如下：</p>
@@ -81,16 +82,17 @@ var _hmt = _hmt || [];
 <p>右侧的流程描述，把中间的每一个细节描述的很清楚，再加上左侧清晰的跨职能流程图，即使整个流程相对比较复杂，在给不同部门讲述时，也能够一目了然。</p>
 <p>最后，进行业务线合并汇总。</p>
 <p>例如，即使只是商旅这样相对比较封闭的场景，它依然会有很多业务线。可能有机票、酒店、火车票、订美食、订餐或者订车等等。需要把合并这些业务并梳理相关的意图、词槽和对话样本集，通过如下的树状图能够清晰明了的把业务流程梳理出来。</p>
-<p><img alt="image" src="/img/2018/unit-3-5-3.jpeg" /></p>
+<p><img alt="image" src="/img/2018/unit-3-5-3.jpeg" / loading="lazy" decoding="async"></p>
 <p>在此，给读者介绍两个工具，可以更好的去画流程图，这两个工具都是在线的，可以进行实时协作。</p>
-<p><img alt="image" src="/img/2018/unit-3-5-4.jpeg" /></p>
+<p><img alt="image" src="/img/2018/unit-3-5-4.jpeg" / loading="lazy" decoding="async"></p>
 <p>一个是ProcessOn，支持流程图、思维导图、原型图、网络拓补图等。</p>
 <p>另一个是百度脑图，可以很快的把脑图画出来，非常的清晰。并且不需要在自己的电脑上安装任何的软件，只要在浏览器上就可以完成。</p>
 <p>以上就是这节课的内容，我们下次再见，谢谢大家！</p>
   </div>
   <div class="post-tags"><span class="post-tag">#chatbot</span><span class="post-tag">#百度</span><span class="post-tag">#UNIT</span></div>
+  <aside class="post-related"><h3>相关阅读</h3><ul><li><a href="/chatbot/2018-11-14-unit-4-1.html">连载 | 4.1 富集数据资源</a><span class="post-related-date">2018-11-14</span></li><li><a href="/chatbot/2018-11-7-unit-3-6.html">连载 | 3.6 设计UNIT对话逻辑</a><span class="post-related-date">2018-11-07</span></li><li><a href="/chatbot/2018-10-17-unit-3-4.html">连载 | 3.4 撰写故事线</a><span class="post-related-date">2018-10-17</span></li></ul></aside>
   <aside class="post-wechat">
-  <img src="/images/wechat-qr.jpg" alt="李佳芮的公众号" class="post-wechat-qr">
+  <img src="/images/wechat-qr.jpg" alt="李佳芮的公众号" class="post-wechat-qr" loading="lazy" decoding="async">
   <div class="post-wechat-text">
     <h4>欢迎扫码关注</h4>
     <p>不定期更新 · 创业、产品、读书</p>
@@ -118,7 +120,7 @@ var _hmt = _hmt || [];
 
 <div class="widget">
   <div class="about-box">
-    <img src="/images/avatar.jpg?v=2" alt="李佳芮" class="about-avatar">
+    <img src="/images/avatar.jpg?v=2" alt="李佳芮" class="about-avatar" loading="lazy" decoding="async">
     <p><strong>李佳芮</strong>，<a href="https://juzibot.com">句子互动</a> 创始人。</p>
     <p>创业、产品、读书，断断续续写了十年。</p>
     <p>十年前我是程序员，这个博客是自己写的。后来做公司，代码不写了，更新也停了。</p>
@@ -129,7 +131,7 @@ var _hmt = _hmt || [];
 <div class="widget">
   <h3>微信</h3>
   <div class="wechat-box">
-    <img src="/images/wechat-qr.jpg" alt="微信公众号" class="wechat-qr">
+    <img src="/images/wechat-qr.jpg" alt="微信公众号" class="wechat-qr" loading="lazy" decoding="async">
     <p class="wechat-cap">扫码关注公众号</p>
     <p class="wechat-id">个人微信 · <code>jiaruijuzi</code></p>
   </div>

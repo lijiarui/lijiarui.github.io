@@ -118,7 +118,8 @@ def test_internal_links():
             continue
         html = fp.read_text(errors="ignore")
         # only scan main content, skip nav/footer
-        links = re.findall(r'href="(/[^"#]+?)(?:#[^"]*)?"', html)
+        # strip ?query and #fragment when checking file existence
+        links = re.findall(r'href="(/[^"#?]+?)(?:[?#][^"]*)?"', html)
         for link in links:
             if link in seen_missing:
                 continue

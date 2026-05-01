@@ -36,6 +36,7 @@ var _hmt = _hmt || [];
 })();
 </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "一个舞娘如何用6行代码写出微信聊天机器人", "description": "作者：@ lijiarui , Entrepreneur, Wechaty Author 我一直和我的小伙伴在业余时间拍摄舞蹈教学视频，叫“舞哩”，原创了几百个视频，近千万的播放，所以就建了微信群来和粉丝交流。", "image": "https://rui.juzi.bot/img/2016/wechaty-wuli-usecase-ruirui-dance.jpg", "url": "https://rui.juzi.bot/chatbot/2016-11-20-wechaty-wuli-usecase.html", "datePublished": "2016-11-20", "dateModified": "2016-11-20", "author": {"@type": "Person", "name": "李佳芮", "url": "https://rui.juzi.bot"}, "publisher": {"@type": "Person", "name": "李佳芮", "logo": {"@type": "ImageObject", "url": "https://rui.juzi.bot/images/avatar.jpg"}}, "mainEntityOfPage": "https://rui.juzi.bot/chatbot/2016-11-20-wechaty-wuli-usecase.html", "keywords": "舞蹈, 舞哩, wechaty, 聊天机器人"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首页", "item": "https://rui.juzi.bot/"}, {"@type": "ListItem", "position": 2, "name": "博客", "item": "https://rui.juzi.bot/blog/"}, {"@type": "ListItem", "position": 3, "name": "一个舞娘如何用6行代码写出微信聊天机器人", "item": "https://rui.juzi.bot/chatbot/2016-11-20-wechaty-wuli-usecase.html"}]}</script>
 </head>
 <body>
 <header class="topnav"><div class="wrap row">
@@ -60,7 +61,7 @@ var _hmt = _hmt || [];
   <div class="post-content markdown-body">
 <p>作者：@<a href="https://github.com/lijiarui">lijiarui</a>, Entrepreneur, <a href="https://github.com/orgs/Chatie/teams/contributor">Wechaty Author</a></p>
 <p>我一直和我的小伙伴在业余时间拍摄舞蹈教学视频，叫“舞哩”，原创了几百个视频，近千万的播放，所以就建了微信群来和粉丝交流。</p>
-<p><img alt="RuiRui" src="/img/2016/wechaty-wuli-usecase-ruirui-dance.jpg" /></p>
+<p><img alt="RuiRui" src="/img/2016/wechaty-wuli-usecase-ruirui-dance.jpg" / loading="lazy" decoding="async"></p>
 <h2>1. 与微信机器人的结缘</h2>
 <p>当微信群超过100人以后，就必须要靠群主来手工拉人了，所以我在pad上注册了一个微信小号，让大家通过加小号进微信群，每天晚上9点，我登上这个小号，通过所有的好友请求，然后拉他们进来。有的时候会有几十个好友请求，我就先按一遍通过，然后用手机把这些新好友拍成照片，对照照片去通讯录里一个一个的找到这些好友，拉到微信群里。</p>
 <p>直到有一次我出国玩，觉得Pad太沉了就没有带，这意味着有10天无法处理微信小号，等我回来以后，我发现了一个非常悲剧的事情……大概100多个好友请求，仅仅只是拍下这些好友请求，我就得拍好几十张照片！</p>
@@ -74,7 +75,7 @@ var _hmt = _hmt || [];
 <h2>2. 一款简单的微信机器人框架介绍</h2>
 <p>GitHub上与微信机器人相关的开源项目有很多，通过JavaScript、Electron、Go、Perl、Python等等都可以实现。</p>
 <p>因为我只对JavaScript比较熟悉，所以选择了Wechaty，他是使用Typescript进行编写的Node项目，是一个专门为个人微信号搭建的bot框架，使用Wechaty的API，只需要6行Javascript代码就可以搭建一个最简单的微信机器人，支持 Linux, Windows, Darwin(OSX/Mac) 和Docker。<br />
-<img alt="wechaty-pic" src="/img/2016/wechaty-wuli-usecase-wechaty-pic.jpeg" /></p>
+<img alt="wechaty-pic" src="/img/2016/wechaty-wuli-usecase-wechaty-pic.jpeg" / loading="lazy" decoding="async"></p>
 <p>我特别喜欢Wechaty的一点是，我不用关心任何实现逻辑，仅仅用JS写业务逻辑层面的事情，就可以了。当我把我需要做什么想清楚以后，JS实现起来，是非常简单便捷的。</p>
 <p>Wechaty基本的实现原理，是通过Chrome实时监听微信网页版的各类信息，然后将抓取的信息封装成接口，供开发者使用。 她有9个基本的事件，基本上涵盖了我们Web微信上的所有事件，分别是：</p>
 <ol>
@@ -101,9 +102,9 @@ var _hmt = _hmt || [];
 <p>安装Docker以后（可以点击这里查看如何安装docker），运行下面的命令，Wechaty就已经成功安装在电脑上了。</p>
 <p><code>docker run -ti --rm --volume="$(pwd)":/bot zixia/wechaty run demo</code></p>
 <p>首次运行以后会有如下的截图：<br />
-<img alt="docker-pull" src="/img/2016/wechaty-wuli-usecase-docker-pull.jpeg" /></p>
+<img alt="docker-pull" src="/img/2016/wechaty-wuli-usecase-docker-pull.jpeg" / loading="lazy" decoding="async"></p>
 <p>Docker会自动的将相关的包部署到电脑里面，安装成功后，以后再运行就会是如下的截图了：<br />
-<img alt="run-ding" src="/img/2016/wechaty-wuli-usecase-run-ding.jpeg" /></p>
+<img alt="run-ding" src="/img/2016/wechaty-wuli-usecase-run-ding.jpeg" / loading="lazy" decoding="async"></p>
 <p>Wechaty的编写者对这种特殊字体的热爱到疯狂的地步了，为了让大家了解的更清楚，我就把所有截图内容也就都放上来了。</p>
 <p>通常情况下，我会将这串命令alias给wechaty：</p>
 <p><code>alias wechaty='docker run -t -i --rm -e WECHATY_LOG="silly" --volume="$(pwd)":/bot zixia/wechaty:0.5.9’</code></p>
@@ -198,11 +199,12 @@ var _hmt = _hmt || [];
 <p>忽然想起了一句话： “People should think, Bot should work”。 当机器能够帮助我们把机械化的工作完成之后，我们才会有更多的时间，思考真正有价值的事情。</p>
 <p>Wechaty解放了我的一些重复性工作，我也希望能为Wechaty做点什么，所以我现在在业余时间更新Wechaty的文档，有的时候也会分享一些我在使用Wechaty时候遇到的问题，希望帮助更多的人能够快速上手使用Wechaty。</p>
 <p>如果你对Wechaty感兴趣，希望一起交流，一起分享，共同学习，可以扫码添加”桔小秘”为好友，回复wechaty加入WECHATY DEVELOPERS’ HOME。也可以顺便体验下wechaty实现的小功能。</p>
-<p><img alt="qr-code" src="/img/2016/wechaty-wuli-usecase-qr-code.jpeg" /></p>
+<p><img alt="qr-code" src="/img/2016/wechaty-wuli-usecase-qr-code.jpeg" / loading="lazy" decoding="async"></p>
   </div>
   <div class="post-tags"><span class="post-tag">#舞蹈</span><span class="post-tag">#舞哩</span><span class="post-tag">#wechaty</span><span class="post-tag">#聊天机器人</span></div>
+  <aside class="post-related"><h3>相关阅读</h3><ul><li><a href="/presentation/2018-10-30-Microsoft-HOL.html">Microsoft Tech Summit-快速搭建一个聊天机器人</a><span class="post-related-date">2018-10-30</span></li><li><a href="/presentation/2018-01-25-how-to-build-face-blinder-bot.html">构建人脸识别聊天机器人--Wechaty Blinder</a><span class="post-related-date">2018-01-25</span></li><li><a href="/presentation/2017-07-13-how-to-build-a-chatbot-on-itdakashuo.html">如何编写聊天机器人</a><span class="post-related-date">2017-07-13</span></li></ul></aside>
   <aside class="post-wechat">
-  <img src="/images/wechat-qr.jpg" alt="李佳芮的公众号" class="post-wechat-qr">
+  <img src="/images/wechat-qr.jpg" alt="李佳芮的公众号" class="post-wechat-qr" loading="lazy" decoding="async">
   <div class="post-wechat-text">
     <h4>欢迎扫码关注</h4>
     <p>不定期更新 · 创业、产品、读书</p>
@@ -230,7 +232,7 @@ var _hmt = _hmt || [];
 
 <div class="widget">
   <div class="about-box">
-    <img src="/images/avatar.jpg?v=2" alt="李佳芮" class="about-avatar">
+    <img src="/images/avatar.jpg?v=2" alt="李佳芮" class="about-avatar" loading="lazy" decoding="async">
     <p><strong>李佳芮</strong>，<a href="https://juzibot.com">句子互动</a> 创始人。</p>
     <p>创业、产品、读书，断断续续写了十年。</p>
     <p>十年前我是程序员，这个博客是自己写的。后来做公司，代码不写了，更新也停了。</p>
@@ -241,7 +243,7 @@ var _hmt = _hmt || [];
 <div class="widget">
   <h3>微信</h3>
   <div class="wechat-box">
-    <img src="/images/wechat-qr.jpg" alt="微信公众号" class="wechat-qr">
+    <img src="/images/wechat-qr.jpg" alt="微信公众号" class="wechat-qr" loading="lazy" decoding="async">
     <p class="wechat-cap">扫码关注公众号</p>
     <p class="wechat-id">个人微信 · <code>jiaruijuzi</code></p>
   </div>

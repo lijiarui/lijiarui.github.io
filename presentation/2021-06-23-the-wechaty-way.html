@@ -36,6 +36,7 @@ var _hmt = _hmt || [];
 })();
 </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Wechaty 社区开源协作最佳实践指南", "description": "Wechaty (Conversational RPA SDK) 2016 年发布于 GitHub，是一个基于 Apache-2.0 许可证的开源项目。经过5年多的发展，现在 Wechaty 开源社区已经拥有数十位 Committers，百余位 Contributors ，", "image": "https://rui.juzi.bot/img/2021/06-the-wechaty-way/meeting-notes.png", "url": "https://rui.juzi.bot/presentation/2021-06-23-the-wechaty-way.html", "datePublished": "2021-06-23", "dateModified": "2021-06-23", "author": {"@type": "Person", "name": "李佳芮", "url": "https://rui.juzi.bot"}, "publisher": {"@type": "Person", "name": "李佳芮", "logo": {"@type": "ImageObject", "url": "https://rui.juzi.bot/images/avatar.jpg"}}, "mainEntityOfPage": "https://rui.juzi.bot/presentation/2021-06-23-the-wechaty-way.html", "keywords": "Wechaty, open-source"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首页", "item": "https://rui.juzi.bot/"}, {"@type": "ListItem", "position": 2, "name": "博客", "item": "https://rui.juzi.bot/blog/"}, {"@type": "ListItem", "position": 3, "name": "Wechaty 社区开源协作最佳实践指南", "item": "https://rui.juzi.bot/presentation/2021-06-23-the-wechaty-way.html"}]}</script>
 </head>
 <body>
 <header class="topnav"><div class="wrap row">
@@ -107,7 +108,7 @@ var _hmt = _hmt || [];
 <li><strong>高效</strong>：俗话说，“不打无准备之仗”，同样的道理，“不开无准备之会”，做好开会前的准备工作，对开好一个会起到至关重要的作用， 每次开会之前，参会者都要提前在 Meeting Notes 里面写好会议议题，保证参会的人在参会之前明确知道讨论内容，提高开会效率。</li>
 </ul>
 <p>这是 Meeting Notes 的模板内容(可以在 Meeting Notes 最底部拿到文字版，我这里放了图片方便看格式)：</p>
-<p><img alt="meeting-notes" src="/img/2021/06-the-wechaty-way/meeting-notes.png" /></p>
+<p><img alt="meeting-notes" src="/img/2021/06-the-wechaty-way/meeting-notes.png" / loading="lazy" decoding="async"></p>
 <p>具体使用流程指南：</p>
 <ol>
 <li>组织者在开会之前来 <a href="https://docs.google.com/document/d/1fVCk8qRYc4RKGMf2UY5HOe07hEhPUOpGC34v88GEFJg/edit#heading=h.64c95c3y2l4v">Meeting Notes</a> 写好会议地点和时间，通常情况下，会议都是公开的，任何人都可以通过 Meeting Notes 中的 Zoom 链接视频参会。</li>
@@ -138,7 +139,7 @@ var _hmt = _hmt || [];
 <li>在视频说明中，通过添加 <code>00:00</code> 等时间的方式，在视频进度条上添加视频章节，具体可以参考：<a href="https://support.google.com/youtube/answer/9884579?hl=zh-Hans">Youtube 如何在进度条上添加章节</a> 章节会将视频拆分为多个部分，方便观看者快速跳转到视频的不同部分。</li>
 </ul>
 <p><a href="https://www.youtube.com/watch?v=hTkM_XPpFfU&amp;list=PL8hd9KDTdarDXf_Rxtr8meKhxtgcXMInh&amp;index=43">Wechaty ❤️ Google Season of Docs: Kick-off meeting with 20 Technical Writers!</a> 就是一个很好的示例。因为一次会议的时间很长，其他人看视频的时候就可以很容易根据下图介绍知道 <strong>视频中 0:01:41 的时候讲的内容是 Introducing the Meeting Agenda</strong>， 同时点击 <strong>0:01:41</strong> 可以快速跳转到视频播放的地方。</p>
-<p><img alt="youtube-example" src="/img/2021/06-the-wechaty-way/youtube-example.jpg" /></p>
+<p><img alt="youtube-example" src="/img/2021/06-the-wechaty-way/youtube-example.jpg" / loading="lazy" decoding="async"></p>
 <p>上传视频以后，主持人要去社区发布一个会议的博客，并嵌入视频内容，这样就能保证这次会议进行了存档并可以共享个社区的任何开发者。</p>
 <h3>会议博客</h3>
 <p>为了保证社区的每一次会议都能够有内容沉淀，重大会议后需要些会议博客，<a href="#Wechaty 博客发布规范">博客撰写</a>会在下一个小节介绍。 一次会议博客至少要包括下面的内容：</p>
@@ -198,11 +199,11 @@ var _hmt = _hmt || [];
 <li>完成 CLA 的签署</li>
 <li>关联相关的 Issue 链接</li>
 </ul>
-<p><img alt="pr" src="/img/2021/06-the-wechaty-way/pr.png" /></p>
+<p><img alt="pr" src="/img/2021/06-the-wechaty-way/pr.png" / loading="lazy" decoding="async"></p>
 <h2>Wechaty RFC</h2>
 <p>如果是一个比较大的提案，建议先提一个 proposal，描述一下你要干什么、为什么要干这个事情、它能带来什么收益、方案是什么以及分析备选方案的优缺点等，我们会让你提个 Issue 进行讨论，最后以讨论后的 proposal 为基础，开始后面的开发。</p>
 <p>如这是 Wechaty Commiter <a href="https://wechaty.js.org/contributors/windmemory/">高原</a> 发布的<a href="https://github.com/wechaty/wechaty/issues/1776">提案</a>：</p>
-<p><img alt="rfc" src="/img/2021/06-the-wechaty-way/rfc.png" /></p>
+<p><img alt="rfc" src="/img/2021/06-the-wechaty-way/rfc.png" / loading="lazy" decoding="async"></p>
 <h2>进阶，了解 Apache Way，知道如何更好的参与开源项目</h2>
 <p>最后，在这里为大家推荐一系列 Apache Way 的资料，让你更好的理解开源项目的运作，也欢迎你以 Apache Way 的方式参与到社区的建设中。</p>
 <h3>官方内容</h3>
@@ -221,8 +222,9 @@ var _hmt = _hmt || [];
 </ul>
   </div>
   <div class="post-tags"><span class="post-tag">#Wechaty</span><span class="post-tag">#open-source</span></div>
+  <aside class="post-related"><h3>相关阅读</h3><ul><li><a href="/presentation/2021-06-24-summer-wechaty-guide.html">开源之夏 2021 指导手册</a><span class="post-related-date">2021-06-24</span></li><li><a href="/interview/2020-12-31-open-source-award-wechaty.html">Chatbot SDK Wechaty 获国内顶级开源组织颁发大奖</a><span class="post-related-date">2020-12-31</span></li><li><a href="/interview/2021-12-16-5g-wechaty-walnut.html">入局5G消息！句子互动与来也、亚信、东信北邮等入驻硬核桃5G开发者社区</a><span class="post-related-date">2021-12-16</span></li></ul></aside>
   <aside class="post-wechat">
-  <img src="/images/wechat-qr.jpg" alt="李佳芮的公众号" class="post-wechat-qr">
+  <img src="/images/wechat-qr.jpg" alt="李佳芮的公众号" class="post-wechat-qr" loading="lazy" decoding="async">
   <div class="post-wechat-text">
     <h4>欢迎扫码关注</h4>
     <p>不定期更新 · 创业、产品、读书</p>
@@ -250,7 +252,7 @@ var _hmt = _hmt || [];
 
 <div class="widget">
   <div class="about-box">
-    <img src="/images/avatar.jpg?v=2" alt="李佳芮" class="about-avatar">
+    <img src="/images/avatar.jpg?v=2" alt="李佳芮" class="about-avatar" loading="lazy" decoding="async">
     <p><strong>李佳芮</strong>，<a href="https://juzibot.com">句子互动</a> 创始人。</p>
     <p>创业、产品、读书，断断续续写了十年。</p>
     <p>十年前我是程序员，这个博客是自己写的。后来做公司，代码不写了，更新也停了。</p>
@@ -261,7 +263,7 @@ var _hmt = _hmt || [];
 <div class="widget">
   <h3>微信</h3>
   <div class="wechat-box">
-    <img src="/images/wechat-qr.jpg" alt="微信公众号" class="wechat-qr">
+    <img src="/images/wechat-qr.jpg" alt="微信公众号" class="wechat-qr" loading="lazy" decoding="async">
     <p class="wechat-cap">扫码关注公众号</p>
     <p class="wechat-id">个人微信 · <code>jiaruijuzi</code></p>
   </div>

@@ -160,7 +160,7 @@ def sidebar(posts, slide_posts):
 
 <div class="widget">
   <div class="about-box">
-    <img src="/images/avatar.jpg?v=2" alt="李佳芮" class="about-avatar">
+    <img src="/images/avatar.jpg?v=2" alt="李佳芮" class="about-avatar" loading="lazy" decoding="async">
     <p><strong>李佳芮</strong>，<a href="https://juzibot.com">句子互动</a> 创始人。</p>
     <p>创业、产品、读书，断断续续写了十年。</p>
     <p>十年前我是程序员，这个博客是自己写的。后来做公司，代码不写了，更新也停了。</p>
@@ -171,7 +171,7 @@ def sidebar(posts, slide_posts):
 <div class="widget">
   <h3>微信</h3>
   <div class="wechat-box">
-    <img src="/images/wechat-qr.jpg" alt="微信公众号" class="wechat-qr">
+    <img src="/images/wechat-qr.jpg" alt="微信公众号" class="wechat-qr" loading="lazy" decoding="async">
     <p class="wechat-cap">扫码关注公众号</p>
     <p class="wechat-id">个人微信 · <code>jiaruijuzi</code></p>
   </div>
@@ -227,6 +227,16 @@ def clean_feishu_html(html):
     html = re.sub(r'<text\s+([^>]*)>', _text_to_span, html, flags=re.I)
     html = re.sub(r'<text>', '<span>', html, flags=re.I)
     html = re.sub(r'</text>', '</span>', html, flags=re.I)
+    # SEO + perf: lazy loading + async decode for all <img> tags missing them
+    def _img_hints(m):
+        tag = m.group(0)
+        lower = tag.lower()
+        if 'loading=' not in lower:
+            tag = tag[:-1] + ' loading="lazy"' + tag[-1]
+        if 'decoding=' not in lower:
+            tag = tag[:-1] + ' decoding="async"' + tag[-1]
+        return tag
+    html = re.sub(r'<img\b[^>]*>', _img_hints, html, flags=re.I)
     return html
 
 
@@ -290,7 +300,25 @@ def neighbors(posts, current_path):
     return newer, older
 
 
-def build_post_page(post_meta, parsed, side_html, newer, older):
+def find_related(post, posts, n=3):
+    """Find n posts with highest tag overlap; ties broken by date (newer wins)."""
+    post_tags = set(t["name"] for t in post.get("tags", []))
+    if not post_tags:
+        return []
+    scored = []
+    for p in posts:
+        if p["path"] == post["path"]:
+            continue
+        p_tags = set(t["name"] for t in p.get("tags", []))
+        overlap = len(post_tags & p_tags)
+        if overlap > 0:
+            scored.append((overlap, p.get("date", ""), p))
+    # sort: higher overlap first, then more recent
+    scored.sort(key=lambda x: (x[0], x[1]), reverse=True)
+    return [p for _, _, p in scored[:n]]
+
+
+def build_post_page(post_meta, parsed, side_html, newer, older, related=None):
     title = parsed["title"] or post_meta["title"]
     date = parsed["date"] or post_meta["_date"]
     cat = post_meta["_cat_label"]
@@ -302,8 +330,21 @@ def build_post_page(post_meta, parsed, side_html, newer, older):
             f'<span class="post-tag">#{escape(t)}</span>' for t in parsed["tags"]
         ) + '</div>'
 
+    related_html = ""
+    if related:
+        items = "".join(
+            f'<li><a href="/{escape(p["path"])}">{escape(p["title"])}</a>'
+            f'<span class="post-related-date">{escape(p.get("date","")[:10])}</span></li>'
+            for p in related
+        )
+        related_html = (
+            f'<aside class="post-related">'
+            f'<h3>相关阅读</h3><ul>{items}</ul>'
+            f'</aside>'
+        )
+
     wechat_block = """<aside class="post-wechat">
-  <img src="/images/wechat-qr.jpg" alt="李佳芮的公众号" class="post-wechat-qr">
+  <img src="/images/wechat-qr.jpg" alt="李佳芮的公众号" class="post-wechat-qr" loading="lazy" decoding="async">
   <div class="post-wechat-text">
     <h4>欢迎扫码关注</h4>
     <p>不定期更新 · 创业、产品、读书</p>
@@ -353,6 +394,7 @@ def build_post_page(post_meta, parsed, side_html, newer, older):
 {body}
   </div>
   {tags_html}
+  {related_html}
   {wechat_block}
 </article>
 {comments_block}
@@ -399,8 +441,18 @@ def build_post_page(post_meta, parsed, side_html, newer, older):
         "mainEntityOfPage": canonical,
         "keywords": keywords,
     }
+    breadcrumb_data = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "首页", "item": SITE_URL + "/"},
+            {"@type": "ListItem", "position": 2, "name": "博客", "item": SITE_URL + "/blog/"},
+            {"@type": "ListItem", "position": 3, "name": title, "item": canonical},
+        ],
+    }
     ld_json = (
-        f'<script type="application/ld+json">{_json.dumps(ld_data, ensure_ascii=False)}</script>'
+        f'<script type="application/ld+json">{_json.dumps(ld_data, ensure_ascii=False)}</script>\n'
+        f'<script type="application/ld+json">{_json.dumps(breadcrumb_data, ensure_ascii=False)}</script>'
     )
 
     head = HEAD.format(
@@ -481,7 +533,8 @@ def main():
             failed.append(p["path"])
             continue
         newer, older = neighbors(posts, p["path"])
-        new_html = build_post_page(p, parsed, side_html, newer, older)
+        related = find_related(p, posts, n=3)
+        new_html = build_post_page(p, parsed, side_html, newer, older, related=related)
         fp.write_text(new_html, encoding="utf-8")
         rewritten += 1
 

@@ -36,6 +36,7 @@ var _hmt = _hmt || [];
 })();
 </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "连载 | 2.1 对话系统专业术语科普", "description": "欢迎来到我们的第二节课， 对话系统专业术语科普 。 我们之前说过要搭建一个对话系统，在对话系统中有很多非常专业术语。 今天我会把常用的术语给大家做一个解释，同时介绍一下他们在什么样的场景下会被用到和对话系统的评价标准。", "image": "https://rui.juzi.bot/img/2018/unit-2-1-1.jpeg", "url": "https://rui.juzi.bot/chatbot/2018-8-16-unit-2-1.html", "datePublished": "2018-08-16", "dateModified": "2018-08-16", "author": {"@type": "Person", "name": "李佳芮", "url": "https://rui.juzi.bot"}, "publisher": {"@type": "Person", "name": "李佳芮", "logo": {"@type": "ImageObject", "url": "https://rui.juzi.bot/images/avatar.jpg"}}, "mainEntityOfPage": "https://rui.juzi.bot/chatbot/2018-8-16-unit-2-1.html", "keywords": "chatbot, 百度, UNIT"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首页", "item": "https://rui.juzi.bot/"}, {"@type": "ListItem", "position": 2, "name": "博客", "item": "https://rui.juzi.bot/blog/"}, {"@type": "ListItem", "position": 3, "name": "连载 | 2.1 对话系统专业术语科普", "item": "https://rui.juzi.bot/chatbot/2018-8-16-unit-2-1.html"}]}</script>
 </head>
 <body>
 <header class="topnav"><div class="wrap row">
@@ -61,7 +62,7 @@ var _hmt = _hmt || [];
 <p>欢迎来到我们的第二节课，<strong>对话系统专业术语科普</strong>。</p>
 <p>我们之前说过要搭建一个对话系统，在对话系统中有很多非常专业术语。</p>
 <p>今天我会把常用的术语给大家做一个解释，同时介绍一下他们在什么样的场景下会被用到和对话系统的评价标准。</p>
-<p><img alt="image" src="/img/2018/unit-2-1-1.jpeg" /></p>
+<p><img alt="image" src="/img/2018/unit-2-1-1.jpeg" / loading="lazy" decoding="async"></p>
 <p><strong>单轮对话</strong></p>
 <p>简单来说它就是一问一答，问题用一句话去描述，回答可能用几句话或者一段文字去回答，不依赖于上下文。</p>
 <p>比如我问什么是经停航班，那机器人就会在它的数据库里去寻找什么是经停航班，并做一个介绍。一般这样的问答依赖于数据库，专业一点说是知识库。机器人从知识库里检索到相似的问题并给出答案。</p>
@@ -69,7 +70,7 @@ var _hmt = _hmt || [];
 <p><strong>1</strong>.<strong><em>*</em>*召回率</strong></p>
 <p><strong>2. 准确率</strong></p>
 <p><strong>3. 问题解决率</strong></p>
-<p><img alt="image" src="/img/2018/unit-2-1-2.jpeg" /></p>
+<p><img alt="image" src="/img/2018/unit-2-1-2.jpeg" / loading="lazy" decoding="async"></p>
 <p><strong>召回率等于机器人能回答的问题数量除以总共的问题数量，机器人能回答的数量越高，它的召回率就越高。</strong></p>
 <p>如果会话的召回率非常低，通常有2种情况：</p>
 <ul>
@@ -80,19 +81,19 @@ var _hmt = _hmt || [];
 </li>
 <li>2.相似的问题知识库里面有，但由于语义的问题而没有找到，这种情况下应该去做算法的优化。同一个问题，比如说我的快递到哪了，或是我的快递什么时候到，大概问的都是查询快递的问题，要把它归类到一个问题，这样的话叫<strong>算法优化</strong>。</li>
 </ul>
-<p><img alt="image" src="/img/2018/unit-2-1-3.jpeg" /></p>
+<p><img alt="image" src="/img/2018/unit-2-1-3.jpeg" / loading="lazy" decoding="async"></p>
 <p><strong>准确率是机器人正确回答的数，除以问题总数</strong><strong>。</strong></p>
 <p>准确率并不是闲聊型机器人的指标，但是刚刚说的召回率是闲聊机器人的一个指标，除此之外还有情感，是否有趣等等。</p>
 <p>但是对于任务型和问答型的机器人来说，就一定要要求准确率，宁可机器人不回答，也不能回答错误。</p>
 <p>准确率这一评测指标，在实际中需要人工来标注机器人回答的是否准确。所以场景有的时候会相对比较受限，企业的客服部门通常会使用问题解决率，作为日常工作中对机器人的主要评测指标。</p>
 <p>那么下面我们就看一下，什么叫做<strong>问题解决率</strong>。</p>
-<p><img alt="image" src="/img/2018/unit-2-1-4.jpeg" /></p>
+<p><img alt="image" src="/img/2018/unit-2-1-4.jpeg" / loading="lazy" decoding="async"></p>
 <p><strong>问题解决率等于问题的总数减去转人工客服的数量，再减去客户反馈不满意的问题数量。</strong></p>
 <p>这个就不需要人工去标注，机器(系统)能直接衡量出来的，企业需要设置合理的策略，来判断什么时候机器人要转到人工客服。</p>
 <p>比如已经检测到客户的状态非常不好了，客户已经开始骂人了，就一定要转到人工客服去安抚一下客户，或者说这个客户一个问题已经问了三遍了，机器人还没回答，也一定要转到人工去回答。</p>
 <p>这些都从侧面反映出机器人的问题解决率有待提高。</p>
 <p>同时企业在客服系统中，应该提供对机器人客服的反馈和打分机制，这样我们就可以把客户反馈不满意的问题数量标记出来，也可以自动的算出这个问题的解决率，进而知道怎么去进一步提升我们单轮对话的系统。</p>
-<p><img alt="image" src="/img/2018/unit-2-1-5.jpeg" /></p>
+<p><img alt="image" src="/img/2018/unit-2-1-5.jpeg" / loading="lazy" decoding="async"></p>
 <p><strong>单轮对话还有几个难点</strong>：</p>
 <p>第一，<strong>识别同一个问题的不同表达方式。</strong>我们会发现，在现实生活中的一句话，不同的人有不同的表达方式。如果机器人不够智能，可能就需要把上图中左边这5种问法，一个个的都录入到我们的知识库中。</p>
 <p>但做的好的机器人，可能只要录入1个，剩下的它可以通过它的<strong>聚类</strong>，来知道都是同一个问题。</p>
@@ -106,7 +107,7 @@ var _hmt = _hmt || [];
 </ul>
 <p>这个时候，你也要识别出魔都是上海等等。</p>
 <p>这是同一个问题的多种表达方式，它其实都等同于，用户需要订明天去上海的机票。机器人是否可以准确地识别并且进行回复，识别同一个问题的不同表达方式，这也是一个问题。</p>
-<p><img alt="image" src="/img/2018/unit-2-1-6.jpeg" /></p>
+<p><img alt="image" src="/img/2018/unit-2-1-6.jpeg" / loading="lazy" decoding="async"></p>
 <p>第二，<strong>就是理解语义的细微差别，处理差异性的问题</strong>。我们继续看这张图，机器人说：</p>
 <ul>
 <li>你能干嘛？</li>
@@ -122,25 +123,25 @@ var _hmt = _hmt || [];
 <p>你干嘛啊！这个时候就说明这个用户已经非常不高兴了，应该它说：“对不起，我怎么了”。</p>
 <p>所以我们会发现，语言在叙述中的这些细微差别，因为一个引号或因为一个表达不一样，语义也是完全不一样的。</p>
 <p>在问句非常类似，但是语义有差别的情况下，是不是能够匹配到正确的答案，也是来考验机器人处理单轮对话能力的一个非常难的地方。</p>
-<p><img alt="image" src="/img/2018/unit-2-1-7.jpeg" /></p>
+<p><img alt="image" src="/img/2018/unit-2-1-7.jpeg" / loading="lazy" decoding="async"></p>
 <p>我们再来看第三个难点，<strong>聚类高频问题，自动的学习优化知识库</strong>。</p>
 <p>刚刚我们说了，提高召回率和准确率是需要完善知识库的，但是如果纯靠人工去补充知识库是非常困难的，如果机器人没有自主学习能力，那就应了一句江湖话：“有多少人工就有多少智能”。每天不停的补数据库，最终补数据库的时间，比回答问题的时间还要长，对企业就得不偿失了。</p>
 <p>所以这对我们的系统有一个反向的要求，机器人必须要有一种自主学习的能力。它根据所有的历史对话数据，需要知道哪些数据是类似的，把它进行<strong>聚类</strong>。自动总结，并且挖掘不在知识库内的高频问句，如果这个高频问句不在知识库中，机器人或是系统，我们总结出来，人再根据总结出来的这些无法解答的高频论据进行回答，然后再反向补充到我们的知识库里边。</p>
 <p>这样就会螺旋累积我们的这个单轮对话的系统，有一个很好的效果。但这依然也是相对比较难的，也就是我们的单轮对话的第三个难点。<strong>聚类高频问题，自动学习优化知识库</strong>。</p>
-<p><img alt="image" src="/img/2018/unit-2-1-8.jpeg" /></p>
+<p><img alt="image" src="/img/2018/unit-2-1-8.jpeg" / loading="lazy" decoding="async"></p>
 <p><strong>多轮对话</strong></p>
 <p>介绍完了单轮对话，对应的我们就一定会想到多轮对话。</p>
 <p>什么叫多轮对话，我们和单轮对话的特点进行一个对比，很容易就会知道什么叫多轮对话。</p>
 <p>单轮是一个轮次，每一个轮次是没有任何关联性的。而多轮代表的就是多个轮次，每一个轮次是有相互关联的，所以他要处理不完整的语义情况。</p>
 <p>比如说我们这个例子“北京天气怎么样”，回答完了之后，“上海呢？”，它要知道他问的是上海天气怎么样，同时它也能记录所有的历史话语，是有一个记忆的功能的。</p>
-<p><img alt="image" src="/img/2018/unit-2-1-9.jpeg" /></p>
+<p><img alt="image" src="/img/2018/unit-2-1-9.jpeg" / loading="lazy" decoding="async"></p>
 <p>同样多轮对话也有一些指标。</p>
 <p><strong>1. 多轮对话的第一个重要指标就是</strong><strong>任务完成率。</strong></p>
 <p>任务完成率等于成功结束的多轮会话数，除以多轮会话的总数。成功结束的会话数越多，任务完成率就越高，也就代表着多轮对话系统的可用性越高。</p>
 <p>但是有一点大家要注意，<strong>会话成功结束，并不一定意味着问题得到解决</strong>，也有可能是客户没有从机器人那里得到需要的答案。通常多轮对话这个时候应该转到人工策略，如果机器人的会话不能继续，就转给人工客户进行处理。</p>
 <p>比如，一个用户和机器人订机票，订到中间他说我要去魔都的，因为机器人一直都没有理解魔都是什么意思，不知道是上海，所以不停的提问。</p>
 <p>当然，用户切换了各种方式，在说上海的时候机器人可能也没有理解，机器人不停的在问：“你要从哪出发？你要从哪出发？”，这个时候就要把问答切换到人工。</p>
-<p><img alt="image" src="/img/2018/unit-2-1-10.jpeg" /></p>
+<p><img alt="image" src="/img/2018/unit-2-1-10.jpeg" / loading="lazy" decoding="async"></p>
 <p><strong>2. 多轮对话的第二个指标是定制的难度。</strong></p>
 <p>因为多轮对话很多时候就像一个APP一样，交互第一步做什么，第二步做什么是需要定制的，定制的难度决定了多轮对话系统的好坏，也就是多轮对话系统的一个评测指标。</p>
 <p>关于定制难度，我们有3点可以说：</p>
@@ -150,7 +151,7 @@ var _hmt = _hmt || [];
 <li>界面交互体验是否优秀，是否支持直观可视化的编辑；</li>
 </ol>
 <p>我们知道专业的对话系统架构师非常少，他们薪水要求也比较高，他们懂算法，懂NLP，懂模型，但是却不是很理解真实的业务场景，所以这时候系统是不是能让普通的工程师，甚至一个普通的客服学会使用，是非常重要的。只有这样，多轮对话系统才能发挥自己的价值。</p>
-<p><img alt="image" src="/img/2018/unit-2-1-11.jpeg" /></p>
+<p><img alt="image" src="/img/2018/unit-2-1-11.jpeg" / loading="lazy" decoding="async"></p>
 <p>之前给大家介绍多轮对话的时候，有人会问到这么两个问题。</p>
 <p>第一个是说，所谓的<strong>必要信息</strong>，一定要通过与用户对话获取吗？</p>
 <p><strong>这是不一定的</strong>，比如说我们要做一个机票酒店预定的机器人，如果用户在公众号上跟我交流，其实我已经拿到地理位置信息了。这个时候，我就不需要再问他你从哪出发，除非他故意要修改，当然这就是另外一个维度的事情了。所以对话本身包含的信息，只占总传递信息量的一小部分。更多的信息来源于说话人的身份、说话的时间地点等一系列的场景信息。这个就类比于我们和对方交流，我们要知道他的“肢体语言”。</p>
@@ -159,7 +160,7 @@ var _hmt = _hmt || [];
 <p>这个也不是的，只要我们理解了他的语意，以及在其它的渠道获得的用户的信息。比如用户需要订票，我已经知道了他是从北京出发了，他跟我说要去上海，我可以直接帮他去订北京到上海的机票。</p>
 <p>也就是说，如果用户的话语中，已经提供了充足的信息或者我从其它的渠道已经拿到了充足的信息，我们就不需要交流太多次数，不一定需要多次交互才叫多轮。</p>
 <p><strong>多轮对话的</strong>核心<strong>是要完成任务，并不是用交互的数量来看是不是多轮对话</strong>。</p>
-<p><img alt="image" src="/img/2018/unit-2-1-12.jpeg" /></p>
+<p><img alt="image" src="/img/2018/unit-2-1-12.jpeg" / loading="lazy" decoding="async"></p>
 <p>多轮对话同样也有一些难点。</p>
 <p>第一个是，要准确的进行语义的理解，它和单轮对话相比更难了，体现在以下三块：</p>
 <ul>
@@ -168,7 +169,7 @@ var _hmt = _hmt || [];
 <li><strong>指代识别</strong>：假设之前所有的信息机器人都拿到了，在用户做出选择后，机器人能够识别出来用户的选择，比如“第二个吧”，“最后一个吧”。 没有必要一定让用户按照机器的标准来输入。</li>
 </ul>
 <p>这些在多轮对话中都会有一些难度。</p>
-<p><img alt="image" src="/img/2018/unit-2-1-13.jpeg" /></p>
+<p><img alt="image" src="/img/2018/unit-2-1-13.jpeg" / loading="lazy" decoding="async"></p>
 <p>第二个难点是<strong>状态管理和个性化语言的生成</strong>，这个分为两块：</p>
 <ul>
 <li><strong>用户画像管理</strong></li>
@@ -184,7 +185,7 @@ var _hmt = _hmt || [];
 <p>比如第一个，请帮我订一张3月28日北京到上海的机票。这个时候我们要引导用户提供他的身份信息，因为我已经把前三个信息都收集到了。始发地是北京，目的地是上海，出发时间是3月28日。</p>
 <p>再看第二个，请帮我订北京到上海的机票，这个时候机器人就需要同时引导用户，说出出发时间和乘机人信息。</p>
 <p><strong>对话状态管理也是多轮对话中很重要的一环，或者说是难点之一</strong>。</p>
-<p><img alt="image" src="/img/2018/unit-2-1-14.jpeg" /></p>
+<p><img alt="image" src="/img/2018/unit-2-1-14.jpeg" / loading="lazy" decoding="async"></p>
 <p><strong>意图识别</strong></p>
 <p>接下来，再给大家介绍一个名词，叫做<strong>意图识别</strong>。</p>
 <p>意图识别是指：<strong>提问者的潜在目的以及他的表达诉求。</strong></p>
@@ -194,7 +195,7 @@ var _hmt = _hmt || [];
 <p>在相同的意图大类下，还可能有更详细的意图的细分领域。比如，请问你们发哪家快递？请问我的快递走到哪儿了？大的意图可能都是物流咨询，但你还是可以再把它做小的意图分类。你们发哪家快递，属于选择快递公司的意图。请问我的快递走到哪了，属于物流状态查询的意图。</p>
 <p>通过意图识别这块的介绍，我们会发现意图识别也有难点。</p>
 <p>意图识别的难点就是没有一个固定的评价标准，刚刚我们看的这个例子，用户的意图可能都是人的主观判断为准。刚才说的你可以把它分成一个大类，也可以再把它分成一个小类，然后在小类中它代表的意图名称有可能不一样，所以相对意图的分类，它可能也比较没有标准。<strong>没有标准的事一般都会比较复杂</strong>。</p>
-<p><img alt="image" src="/img/2018/unit-2-1-15.jpeg" /></p>
+<p><img alt="image" src="/img/2018/unit-2-1-15.jpeg" / loading="lazy" decoding="async"></p>
 <p>那么还有其它四个难点：</p>
 <ul>
 <li>
@@ -228,10 +229,10 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 <p>很多时候又有大意图，又有小意图。这些分类对于具体业务人员来说是需要非常耐心的整理的。</p>
-<p><img alt="image" src="/img/2018/unit-2-1-16.jpeg" /></p>
+<p><img alt="image" src="/img/2018/unit-2-1-16.jpeg" / loading="lazy" decoding="async"></p>
 <p>接下来再给大家介绍最后的一些专业的话术。</p>
 <p>一个叫做<strong>基于语义的解析</strong>，还有<strong>基于语义的匹配</strong>。</p>
-<p><img alt="image" src="/img/2018/unit-2-1-17.jpeg" /></p>
+<p><img alt="image" src="/img/2018/unit-2-1-17.jpeg" / loading="lazy" decoding="async"></p>
 <p><strong>基于语义解析的对话理解</strong></p>
 <p>要识别用户的意图，并将其参数化。</p>
 <p>什么叫参数化？</p>
@@ -243,7 +244,7 @@ var _hmt = _hmt || [];
 <li>人数：10</li>
 </ul>
 <p>做这种非常参数化的数据给到系统，然后意图我们要去识别出来是预定餐厅。这个就叫做基于语义解析的对话理解。</p>
-<p><img alt="image" src="/img/2018/unit-2-1-18.jpeg" /></p>
+<p><img alt="image" src="/img/2018/unit-2-1-18.jpeg" / loading="lazy" decoding="async"></p>
 <p>基于语义解析有三个常见技术手段，这里简单的给大家说一下。</p>
 <ul>
 <li>第一块是启发式规则和推导</li>
@@ -261,11 +262,11 @@ var _hmt = _hmt || [];
 <p>深度的机器学习是纯数据驱动的，有更好的泛化效果，可迁移性较强。它的劣势是需要海量的语料，可控性和可解释性针对传统的机器学习会更差一点。因为我们知道机器学习，就是我们丢大量的数据喂给机器，然后告诉它这个是输入，那个是输出的结果，然后学习搜索出把输入计算成输出结果的公式，接着就可以用这个公式去预测，新的输入对应的结果是什么样的。这个东西很难去解释，为什么就识别出了。</p>
 <p>比如说图像的一个识别，为什么就识别出来这个是猫，那个是狗，这个是很难去解释的。如果不能解释，我们可能就没有办法去优化某一点，所以我们就说所有的机器学习，它的可控性和可解释性相对较差。</p>
 <p>这个是给大家做的一个简单介绍。</p>
-<p><img alt="image" src="/img/2018/unit-2-1-19.jpeg" /></p>
+<p><img alt="image" src="/img/2018/unit-2-1-19.jpeg" / loading="lazy" decoding="async"></p>
 <p><strong>基于语义匹配的对话理解</strong></p>
 <p>另外一块儿是基于语义匹配的对话理解，比如说这句话：“我想了解现金贷怎么申请”，这就要从问答库中找出整句语义与这句话最相似的问题，然后给出这个相似问题的答案。</p>
 <p>那么我想了解现金贷怎么申请，因为咱们的知识库里有这个标准的问题，现金贷借现金的申请流程是什么，然后下面就可以把回答推过去，所以它其实是语义的匹配，基于语义匹配的对话理解</p>
-<p><img alt="image" src="/img/2018/unit-2-1-20.jpeg" /></p>
+<p><img alt="image" src="/img/2018/unit-2-1-20.jpeg" / loading="lazy" decoding="async"></p>
 <p>基于语义匹配的对话理解的常见技术手段，给大家介绍一下。</p>
 <p>用户输入查询，在语言处理里边，然后通过语义计算，在问答数据库里找到相似的问题，再把这个相似问题对应的答案推出去。</p>
 <p>比如，我想了解一下限号政策，在问答数据库里找到和它匹配的是限号政策，把答案推过去。</p>
@@ -273,8 +274,9 @@ var _hmt = _hmt || [];
 <p>这节课就先到这里了，谢谢大家，下期再会！</p>
   </div>
   <div class="post-tags"><span class="post-tag">#chatbot</span><span class="post-tag">#百度</span><span class="post-tag">#UNIT</span></div>
+  <aside class="post-related"><h3>相关阅读</h3><ul><li><a href="/chatbot/2018-11-14-unit-4-1.html">连载 | 4.1 富集数据资源</a><span class="post-related-date">2018-11-14</span></li><li><a href="/chatbot/2018-11-7-unit-3-6.html">连载 | 3.6 设计UNIT对话逻辑</a><span class="post-related-date">2018-11-07</span></li><li><a href="/chatbot/2018-10-24-unit-3-5.html">连载 | 3.5 抽取对话流程</a><span class="post-related-date">2018-10-24</span></li></ul></aside>
   <aside class="post-wechat">
-  <img src="/images/wechat-qr.jpg" alt="李佳芮的公众号" class="post-wechat-qr">
+  <img src="/images/wechat-qr.jpg" alt="李佳芮的公众号" class="post-wechat-qr" loading="lazy" decoding="async">
   <div class="post-wechat-text">
     <h4>欢迎扫码关注</h4>
     <p>不定期更新 · 创业、产品、读书</p>
@@ -302,7 +304,7 @@ var _hmt = _hmt || [];
 
 <div class="widget">
   <div class="about-box">
-    <img src="/images/avatar.jpg?v=2" alt="李佳芮" class="about-avatar">
+    <img src="/images/avatar.jpg?v=2" alt="李佳芮" class="about-avatar" loading="lazy" decoding="async">
     <p><strong>李佳芮</strong>，<a href="https://juzibot.com">句子互动</a> 创始人。</p>
     <p>创业、产品、读书，断断续续写了十年。</p>
     <p>十年前我是程序员，这个博客是自己写的。后来做公司，代码不写了，更新也停了。</p>
@@ -313,7 +315,7 @@ var _hmt = _hmt || [];
 <div class="widget">
   <h3>微信</h3>
   <div class="wechat-box">
-    <img src="/images/wechat-qr.jpg" alt="微信公众号" class="wechat-qr">
+    <img src="/images/wechat-qr.jpg" alt="微信公众号" class="wechat-qr" loading="lazy" decoding="async">
     <p class="wechat-cap">扫码关注公众号</p>
     <p class="wechat-id">个人微信 · <code>jiaruijuzi</code></p>
   </div>
