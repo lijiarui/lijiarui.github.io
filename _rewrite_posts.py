@@ -76,8 +76,8 @@ HEAD = """<!doctype html>
 FOOT = """<footer class="site-foot"><div class="wrap">
 <a href="https://github.com/lijiarui">GitHub</a>
 <a href="https://juzibot.com">句子互动</a>
-<a href="/blog/">博客</a>
 <a href="/claude/">Claude 永动机</a>
+<a href="/blog/">博客</a>
 <a href="/slides/">分享 PPT</a>
 <a href="/yearly/">年度思考</a>
 <a href="/feed.xml">RSS</a>
@@ -92,8 +92,8 @@ FOOT = """<footer class="site-foot"><div class="wrap">
 def topnav():
     items = [
         ("home", "/", "首页"),
-        ("blog", "/blog/", "博客"),
         ("claude", "/claude/", "Claude 永动机"),
+        ("blog", "/blog/", "博客"),
         ("slides", "/slides/", "分享 PPT"),
         ("yearly", "/yearly/", "年度思考"),
         ("about", "/about/", "关于"),

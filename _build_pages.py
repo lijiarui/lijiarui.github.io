@@ -74,8 +74,8 @@ def make_head(title, desc, path="/", og_image=None, og_type="website"):
 FOOT = """<footer class="site-foot"><div class="wrap">
 <a href="https://github.com/lijiarui">GitHub</a>
 <a href="https://juzibot.com">句子互动</a>
-<a href="/blog/">博客</a>
 <a href="/claude/">Claude 永动机</a>
+<a href="/blog/">博客</a>
 <a href="/slides/">分享 PPT</a>
 <a href="/yearly/">年度思考</a>
 <a href="/feed.xml">RSS</a>
@@ -90,8 +90,8 @@ FOOT = """<footer class="site-foot"><div class="wrap">
 def topnav(active):
     items = [
         ("home", "/", "首页"),
-        ("blog", "/blog/", "博客"),
         ("claude", "/claude/", "Claude 永动机"),
+        ("blog", "/blog/", "博客"),
         ("slides", "/slides/", "分享 PPT"),
         ("yearly", "/yearly/", "年度思考"),
         ("about", "/about/", "关于"),
@@ -889,13 +889,6 @@ def build_claude(posts):
 </div>
 
 {FOOT}"""
-
-    head = make_head(
-        title="Claude 永动机 · 李佳芮",
-        desc="用 Claude Code 跑长任务、做小工具、自动化日常工作的实践笔记",
-        path="/claude/",
-    )
-    write("claude/index.html", head + body)
 
 
 def build_rss(posts, uploaded):

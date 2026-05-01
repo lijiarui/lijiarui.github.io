@@ -80,6 +80,20 @@ footer.note strong { color: var(--ink-soft); }
   .kpi-grid { grid-template-columns: repeat(2, 1fr); }
   .row-2, .row-equal { grid-template-columns: 1fr; }
 }
+@media (max-width: 600px) {
+  .dashboard { padding: 18px 14px 40px; }
+  header.top { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .top h1 { font-size: 18px; }
+  .top h1 small { display: block; margin-left: 0; margin-top: 2px; }
+  .kpi { padding: 14px 16px; }
+  .kpi-value { font-size: 24px; }
+  .card { padding: 14px 16px; }
+  .chart-wrap { height: 220px; }
+  table.pages { font-size: 12px; }
+  table.pages th, table.pages td { padding: 6px 6px; }
+  table.pages td a { font-size: 12px; }
+  table.pages td:first-child { word-break: break-word; }
+}
 </style>
 </head>
 <body>

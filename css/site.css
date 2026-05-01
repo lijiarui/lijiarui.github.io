@@ -711,7 +711,11 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   border: 1px solid var(--rule);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 }
+.slide-description { overflow-wrap: anywhere; }
 .slide-description table {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   border-collapse: collapse;
   width: 100%;
   margin: 1.4em 0 1.6em;
@@ -1222,6 +1226,9 @@ iframe.slide-viewer-ppt,
   width: 100%;
   margin: 1.2em 0 1.4em;
   font-size: 14px;
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .post-content th, .post-content td {
   border: 1px solid var(--rule);
@@ -1237,6 +1244,12 @@ iframe.slide-viewer-ppt,
   border: 1px solid var(--rule);
   border-radius: 4px;
 }
+/* Long URLs / English words shouldn't blow up the layout */
+.post-content { overflow-wrap: anywhere; }
+.post-content a, .post-content code { overflow-wrap: anywhere; }
+/* LiveRe comment widget container */
+.post-comments { max-width: 100%; overflow: hidden; }
+.post-comments iframe { max-width: 100% !important; }
 
 /* Post tags (article footer) */
 .post-tags {
@@ -1516,4 +1529,39 @@ footer.site-foot .copyright {
     gap: 2px;
   }
   .post-list time { font-size: 12px; }
+
+  /* tighter tags on mobile */
+  .post-tag, .slide-tag { font-size: 11px; padding: 2px 7px; }
+  .post-tags, .slide-tags { gap: 5px; }
+
+  /* footer links — let them breathe when wrapped */
+  footer.site-foot { padding: 24px 0 32px; line-height: 2; }
+  footer.site-foot a { margin: 0 8px; }
+
+  /* contact card (slide post 文末招人卡) */
+  .contact-card { flex-direction: column; gap: 18px; padding: 18px; }
+  .contact-qr-block img { max-width: 160px; }
+
+  /* tighter post body on mobile */
+  .post-content { font-size: 15px; line-height: 1.85; }
+  .post-content blockquote { padding: 8px 14px; font-size: 14px; }
+  .post-content pre { font-size: 12px; padding: 12px 14px; }
+  .post-content th, .post-content td { padding: 6px 8px; font-size: 13px; }
+
+  /* slide description (PPT post 长描述) */
+  .slide-description { font-size: 15px; line-height: 1.8; }
+  .slide-description h2 { font-size: 17px; }
+  .slide-description h3 { font-size: 15px; }
+  .slide-description blockquote { padding: 8px 14px; }
+
+  /* callout 收紧 */
+  .callout { padding: 10px 14px; font-size: 14px; }
+}
+
+/* Even narrower — phones in portrait small */
+@media (max-width: 380px) {
+  .topnav nav { gap: 8px; font-size: 12px; }
+  .topnav .brand { font-size: 16px; }
+  .post-title-h1 { font-size: 22px; }
+  .slide-viewer-head h1 { font-size: 19px; }
 }
