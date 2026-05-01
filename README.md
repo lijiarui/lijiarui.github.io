@@ -152,6 +152,45 @@ git add -A && git commit -m '...' && git push
 
 ---
 
+## 站点统计（Umami + 百度统计）
+
+**当前状态**：双埋点，两个 beacon 都在所有页面 head 里 `defer` 加载，不阻塞页面、无 cookie 弹窗。
+
+### Umami Cloud（海外 + 部分国内）
+
+- **登录**：https://cloud.umami.is（账号 `ruiruibupt@gmail.com`）
+- **Website**：rui blog · `rui.juzi.bot`
+- **Website ID**：`ad8bf824-0bb3-4a1a-9cc6-800a038b222f`
+- **看数据**：登录 → 选 rui blog → Realtime / Overview / Sessions / Pages / Sources
+
+**为什么用**：免费、隐私友好、无 cookie、报表 UI 干净。
+**局限**：CDN 在海外（cloud.umami.is），国内访问偶尔失败，国内用户数据会丢一部分。
+
+### 百度统计（国内全覆盖）
+
+- **登录**：https://tongji.baidu.com（用百度账号登录）
+- **网站**：rui.juzi.bot
+- **Hash**：`5454a88502f6c286882f8de764e762bf`
+- **看数据**：登录 → 实时访客 / 来源分析 / 搜索词 / 地域
+
+**为什么用**：国内访问 100% 通；**百度搜索关键词数据是独家**——读者从百度搜什么进来，只有这里能看。
+
+### Beacon 写在哪
+
+两个统计的 `<script>` 都写在 `_build_pages.py` 和 `_rewrite_posts.py` 的 `HEAD` 常量里。要改 ID/hash：
+
+1. 同时改两个文件的 `HEAD`（搜 `cloud.umami.is` 和 `hm.baidu.com`）
+2. 跑 `python3 build.py`
+3. push
+
+**坑**：百度 JS 里有 `{` `}`（函数体），在 Python `.format()` 模板里必须转义成 `{{` `}}`，不然会报 `KeyError`。
+
+### 为什么没做自定义大屏
+
+试过一版 `/dashboard/` 自定义大屏，后来撤了——Umami 和百度自带的后台已经把 UV/PV/来源/页面/地域/设备/实时全给了，再做一份是重复造轮子。要自定义大屏可以拿 Umami API Key 调 REST API，但目前没必要。
+
+---
+
 ## 小心，这些东西不要乱碰
 
 - **`content.json`** 是博客元数据的来源，构建脚本依赖它。新文章会被脚本自动加进去，但不要手改（除非确定）
