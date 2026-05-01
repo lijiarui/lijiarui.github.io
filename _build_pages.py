@@ -744,6 +744,13 @@ def build_slide_viewer(u, blog_posts, slide_posts):
             f'<span class="slide-tag">#{escape(t)}</span>' for t in u["_tags"]
         ) + '</div>'
 
+    comments_block = """<section class="post-comments">
+  <h3>评论</h3>
+  <livere-comment client-id="AwCdtY6RULKUsR5ehN3E"></livere-comment>
+  <script type="module" src="https://www.livere.org/livere-widget.js"></script>
+  <noscript>请启用 JavaScript 查看评论</noscript>
+</section>"""
+
     body = f"""{topnav("slides")}
 
 <div class="wrap">
@@ -761,6 +768,7 @@ def build_slide_viewer(u, blog_posts, slide_posts):
   {desc_html}
   {viewer_html}
 </div>
+{comments_block}
 </main>
 {side_html}
 </div>
