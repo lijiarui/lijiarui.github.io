@@ -1216,6 +1216,16 @@ iframe.slide-viewer-ppt,
   border-radius: 4px;
   border: 1px solid var(--rule);
 }
+.post-content img.full,
+.post-content p img.full {
+  width: 100%;
+}
+.post-content .cite {
+  display: block;
+  text-align: right;
+  color: var(--ink-soft);
+  margin-top: 0.4em;
+}
 .post-content hr {
   border: none;
   border-top: 1px dashed var(--rule);
