@@ -7,7 +7,7 @@ slug: 2026-04-28-return-to-code
 description: 我十年没碰代码了。Claude Opus 4.5 把我拉了回来——不是因为模型多聪明，是因为以前挡在我和代码之间的那堆破事全没了。我现在每天最稳定的工作方式是：脑子里想，顺手写出来，让 Claude 干，我 review。我把这件事叫「Claude 永动机」——而这里，将是我的下一代组织试验田。
 ---
 
-<img src="/img/posts/2026-04-28-return-to-code/naval-tweet.jpg" alt="AI won't replace programmers, but rather make it easier for programmers to replace everyone else. — Naval" class="full">
+<img src="/img/posts/2026-04-28-return-to-code/naval-tweet.png" alt="AI won't replace programmers, but rather make it easier for programmers to replace everyone else. — Naval" class="full">
 
 > AI 不会替代程序员，但程序员会替代其他人。
 >
