@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>给 Claude Code 装上眼睛 - 聊聊 code intelligence plugin · 李佳芮的博客</title>
+<meta name="description" content="Claude Code 文档里有一条 tip：装 code intelligence plugin。我点进去看了下，底下是 LSP——VS Code、Neovim 用了十年的代码智能基建。之前 Claude 改完 TypeScript 自信地说&quot;完成了&quot;，我跑 tsc 红线一片；装上再做一遍，过了。LSP 不是给 Claude 加新功能，是给它装上眼睛。">
+<meta name="author" content="李佳芮">
+<meta name="keywords" content="Claude 永动机, Claude Code, LSP, 工具">
+<link rel="canonical" href="https://rui.juzi.bot/thought/2026-05-03-claude-code-lsp.html">
+<meta property="og:title" content="给 Claude Code 装上眼睛 - 聊聊 code intelligence plugin">
+<meta property="og:description" content="Claude Code 文档里有一条 tip：装 code intelligence plugin。我点进去看了下，底下是 LSP——VS Code、Neovim 用了十年的代码智能基建。之前 Claude 改完 TypeScript 自信地说&quot;完成了&quot;，我跑 tsc 红线一片；装上再做一遍，过了。LSP 不是给 Claude 加新功能，是给它装上眼睛。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://rui.juzi.bot/thought/2026-05-03-claude-code-lsp.html">
+<meta property="og:image" content="https://rui.juzi.bot/images/avatar.jpg">
+<meta property="og:site_name" content="李佳芮的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="李佳芮">
+<meta property="article:published_time" content="2026-05-03">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="给 Claude Code 装上眼睛 - 聊聊 code intelligence plugin">
+<meta name="twitter:description" content="Claude Code 文档里有一条 tip：装 code intelligence plugin。我点进去看了下，底下是 LSP——VS Code、Neovim 用了十年的代码智能基建。之前 Claude 改完 TypeScript 自信地说&quot;完成了&quot;，我跑 tsc 红线一片；装上再做一遍，过了。LSP 不是给 Claude 加新功能，是给它装上眼睛。">
+<meta name="twitter:image" content="https://rui.juzi.bot/images/avatar.jpg">
+<link rel="stylesheet" href="/css/site.css">
+<link rel="shortcut icon" href="/images/favicon.png?v=3">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png?v=3">
+<link rel="alternate" type="application/rss+xml" title="李佳芮的博客 RSS" href="/feed.xml">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="ad8bf824-0bb3-4a1a-9cc6-800a038b222f"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?5454a88502f6c286882f8de764e762bf";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "给 Claude Code 装上眼睛 - 聊聊 code intelligence plugin", "description": "Claude Code 文档里有一条 tip：装 code intelligence plugin。我点进去看了下，底下是 LSP——VS Code、Neovim 用了十年的代码智能基建。之前 Claude 改完 TypeScript 自信地说\"完成了\"，我跑 tsc 红线一片；装上再做一遍，过了。LSP 不是给 Claude 加新功能，是给它装上眼睛。", "image": "https://rui.juzi.bot/images/avatar.jpg", "url": "https://rui.juzi.bot/thought/2026-05-03-claude-code-lsp.html", "datePublished": "2026-05-03", "dateModified": "2026-05-03", "author": {"@type": "Person", "name": "李佳芮", "url": "https://rui.juzi.bot"}, "publisher": {"@type": "Person", "name": "李佳芮", "logo": {"@type": "ImageObject", "url": "https://rui.juzi.bot/images/avatar.jpg"}}, "mainEntityOfPage": "https://rui.juzi.bot/thought/2026-05-03-claude-code-lsp.html", "keywords": "Claude 永动机, Claude Code, LSP, 工具"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首页", "item": "https://rui.juzi.bot/"}, {"@type": "ListItem", "position": 2, "name": "博客", "item": "https://rui.juzi.bot/blog/"}, {"@type": "ListItem", "position": 3, "name": "给 Claude Code 装上眼睛 - 聊聊 code intelligence plugin", "item": "https://rui.juzi.bot/thought/2026-05-03-claude-code-lsp.html"}]}</script>
+</head>
+<body>
+<header class="topnav"><div class="wrap row">
+<div class="brand"><a href="/">李佳芮</a><span class="tagline">时间看得见</span></div>
+<nav><a href="/">首页</a><a href="/claude/">Claude 永动机</a><a href="/blog/">博客</a><a href="/slides/">分享 PPT</a><a href="/yearly/">年度思考</a><a href="/about/">关于</a><a href="https://github.com/lijiarui" target="_blank" rel="noopener" class="nav-ext" title="GitHub">GitHub ↗</a></nav>
+</div></header>
+
+
+<div class="wrap">
+<div class="cols">
+<main class="post-main">
+<article class="post-article">
+  <header class="post-head">
+    <div class="post-cat-line">
+      <a href="/blog/#thought" class="post-cat">思考</a>
+    </div>
+    <h1 class="post-title-h1">给 Claude Code 装上眼睛 - 聊聊 code intelligence plugin</h1>
+    <div class="post-byline">
+      <time>2026-05-03</time> · 全文 3102 字
+    </div>
+  </header>
+  <div class="post-content markdown-body">
+<p>Claude Code 的<a href="https://code.claude.com/docs/en/common-workflows">官方文档</a>在 "Find relevant code" 那节末尾埋了一条 tip：</p>
+<blockquote>
+<p>为你的语言安装 code intelligence plugin，让 Claude 拥有精确的"跳转到定义"和"查找引用"导航能力。</p>
+</blockquote>
+<p>我点开 code intelligence plugin 那个链接看了下。底下是 LSP——VS Code、Neovim、JetBrains 用了十年的那套代码智能基建。</p>
+<p>那就试一下。</p>
+<p>让 Claude 改一个 TypeScript 函数加个参数，调用方都跟着改。</p>
+<p><strong>不装 LSP</strong>：它说"完成了"。我跑 tsc，红线一片——漏了一个用 <code>import { foo as bar }</code> 别名调用的文件。这种事发生过很多次。</p>
+<p><strong>装了 <code>typescript-lsp</code></strong>：再做一遍，过了。</p>
+<p>差别在哪？为了搞明白，我把整条链路从头捋了一遍。这篇是捋完的笔记。</p>
+<h2>这事其实要装两样东西</h2>
+<p>我一开始没搞清楚的就是这件——以为 <code>/plugin install typescript-lsp@claude-plugins-official</code> 跑一下就完事，结果跑起来什么也没多。</p>
+<p>要装的是两样：</p>
+<ol>
+<li><strong>Claude Code 这边的插件</strong>（让 Claude 学会说 LSP 这套行话）</li>
+<li><strong>你机器上的 language server</strong>（在另一边接话的程序）</li>
+</ol>
+<p>少一个都不行。下面分别说。</p>
+<h2>第一样：code intelligence plugin</h2>
+<p>Claude Code 的插件系统里有一类专门叫 <strong>code intelligence</strong>——给 Claude 提供"理解代码语义"的能力。</p>
+<p>默认的 Claude Code 只会 Read 文件 + grep 文本，对代码的理解停留在字符串层面：不知道一个变量真实的类型，不知道一个函数被谁调用过，不知道改完编译挂没挂。code intelligence plugin 补的就是这块。</p>
+<p>按语言分，官方市场 <code>claude-plugins-official</code> 里都有：</p>
+<table>
+<thead>
+<tr>
+<th>语言</th>
+<th>插件名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TypeScript / JavaScript</td>
+<td><code>typescript-lsp</code></td>
+</tr>
+<tr>
+<td>Python</td>
+<td><code>pyright-lsp</code></td>
+</tr>
+<tr>
+<td>Go</td>
+<td><code>gopls-lsp</code></td>
+</tr>
+<tr>
+<td>Rust</td>
+<td><code>rust-analyzer-lsp</code></td>
+</tr>
+<tr>
+<td>Java</td>
+<td><code>jdtls-lsp</code></td>
+</tr>
+</tbody>
+</table>
+<p>在 Claude Code 里直接装：</p>
+<pre><code>/plugin install typescript-lsp@claude-plugins-official
+/reload-plugins
+</code></pre>
+<p><strong>装一次到处用。</strong> 插件存在 <code>~/.claude/plugins/</code>，所有项目共享，不用每个项目装一次。如果哪个项目不想用，去那个项目的 <code>.claude/settings.json</code> 里单独关掉。</p>
+<h2>第二样：language server 二进制</h2>
+<p>这一步是我之前漏掉的——以为插件自带就行。不是。</p>
+<p>插件<strong>只是适配器</strong>，让 Claude 会说 LSP 这套协议；但跟谁说？得另一个程序在那边接着。这个程序就是 <strong>language server</strong>，你得自己装。</p>
+<p>不同语言对应不同的 server：</p>
+<table>
+<thead>
+<tr>
+<th>插件</th>
+<th>你要装的二进制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>typescript-lsp</code></td>
+<td><code>typescript-language-server</code></td>
+</tr>
+<tr>
+<td><code>pyright-lsp</code></td>
+<td><code>pyright</code></td>
+</tr>
+<tr>
+<td><code>gopls-lsp</code></td>
+<td><code>gopls</code></td>
+</tr>
+<tr>
+<td><code>rust-analyzer-lsp</code></td>
+<td><code>rust-analyzer</code></td>
+</tr>
+<tr>
+<td><code>jdtls-lsp</code></td>
+<td><code>jdtls</code></td>
+</tr>
+</tbody>
+</table>
+<p>TypeScript 的装法：</p>
+<pre><code class="language-bash">npm i -g typescript typescript-language-server
+</code></pre>
+<p>验证一下装好了：</p>
+<pre><code class="language-bash">which typescript-language-server
+# /opt/homebrew/bin/typescript-language-server
+</code></pre>
+<p>两边接上，Claude 才真的多了眼睛。</p>
+<h2>language server 到底是什么</h2>
+<p>一个常驻后台的程序，干一件事：理解你项目里的代码。</p>
+<p>跑起来之后它做这些：把所有源文件读一遍，建一棵抽象语法树，在内存里维护一张<strong>符号表</strong>——哪个文件定义了哪个 class / function / variable，类型是什么，被谁引用过。你改文件，它增量更新这张表。别人（编辑器、Claude）问它问题，它从这张表里查答案。</p>
+<p>它<strong>不是编译器</strong>——它不生成可执行代码。<code>tsc</code> 是编译器，<code>typescript-language-server</code> 是常驻的查询服务。底层都依赖 TypeScript 那套解析和类型推导，目的不同。</p>
+<p>打个比方。把项目想成一座图书馆。<code>tsc</code> 是把书印出来给读者拿走的印刷工。<code>typescript-language-server</code> 是常驻图书馆的资深管理员——记得每本书在哪、每个引用在哪、谁引用了谁，你问什么他张口就答。VS Code、Claude Code 这些编辑器，是来图书馆的读者，通过统一提问方式（LSP 协议）跟管理员对话。</p>
+<p>Claude 之前没有管理员，自己满架子翻书。现在有了。</p>
+<h2>顺便说一句 LSP</h2>
+<p>"语言服务器"这个东西能成立，靠的是微软 2016 年定的 <strong>LSP 协议</strong>（Language Server Protocol）。</p>
+<p>在它之前，每个 IDE 要支持每种语言，都得自己实现一遍跳定义、查引用、补全、类型检查。N 种 IDE × M 种语言，重复 N×M 次。LSP 的做法是把"编辑器"和"语言服务器"拆开，让它变成 N+M：每种语言出一个 server，所有编辑器通过同一套协议调用。</p>
+<p>VS Code、Neovim、JetBrains、Sublime——背后都是这套。十年下来主流语言的 language server 都很成熟。Claude Code 的 code intelligence 插件，就是把 Claude 也接进了这套体系，复用这十年的基建。</p>
+<h2>Claude 怎么用 LSP</h2>
+<p>装好之后 Claude 用 LSP 有两种方式，你都不用打命令：</p>
+<p><strong>一种是自动用——改完之后看到诊断</strong>。每次 Edit / Write 一个文件，Claude 立刻拿到该文件的真实诊断：类型错误、未定义符号、import 拼错、未使用变量、语法错误。红线在它眼皮底下，它自己会修。<strong>"改完编译挂了你来修"这种来回打的轮次大幅减少。</strong></p>
+<p><strong>另一种是按需用——Claude 自己判断要不要调</strong>。让它给一个函数加参数、调用方都跟改？它会调 <code>find references</code> 拿到所有真实调用点。让它读一段不熟的代码？它会调 <code>hover</code> 看类型。让它做重命名？它会按符号改而不是全文替换。</p>
+<p>第一种是 Claude Code 自动塞给 Claude 的，第二种是 Claude 根据当前任务自己判断要不要调。</p>
+<h2>grep 派变成 LSP 派</h2>
+<p>具体能力上的差别：</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>不装</th>
+<th>装了</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>跳定义</td>
+<td>grep，会漏 re-export、泛型</td>
+<td>LSP 一步到位</td>
+</tr>
+<tr>
+<td>查引用</td>
+<td>grep 字符串，会误报（注释里、字符串里）</td>
+<td>按语义匹配</td>
+</tr>
+<tr>
+<td>改名重构</td>
+<td>全文替换，容易改错同名变量</td>
+<td>按符号改，作用域内安全</td>
+</tr>
+<tr>
+<td>看接口实现</td>
+<td>grep <code>implements Foo</code></td>
+<td>LSP 直接列</td>
+</tr>
+<tr>
+<td>类型 / 签名</td>
+<td>模型脑补</td>
+<td>LSP 给确定答案</td>
+</tr>
+</tbody>
+</table>
+<p>跨文件改动尤其明显。grep 派的 Claude 经常漏改一个 re-export 文件，编译挂了才发现。</p>
+<p>还有一个隐性收益：<strong>上下文窗口更省</strong>。不装的时候 Claude 为了搞清楚一个符号常常要 Read 整个文件，甚至几个文件。装了之后大量"是什么 / 在哪里 / 谁用它"的问题由 LSP 直接回答，不再把无关代码塞进上下文。长会话、大代码库下区别尤其明显。</p>
+<h2>一个具体场景</h2>
+<p>让 Claude 给一个 TS 函数加参数，调用方都跟着改。</p>
+<p>不装：grep 函数名 → 漏掉 <code>import { foo as bar }</code> 的别名调用 → tsc 报错 → 再修 → 来回 2-3 轮。</p>
+<p>装了：LSP find references → 拿到所有真实调用点（别名、re-export 都有） → 一次改完。</p>
+<h2>什么时候不装</h2>
+<ul>
+<li>单文件脚本、写完就扔的玩具——overhead 大于收益</li>
+<li>项目语言没有对应 LSP（纯 shell、纯 SQL）</li>
+<li>language server 二进制本身有成本（rust-analyzer 几百 MB，jdtls 启动慢）</li>
+</ul>
+<p>我大部分时间在用 Claude Code 做飞书数据拉取 + 战略分析，代码是给自己用的小工具。这种情况：<strong>TypeScript / Python 项目装一下值，纯 CLI 脚本可以不装。</strong></p>
+<h2>一句话</h2>
+<p><strong>LSP 不是给 Claude 加新功能，是给它装上眼睛。</strong></p>
+<p>之前它靠 grep 看世界，现在它接上了编译器。</p>
+<p>写在 2026 年 5 月，重新读 Claude Code 文档的那个下午。</p>
+  </div>
+  <div class="post-tags"><span class="post-tag">#Claude 永动机</span><span class="post-tag">#Claude Code</span><span class="post-tag">#LSP</span><span class="post-tag">#工具</span></div>
+  <aside class="post-related"><h3>相关阅读</h3><ul><li><a href="/thought/2026-04-28-return-to-code.html">接近 10 年没写代码了，被 Claude Opus 4.5 拉了回来</a><span class="post-related-date">2026-04-28</span></li></ul></aside>
+  <aside class="post-wechat">
+  <img src="/images/wechat-qr.jpg" alt="李佳芮的公众号" class="post-wechat-qr" loading="lazy" decoding="async">
+  <div class="post-wechat-text">
+    <h4>欢迎扫码关注</h4>
+    <p>不定期更新 · 创业、产品、读书</p>
+    <p class="post-wechat-id">个人微信 · <code>jiaruijuzi</code></p>
+  </div>
+</aside>
+</article>
+<section class="post-comments">
+  <h3>评论</h3>
+  <livere-comment client-id="AwCdtY6RULKUsR5ehN3E"></livere-comment>
+  <script type="module" src="https://www.livere.org/livere-widget.js"></script>
+  <noscript>请启用 JavaScript 查看评论</noscript>
+</section>
+<nav class="post-nav"><span class="prev"></span><a class="next" href="/thought/2026-04-28-return-to-code.html">接近 10 年没写代码了，被 Claude Opus 4.5 拉了回来 →</a></nav>
+</main>
+<aside class="sidebar">
+
+<div class="widget">
+  <h3>搜索</h3>
+  <div class="search-box">
+    <input type="search" id="search-input" placeholder="搜索文章关键词…" autocomplete="off">
+    <ul class="search-results" id="search-results"></ul>
+  </div>
+</div>
+
+<div class="widget">
+  <div class="about-box">
+    <img src="/images/avatar.jpg?v=2" alt="李佳芮" class="about-avatar" loading="lazy" decoding="async">
+    <p><strong>李佳芮</strong>，<a href="https://juzibot.com">句子互动</a> 创始人。</p>
+    <p>创业、产品、读书，断断续续写了十年。</p>
+    <p>十年前我是程序员，这个博客是自己写的。后来做公司，代码不写了，更新也停了。</p>
+    <p>最近又能写起来——这次没自己动手，AI 干的。</p>
+  </div>
+</div>
+
+<div class="widget">
+  <h3>微信</h3>
+  <div class="wechat-box">
+    <img src="/images/wechat-qr.jpg" alt="微信公众号" class="wechat-qr" loading="lazy" decoding="async">
+    <p class="wechat-cap">扫码关注公众号</p>
+    <p class="wechat-id">个人微信 · <code>jiaruijuzi</code></p>
+  </div>
+</div>
+
+<div class="widget">
+  <h3>近期文章</h3>
+  <ul><li><a href="/thought/2026-05-03-claude-code-lsp.html">给 Claude Code 装上眼睛 - 聊聊 code intelligence plugin</a></li><li><a href="/thought/2026-04-28-return-to-code.html">接近 10 年没写代码了，被 Claude Opus 4.5 拉了回来</a></li><li><a href="/thought/2026-01-31-juzibot-2026.html">写在句子互动的 2026 年</a></li><li><a href="/thought/2025-12-31-last-day-of-2025.html">写在 2025 年的最后一天</a></li><li><a href="/thought/2025-12-31-2025-thought-slices.html">2025 年思想切片</a></li><li><a href="/thought/2025-01-31-juzibot-2025.html">写在句子互动的 2025 年</a></li><li><a href="/thought/2024-12-31-last-day-of-2024.html">写在 2024 年的最后一天</a></li><li><a href="/thought/2024-12-31-2024-thought-slices.html">2024 年思想切片</a></li></ul>
+</div>
+
+<div class="widget">
+  <h3>分类</h3>
+  <ul><li><a href="/blog/#thought">思考</a><span class="count">46</span></li><li><a href="/blog/#chatbot">Chatbot</a><span class="count">21</span></li><li><a href="/blog/#interview">访谈</a><span class="count">11</span></li><li><a href="/blog/#project">项目</a><span class="count">10</span></li><li><a href="/blog/#reading">读书</a><span class="count">6</span></li><li><a href="/blog/#saas">SaaS</a><span class="count">4</span></li><li><a href="/blog/#microsoft">Microsoft</a><span class="count">1</span></li></ul>
+</div>
+
+<div class="widget">
+  <h3>归档</h3>
+  <ul><li><a href="/blog/#y2026">2026</a><span class="count">3</span></li><li><a href="/blog/#y2025">2025</a><span class="count">3</span></li><li><a href="/blog/#y2024">2024</a><span class="count">3</span></li><li><a href="/blog/#y2023">2023</a><span class="count">4</span></li><li><a href="/blog/#y2022">2022</a><span class="count">10</span></li><li><a href="/blog/#y2021">2021</a><span class="count">11</span></li><li><a href="/blog/#y2020">2020</a><span class="count">8</span></li><li><a href="/blog/#y2019">2019</a><span class="count">9</span></li><li><a href="/blog/#y2018">2018</a><span class="count">21</span></li><li><a href="/blog/#y2017">2017</a><span class="count">10</span></li><li><a href="/blog/#y2016">2016</a><span class="count">5</span></li><li><a href="/blog/#y2015">2015</a><span class="count">6</span></li><li><a href="/blog/#y2014">2014</a><span class="count">3</span></li><li><a href="/blog/#y2013">2013</a><span class="count">1</span></li><li><a href="/blog/#y2012">2012</a><span class="count">2</span></li></ul>
+</div>
+
+<div class="widget">
+  <h3>订阅</h3>
+  <ul>
+    <li><a href="/feed.xml" title="RSS Feed">RSS Feed <span class="rss-badge">📡</span></a></li>
+  </ul>
+</div>
+
+</aside>
+</div>
+</div>
+
+<footer class="site-foot"><div class="wrap">
+<a href="https://github.com/lijiarui">GitHub</a>
+<a href="https://juzibot.com">句子互动</a>
+<a href="/claude/">Claude 永动机</a>
+<a href="/blog/">博客</a>
+<a href="/slides/">分享 PPT</a>
+<a href="/yearly/">年度思考</a>
+<a href="/feed.xml">RSS</a>
+<a href="/about/">关于</a>
+<div class="copyright">© Li Jiarui · 时间看得见</div>
+</div></footer>
+<script src="/js/search.js" defer></script>
+</body></html>
