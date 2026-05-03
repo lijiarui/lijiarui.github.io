@@ -5,7 +5,7 @@
 <link>https://rui.juzi.bot</link>
 <description>句子互动创始人李佳芮的博客 · 创业、产品、读书</description>
 <language>zh-CN</language>
-<lastBuildDate>Sun, 03 May 2026 16:38:41 -0000</lastBuildDate>
+<lastBuildDate>Sun, 03 May 2026 17:12:36 -0000</lastBuildDate>
 <atom:link href="https://rui.juzi.bot/feed.xml" rel="self" type="application/rss+xml" />
 <item><title>给 Claude Code 装上眼睛 - 聊聊 code intelligence plugin</title><link>https://rui.juzi.bot/thought/2026-05-03-claude-code-lsp.html</link><guid isPermaLink="true">https://rui.juzi.bot/thought/2026-05-03-claude-code-lsp.html</guid><pubDate>Sat, 02 May 2026 16:00:00 -0000</pubDate><category>思考</category><description><![CDATA[Claude Code 文档里有一条 tip：装 code intelligence plugin。我点进去看了下，底下是 LSP——VS Code、Neovim 用了十年的代码智能基建。之前 Claude 改完 TypeScript 自信地说"完成了"，我跑 tsc 红线一片；装上再做一遍，过了。LSP 不是给 Claude 加新功能，是给它装上眼睛。]]></description></item>
 <item><title>接近 10 年没写代码了，被 Claude Opus 4.5 拉了回来</title><link>https://rui.juzi.bot/thought/2026-04-28-return-to-code.html</link><guid isPermaLink="true">https://rui.juzi.bot/thought/2026-04-28-return-to-code.html</guid><pubDate>Mon, 27 Apr 2026 16:00:00 -0000</pubDate><category>思考</category><description><![CDATA[我十年没碰代码了。Claude Opus 4.5 把我拉了回来——不是因为模型多聪明，是因为以前挡在我和代码之间的那堆破事全没了。我现在每天最稳定的工作方式是：脑子里想，顺手写出来，让 Claude 干，我 review。我把这件事叫「Claude 永动机」——而这里，将是我的下一代组织试验田。]]></description></item>

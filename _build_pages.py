@@ -392,7 +392,8 @@ def sidebar(posts, slide_posts):
         for y, n in sorted(year_count.items(), reverse=True)
     )
 
-    slides_recent = slide_posts[:5]
+    slides_sorted = sorted(slide_posts, key=lambda p: p["_date"], reverse=True)
+    slides_recent = [p for p in slides_sorted if p["_year"] >= "2026"][:5]
     slides_html = "".join(
         f'<li><a href="/{escape(p["path"])}">{escape(p["title"])}</a></li>'
         for p in slides_recent
@@ -550,9 +551,9 @@ def build_index(posts, uploaded_slides):
     write("index.html", head + body)
 
 
-def build_blog(posts):
+def build_blog(posts, uploaded):
     blog_posts = [p for p in posts if p["_cat"] != "presentation"]
-    slide_posts = [p for p in posts if p["_cat"] == "presentation"]
+    slide_posts = [p for p in posts if p["_cat"] == "presentation"] + uploaded
 
     cats = sorted({p["_cat"] for p in blog_posts},
                   key=lambda c: -sum(1 for p in blog_posts if p["_cat"] == c))
@@ -742,7 +743,7 @@ def build_slide_viewer(u, blog_posts, slide_posts):
             '</script>'
         )
 
-    side_html = sidebar(blog_posts, [p for p in slide_posts if p["_cat"] == "presentation"])
+    side_html = sidebar(blog_posts, slide_posts)
 
     desc_html = ""
     if u.get("_description_html"):
@@ -798,13 +799,13 @@ def build_slide_viewer(u, blog_posts, slide_posts):
     write(u["path"], head + body)
 
 
-def build_yearly(posts):
+def build_yearly(posts, uploaded):
     """Build /yearly/ — annual reflection posts (tagged 年度思考)."""
     yearly = [p for p in posts if "年度思考" in p.get("_tags", [])]
     yearly.sort(key=lambda p: p["_date"], reverse=True)
 
     blog_posts = [p for p in posts if p["_cat"] != "presentation"]
-    slide_posts = [p for p in posts if p["_cat"] == "presentation"]
+    slide_posts = [p for p in posts if p["_cat"] == "presentation"] + uploaded
     side_html = sidebar(blog_posts, slide_posts)
 
     if not yearly:
@@ -859,9 +860,9 @@ def build_yearly(posts):
     write("yearly/index.html", head + body)
 
 
-def build_claude(posts):
+def build_claude(posts, uploaded):
     blog_posts = [p for p in posts if p["_cat"] != "presentation"]
-    slide_posts = [p for p in posts if p["_cat"] == "presentation"]
+    slide_posts = [p for p in posts if p["_cat"] == "presentation"] + uploaded
     side_html = sidebar(blog_posts, slide_posts)
 
     # 收集所有打了「Claude 永动机」tag 的文章
@@ -1065,10 +1066,10 @@ def main():
     uploaded = scan_uploaded_slides()
     print(f"  + {len(uploaded)} uploaded slides")
     build_index(posts, uploaded)
-    build_blog(posts)
+    build_blog(posts, uploaded)
     build_slides(posts, uploaded)
-    build_claude(posts)
-    build_yearly(posts)
+    build_claude(posts, uploaded)
+    build_yearly(posts, uploaded)
     build_rss(posts, uploaded)
     build_sitemap(posts, uploaded)
     build_robots()
