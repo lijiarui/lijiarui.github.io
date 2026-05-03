@@ -234,12 +234,15 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 
 /* ---------- Main feed (article excerpts) ---------- */
 .feed article.entry {
-  padding: 4px 0 32px;
-  margin-bottom: 32px;
-  border-bottom: 1px solid var(--rule);
+  padding: 4px 0 40px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #cfccc2;
 }
 .feed article.entry:last-child {
   border-bottom: none;
+}
+@media (prefers-color-scheme: dark) {
+  .feed article.entry { border-bottom-color: #4a4842; }
 }
 .entry-title {
   font-size: 24px;
