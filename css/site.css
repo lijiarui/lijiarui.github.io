@@ -36,9 +36,9 @@ html, body {
   padding: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "PingFang SC",
-               "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei",
-               Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC",
+               "Hiragino Sans GB", "Helvetica Neue", "Microsoft YaHei",
+               "WenQuanYi Micro Hei", Helvetica, Arial, sans-serif;
   font-size: 15px;
   line-height: 1.75;
   -webkit-font-smoothing: antialiased;
@@ -243,7 +243,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 }
 .entry-title {
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.35;
   margin: 0 0 8px;
   letter-spacing: -0.01em;
