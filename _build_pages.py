@@ -908,7 +908,7 @@ def build_claude(posts):
 </div>
 
 <div class="cols">
-<main>
+<main class="claude-feed">
 {entries_html}
 </main>
 {side_html}
