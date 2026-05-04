@@ -10,6 +10,7 @@
   - _publish_posts.py    将 posts/*.md 转成博客 + 注册到 content.json
   - _rewrite_posts.py    把所有文章详情页渲染成新主题（旧 hexo + 新 md 都会处理）
   - _build_pages.py      重建首页/博客列表/分享 PPT/Claude 永动机/搜索索引
+  - _redirect_legacy.py  把旧 Hexo 聚合页（page/archives/categories/tags）改写成跳转页
 """
 import subprocess
 import sys
@@ -21,6 +22,7 @@ steps = [
     ("发布 posts/*.md 博客", "_publish_posts.py"),
     ("渲染所有文章详情页", "_rewrite_posts.py"),
     ("重建列表页 + 搜索", "_build_pages.py"),
+    ("改写旧聚合页为跳转页", "_redirect_legacy.py"),
 ]
 
 for label, script in steps:

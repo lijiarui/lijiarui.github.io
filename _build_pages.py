@@ -68,7 +68,7 @@ var _hmt = _hmt || [];
 
 def make_head(title, desc, path="/", og_image=None, og_type="website"):
     """Render HEAD with full SEO meta. path is site-relative; og_image is site-relative or full URL."""
-    canonical = SITE_URL + ("/" if not path.startswith("/") else "") + path.lstrip("/")
+    canonical = SITE_URL + (path if path.startswith("/") else "/" + path)
     if not og_image:
         og_image = SITE_URL + "/images/avatar.jpg"
     elif og_image.startswith("/"):

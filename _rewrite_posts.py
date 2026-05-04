@@ -412,7 +412,10 @@ def build_post_page(post_meta, parsed, side_html, newer, older, related=None):
         desc = re.sub(r"<[^>]+>", "", body)[:150].replace("\n", " ").strip()
         desc = unescape(desc)
 
-    canonical = f"{SITE_URL}/{post_meta['path']}"
+    _path = post_meta["path"]
+    if _path.endswith("/index.html"):
+        _path = _path[: -len("index.html")]
+    canonical = f"{SITE_URL}/{_path}"
     keywords = ", ".join([t["name"] for t in post_meta.get("tags", [])][:8])
 
     # OG image: first <img> in body, else avatar
@@ -495,7 +498,8 @@ def build_page(parsed, side_html, page_meta):
     desc = re.sub(r"<[^>]+>", "", body)[:120].replace("\n", " ").strip()
     desc = unescape(desc)
     path = page_meta.get("path", "")
-    canonical = f"{SITE_URL}/{path}" if path else SITE_URL
+    _cpath = path[: -len("index.html")] if path.endswith("/index.html") else path
+    canonical = f"{SITE_URL}/{_cpath}" if _cpath else SITE_URL
     head = HEAD.format(
         title=escape(title),
         desc=escape(desc),
