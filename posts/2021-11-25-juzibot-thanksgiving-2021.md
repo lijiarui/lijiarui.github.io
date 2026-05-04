@@ -24,13 +24,9 @@ description: 其实还蛮感触的，创业路上一步一个脚印。回头看�
 
 对于一个一直往前跑的人来说最感恩的就是有人愿意陪她一起跑。
 
-<view type="2">
-
-  <file token="K9Y6bQ7KNojcffxvDgVcVIz4nxd" name="句子互动2021感恩节视频精华版.mp4"/>
-
-</view>
-
-加长完整版视频，点这里查看——><mention-doc token="boxcnMtiIN1BgCoDjkpWrSUy2dg" type="docx">句子互动2021感恩节完整视频.mp4</mention-doc> 
+<div style="position:relative;padding-bottom:60%;height:0;overflow:hidden;margin:1.5em 0;">
+  <iframe src="https://v.qq.com/txp/iframe/player.html?vid=l3315vw6hyj" allowfullscreen frameborder="0" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+</div>
 
 ## 感恩过去
 
@@ -92,8 +88,8 @@ description: 其实还蛮感触的，创业路上一步一个脚印。回头看�
 
 前面是感恩，后面是句子未来的规划。记录下来，经过时间以后再来看，我们完成了多少。
 
-<view type="2">
+<div style="position:relative;padding-bottom:75%;height:0;overflow:hidden;margin:1.5em 0;">
+  <iframe src="/files/slides/2021-11-25-juzibot-thanksgiving.pdf" allowfullscreen frameborder="0" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+</div>
 
-  <file token="KO3Xb3ynuoJ7f7xhvbXc0XYkn7b" name="juzibot.pdf"/>
-
-</view>
+<p><a href="/files/slides/2021-11-25-juzibot-thanksgiving.pdf" target="_blank" rel="noopener">下载 PDF：句子互动 2021 感恩节分享</a></p>
