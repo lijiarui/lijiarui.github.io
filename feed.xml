@@ -5,7 +5,7 @@
 <link>https://rui.juzi.bot</link>
 <description>句子互动创始人李佳芮的博客 · 创业、产品、读书</description>
 <language>zh-CN</language>
-<lastBuildDate>Mon, 04 May 2026 14:26:31 -0000</lastBuildDate>
+<lastBuildDate>Mon, 04 May 2026 14:30:26 -0000</lastBuildDate>
 <atom:link href="https://rui.juzi.bot/feed.xml" rel="self" type="application/rss+xml" />
 <item><title>AI 不可替代的那 20%：判断、品味、在场、关系、手艺</title><link>https://rui.juzi.bot/thought/2026-05-04-ai-era-competitiveness.html</link><guid isPermaLink="true">https://rui.juzi.bot/thought/2026-05-04-ai-era-competitiveness.html</guid><pubDate>Sun, 03 May 2026 16:00:00 -0000</pubDate><category>思考</category><description><![CDATA[你工作里那不可替代的 20% 是什么？另外 80% 怎么交给 AI？我目前看到五件 AI 替不了的事：判断、品味、在场、关系、手艺。这一篇接上一篇 Claude 永动机的题：下一代组织的最小单元是 1 个人 + 一支 Agent 团队，那么"1"自己留下什么，"N"接走什么？]]></description></item>
 <item><title>给 Claude Code 装上眼睛 - 聊聊 code intelligence plugin</title><link>https://rui.juzi.bot/thought/2026-05-03-claude-code-lsp.html</link><guid isPermaLink="true">https://rui.juzi.bot/thought/2026-05-03-claude-code-lsp.html</guid><pubDate>Sat, 02 May 2026 16:00:00 -0000</pubDate><category>思考</category><description><![CDATA[Claude Code 文档里有一条 tip：装 code intelligence plugin。我点进去看了下，底下是 LSP——VS Code、Neovim 用了十年的代码智能基建。之前 Claude 改完 TypeScript 自信地说"完成了"，我跑 tsc 红线一片；装上再做一遍，过了。LSP 不是给 Claude 加新功能，是给它装上眼睛。]]></description></item>
