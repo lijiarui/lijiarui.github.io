@@ -103,6 +103,23 @@ def main():
 
     cj_path = ROOT / "content.json"
     data = json.loads(cj_path.read_text())
+
+    # Dedup posts by path, keeping the first occurrence. Historical content.json
+    # may already contain duplicates that the {path: i} map below cannot fix on
+    # its own (the dict only prevents *new* duplicates, not existing ones).
+    seen_paths = set()
+    deduped = []
+    removed = 0
+    for p in data["posts"]:
+        if p["path"] in seen_paths:
+            removed += 1
+            continue
+        seen_paths.add(p["path"])
+        deduped.append(p)
+    if removed:
+        print(f"  · removed {removed} duplicate post entr{'y' if removed == 1 else 'ies'} from content.json")
+        data["posts"] = deduped
+
     existing_paths = {p["path"]: i for i, p in enumerate(data["posts"])}
 
     converter = md_lib.Markdown(extensions=["extra", "sane_lists"])

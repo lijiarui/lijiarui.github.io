@@ -27,6 +27,28 @@ EXCERPT_LEN = 220
 
 SITE_URL = "https://rui.juzi.bot"
 
+# 外部媒体报道。要新增报道在这里加一行（按时间倒序）。
+# /media/ 页和 sidebar 的「媒体报道」widget 都从这里生成。
+# about/index.html 里那段是单独的手写副本，更新时也顺手改一下。
+MEDIA_COVERAGE = [
+    ("2026-05-01", "北京时间", "【\"十五五\"开局 六种奋斗人生】创新创业 她站在 AI 的风口", "https://item.btime.com/40e27d45f506015c484efb345dd"),
+    ("2026-03-19", "澎湃新闻", "感动海淀·巾帼榜样｜奋楫扬帆，芳华绽放（四）", "https://www.thepaper.cn/newsDetail_forward_32798060"),
+    ("2026-03-16", "中国城市报", "深夜代码不辍 灯火映照创新——北京 AI 创业者以实干筑就人工智能新高地", "https://www.zgcsb.com/news/pinDao/2026-03/16/ma_656471.html"),
+    ("2024-08-12", "未来产业创新基地", "对话李佳芮：极客转身，从 To B 端穿越周期", "https://mp.weixin.qq.com/s/xVaOVTcVkPxLnV2Wmp3mig"),
+    ("2024-07-06", "第一财经", "李佳芮：如何用大模型创造出数字员工？", "https://m.yicai.com/video/102180686.html"),
+    ("2024-06-28", "知之研究院", "「共创·引玉」句子互动：AI 智能新纪元，每个人都是航海者", "https://mp.weixin.qq.com/s/67nyIOqnmQVcI95vRQvnKA"),
+    ("2024-03-29", "北京海升投资", "《领航者对话》第 15 期｜句子互动 李佳芮：拥抱大模型时代，打造\"千人千聊\"的 Agent 平台", "https://mp.weixin.qq.com/s/CmDGGABlORHw2pEOY53eJg"),
+    ("2024-03-05", "TSVC", "【精彩回顾】大模型下半场，非任性的创业者机会何在？", "https://mp.weixin.qq.com/s/9yAhILfsV3HN1TYKKV22tA"),
+    ("2024-01-24", "非凡产研", "句子互动李佳芮：企业要识别人与 AI 的不同优势，让二者各司其职丨非凡挚友", "https://mp.weixin.qq.com/s/Y8Nm-BFlby-YBeobArBg-A"),
+    ("2023-11-01", "CSDN", "对话句子互动创始人李佳芮｜AIGC 结合私域运营影响不可估量", "https://blog.csdn.net/weixin_40303385/article/details/134278245"),
+    ("2023-06-05", "Plug and Play", "投后企业动态：「句子互动」完成数百万美元 Pre-A 轮融资", "https://www.pnpchina.com/resources/PNP20230604F"),
+    ("2023-06-02", "36氪", "36氪首发｜句子互动完成数百万美元 Pre-A 轮融资，打造大模型驱动的下一代对话式营销云", "https://36kr.com/p/2282873082566406"),
+    ("2022-02-15", "搜狐", "句子互动李佳芮：社交裂变、私域运营……爆发式增长的 SCRM 行业到底是什么？", "https://www.sohu.com/a/522897154_490443"),
+    ("2021-09-23", "福布斯", "句子互动创始人李佳芮：\"做着做着，风口就砸向了我\" | U30", "https://mp.weixin.qq.com/s/ivXJ4U_jRNtX1VnWfOwgaQ"),
+    ("2020-06-17", "腾讯新闻", "一位 90 后女 CEO 的创业信条：相信时间看得见", "https://news.qq.com/rain/a/20200617A0A2IJ00"),
+    ("2018-10-19", "36氪", "1024 专访｜李佳芮：写代码让我快速进入解决问题的\"心流\"", "https://36kr.com/p/1722894548993"),
+]
+
 HEAD = """<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -399,6 +421,15 @@ def sidebar(posts, slide_posts):
         for p in slides_recent
     )
 
+    media_recent = MEDIA_COVERAGE[:4]
+    media_html = "".join(
+        f'<li><a href="{escape(url, quote=True)}" target="_blank" rel="noopener">'
+        f'<span class="m-outlet">{escape(outlet)}</span>'
+        f'<span class="m-title">{escape(title)}</span>'
+        f'</a></li>'
+        for date, outlet, title, url in media_recent
+    )
+
     return f"""<aside class="sidebar">
 
 <div class="widget">
@@ -436,6 +467,12 @@ def sidebar(posts, slide_posts):
 <div class="widget">
   <h3>分享 PPT</h3>
   <ul>{slides_html}</ul>
+</div>
+
+<div class="widget">
+  <h3>媒体报道</h3>
+  <ul>{media_html}</ul>
+  <p class="widget-more"><a href="/media/">更多 ({len(MEDIA_COVERAGE)}) →</a></p>
 </div>
 
 <div class="widget">
@@ -860,6 +897,60 @@ def build_yearly(posts, uploaded):
     write("yearly/index.html", head + body)
 
 
+def build_media(posts, uploaded):
+    """Build /media/ — external media coverage (press kit). Source of truth: MEDIA_COVERAGE."""
+    blog_posts = [p for p in posts if p["_cat"] != "presentation"]
+    slide_posts = [p for p in posts if p["_cat"] == "presentation"] + uploaded
+    side_html = sidebar(blog_posts, slide_posts)
+
+    by_year = {}
+    for date, outlet, title, url in MEDIA_COVERAGE:
+        y = date[:4]
+        by_year.setdefault(y, []).append((date, outlet, title, url))
+
+    groups = []
+    for y in sorted(by_year.keys(), reverse=True):
+        items_html = "\n".join(
+            f'<li><time>{escape(date)}</time>'
+            f'<span class="outlet">{escape(outlet)}</span>'
+            f'<a href="{escape(url, quote=True)}" target="_blank" rel="noopener">{escape(title)}</a>'
+            f'</li>'
+            for date, outlet, title, url in by_year[y]
+        )
+        groups.append(
+            f'<section class="yearly-group">'
+            f'<h2 class="yearly-year">{escape(y)}</h2>'
+            f'<ul class="media-list">{items_html}</ul>'
+            f'</section>'
+        )
+    cards_html = "\n".join(groups)
+
+    body = f"""{topnav("")}
+
+<div class="wrap">
+<div class="page-intro">
+  <h1>媒体报道</h1>
+  <p>别人写我和句子互动的。零散收集，做个汇总，也不全。</p>
+</div>
+
+<div class="cols">
+<main>
+{cards_html}
+</main>
+{side_html}
+</div>
+</div>
+
+{FOOT}"""
+
+    head = make_head(
+        title="媒体报道 · 李佳芮",
+        desc=f"外部媒体对李佳芮和句子互动的报道合集 · 共 {len(MEDIA_COVERAGE)} 篇 · 涵盖 36氪、福布斯、第一财经、CSDN、澎湃新闻、腾讯新闻等",
+        path="/media/",
+    )
+    write("media/index.html", head + body)
+
+
 def build_claude(posts, uploaded):
     blog_posts = [p for p in posts if p["_cat"] != "presentation"]
     slide_posts = [p for p in posts if p["_cat"] == "presentation"] + uploaded
@@ -1001,6 +1092,7 @@ def build_sitemap(posts, uploaded):
         ("slides/", "0.8"),
         ("claude/", "0.5"),
         ("about/", "0.6"),
+        ("media/", "0.6"),
     ]
     for slug, prio in static:
         urls.append((SITE_URL + "/" + slug, prio, ""))
@@ -1070,6 +1162,7 @@ def main():
     build_slides(posts, uploaded)
     build_claude(posts, uploaded)
     build_yearly(posts, uploaded)
+    build_media(posts, uploaded)
     build_rss(posts, uploaded)
     build_sitemap(posts, uploaded)
     build_robots()
