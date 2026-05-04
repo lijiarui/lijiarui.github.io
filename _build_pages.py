@@ -48,6 +48,7 @@ MEDIA_COVERAGE = [
     ("2023-06-02", "36氪", "36氪首发｜句子互动完成数百万美元 Pre-A 轮融资，打造大模型驱动的下一代对话式营销云", "https://36kr.com/p/2282873082566406"),
     ("2022-02-15", "搜狐", "句子互动李佳芮：社交裂变、私域运营……爆发式增长的 SCRM 行业到底是什么？", "https://www.sohu.com/a/522897154_490443"),
     ("2021-09-23", "福布斯", "句子互动创始人李佳芮：\"做着做着，风口就砸向了我\" | U30", "https://mp.weixin.qq.com/s/ivXJ4U_jRNtX1VnWfOwgaQ"),
+    ("2020-11-09", "Microsoft MVP Blog", "Six Lines Of Code. Two MVPs. One Chatbot.", "https://techcommunity.microsoft.com/blog/mvp-blog/six-lines-of-code-two-mvps-one-chatbot-/1861785"),
     ("2020-06-17", "腾讯新闻", "一位 90 后女 CEO 的创业信条：相信时间看得见", "https://news.qq.com/rain/a/20200617A0A2IJ00"),
     ("2019-03-19", "三橙星球", "【独家专访】2019 YC 冬季班中国团队－进 YC 是一种怎样的体验", "https://mp.weixin.qq.com/s/4It5dD0b2mokOJzLNZ8Iag"),
     ("2019-03-08", "Plug and Play", "向心而行：女性创业力量｜和时间创造\"新\"自己", "https://mp.weixin.qq.com/s/mdhGn2kfpUiOCLfzptef1w"),
