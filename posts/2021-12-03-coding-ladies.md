@@ -1,10 +1,10 @@
 ---
 title: 创业篇 - 女性开发者的创业之路
 date: 2021-12-03
-category: interview
-tags: 创业, Microsoft, 微软, MVP, 程序员
+category: presentation
+tags: 创业, Microsoft, 微软, MVP, 程序员, Coding Ladies
 slug: 2021-12-03-coding-ladies
-description: 本文是我在微软 Reactor 做的 《Coding Ladies｜创业篇 - 女性开发者的创业之路》 分享 本月的 Coding Ladies 系列活动，聚焦 IT 行业中的女性从业者。我们邀请了 IT 行业几位杰出的女性从业者，来为我们分享她们在技术创业、技术教育、技术应用中的故事。
+description: 2021 年 12 月在微软 Reactor《Coding Ladies》系列讲座的分享。聊女性开发者在技术创业里的挑战、优势与经历。共 72 页 PPT。
 ---
 
 本文是我在微软 Reactor 做的 [《Coding Ladies｜创业篇 - 女性开发者的创业之路》](https://mp.weixin.qq.com/s/MmC6nuETSi1iYpgZZ_7Ctw) 分享

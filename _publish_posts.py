@@ -260,8 +260,8 @@ def main():
         if path in existing_paths:
             data["posts"][existing_paths[path]] = post_entry
         else:
-            data["posts"].insert(0, post_entry)
-            existing_paths[path] = 0
+            data["posts"].append(post_entry)
+            existing_paths[path] = len(data["posts"]) - 1
         published += 1
 
     cj_path.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")))

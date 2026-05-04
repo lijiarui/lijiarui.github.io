@@ -1,8 +1,8 @@
 ---
 title: AI与人，“替代”还是 “共生”
 date: 2020-04-20
-category: chatbot
-tags: Chatbot从0到1
+category: presentation
+tags: Chatbot从0到1, 分享, AI
 slug: 2020-04-20-lijiarui-chatbot-0-1
 description: 在过去的几百年里，每次革命都在摧毁一些职业的同时创造一些新的工作岗位。人工智能时代也是一样，单纯的智能不会解决所有的问题，机器和人将协同工作。让机器做机器擅长的事情，让人类发挥人类的特长，让人工智能拓展人类智能。机器与人，和而共生，彼此关爱，共享未来。
 ---
