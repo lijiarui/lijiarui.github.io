@@ -132,11 +132,11 @@ AI 能把找客户、跟进、起草方案、写汇报全接走，但拍板那�
 
 VSCode 插件、命令行、Desktop 跑出来的会话共享同一份 jsonl，全汇到这一个网页里。100+ 会话在一处搜索、恢复、跨端查看；没干完的打 TODO 标签，第二天打开网页就看到全部挂着的活，一条条接着推下去，不会忘。
 
-<img src="/img/posts/2026-05-04-ai-era-competitiveness/vscode-with-claude-code.jpg" alt="VSCode + Claude Code 配合做编辑：左侧文件树是博客仓库，中间是当前编辑的这篇文章，右侧 Claude Code 在帮我做事（建图片目录、检查文件名）。VSCode 用来动手干活，会话同步到 claude-code-web 那边汇总查看" class="full">
+<img src="/img/posts/2026-05-04-ai-era-competitiveness/claude-code-web-overview.jpg" alt="claude-code-web 主界面：左侧 100+ 会话列表可搜索切换、可按 TODO 筛出未收尾的活，中间是 Claude 用 markdown 渲染的工作输出，图片粘进去就出缩略图，顶栏显示工作目录、权限模式、会话状态" class="full">
 
 每天的分工：VSCode 用来动手干活，改文件、跑会话都在那边；claude-code-web 用来看、控制、跨端访问，同一份会话自动汇过来。markdown 真渲染、图片粘进去直接出缩略图、tool_use 默认折叠，这些事命令行里看起来特别费劲，但是在网页里就很舒服。
 
-<img src="/img/posts/2026-05-04-ai-era-competitiveness/claude-code-web-overview.jpg" alt="claude-code-web 主界面：左侧 100+ 会话列表可搜索切换、可按 TODO 筛出未收尾的活，中间是 Claude 用 markdown 渲染的工作输出，图片粘进去就出缩略图，顶栏显示工作目录、权限模式、会话状态" class="full">
+<img src="/img/posts/2026-05-04-ai-era-competitiveness/vscode-with-claude-code.jpg" alt="VSCode + Claude Code 配合做编辑：左侧文件树是博客仓库，中间是当前编辑的这篇文章，右侧 Claude Code 在帮我做事（建图片目录、检查文件名）。VSCode 用来动手干活，会话同步到 claude-code-web 那边汇总查看" class="full">
 
 **思路二：把 Claude Code 搬到云端跑。**
 
