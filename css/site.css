@@ -325,32 +325,38 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   list-style: disc;
   margin: 0;
   padding-left: 22px;
-  font-size: 15px;
 }
 .media-list li {
   padding: 8px 0;
   line-height: 1.9;
-  color: var(--ink-soft);
 }
-.media-list .media-date {
-  color: var(--ink-mute);
-  font-variant-numeric: tabular-nums;
-  font-size: 13px;
-}
+.media-list .media-date,
 .media-list .media-outlet {
   color: var(--ink-mute);
   font-size: 14px;
 }
+.media-list .media-date {
+  font-variant-numeric: tabular-nums;
+}
 .media-list a {
-  color: var(--ink);
+  color: var(--accent);
+  font-size: 15px;
   text-decoration: none;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid rgba(210, 105, 17, 0.3);
+  transition: border-color 0.15s ease;
 }
-.media-list a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.media-list a:hover {
+  border-bottom-color: var(--accent);
+  border-bottom-width: 2px;
+}
 @media (max-width: 720px) {
-  .media-list { padding-left: 18px; font-size: 14px; }
+  .media-list { padding-left: 18px; }
   .media-list li { padding: 6px 0; line-height: 1.8; }
+  .media-list .media-date,
+  .media-list .media-outlet { font-size: 13px; }
+  .media-list a { font-size: 14px; }
 }
+
 
 /* ---------- Sidebar ---------- */
 .sidebar {

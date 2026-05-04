@@ -944,9 +944,10 @@ def build_media(posts, uploaded):
     groups = []
     for y in sorted(by_year.keys(), reverse=True):
         items_html = "\n".join(
-            f'<li><time class="media-date">{escape(date)}</time>'
+            f'<li>'
+            f'<time class="media-date">{escape(date)}</time>'
             f' · <span class="media-outlet">{escape(outlet)}</span>'
-            f' ·「<a href="{escape(url, quote=True)}" target="_blank" rel="noopener">{escape(title)}</a>」'
+            f' · <a href="{escape(url, quote=True)}" target="_blank" rel="noopener">{escape(title)}</a>'
             f'</li>'
             for date, outlet, title, url in by_year[y]
         )
