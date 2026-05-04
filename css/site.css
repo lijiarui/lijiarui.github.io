@@ -1087,6 +1087,7 @@ iframe.slide-viewer-ppt,
 /* ---------- Yearly groups ---------- */
 .yearly-group {
   margin-bottom: 36px;
+  scroll-margin-top: 80px;
 }
 .yearly-year {
   font-size: 22px;
@@ -1097,6 +1098,13 @@ iframe.slide-viewer-ppt,
   border-bottom: 2px solid var(--accent);
   letter-spacing: -0.01em;
   display: inline-block;
+}
+.yearly-count {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ink-mute);
+  margin-left: 8px;
+  letter-spacing: 0;
 }
 
 /* ---------- Filter bar ---------- */

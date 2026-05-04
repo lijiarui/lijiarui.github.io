@@ -603,14 +603,28 @@ def build_blog(posts, uploaded):
         f'<a href="#{c}" data-cat="{c}">{escape(CAT_LABEL.get(c, c))}</a>' for c in cats
     )
 
-    items_html = "\n".join(
-        f'<li data-cat="{p["_cat"]}" data-year="{p["_year"]}">'
-        f'<time>{escape(p["_date"])}</time>'
-        f'<a href="/{escape(p["path"])}">{escape(p["title"])}</a>'
-        f'<span class="cat">{escape(p["_cat_label"])}</span>'
-        '</li>'
-        for p in blog_posts
-    )
+    by_year = {}
+    for p in blog_posts:
+        by_year.setdefault(p["_year"], []).append(p)
+
+    groups = []
+    for y in sorted(by_year.keys(), reverse=True):
+        posts_in_year = by_year[y]
+        items_html = "\n".join(
+            f'<li data-cat="{p["_cat"]}" data-year="{p["_year"]}">'
+            f'<time>{escape(p["_date"])}</time>'
+            f'<a href="/{escape(p["path"])}">{escape(p["title"])}</a>'
+            f'<span class="cat">{escape(p["_cat_label"])}</span>'
+            '</li>'
+            for p in posts_in_year
+        )
+        groups.append(
+            f'<section class="yearly-group" data-year="{escape(y)}" id="y{escape(y)}">'
+            f'<h2 class="yearly-year">{escape(y)} <span class="yearly-count">{len(posts_in_year)} 篇</span></h2>'
+            f'<ul class="post-list">{items_html}</ul>'
+            f'</section>'
+        )
+    groups_html = "\n".join(groups)
 
     side_html = sidebar(blog_posts, slide_posts)
 
@@ -625,9 +639,9 @@ def build_blog(posts, uploaded):
 <div class="cols">
 <main>
 <div class="filter-bar" id="filter">{filter_html}</div>
-<ul class="post-list" id="posts">
-{items_html}
-</ul>
+<div id="posts">
+{groups_html}
+</div>
 </main>
 {side_html}
 </div>
@@ -639,22 +653,26 @@ def build_blog(posts, uploaded):
   var list = document.getElementById('posts');
   function applyCat(cat) {{
     bar.querySelectorAll('a').forEach(function(x) {{ x.classList.toggle('active', x.getAttribute('data-cat') === cat); }});
-    list.querySelectorAll('li').forEach(function(li) {{
-      li.style.display = (cat === 'all' || li.getAttribute('data-cat') === cat) ? '' : 'none';
+    list.querySelectorAll('section.yearly-group').forEach(function(sec) {{
+      var visible = 0;
+      sec.querySelectorAll('li').forEach(function(li) {{
+        var match = (cat === 'all' || li.getAttribute('data-cat') === cat);
+        li.style.display = match ? '' : 'none';
+        if (match) visible++;
+      }});
+      sec.style.display = visible ? '' : 'none';
     }});
   }}
   bar.addEventListener('click', function(e) {{
     var a = e.target.closest('a'); if (!a) return;
     e.preventDefault();
     applyCat(a.getAttribute('data-cat'));
+    history.replaceState(null, '', a.getAttribute('href'));
   }});
   if (location.hash) {{
     var h = location.hash.slice(1);
     if (h.startsWith('y')) {{
-      var y = h.slice(1);
-      list.querySelectorAll('li').forEach(function(li) {{
-        li.style.display = li.getAttribute('data-year') === y ? '' : 'none';
-      }});
+      // year anchor — let browser scroll naturally
     }} else {{
       applyCat(h);
     }}
