@@ -127,6 +127,7 @@ def main():
             print(f"  ✗ {fp.name}: missing title in frontmatter, skipped")
             skipped += 1
             continue
+        is_draft = str(meta.get("draft", "")).lower() in ("true", "yes", "1")
         if category not in VALID_CATEGORIES:
             print(f"  ✗ {fp.name}: invalid category '{category}' "
                   f"(must be one of {sorted(VALID_CATEGORIES)}), skipped")
@@ -162,6 +163,20 @@ def main():
             else:
                 slug = slugify_title(stem)
                 path = f"{category}/{date_short}-{slug}.html"
+
+        if is_draft:
+            print(f"  · {fp.name}: draft, skipped")
+            skipped += 1
+            # Remove from content.json if previously published, and clean up
+            # any stale rendered html so the listing pages don't link to a 404.
+            if path in existing_paths:
+                idx = existing_paths.pop(path)
+                del data["posts"][idx]
+                existing_paths = {p["path"]: i for i, p in enumerate(data["posts"])}
+            stale = ROOT / path
+            if stale.exists():
+                stale.unlink()
+            continue
 
         # Tags
         tags = []
