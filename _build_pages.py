@@ -28,18 +28,21 @@ EXCERPT_LEN = 220
 SITE_URL = "https://rui.juzi.bot"
 
 # 外部媒体报道。要新增报道在这里加一行（按时间倒序）。
-# /media/ 页和 sidebar 的「媒体报道」widget 都从这里生成。
-# about/index.html 里那段是单独的手写副本，更新时也顺手改一下。
+# /media/ 页、sidebar 的「媒体报道」widget、以及 /about/ 页里
+# `<h2 id="外部媒体报道">` 之后的 <ul> 都从这里生成（about 页 ul 由
+# sync_about_media() 自动同步，h2 + 简介 p 保持手写）。
 MEDIA_COVERAGE = [
     ("2026-05-01", "北京时间", "【\"十五五\"开局 六种奋斗人生】创新创业 她站在 AI 的风口", "https://item.btime.com/40e27d45f506015c484efb345dd"),
     ("2026-03-19", "澎湃新闻", "感动海淀·巾帼榜样｜奋楫扬帆，芳华绽放（四）", "https://www.thepaper.cn/newsDetail_forward_32798060"),
     ("2026-03-16", "中国城市报", "深夜代码不辍 灯火映照创新——北京 AI 创业者以实干筑就人工智能新高地", "https://www.zgcsb.com/news/pinDao/2026-03/16/ma_656471.html"),
+    ("2024-09-02", "Microsoft MVP Blog", "Empowered to thrive: Jiarui's Entrepreneurial Journey", "https://techcommunity.microsoft.com/blog/mvp-blog/empowered-to-thrive-jiarui%E2%80%99s-entrepreneurial-journey/4220724"),
     ("2024-08-12", "未来产业创新基地", "对话李佳芮：极客转身，从 To B 端穿越周期", "https://mp.weixin.qq.com/s/xVaOVTcVkPxLnV2Wmp3mig"),
     ("2024-07-06", "第一财经", "李佳芮：如何用大模型创造出数字员工？", "https://m.yicai.com/video/102180686.html"),
     ("2024-06-28", "知之研究院", "「共创·引玉」句子互动：AI 智能新纪元，每个人都是航海者", "https://mp.weixin.qq.com/s/67nyIOqnmQVcI95vRQvnKA"),
     ("2024-03-29", "北京海升投资", "《领航者对话》第 15 期｜句子互动 李佳芮：拥抱大模型时代，打造\"千人千聊\"的 Agent 平台", "https://mp.weixin.qq.com/s/CmDGGABlORHw2pEOY53eJg"),
     ("2024-03-05", "TSVC", "【精彩回顾】大模型下半场，非任性的创业者机会何在？", "https://mp.weixin.qq.com/s/9yAhILfsV3HN1TYKKV22tA"),
     ("2024-01-24", "非凡产研", "句子互动李佳芮：企业要识别人与 AI 的不同优势，让二者各司其职丨非凡挚友", "https://mp.weixin.qq.com/s/Y8Nm-BFlby-YBeobArBg-A"),
+    ("2023-11-21", "腾讯研究院", "万字访谈剖析大模型对 ICT 行业影响", "https://mp.weixin.qq.com/s/eRthnd1dvYnP6UOJRDDamw"),
     ("2023-11-01", "CSDN", "对话句子互动创始人李佳芮｜AIGC 结合私域运营影响不可估量", "https://blog.csdn.net/weixin_40303385/article/details/134278245"),
     ("2023-06-05", "Plug and Play", "投后企业动态：「句子互动」完成数百万美元 Pre-A 轮融资", "https://www.pnpchina.com/resources/PNP20230604F"),
     ("2023-06-02", "36氪", "36氪首发｜句子互动完成数百万美元 Pre-A 轮融资，打造大模型驱动的下一代对话式营销云", "https://36kr.com/p/2282873082566406"),
@@ -897,6 +900,36 @@ def build_yearly(posts, uploaded):
     write("yearly/index.html", head + body)
 
 
+def sync_about_media():
+    """Replace the <ul> after `<h2 id="外部媒体报道">` in about/index.html with
+    a freshly-generated list from MEDIA_COVERAGE. Keeps the h2 and the intro <p>
+    (handwritten) intact. This guarantees /about/ and /media/ never drift."""
+    fp = ROOT / "about" / "index.html"
+    if not fp.exists():
+        return
+    html = fp.read_text(encoding="utf-8")
+
+    items_html = "\n".join(
+        f'<li><span class="media-date">{escape(date)}</span> · {escape(outlet)} ·'
+        f'「<a href="{escape(url, quote=True)}" target="_blank" rel="noopener">{escape(title)}</a>」</li>'
+        for date, outlet, title, url in MEDIA_COVERAGE
+    )
+    new_ul = f"<ul>\n{items_html}\n</ul>"
+
+    # Find the first <ul>...</ul> block after the 外部媒体报道 heading and replace it.
+    pattern = re.compile(
+        r'(<h2 id="外部媒体报道">.*?</h2>\s*(?:<p>.*?</p>\s*)?)<ul>.*?</ul>',
+        re.S,
+    )
+    new_html, n = pattern.subn(lambda m: m.group(1) + new_ul, html, count=1)
+    if n == 0:
+        print("  ! sync_about_media: 找不到 <h2 id=\"外部媒体报道\"> 后面的 <ul>，跳过")
+        return
+    if new_html != html:
+        fp.write_text(new_html, encoding="utf-8")
+        print(f"synced /about/ media list ({len(MEDIA_COVERAGE)} entries)")
+
+
 def build_media(posts, uploaded):
     """Build /media/ — external media coverage (press kit). Source of truth: MEDIA_COVERAGE."""
     blog_posts = [p for p in posts if p["_cat"] != "presentation"]
@@ -911,9 +944,9 @@ def build_media(posts, uploaded):
     groups = []
     for y in sorted(by_year.keys(), reverse=True):
         items_html = "\n".join(
-            f'<li><time>{escape(date)}</time>'
-            f'<span class="outlet">{escape(outlet)}</span>'
-            f'<a href="{escape(url, quote=True)}" target="_blank" rel="noopener">{escape(title)}</a>'
+            f'<li><time class="media-date">{escape(date)}</time>'
+            f' · <span class="media-outlet">{escape(outlet)}</span>'
+            f' ·「<a href="{escape(url, quote=True)}" target="_blank" rel="noopener">{escape(title)}</a>」'
             f'</li>'
             for date, outlet, title, url in by_year[y]
         )
@@ -1163,6 +1196,7 @@ def main():
     build_claude(posts, uploaded)
     build_yearly(posts, uploaded)
     build_media(posts, uploaded)
+    sync_about_media()
     build_rss(posts, uploaded)
     build_sitemap(posts, uploaded)
     build_robots()
