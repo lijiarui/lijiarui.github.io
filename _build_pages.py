@@ -35,6 +35,8 @@ MEDIA_COVERAGE = [
     ("2026-05-01", "北京时间", "【\"十五五\"开局 六种奋斗人生】创新创业 她站在 AI 的风口", "https://item.btime.com/40e27d45f506015c484efb345dd"),
     ("2026-03-19", "澎湃新闻", "感动海淀·巾帼榜样｜奋楫扬帆，芳华绽放（四）", "https://www.thepaper.cn/newsDetail_forward_32798060"),
     ("2026-03-16", "中国城市报", "深夜代码不辍 灯火映照创新——北京 AI 创业者以实干筑就人工智能新高地", "https://www.zgcsb.com/news/pinDao/2026-03/16/ma_656471.html"),
+    ("2024-11-04", "小红书·易轮AI", "李佳芮，90 后 AI 创业者、技术极客分享创业历程", "http://xhslink.com/o/90PTZaZuCvC"),
+    ("2024-10-28", "小红书·奇绩女创", "VC 兴衰和 AI 技术周期下创业的 10 年", "http://xhslink.com/o/5cHAeQspuEf"),
     ("2024-09-02", "Microsoft MVP Blog", "Empowered to thrive: Jiarui's Entrepreneurial Journey", "https://techcommunity.microsoft.com/blog/mvp-blog/empowered-to-thrive-jiarui%E2%80%99s-entrepreneurial-journey/4220724"),
     ("2024-08-12", "未来产业创新基地", "对话李佳芮：极客转身，从 To B 端穿越周期", "https://mp.weixin.qq.com/s/xVaOVTcVkPxLnV2Wmp3mig"),
     ("2024-07-06", "第一财经", "李佳芮：如何用大模型创造出数字员工？", "https://m.yicai.com/video/102180686.html"),
