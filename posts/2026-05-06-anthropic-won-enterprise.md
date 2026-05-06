@@ -158,6 +158,8 @@ Daniela 在 [CNBC 的另一篇专访](https://www.cnbc.com/2026/01/03/anthropic-
 
 为了真做到这件事，我们搭了一套 **Agent 质量保障体系**——AI 测试、批量验收、灰度发布、Badcase 反馈、回归测试、AI 质检 6 个模块串成闭环，覆盖上线前、上线中、上线后整条链路。每次 Agent 改动都跑全量回归，灰度发布按比例分流，线上 AI 客服和人工客服用同一套质检标准。Agent 上线不是赌博，是每一步都有据可依。
 
+<img src="/img/posts/2026-05-06-anthropic-won-enterprise/ai-test-case-generation.png" alt="句子互动测试中心：AI 自动遍历 Agent 流程节点、批量生成测试用例（左中表格 5 条覆盖场景 + 右侧人工 ✓ 采纳 / ✗ 拒绝），上线前所有用例都跑过一遍，不是凭感觉发布" class="full">
+
 我自己每天的工作方式是 1 个人 + N 个 Agent，公司内部先把"每美元算力换多少业务结果"跑通。
 
 Anthropic 在英文世界证明了一遍。中文世界也一样。
