@@ -599,7 +599,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 }
 .ppt-cover {
   position: relative;
-  background: var(--bg-soft);
+  background: #fff;
   overflow: hidden;
   border-right: 1px solid var(--rule);
 }
@@ -608,7 +608,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   transition: transform .3s ease;
 }

@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>在 AI 员工时代，重新发明组织 —— 在奇绩创坛 Harness 专场的分享 · 分享 PPT</title>
+<meta name="description" content="2026 年 5 月在奇绩创坛 Harness 专场的分享。从一个普通销售带 Agent 队伍讲起，聊「Agent = Model + Harness」、鲁棒性的四个维度、HITL 的三个工程 Pattern，以及为什么真正的护城河是飞轮。">
+<meta name="author" content="李佳芮">
+<link rel="canonical" href="https://rui.juzi.bot/slides/files/2026-05-15-qiji-harness-reinventing-organization/index.html">
+<meta property="og:title" content="在 AI 员工时代，重新发明组织 —— 在奇绩创坛 Harness 专场的分享 · 分享 PPT">
+<meta property="og:description" content="2026 年 5 月在奇绩创坛 Harness 专场的分享。从一个普通销售带 Agent 队伍讲起，聊「Agent = Model + Harness」、鲁棒性的四个维度、HITL 的三个工程 Pattern，以及为什么真正的护城河是飞轮。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://rui.juzi.bot/slides/files/2026-05-15-qiji-harness-reinventing-organization/index.html">
+<meta property="og:image" content="https://rui.juzi.bot/img/slides/2026-05-15-qiji-harness-reinventing-organization.png">
+<meta property="og:site_name" content="李佳芮的博客">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="在 AI 员工时代，重新发明组织 —— 在奇绩创坛 Harness 专场的分享 · 分享 PPT">
+<meta name="twitter:description" content="2026 年 5 月在奇绩创坛 Harness 专场的分享。从一个普通销售带 Agent 队伍讲起，聊「Agent = Model + Harness」、鲁棒性的四个维度、HITL 的三个工程 Pattern，以及为什么真正的护城河是飞轮。">
+<meta name="twitter:image" content="https://rui.juzi.bot/img/slides/2026-05-15-qiji-harness-reinventing-organization.png">
+<link rel="stylesheet" href="/css/site.css">
+<link rel="shortcut icon" href="/images/favicon.png?v=3">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png?v=3">
+<link rel="alternate" type="application/rss+xml" title="李佳芮的博客 RSS" href="/feed.xml">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="ad8bf824-0bb3-4a1a-9cc6-800a038b222f"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?5454a88502f6c286882f8de764e762bf";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
+<body>
+<header class="topnav"><div class="wrap row">
+<div class="brand"><a href="/">李佳芮</a><span class="tagline">时间看得见</span></div>
+<nav><a href="/" class="">首页</a><a href="/claude/" class="">Claude 永动机</a><a href="/blog/" class="">博客</a><a href="/slides/" class="active">分享 PPT</a><a href="/yearly/" class="">年度思考</a><a href="/about/" class="">关于</a><a href="https://github.com/lijiarui" target="_blank" rel="noopener" class="nav-ext" title="GitHub">GitHub ↗</a></nav>
+</div></header>
+
+
+<div class="wrap">
+<div class="cols">
+<main class="post-main">
+<div class="slide-viewer-page">
+  <div class="slide-viewer-head">
+    <div>
+      <a href="/slides/" class="slide-back">← 返回所有分享</a>
+      <h1>在 AI 员工时代，重新发明组织 —— 在奇绩创坛 Harness 专场的分享</h1>
+      <div class="slide-meta"><time>2026-05-15</time> · PPTX</div>
+      <div class="slide-tags"><span class="slide-tag">#Agentic AI</span><span class="slide-tag">#AI Agent</span><span class="slide-tag">#Harness</span><span class="slide-tag">#Claude Code</span><span class="slide-tag">#企业级 AI</span><span class="slide-tag">#创业</span><span class="slide-tag">#组织</span></div>
+    </div>
+  </div>
+  <div class="slide-description"><h2>在奇绩创坛 Harness 专场的分享</h2>
+<p>上周末在奇绩讲了一场 Harness 专场。讲完又有人问能不能要 PPT。这次也一样——PPT 我不发，但内容整理在这里，连现场没讲完的也都写进去了。</p>
+<p>这次想讲三件事。</p>
+<hr />
+<h2>一、AI 员工时代，组织正在被重写</h2>
+<p>我先讲了一个客户公司里<strong>普通销售</strong>的故事。不是销售总监，不是技术极客——就是一个普通员工。</p>
+<p>两年前，他亲手回 200+ 条客户消息，手工整理跟进记录，下班后还在补白天漏掉的对话。今天，他在带一支 Agent 队伍并行处理 200+ 客户，他自己只处理被路由出来的低置信度对话；下班前半小时，看一遍当天 Agent 的交付报告。</p>
+<p><img alt="Agent 协作工作台 —— 一个普通销售带一组 Agent 跟 200+ 客户" src="/img/posts/2026-05-15-qiji-harness-reinventing-organization/slide-05-workbench.png" /></p>
+<p>这不是 demo，是每天都在跑的事。</p>
+<p>我们做的不是 AI 工具，不是 Copilot —— <strong>是在重新定义「员工」这件事</strong>：</p>
+<ul>
+<li><strong>交付</strong>：交付结果，不是输出 token</li>
+<li><strong>付薪</strong>：按底薪 + 提成，不再按 API 调用次数、不再按席位数</li>
+<li><strong>收费</strong>：SaaS 卖工具按人头收，AI 员工卖结果按交付收。整个商业逻辑在被改写</li>
+</ul>
+<p>客户的预算，正在从「买软件」流向「买活」。</p>
+<h3>AI 原生组织，长什么样</h3>
+<p>这背后是一个判断：<strong>工具，让一个人更强。组织单元，让一个普通人能带一支队伍。</strong></p>
+<ul>
+<li><strong>组织单元</strong>：从「人」变成「人 + Agent 队伍」</li>
+<li><strong>能力杠杆</strong>：从「雇更多人」变成「一个人带一支队伍」</li>
+<li><strong>管理权</strong>：从「只有 CEO 带人」变成「每个人都是管理者」</li>
+</ul>
+<p>每一个普通员工，都将带着一支 Agent 队伍工作。这是 AI 原生组织的样子。</p>
+<hr />
+<h2>二、生产环境踩出来的 Harness 心得</h2>
+<p>这次专场叫 Harness——所以这一段我讲了我们 9 年在 IM 生产环境里踩出来的 harness 心得。</p>
+<h3>Demo 看起来像魔法。生产环境是另一回事</h3>
+<p>模型越强，两者的 gap 不减反增——因为期待涨得更快。</p>
+<table>
+<thead>
+<tr>
+<th>Demo 环境</th>
+<th>生产环境</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>输入清晰，目标单一</td>
+<td>输入带表情包、错别字、截断、跳跃</td>
+</tr>
+<tr>
+<td>工具可用率 100%</td>
+<td>工具超时、限流、接口变更</td>
+</tr>
+<tr>
+<td>上下文干净无干扰</td>
+<td>上下文里混着过去的噪声与偏见</td>
+</tr>
+<tr>
+<td>失败了可以重跑</td>
+<td>失败成本实打实——出一次错丢一个客户</td>
+</tr>
+<tr>
+<td>跑 5 分钟，演完就过</td>
+<td>7×24 在跑，每一秒都被真实客户评判</td>
+</tr>
+</tbody>
+</table>
+<p>决定 Agent 能不能真的上岗的，不是模型——是把它装到生产环境的那套工程。我们叫它 Harness。</p>
+<h3>Agent = Model + Harness</h3>
+<p>同一个模型，不同 harness，表现可以差十倍。</p>
+<p><img alt="Agent = Model + Harness 三栏图 —— 脑、心、手" src="/img/posts/2026-05-15-qiji-harness-reinventing-organization/slide-15-model-harness.png" /></p>
+<ul>
+<li><strong>Model · 脑</strong>：规模、预训练数据、推理能力。今天的 SOTA，三个月后所有人都有</li>
+<li><strong>Harness · 心</strong>：记忆、上下文管理、规划、反思、置信度、错误恢复——决定 Agent 在不确定性下如何行动</li>
+<li><strong>Harness · 手</strong>：工具选择、调用编排、失败重试、权限与边界——决定 Agent 能真实操作世界的深度与安全性</li>
+</ul>
+<p>鲁棒性几乎完全是 harness 层的问题。模型升级解决不了，只能靠工程。</p>
+<h3>鲁棒性可以拆成四个维度</h3>
+<p>每一个维度都有独立的失败模式，也都需要独立的工程解。</p>
+<ul>
+<li><strong>意图鲁棒性</strong>：用户说「算了」——是「放弃」还是「换一种」？</li>
+<li><strong>工具鲁棒性</strong>：API 超时——无限重试，还是直接放弃整任务？</li>
+<li><strong>长程鲁棒性</strong>：三小时的任务，第 17 步忘了最初要做什么</li>
+<li><strong>边界鲁棒性</strong>：Agent 自信地给错答案，而不是说「我不确定」</li>
+</ul>
+<p>能系统性拆解鲁棒性的团队凤毛麟角。能把四个维度都工程化的，更少。</p>
+<h3>Human-in-the-loop 不是妥协</h3>
+<p>大部分人把 HITL 当成「AI 不够强的折中」——目标是尽快不需要人，衡量指标是 AI 替代率。</p>
+<p>我们的视角不一样：HITL 是按置信度动态分配，AI 和人是鲁棒性系统的两种资源，目标是系统整体稳定交付。衡量的不是「替代率」，是「系统整体置信度」。</p>
+<p>落到地上，就是三个 Pattern。</p>
+<p><strong>Pattern 01 · 置信度路由</strong>——每次请求都过一次分级：</p>
+<ul>
+<li><code>≥ 90%</code>：Agent 自主执行</li>
+<li><code>60–90%</code>：Agent 执行 · 人工抽检</li>
+<li><code>&lt; 60%</code>：Agent 起草 · 人工确认</li>
+</ul>
+<p><strong>Pattern 02 · 多层校验</strong>——一次输出，过四道独立闸门：生成 → 规则校验（硬约束 / 合规 / 黑名单）→ 对抗 LLM（另一个 LLM 扮演挑刺者）→ 执行（发出消息 / 调用工具 / 落库）。</p>
+<p><strong>Pattern 03 · 评估飞轮</strong>——不是 benchmark，是真实客户每天在重训练：</p>
+<ol>
+<li>生产数据</li>
+<li>失败案例</li>
+<li>规则与评估集</li>
+<li>模型 + harness 重配</li>
+</ol>
+<p>每天转一轮，下一版按真实数据走，又喂回生产。</p>
+<p>「加几层、哪一层用 rule、哪一层用 LLM」是场景相关 know-how——IM 客服和金融风控的最优配置完全不同。</p>
+<h3>真正的护城河是飞轮</h3>
+<p>模型可抄。Harness 也可抄。这套循环里日积月累的失败案例库——抄不来。</p>
+<p><img alt="句子守护 6 模块 + 每天怎么转的飞轮" src="/img/posts/2026-05-15-qiji-harness-reinventing-organization/slide-19-flywheel.png" /></p>
+<p>我们把它做成了一个产品，叫<strong>句子守护</strong>。6 个模块覆盖 Agent 生命周期：上线前的 AI 测试 / 批量验收，上线中的灰度发布，上线后的 Badcase 反馈 / 回归测试 / AI 质检。</p>
+<p>每天的循环长这样：</p>
+<ol>
+<li>上千客户的真实生产数据——对话、点击、订单、投诉，每天百万级</li>
+<li>失败案例进库——低置信度 + 客户 flag + 人工标注</li>
+<li>规则库 / 评估集越变越大——新 case 进评估集，新模式进规则库</li>
+<li>模型 + Harness 越调越准——下一版按真实数据走，又喂回生产</li>
+</ol>
+<p>回到第 1 步——失败案例每天都在变多，下一版的 Agent 比上一版更准。</p>
+<h3>代码之外，我们做的三类 harness</h3>
+<p>代码这块，Claude Code 已经解了。剩下三类，我们一直在做：</p>
+<ul>
+<li><strong>客户专属 Agent</strong>：通用 harness 装不进客户的业务、规则、流程。我们用<strong>句子秒懂</strong>——低代码 Agent 平台，FDE 团队几天给客户搭出专属 Agent</li>
+<li><strong>IM-native 的 Agent</strong>：通用 harness 入口是 terminal / web，不在 IM 里。Agent 必须出现在客户已经花 8 小时的地方。我们用<strong>句子秒回</strong>打通企微 / 飞书 / WhatsApp / TikTok / 小红书</li>
+<li><strong>行业专属的 Agent harness</strong>：通用 harness 不带行业工具、不接行业系统、不管行业合规。我们沉淀了 5 个高合规行业的 know-how + 工具集 + 系统对接 + FDE 交付</li>
+</ul>
+<p>三类不是分别做的——是同一个客户身上同时跑。</p>
+<hr />
+<h2>三、我们正在交付的产品，和还没解的题</h2>
+<p>我们造 AI 员工，靠两个轮子同时转。</p>
+<p><strong>左轮 · 基础设施</strong>：句子秒回 + 句子秒懂 + 句子守护 = 完整的人机协作平台。沉淀过的 IM 通道适配、跨行业策略库、Agent workflow 引擎、质量保障体系。</p>
+<p><strong>右轮 · FDE（Forward-Deployed Engineer）</strong>：把人机协作真的「装」进客户业务。当下 100 人团队中 ~10% 是 FDE，目标 12–24 个月扩到 ~30%。远程为主，重点客户驻场一段时间再回来。</p>
+<p>FDE ≠ implementation consulting。50% 项目交付 + 50% 把客户人机协作的经验沉淀回基础设施——是 R&amp;D feedback loop，不是人天生意。</p>
+<h3>客户已经开始用——都从 AI 销售开始</h3>
+<ul>
+<li><strong>1000+</strong> 服务企业用户数</li>
+<li><strong>3 年</strong> 营收连续翻倍增长</li>
+<li><strong>4 年</strong> 连续盈利</li>
+</ul>
+<p>5 个高合规行业各自沉淀 know-how：教育（招生 / 续课）、电商（售前 / 售后）、金融（合规 / 客服）、政务（社工 / 普法调解）、泛互联网（增长 / 留存）。</p>
+<p>客户的合同一直按结果计价——市场预算从「买软件」流向「买活」的这一年，我们做这件事的第 9 年。</p>
+<h3>企业 AI 的胜负，不在「更聪明」，在「更可控」</h3>
+<p>企业问的不再是「哪个模型最强」——而是「哪个能放心装进我的系统」。</p>
+<ul>
+<li><strong>Predictability</strong>：输出可重复——outcome-tagged 数据让 Agent 行为可标定可回归</li>
+<li><strong>Data Security</strong>：数据隔离——支持私有化 / 一体机部署，客户数据不出域</li>
+<li><strong>Governance &amp; Control</strong>：行为可管控——workflow 引擎写死边界 + 5 个高合规行业策略库</li>
+<li><strong>Auditability</strong>：全程可审——每一次 Agent 决策可追溯，金融、政务直接吃这条</li>
+<li><strong>Integration</strong>：对接现有系统——IM 通道适配 + 企业 CRM / 工单 / 知识库直连</li>
+<li><strong>Scalability</strong>：规模化——1000+ 客户验证过的部署能力，不是 demo-scale</li>
+<li><strong>Multi-Model</strong>：灵活切换模型——模型层抽象，按场景切换</li>
+</ul>
+<p>企业 AI 比的不是模型，是装得进、跑得稳。</p>
+<hr />
+<h2>还没解的题</h2>
+<p>把 Agentic AI 真的做成「员工」，不是写一句口号就能完成的。每一个职能，都在重新定义自己的打法。</p>
+<p><img alt="Still Open —— 产品 / FDE / AI 销售 / 市场 / 测试 / 运维 / AI 管培生 七张卡片" src="/img/posts/2026-05-15-qiji-harness-reinventing-organization/slide-21-still-open.png" /></p>
+<table>
+<thead>
+<tr>
+<th>职能</th>
+<th>题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>产品</strong></td>
+<td>一个员工怎么带一队 Agent？调度、权限、监控、可视化——Agent 的「管理工具」这个品类还不存在</td>
+</tr>
+<tr>
+<td><strong>FDE</strong></td>
+<td>国内最早落地 Palantir FDE 模式——工程师把客户业务流程拆解成 Agent 的标准动作</td>
+</tr>
+<tr>
+<td><strong>AI 销售</strong></td>
+<td>销售也要练「咨询力」。不是传统跟单——先帮客户做业务咨询、拆解问题、出方案。FDE 思路用在 GTM</td>
+</tr>
+<tr>
+<td><strong>市场</strong></td>
+<td>新品类如何被快速理解。AI 员工不是 SaaS，不是 PaaS。市场叙事和定价逻辑，我们在从头设计</td>
+</tr>
+<tr>
+<td><strong>测试</strong></td>
+<td>Agent 的「考核」怎么做。对话型产品的回归测试，跟传统 SaaS 完全不是一回事</td>
+</tr>
+<tr>
+<td><strong>运维</strong></td>
+<td>上岗后怎么保证每天都靠谱。7×24 监控、异常熔断、置信度告警——AI 员工的「值班」体系</td>
+</tr>
+<tr>
+<td><strong>AI 管培生</strong></td>
+<td>怎么干 AI 原生的活。不是教你用 AI——是让你直接成为 AI 原生组织里的人</td>
+</tr>
+</tbody>
+</table>
+<p>每一道，都在等一个对的人。</p>
+<hr />
+<h2>一起把它造出来</h2>
+<p>毕业就创业，不一定是最佳选择。但如果你想体验创业——也可以加入一家正在重新发明组织的早期公司。</p>
+<p>张一鸣讲过一句话我特别认同：「加入一个优秀的早期公司有一个明显的好处——公司会想尽办法帮你提高，因为公司有很多事情要做，而人员又有限。这个时候就会对有潜质的人提出各种高的要求，帮助提高。」</p>
+<p><strong>用心认真的折腾，是没有风险的。</strong></p>
+<p>在句子互动你能拿到的：</p>
+<ul>
+<li><strong>无限量 token</strong>——爱怎么烧怎么烧</li>
+<li><strong>发给你 Claude Code 最适配的 MacBook Pro</strong></li>
+<li><strong>两周一次 AI Workshop</strong>——所有人一起拆最新模型</li>
+<li><strong>我自己每天先跑</strong>——我跑出什么，你立刻能用</li>
+<li><strong>永远走在 AI 最前沿，没有第二个选择</strong></li>
+</ul>
+<blockquote>
+<p><strong>组织，正在被重新发明。</strong></p>
+<p><strong>而你 —— 可以是发明者之一。</strong></p>
+</blockquote>
+<p>如果今天讲到的某一个瞬间让你停了一下——来找我。</p>
+<div class="contact-card">
+  <div class="contact-qr-block">
+    <img src="/images/wechat-qr.jpg" alt="李佳芮的微信公众号 - Agentic AI 创业分享">
+    <p class="contact-cap">扫码关注我的公众号</p>
+    <p class="contact-id">个人微信：<code>jiaruijuzi</code></p>
+    <p class="contact-note">加我的时候，<strong>请备注「来自博客」</strong>或者「来自这篇分享」 —— 不然我大概率通过不了。</p>
+  </div>
+  <div class="contact-hiring">
+    <h3>句子互动，正在招</h3>
+    <ul>
+      <li>产品</li>
+      <li>FDE</li>
+      <li>AI 销售</li>
+      <li>市场</li>
+      <li>测试</li>
+      <li>运维</li>
+      <li>AI 管培生</li>
+    </ul>
+    <p class="contact-call">来一起把这件事做出来。</p>
+  </div>
+</div></div>
+  <div class="slide-viewer slide-viewer-ppt" id="ppt-viewer-host"><div class="slide-viewer-msg">PPT 预览需要公网 URL（Office Online viewer 限制），本地预览看不到，请推到 GitHub Pages 后访问。</div><noscript>需要 JavaScript 才能预览 PPT。</noscript></div><script>(function(){var host=location.hostname;if(host&&host!=="localhost"&&host!=="127.0.0.1"){var enc=encodeURIComponent(location.origin+"/files/slides/2026-05-15-qiji-harness-reinventing-organization.pptx");var u="https://view.officeapps.live.com/op/embed.aspx?src="+enc;document.getElementById("ppt-viewer-host").innerHTML='<iframe class="slide-viewer slide-viewer-ppt" src="'+u+'" allowfullscreen></iframe>';}})();</script>
+</div>
+<section class="post-comments">
+  <h3>评论</h3>
+  <livere-comment client-id="AwCdtY6RULKUsR5ehN3E"></livere-comment>
+  <script type="module" src="https://www.livere.org/livere-widget.js"></script>
+  <noscript>请启用 JavaScript 查看评论</noscript>
+</section>
+</main>
+<aside class="sidebar">
+
+<div class="widget">
+  <h3>搜索</h3>
+  <div class="search-box">
+    <input type="search" id="search-input" placeholder="搜索文章关键词…" autocomplete="off">
+    <ul class="search-results" id="search-results"></ul>
+  </div>
+</div>
+
+<div class="widget">
+  <div class="about-box">
+    <img src="/images/avatar.jpg?v=2" alt="李佳芮" class="about-avatar" loading="lazy" decoding="async">
+    <p><strong>李佳芮</strong>，<a href="https://juzibot.com">句子互动</a> 创始人。</p>
+    <p>创业、产品、读书，断断续续写了十年。</p>
+    <p>十年前我是程序员，这个博客是自己写的。后来做公司，代码不写了，更新也停了。</p>
+    <p>最近又能写起来——这次没自己动手，AI 干的。</p>
+  </div>
+</div>
+
+<div class="widget">
+  <h3>微信</h3>
+  <div class="wechat-box">
+    <img src="/images/wechat-qr.jpg" alt="微信公众号" class="wechat-qr" loading="lazy" decoding="async">
+    <p class="wechat-cap">扫码关注公众号</p>
+    <p class="wechat-id">个人微信 · <code>jiaruijuzi</code></p>
+  </div>
+</div>
+
+<div class="widget">
+  <h3>近期文章</h3>
+  <ul><li><a href="/thought/2026-05-11-agent-workbench.html">做 Agent 工作台，最难的不是让 Agent 更自动</a></li><li><a href="/thought/2026-05-06-anthropic-won-enterprise.html">OpenAI 输给 Anthropic，不是输在产品，是输在组织</a></li><li><a href="/thought/2026-05-04-ai-era-competitiveness.html">AI 不可替代的那 20%：判断、品味、在场、关系、手艺</a></li><li><a href="/thought/2026-05-03-claude-code-lsp.html">给 Claude Code 装上眼睛 - 聊聊 code intelligence plugin</a></li><li><a href="/thought/2026-04-28-return-to-code.html">接近 10 年没写代码了，被 Claude Opus 4.5 拉了回来</a></li><li><a href="/thought/2026-01-31-juzibot-2026.html">写在句子互动的 2026 年</a></li></ul>
+</div>
+
+<div class="widget">
+  <h3>分享 PPT</h3>
+  <ul><li><a href="/slides/files/2026-05-15-qiji-harness-reinventing-organization/index.html">在 AI 员工时代，重新发明组织 —— 在奇绩创坛 Harness 专场的分享</a></li><li><a href="/slides/files/2026-04-25-ai-organization-pku/index.html">重新发明组织 —— AI 原生时代，我们正在交付的产品，和还没解的题</a></li></ul>
+</div>
+
+<div class="widget">
+  <h3>媒体报道</h3>
+  <ul><li><a href="https://item.btime.com/40e27d45f506015c484efb345dd" target="_blank" rel="noopener"><span class="m-outlet">北京时间</span><span class="m-title">【&quot;十五五&quot;开局 六种奋斗人生】创新创业 她站在 AI 的风口</span></a></li><li><a href="https://www.thepaper.cn/newsDetail_forward_32798060" target="_blank" rel="noopener"><span class="m-outlet">澎湃新闻</span><span class="m-title">感动海淀·巾帼榜样｜奋楫扬帆，芳华绽放（四）</span></a></li><li><a href="https://www.zgcsb.com/news/pinDao/2026-03/16/ma_656471.html" target="_blank" rel="noopener"><span class="m-outlet">中国城市报</span><span class="m-title">深夜代码不辍 灯火映照创新——北京 AI 创业者以实干筑就人工智能新高地</span></a></li><li><a href="http://xhslink.com/o/90PTZaZuCvC" target="_blank" rel="noopener"><span class="m-outlet">小红书·易轮AI</span><span class="m-title">李佳芮，90 后 AI 创业者、技术极客分享创业历程</span></a></li></ul>
+  <p class="widget-more"><a href="/media/">更多 (23) →</a></p>
+</div>
+
+<div class="widget">
+  <h3>分类</h3>
+  <ul><li><a href="/blog/#thought">思考</a><span class="count">49</span></li><li><a href="/blog/#chatbot">Chatbot</a><span class="count">21</span></li><li><a href="/blog/#interview">访谈</a><span class="count">10</span></li><li><a href="/blog/#project">项目</a><span class="count">10</span></li><li><a href="/blog/#reading">读书</a><span class="count">6</span></li><li><a href="/blog/#saas">SaaS</a><span class="count">4</span></li><li><a href="/blog/#microsoft">Microsoft</a><span class="count">1</span></li></ul>
+</div>
+
+<div class="widget">
+  <h3>归档</h3>
+  <ul><li><a href="/blog/#y2026">2026</a><span class="count">6</span></li><li><a href="/blog/#y2025">2025</a><span class="count">3</span></li><li><a href="/blog/#y2024">2024</a><span class="count">3</span></li><li><a href="/blog/#y2023">2023</a><span class="count">4</span></li><li><a href="/blog/#y2022">2022</a><span class="count">10</span></li><li><a href="/blog/#y2021">2021</a><span class="count">10</span></li><li><a href="/blog/#y2020">2020</a><span class="count">7</span></li><li><a href="/blog/#y2019">2019</a><span class="count">9</span></li><li><a href="/blog/#y2018">2018</a><span class="count">21</span></li><li><a href="/blog/#y2017">2017</a><span class="count">10</span></li><li><a href="/blog/#y2016">2016</a><span class="count">6</span></li><li><a href="/blog/#y2015">2015</a><span class="count">6</span></li><li><a href="/blog/#y2014">2014</a><span class="count">3</span></li><li><a href="/blog/#y2013">2013</a><span class="count">1</span></li><li><a href="/blog/#y2012">2012</a><span class="count">2</span></li></ul>
+</div>
+
+<div class="widget">
+  <h3>订阅</h3>
+  <ul>
+    <li><a href="/feed.xml" title="RSS Feed">RSS Feed <span class="rss-badge">📡</span></a></li>
+  </ul>
+</div>
+
+<div class="widget">
+  <h3>外站</h3>
+  <ul>
+    <li><a href="https://github.com/lijiarui">GitHub</a></li>
+    <li><a href="https://github.com/wechaty/wechaty">Wechaty</a></li>
+    <li><a href="https://juzibot.com">句子互动</a></li>
+  </ul>
+</div>
+
+</aside>
+</div>
+</div>
+
+<footer class="site-foot"><div class="wrap">
+<a href="https://github.com/lijiarui">GitHub</a>
+<a href="https://juzibot.com">句子互动</a>
+<a href="/claude/">Claude 永动机</a>
+<a href="/blog/">博客</a>
+<a href="/slides/">分享 PPT</a>
+<a href="/yearly/">年度思考</a>
+<a href="/feed.xml">RSS</a>
+<a href="/about/">关于</a>
+<div class="copyright">© Li Jiarui · 时间看得见</div>
+</div></footer>
+<script src="/js/search.js" defer></script>
+</body></html>

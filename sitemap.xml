@@ -7,6 +7,7 @@
 <url><loc>https://rui.juzi.bot/claude/</loc><priority>0.5</priority></url>
 <url><loc>https://rui.juzi.bot/about/</loc><priority>0.6</priority></url>
 <url><loc>https://rui.juzi.bot/media/</loc><priority>0.6</priority></url>
+<url><loc>https://rui.juzi.bot/thought/2026-05-11-agent-workbench.html</loc><lastmod>2026-05-11</lastmod><priority>0.7</priority></url>
 <url><loc>https://rui.juzi.bot/thought/2026-05-06-anthropic-won-enterprise.html</loc><lastmod>2026-05-06</lastmod><priority>0.7</priority></url>
 <url><loc>https://rui.juzi.bot/thought/2026-05-04-ai-era-competitiveness.html</loc><lastmod>2026-05-04</lastmod><priority>0.7</priority></url>
 <url><loc>https://rui.juzi.bot/thought/2026-05-03-claude-code-lsp.html</loc><lastmod>2026-05-03</lastmod><priority>0.7</priority></url>
@@ -131,4 +132,5 @@
 <url><loc>https://rui.juzi.bot/thought/2012-03-24-miss-you.html</loc><lastmod>2012-03-24</lastmod><priority>0.7</priority></url>
 <url><loc>https://rui.juzi.bot/slides/files/2021-11-25-juzibot-thanksgiving/index.html</loc><lastmod>2021-11-25</lastmod><priority>0.7</priority></url>
 <url><loc>https://rui.juzi.bot/slides/files/2026-04-25-ai-organization-pku/index.html</loc><lastmod>2026-04-26</lastmod><priority>0.7</priority></url>
+<url><loc>https://rui.juzi.bot/slides/files/2026-05-15-qiji-harness-reinventing-organization/index.html</loc><lastmod>2026-05-15</lastmod><priority>0.7</priority></url>
 </urlset>
