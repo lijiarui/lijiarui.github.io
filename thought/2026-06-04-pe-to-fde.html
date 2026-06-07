@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>连 OpenAI 做 FDE 都甩不开麦肯锡，我们自己干了三年 · 李佳芮的博客</title>
+<title>硅谷今年最火的岗位 FDE，我们三年前就在干了 · 李佳芮的博客</title>
 <meta name="description" content="2026 年硅谷集体进场抢 FDE（Forward Deployed Engineer）：a16z 称它为 tech 最火的岗位，YC 创业公司里 100 多家在招，三年前是 0。巨头一边自己建 FDE 团队（OpenAI 还收购 Tomoro 买下 150 个）、一边拉麦肯锡德勤这些咨询公司一起下场，一批创业公司则自己招、自己长。中国的 AI 公司连&quot;找咨询公司搭把手&quot;这个选项都没有，只能自己长出来。句子互动从 2023 年就被中国客户逼着走这条路，按结果收费干了三年 FDE。这篇是一个中国 AI 公司的 FDE 操盘手实录：FDE 到底是什么、Palantir 怎么发明它、为什么 Agent 时代它成了创业公司找 PMF 的新打法、为什么第一个该招的不是工程师（Palantir 管这个角色叫 Echo）、三年现场踩坑怎么沉淀成 7 个产品基建、为什么 FDE 的真身不是工程师驻场、是按业务结果交付。一个在线教育客户的销售一个月能盯的人从一千做到三千。">
 <meta name="author" content="李佳芮">
 <meta name="keywords" content="AI, Agent, FDE, Forward Deployed Engineer, 企业交付, 按结果交付, 创业, 组织">
 <link rel="canonical" href="https://rui.juzi.bot/thought/2026-06-04-pe-to-fde.html">
-<meta property="og:title" content="连 OpenAI 做 FDE 都甩不开麦肯锡，我们自己干了三年">
+<meta property="og:title" content="硅谷今年最火的岗位 FDE，我们三年前就在干了">
 <meta property="og:description" content="2026 年硅谷集体进场抢 FDE（Forward Deployed Engineer）：a16z 称它为 tech 最火的岗位，YC 创业公司里 100 多家在招，三年前是 0。巨头一边自己建 FDE 团队（OpenAI 还收购 Tomoro 买下 150 个）、一边拉麦肯锡德勤这些咨询公司一起下场，一批创业公司则自己招、自己长。中国的 AI 公司连&quot;找咨询公司搭把手&quot;这个选项都没有，只能自己长出来。句子互动从 2023 年就被中国客户逼着走这条路，按结果收费干了三年 FDE。这篇是一个中国 AI 公司的 FDE 操盘手实录：FDE 到底是什么、Palantir 怎么发明它、为什么 Agent 时代它成了创业公司找 PMF 的新打法、为什么第一个该招的不是工程师（Palantir 管这个角色叫 Echo）、三年现场踩坑怎么沉淀成 7 个产品基建、为什么 FDE 的真身不是工程师驻场、是按业务结果交付。一个在线教育客户的销售一个月能盯的人从一千做到三千。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://rui.juzi.bot/thought/2026-06-04-pe-to-fde.html">
@@ -18,7 +18,7 @@
 <meta property="article:author" content="李佳芮">
 <meta property="article:published_time" content="2026-06-04">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="连 OpenAI 做 FDE 都甩不开麦肯锡，我们自己干了三年">
+<meta name="twitter:title" content="硅谷今年最火的岗位 FDE，我们三年前就在干了">
 <meta name="twitter:description" content="2026 年硅谷集体进场抢 FDE（Forward Deployed Engineer）：a16z 称它为 tech 最火的岗位，YC 创业公司里 100 多家在招，三年前是 0。巨头一边自己建 FDE 团队（OpenAI 还收购 Tomoro 买下 150 个）、一边拉麦肯锡德勤这些咨询公司一起下场，一批创业公司则自己招、自己长。中国的 AI 公司连&quot;找咨询公司搭把手&quot;这个选项都没有，只能自己长出来。句子互动从 2023 年就被中国客户逼着走这条路，按结果收费干了三年 FDE。这篇是一个中国 AI 公司的 FDE 操盘手实录：FDE 到底是什么、Palantir 怎么发明它、为什么 Agent 时代它成了创业公司找 PMF 的新打法、为什么第一个该招的不是工程师（Palantir 管这个角色叫 Echo）、三年现场踩坑怎么沉淀成 7 个产品基建、为什么 FDE 的真身不是工程师驻场、是按业务结果交付。一个在线教育客户的销售一个月能盯的人从一千做到三千。">
 <meta name="twitter:image" content="https://rui.juzi.bot/img/posts/2026-06-04-pe-to-fde/product-infra-fde.png">
 <link rel="stylesheet" href="/css/site.css">
@@ -35,8 +35,8 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "连 OpenAI 做 FDE 都甩不开麦肯锡，我们自己干了三年", "description": "2026 年硅谷集体进场抢 FDE（Forward Deployed Engineer）：a16z 称它为 tech 最火的岗位，YC 创业公司里 100 多家在招，三年前是 0。巨头一边自己建 FDE 团队（OpenAI 还收购 Tomoro 买下 150 个）、一边拉麦肯锡德勤这些咨询公司一起下场，一批创业公司则自己招、自己长。中国的 AI 公司连\"找咨询公司搭把手\"这个选项都没有，只能自己长出来。句子互动从 2023 年就被中国客户逼着走这条路，按结果收费干了三年 FDE。这篇是一个中国 AI 公司的 FDE 操盘手实录：FDE 到底是什么、Palantir 怎么发明它、为什么 Agent 时代它成了创业公司找 PMF 的新打法、为什么第一个该招的不是工程师（Palantir 管这个角色叫 Echo）、三年现场踩坑怎么沉淀成 7 个产品基建、为什么 FDE 的真身不是工程师驻场、是按业务结果交付。一个在线教育客户的销售一个月能盯的人从一千做到三千。", "image": "https://rui.juzi.bot/img/posts/2026-06-04-pe-to-fde/product-infra-fde.png", "url": "https://rui.juzi.bot/thought/2026-06-04-pe-to-fde.html", "datePublished": "2026-06-04", "dateModified": "2026-06-04", "author": {"@type": "Person", "name": "李佳芮", "url": "https://rui.juzi.bot"}, "publisher": {"@type": "Person", "name": "李佳芮", "logo": {"@type": "ImageObject", "url": "https://rui.juzi.bot/images/avatar.jpg"}}, "mainEntityOfPage": "https://rui.juzi.bot/thought/2026-06-04-pe-to-fde.html", "keywords": "AI, Agent, FDE, Forward Deployed Engineer, 企业交付, 按结果交付, 创业, 组织"}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首页", "item": "https://rui.juzi.bot/"}, {"@type": "ListItem", "position": 2, "name": "博客", "item": "https://rui.juzi.bot/blog/"}, {"@type": "ListItem", "position": 3, "name": "连 OpenAI 做 FDE 都甩不开麦肯锡，我们自己干了三年", "item": "https://rui.juzi.bot/thought/2026-06-04-pe-to-fde.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "硅谷今年最火的岗位 FDE，我们三年前就在干了", "description": "2026 年硅谷集体进场抢 FDE（Forward Deployed Engineer）：a16z 称它为 tech 最火的岗位，YC 创业公司里 100 多家在招，三年前是 0。巨头一边自己建 FDE 团队（OpenAI 还收购 Tomoro 买下 150 个）、一边拉麦肯锡德勤这些咨询公司一起下场，一批创业公司则自己招、自己长。中国的 AI 公司连\"找咨询公司搭把手\"这个选项都没有，只能自己长出来。句子互动从 2023 年就被中国客户逼着走这条路，按结果收费干了三年 FDE。这篇是一个中国 AI 公司的 FDE 操盘手实录：FDE 到底是什么、Palantir 怎么发明它、为什么 Agent 时代它成了创业公司找 PMF 的新打法、为什么第一个该招的不是工程师（Palantir 管这个角色叫 Echo）、三年现场踩坑怎么沉淀成 7 个产品基建、为什么 FDE 的真身不是工程师驻场、是按业务结果交付。一个在线教育客户的销售一个月能盯的人从一千做到三千。", "image": "https://rui.juzi.bot/img/posts/2026-06-04-pe-to-fde/product-infra-fde.png", "url": "https://rui.juzi.bot/thought/2026-06-04-pe-to-fde.html", "datePublished": "2026-06-04", "dateModified": "2026-06-04", "author": {"@type": "Person", "name": "李佳芮", "url": "https://rui.juzi.bot"}, "publisher": {"@type": "Person", "name": "李佳芮", "logo": {"@type": "ImageObject", "url": "https://rui.juzi.bot/images/avatar.jpg"}}, "mainEntityOfPage": "https://rui.juzi.bot/thought/2026-06-04-pe-to-fde.html", "keywords": "AI, Agent, FDE, Forward Deployed Engineer, 企业交付, 按结果交付, 创业, 组织"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首页", "item": "https://rui.juzi.bot/"}, {"@type": "ListItem", "position": 2, "name": "博客", "item": "https://rui.juzi.bot/blog/"}, {"@type": "ListItem", "position": 3, "name": "硅谷今年最火的岗位 FDE，我们三年前就在干了", "item": "https://rui.juzi.bot/thought/2026-06-04-pe-to-fde.html"}]}</script>
 </head>
 <body>
 <header class="topnav"><div class="wrap row">
@@ -53,7 +53,7 @@ var _hmt = _hmt || [];
     <div class="post-cat-line">
       <a href="/blog/#thought" class="post-cat">思考</a>
     </div>
-    <h1 class="post-title-h1">连 OpenAI 做 FDE 都甩不开麦肯锡，我们自己干了三年</h1>
+    <h1 class="post-title-h1">硅谷今年最火的岗位 FDE，我们三年前就在干了</h1>
     <div class="post-byline">
       <time>2026-06-04</time> · 全文 8369 字
     </div>
@@ -291,7 +291,7 @@ var _hmt = _hmt || [];
 
 <div class="widget">
   <h3>近期文章</h3>
-  <ul><li><a href="/thought/2026-06-04-pe-to-fde.html">连 OpenAI 做 FDE 都甩不开麦肯锡，我们自己干了三年</a></li><li><a href="/thought/2026-05-06-anthropic-won-enterprise.html">OpenAI 输给 Anthropic，不是输在产品，是输在组织</a></li><li><a href="/thought/2026-05-04-ai-era-competitiveness.html">AI 不可替代的那 20%：判断、品味、在场、关系、手艺</a></li><li><a href="/thought/2026-05-03-claude-code-lsp.html">给 Claude Code 装上眼睛 - 聊聊 code intelligence plugin</a></li><li><a href="/thought/2026-04-28-return-to-code.html">接近 10 年没写代码了，被 Claude Opus 4.5 拉了回来</a></li><li><a href="/thought/2026-01-31-juzibot-2026.html">写在句子互动的 2026 年</a></li><li><a href="/thought/2025-12-31-last-day-of-2025.html">写在 2025 年的最后一天</a></li><li><a href="/thought/2025-12-31-2025-thought-slices.html">2025 年思想切片</a></li></ul>
+  <ul><li><a href="/thought/2026-06-04-pe-to-fde.html">硅谷今年最火的岗位 FDE，我们三年前就在干了</a></li><li><a href="/thought/2026-05-06-anthropic-won-enterprise.html">OpenAI 输给 Anthropic，不是输在产品，是输在组织</a></li><li><a href="/thought/2026-05-04-ai-era-competitiveness.html">AI 不可替代的那 20%：判断、品味、在场、关系、手艺</a></li><li><a href="/thought/2026-05-03-claude-code-lsp.html">给 Claude Code 装上眼睛 - 聊聊 code intelligence plugin</a></li><li><a href="/thought/2026-04-28-return-to-code.html">接近 10 年没写代码了，被 Claude Opus 4.5 拉了回来</a></li><li><a href="/thought/2026-01-31-juzibot-2026.html">写在句子互动的 2026 年</a></li><li><a href="/thought/2025-12-31-last-day-of-2025.html">写在 2025 年的最后一天</a></li><li><a href="/thought/2025-12-31-2025-thought-slices.html">2025 年思想切片</a></li></ul>
 </div>
 
 <div class="widget">
