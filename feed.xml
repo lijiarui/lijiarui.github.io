@@ -5,7 +5,7 @@
 <link>https://rui.juzi.bot</link>
 <description>句子互动创始人李佳芮的博客 · 创业、产品、读书</description>
 <language>zh-CN</language>
-<lastBuildDate>Sun, 07 Jun 2026 13:57:52 -0000</lastBuildDate>
+<lastBuildDate>Sun, 07 Jun 2026 14:00:38 -0000</lastBuildDate>
 <atom:link href="https://rui.juzi.bot/feed.xml" rel="self" type="application/rss+xml" />
 <item><title>硅谷今年最火的岗位 FDE，我们闷头干了三年</title><link>https://rui.juzi.bot/thought/2026-06-04-pe-to-fde.html</link><guid isPermaLink="true">https://rui.juzi.bot/thought/2026-06-04-pe-to-fde.html</guid><pubDate>Wed, 03 Jun 2026 16:00:00 -0000</pubDate><category>思考</category><description><![CDATA[2026 年硅谷集体进场抢 FDE（Forward Deployed Engineer）：a16z 称它为 tech 最火的岗位，YC 创业公司里 100 多家在招，三年前是 0。巨头一边自己建 FDE 团队（OpenAI 还收购 Tomoro 买下 150 个）、一边拉麦肯锡德勤这些咨询公司一起下场，一批创业公司则自己招、自己长。中国的 AI 公司连"找咨询公司搭把手"这个选项都没有，只能自己长出来。句子互动从 2023 年就被中国客户逼着走这条路，按结果收费干了三年 FDE。这篇是一个中国 AI 公司的 FDE 操盘手实录：FDE 到底是什么、Palantir 怎么发明它、为什么 Agent 时代它成了创业公司找 PMF 的新打法、为什么第一个该招的不是工程师（Palantir 管这个角色叫 Echo）、三年现场踩坑怎么沉淀成 7 个产品基建、为什么 FDE 的真身不是工程师驻场、是按业务结果交付。一个在线教育客户的销售一个月能盯的人从一千做到三千。]]></description></item>
 <item><title>重新发明组织：让小公司也用得起大公司的人 —— 在得到的现场分享</title><link>https://rui.juzi.bot/slides/files/2026-05-24-dedao-reinvent-organization/index.html</link><guid isPermaLink="true">https://rui.juzi.bot/slides/files/2026-05-24-dedao-reinvent-organization/index.html</guid><pubDate>Sat, 23 May 2026 16:00:00 -0000</pubDate><category>演讲</category><description><![CDATA[2026 年 5 月在得到 App 的现场分享。讲给小公司老板：AI 不是来裁员的，是来给小公司补员的。怎么把活交给 AI 分三步——分活、定义、验收；AI 进来后组织怎么管、怎么给 AI 员工发薪。最后一句：AI 让 10 个人的公司，也用得起大公司才请得起的人。PPT 和整理都在这里。]]></description></item>
