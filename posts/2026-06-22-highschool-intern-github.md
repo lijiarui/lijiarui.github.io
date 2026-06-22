@@ -161,4 +161,4 @@ Issue 他放了张真实的列表：
 
 <img src="/img/posts/2026-06-22-highschool-intern-github/slides/slide-16.jpg" alt="PPT 收尾页：华人也在世界开源的舞台上，列尤雨溪、DeepSeek、Wechaty。引用——加入字节最好的时间是 2016 年，加入句子互动最好的时间是今天" class="full">
 
-郭骐畅今年 18 岁。他和这个舞台之间，本来只隔一个账号。
+郭骐畅今年 18 岁。他和这个舞台之间，隔的早就不是技术——是有没有人把真任务、AI 工具和试错的空间，交到他手上。
