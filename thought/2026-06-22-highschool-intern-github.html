@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>公司里 GitHub 讲得最好的，是个高三刚毕业的实习生 · 李佳芮的博客</title>
-<meta name="description" content="上周管培生例会，给全公司讲 GitHub 的是郭骐畅——高三刚毕业，来公司不到一个月。两周前他连 PR 是什么都不知道，跟 Claude 学会发 PR，这周就站上去讲了一堂。这篇把他讲的内容整理出来：不教命令行，只解决看懂项目、基本操作、开源生态三件事。Git 是时光机，GitHub 把它搬上云；怎么读懂一个仓库主页的六个位置；Commit、Branch、Pull Request 到底是什么，配一个真实被关掉的 PR 故事；30 秒判断一个开源项目靠不靠谱；大公司为什么把看家代码免费送出去。最后讲讲我为什么敢让一个 18 岁的人来讲、给他无限 token、让两个实习生赛马式开发——一个 AI Native 团队是什么样子。">
+<meta name="description" content="今天管培生例会，给全公司讲 GitHub 的是郭骐畅——高三刚毕业，来公司不到一个月。两周前他连 PR 是什么都不知道，跟 Claude 学会发 PR，今天就站上去讲了一堂。这篇把他讲的内容整理出来：不教命令行，只解决看懂项目、基本操作、开源生态三件事。Git 是时光机，GitHub 把它搬上云；怎么读懂一个仓库主页的六个位置；Commit、Branch、Pull Request 到底是什么，配一个真实被关掉的 PR 故事；30 秒判断一个开源项目靠不靠谱；大公司为什么把看家代码免费送出去。最后讲讲我为什么敢让一个 18 岁的人来讲、给他无限 token、让两个实习生赛马式开发——一个 AI Native 团队是什么样子。">
 <meta name="author" content="李佳芮">
 <meta name="keywords" content="GitHub, 开源, AI Native, 实习生, 团队, Wechaty, 管培生">
 <link rel="canonical" href="https://rui.juzi.bot/thought/2026-06-22-highschool-intern-github.html">
 <meta property="og:title" content="公司里 GitHub 讲得最好的，是个高三刚毕业的实习生">
-<meta property="og:description" content="上周管培生例会，给全公司讲 GitHub 的是郭骐畅——高三刚毕业，来公司不到一个月。两周前他连 PR 是什么都不知道，跟 Claude 学会发 PR，这周就站上去讲了一堂。这篇把他讲的内容整理出来：不教命令行，只解决看懂项目、基本操作、开源生态三件事。Git 是时光机，GitHub 把它搬上云；怎么读懂一个仓库主页的六个位置；Commit、Branch、Pull Request 到底是什么，配一个真实被关掉的 PR 故事；30 秒判断一个开源项目靠不靠谱；大公司为什么把看家代码免费送出去。最后讲讲我为什么敢让一个 18 岁的人来讲、给他无限 token、让两个实习生赛马式开发——一个 AI Native 团队是什么样子。">
+<meta property="og:description" content="今天管培生例会，给全公司讲 GitHub 的是郭骐畅——高三刚毕业，来公司不到一个月。两周前他连 PR 是什么都不知道，跟 Claude 学会发 PR，今天就站上去讲了一堂。这篇把他讲的内容整理出来：不教命令行，只解决看懂项目、基本操作、开源生态三件事。Git 是时光机，GitHub 把它搬上云；怎么读懂一个仓库主页的六个位置；Commit、Branch、Pull Request 到底是什么，配一个真实被关掉的 PR 故事；30 秒判断一个开源项目靠不靠谱；大公司为什么把看家代码免费送出去。最后讲讲我为什么敢让一个 18 岁的人来讲、给他无限 token、让两个实习生赛马式开发——一个 AI Native 团队是什么样子。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://rui.juzi.bot/thought/2026-06-22-highschool-intern-github.html">
 <meta property="og:image" content="https://rui.juzi.bot/img/posts/2026-06-22-highschool-intern-github/slides/slide-01.jpg">
@@ -19,7 +19,7 @@
 <meta property="article:published_time" content="2026-06-22">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="公司里 GitHub 讲得最好的，是个高三刚毕业的实习生">
-<meta name="twitter:description" content="上周管培生例会，给全公司讲 GitHub 的是郭骐畅——高三刚毕业，来公司不到一个月。两周前他连 PR 是什么都不知道，跟 Claude 学会发 PR，这周就站上去讲了一堂。这篇把他讲的内容整理出来：不教命令行，只解决看懂项目、基本操作、开源生态三件事。Git 是时光机，GitHub 把它搬上云；怎么读懂一个仓库主页的六个位置；Commit、Branch、Pull Request 到底是什么，配一个真实被关掉的 PR 故事；30 秒判断一个开源项目靠不靠谱；大公司为什么把看家代码免费送出去。最后讲讲我为什么敢让一个 18 岁的人来讲、给他无限 token、让两个实习生赛马式开发——一个 AI Native 团队是什么样子。">
+<meta name="twitter:description" content="今天管培生例会，给全公司讲 GitHub 的是郭骐畅——高三刚毕业，来公司不到一个月。两周前他连 PR 是什么都不知道，跟 Claude 学会发 PR，今天就站上去讲了一堂。这篇把他讲的内容整理出来：不教命令行，只解决看懂项目、基本操作、开源生态三件事。Git 是时光机，GitHub 把它搬上云；怎么读懂一个仓库主页的六个位置；Commit、Branch、Pull Request 到底是什么，配一个真实被关掉的 PR 故事；30 秒判断一个开源项目靠不靠谱；大公司为什么把看家代码免费送出去。最后讲讲我为什么敢让一个 18 岁的人来讲、给他无限 token、让两个实习生赛马式开发——一个 AI Native 团队是什么样子。">
 <meta name="twitter:image" content="https://rui.juzi.bot/img/posts/2026-06-22-highschool-intern-github/slides/slide-01.jpg">
 <link rel="stylesheet" href="/css/site.css">
 <link rel="shortcut icon" href="/images/favicon.png?v=3">
@@ -35,7 +35,7 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "公司里 GitHub 讲得最好的，是个高三刚毕业的实习生", "description": "上周管培生例会，给全公司讲 GitHub 的是郭骐畅——高三刚毕业，来公司不到一个月。两周前他连 PR 是什么都不知道，跟 Claude 学会发 PR，这周就站上去讲了一堂。这篇把他讲的内容整理出来：不教命令行，只解决看懂项目、基本操作、开源生态三件事。Git 是时光机，GitHub 把它搬上云；怎么读懂一个仓库主页的六个位置；Commit、Branch、Pull Request 到底是什么，配一个真实被关掉的 PR 故事；30 秒判断一个开源项目靠不靠谱；大公司为什么把看家代码免费送出去。最后讲讲我为什么敢让一个 18 岁的人来讲、给他无限 token、让两个实习生赛马式开发——一个 AI Native 团队是什么样子。", "image": "https://rui.juzi.bot/img/posts/2026-06-22-highschool-intern-github/slides/slide-01.jpg", "url": "https://rui.juzi.bot/thought/2026-06-22-highschool-intern-github.html", "datePublished": "2026-06-22", "dateModified": "2026-06-22", "author": {"@type": "Person", "name": "李佳芮", "url": "https://rui.juzi.bot"}, "publisher": {"@type": "Person", "name": "李佳芮", "logo": {"@type": "ImageObject", "url": "https://rui.juzi.bot/images/avatar.jpg"}}, "mainEntityOfPage": "https://rui.juzi.bot/thought/2026-06-22-highschool-intern-github.html", "keywords": "GitHub, 开源, AI Native, 实习生, 团队, Wechaty, 管培生"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "公司里 GitHub 讲得最好的，是个高三刚毕业的实习生", "description": "今天管培生例会，给全公司讲 GitHub 的是郭骐畅——高三刚毕业，来公司不到一个月。两周前他连 PR 是什么都不知道，跟 Claude 学会发 PR，今天就站上去讲了一堂。这篇把他讲的内容整理出来：不教命令行，只解决看懂项目、基本操作、开源生态三件事。Git 是时光机，GitHub 把它搬上云；怎么读懂一个仓库主页的六个位置；Commit、Branch、Pull Request 到底是什么，配一个真实被关掉的 PR 故事；30 秒判断一个开源项目靠不靠谱；大公司为什么把看家代码免费送出去。最后讲讲我为什么敢让一个 18 岁的人来讲、给他无限 token、让两个实习生赛马式开发——一个 AI Native 团队是什么样子。", "image": "https://rui.juzi.bot/img/posts/2026-06-22-highschool-intern-github/slides/slide-01.jpg", "url": "https://rui.juzi.bot/thought/2026-06-22-highschool-intern-github.html", "datePublished": "2026-06-22", "dateModified": "2026-06-22", "author": {"@type": "Person", "name": "李佳芮", "url": "https://rui.juzi.bot"}, "publisher": {"@type": "Person", "name": "李佳芮", "logo": {"@type": "ImageObject", "url": "https://rui.juzi.bot/images/avatar.jpg"}}, "mainEntityOfPage": "https://rui.juzi.bot/thought/2026-06-22-highschool-intern-github.html", "keywords": "GitHub, 开源, AI Native, 实习生, 团队, Wechaty, 管培生"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首页", "item": "https://rui.juzi.bot/"}, {"@type": "ListItem", "position": 2, "name": "博客", "item": "https://rui.juzi.bot/blog/"}, {"@type": "ListItem", "position": 3, "name": "公司里 GitHub 讲得最好的，是个高三刚毕业的实习生", "item": "https://rui.juzi.bot/thought/2026-06-22-highschool-intern-github.html"}]}</script>
 </head>
 <body>
@@ -55,11 +55,11 @@ var _hmt = _hmt || [];
     </div>
     <h1 class="post-title-h1">公司里 GitHub 讲得最好的，是个高三刚毕业的实习生</h1>
     <div class="post-byline">
-      <time>2026-06-22</time> · 全文 5655 字
+      <time>2026-06-22</time> · 全文 5654 字
     </div>
   </header>
   <div class="post-content markdown-body">
-<p>上周一的管培生例会，讲 GitHub 的是郭骐畅。他高三刚毕业，来公司不到一个月。</p>
+<p>今天的管培生例会，讲 GitHub 的是郭骐畅。他高三刚毕业，来公司不到一个月。</p>
 <p>两周前，他连 PR 是什么都不知道。</p>
 <p>那会儿我让他和另一个大一的同学徐赫铖一起重做官网，两个人赛马，各做一版。郭骐畅做完，想把改动给我，发来一句"我提交了"，附一个 GitHub 链接。那不叫发 PR。我回他：你问一下 Claude，什么叫发 PR，让它教你，或者让它直接帮你发也行。</p>
 <p>第二天他就会了。又过几天，我让他把 GitHub 整个研究一遍，给全体管培生讲一堂——这帮人大多不写代码，市场、运营、产品都有。他做了一套 PPT、一份逐页讲稿，挂在公网上，自己站上去讲了十五分钟。</p>
@@ -144,7 +144,7 @@ var _hmt = _hmt || [];
 <p><img src="/img/posts/2026-06-22-highschool-intern-github/slides/slide-14.jpg" alt="PPT 页：散会后你今天就能做的 5 件事——完善 profile、给 wechaty 点 Star、Follow、提 Issue、提一个小 PR" class="full" loading="lazy" decoding="async"></p>
 <p>"第五件，是你从看客变成参与者的那一步。"</p>
 <h2>我为什么敢让一个高三生来讲</h2>
-<p>回到开头。两周前不知道 PR 是什么的人，这周给全公司讲了一堂 GitHub。中间发生了什么，我觉得值得说一下，因为这就是我现在带团队的方式。</p>
+<p>回到开头。两周前不知道 PR 是什么的人，今天给全公司讲了一堂 GitHub。中间发生了什么，我觉得值得说一下，因为这就是我现在带团队的方式。</p>
 <p>我没有派人手把手教他。我做了三件事：给他一个真任务（重做官网），给他无限的 token，让他和另一个实习生赛马——同一个需求，两个人各做一版，谁的好上谁的。剩下的，他自己跟 Claude 一点点磨出来。从不会发 PR，到能给非技术同事把 PR 讲明白，他用了不到两周。</p>
 <p>这事换三年前做不到。三年前一个高三毕业生想上手，得先啃命令行、配环境、被一堆术语劝退，光入门就够耗掉他的热情。现在工具变了，挡在"想做"和"做出来"之间的那堵墙，基本被 AI 推平了。剩下的门槛不是会不会写代码，是想不想做、敢不敢提。</p>
 <p>所以我招人也跟着变了。我现在更看重的，是一个人面对一个不会的东西，会不会自己去问、去试、去交付，而不是他简历上已经会什么。郭骐畅这套讲稿里我最喜欢的，恰恰是那句不在技术点上的话：<strong>PR 被拒太正常了，别怕提。</strong></p>
