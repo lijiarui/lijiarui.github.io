@@ -1,5 +1,5 @@
 ---
-title: 一家 AI 公司的天花板，就是 CEO 本人：闷头做三年 FDE
+title: 一家 AI 公司的天花板，就是 CEO 本人：闷头做了三年 FDE 的心得
 date: 2026-06-23
 category: interview
 tags: FDE, Forward Deployed Engineer, 访谈, 崔牛会, 按结果交付, 组织, AI, Agent, 创业
