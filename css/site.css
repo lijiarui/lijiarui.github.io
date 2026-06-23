@@ -1244,6 +1244,13 @@ iframe.slide-viewer-ppt,
 }
 .post-content blockquote p { margin: 0 0 8px; }
 .post-content blockquote p:last-child { margin: 0; }
+.post-content mark {
+  background: none;
+  color: inherit;
+  border-bottom: 2px solid rgba(210, 105, 17, 0.55);
+  padding-bottom: 1px;
+  font-weight: 600;
+}
 .post-content ul, .post-content ol {
   margin: 1em 0 1.4em;
   padding-left: 1.8em;
