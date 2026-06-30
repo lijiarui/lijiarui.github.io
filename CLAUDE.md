@@ -6,6 +6,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 李佳芮的个人博客（rui.juzi.bot），纯静态站。**没有框架** — 用一组 Python 脚本读 `content.json` + `posts/*.md`，渲染成 HTML 直接 push 到 GitHub Pages。2026-04 从 Hexo 重构而来。详细作者向使用说明在 `README.md`。
 
+## 发布红线（最重要，先读这条）
+
+**只发布本次明确点名要发的那一篇文章。** 没点名的 `.md` 一律不发——哪怕它没标 `draft`、`build.py` 会把它一起渲染进 `content.json` / `feed.xml` / `index.html`，也要先拦住。作者被坑过：曾有一次 `git add -A` 误推了 4 篇文章（含 3 篇草稿）到公开网址，紧急撤回。红线是「**宁可漏发，不可误发**」。
+
+操作纪律：
+
+1. **永远不用 `git add -A`**。只显式 `git add` 点名那篇的 `posts/<slug>.md` + `img/posts/<slug>/` + 渲染出的 `<category>/<slug>.html` + 必要的聚合文件（`content.json` / `feed.xml` / `index.html` / `search-index.json` / `sitemap.xml`）。
+2. **build 前先 `git status`**，把所有未点名的 untracked `.md` 标成 `draft: true` 再 `python3 build.py`，确保它们被清出 `content.json` / `feed` / `index`、渲染 HTML 也被清理。
+3. **推/提 PR 之前，先把"哪些文章会变上线"列成清单**，等到明确确认（"推 / yes"）才动。在 GitHub Actions / @claude 场景下，永远只**提 PR 交人审**，不直接 push 到默认分支。
+
 ## 核心命令
 
 ```bash
