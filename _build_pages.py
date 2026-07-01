@@ -32,6 +32,7 @@ SITE_URL = "https://rui.juzi.bot"
 # `<h2 id="外部媒体报道">` 之后的 <ul> 都从这里生成（about 页 ul 由
 # sync_about_media() 自动同步，h2 + 简介 p 保持手写）。
 MEDIA_COVERAGE = [
+    ("2026-06-30", "趁早行动", "从“趁早女孩”到 AI 公司 CEO：我用 12 年，活成了我理想的样子", "https://mp.weixin.qq.com/s/ec932Aoi7uSKef8deIEMDQ"),
     ("2026-05-01", "北京时间", "【\"十五五\"开局 六种奋斗人生】创新创业 她站在 AI 的风口", "https://item.btime.com/40e27d45f506015c484efb345dd"),
     ("2026-03-19", "澎湃新闻", "感动海淀·巾帼榜样｜奋楫扬帆，芳华绽放（四）", "https://www.thepaper.cn/newsDetail_forward_32798060"),
     ("2026-03-16", "中国城市报", "深夜代码不辍 灯火映照创新——北京 AI 创业者以实干筑就人工智能新高地", "https://www.zgcsb.com/news/pinDao/2026-03/16/ma_656471.html"),
