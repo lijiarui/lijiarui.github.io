@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>一家 AI 公司的天花板，就是 CEO 本人 | FDE 三年实录（二） · 李佳芮的博客</title>
+<title>硅谷最火的岗位 FDE，我们干了三年，这回把坑全摊开了 · 李佳芮的博客</title>
 <meta name="description" content="崔牛会针对《硅谷今年最火的岗位 FDE，我们闷头干了三年》约的一小时深访。从 2023 年那个没打算做 FDE 的低代码起点讲起，把三年踩的坑摊开：为什么需要一个新角色而不是&quot;让更好的人上&quot;；句子守护是怎么被 CTO 一个人下场逼出来的；七大产品基建分别解决现场哪一堵墙；FDE 从哪招、淘汰率多少、怎么考核；按结果收费怎么从按 GMV 分成一路迭代到按 leads 收费；规模化到底卡在哪，以及为什么一家 AI 公司的天花板就是 CEO 本人。">
 <meta name="author" content="李佳芮">
 <meta name="keywords" content="FDE, Forward Deployed Engineer, 访谈, 崔牛会, 按结果交付, 组织, AI, Agent">
 <link rel="canonical" href="https://rui.juzi.bot/interview/2026-06-23-cuiniuhui-fde-interview.html">
-<meta property="og:title" content="一家 AI 公司的天花板，就是 CEO 本人 | FDE 三年实录（二）">
+<meta property="og:title" content="硅谷最火的岗位 FDE，我们干了三年，这回把坑全摊开了">
 <meta property="og:description" content="崔牛会针对《硅谷今年最火的岗位 FDE，我们闷头干了三年》约的一小时深访。从 2023 年那个没打算做 FDE 的低代码起点讲起，把三年踩的坑摊开：为什么需要一个新角色而不是&quot;让更好的人上&quot;；句子守护是怎么被 CTO 一个人下场逼出来的；七大产品基建分别解决现场哪一堵墙；FDE 从哪招、淘汰率多少、怎么考核；按结果收费怎么从按 GMV 分成一路迭代到按 leads 收费；规模化到底卡在哪，以及为什么一家 AI 公司的天花板就是 CEO 本人。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://rui.juzi.bot/interview/2026-06-23-cuiniuhui-fde-interview.html">
@@ -18,7 +18,7 @@
 <meta property="article:author" content="李佳芮">
 <meta property="article:published_time" content="2026-06-23">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="一家 AI 公司的天花板，就是 CEO 本人 | FDE 三年实录（二）">
+<meta name="twitter:title" content="硅谷最火的岗位 FDE，我们干了三年，这回把坑全摊开了">
 <meta name="twitter:description" content="崔牛会针对《硅谷今年最火的岗位 FDE，我们闷头干了三年》约的一小时深访。从 2023 年那个没打算做 FDE 的低代码起点讲起，把三年踩的坑摊开：为什么需要一个新角色而不是&quot;让更好的人上&quot;；句子守护是怎么被 CTO 一个人下场逼出来的；七大产品基建分别解决现场哪一堵墙；FDE 从哪招、淘汰率多少、怎么考核；按结果收费怎么从按 GMV 分成一路迭代到按 leads 收费；规模化到底卡在哪，以及为什么一家 AI 公司的天花板就是 CEO 本人。">
 <meta name="twitter:image" content="https://rui.juzi.bot/img/posts/2026-06-23-cuiniuhui-fde-interview/join-juzibot-poster.png">
 <link rel="stylesheet" href="/css/site.css">
@@ -35,8 +35,8 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "一家 AI 公司的天花板，就是 CEO 本人 | FDE 三年实录（二）", "description": "崔牛会针对《硅谷今年最火的岗位 FDE，我们闷头干了三年》约的一小时深访。从 2023 年那个没打算做 FDE 的低代码起点讲起，把三年踩的坑摊开：为什么需要一个新角色而不是\"让更好的人上\"；句子守护是怎么被 CTO 一个人下场逼出来的；七大产品基建分别解决现场哪一堵墙；FDE 从哪招、淘汰率多少、怎么考核；按结果收费怎么从按 GMV 分成一路迭代到按 leads 收费；规模化到底卡在哪，以及为什么一家 AI 公司的天花板就是 CEO 本人。", "image": "https://rui.juzi.bot/img/posts/2026-06-23-cuiniuhui-fde-interview/join-juzibot-poster.png", "url": "https://rui.juzi.bot/interview/2026-06-23-cuiniuhui-fde-interview.html", "datePublished": "2026-06-23", "dateModified": "2026-06-23", "author": {"@type": "Person", "name": "李佳芮", "url": "https://rui.juzi.bot"}, "publisher": {"@type": "Person", "name": "李佳芮", "logo": {"@type": "ImageObject", "url": "https://rui.juzi.bot/images/avatar.jpg"}}, "mainEntityOfPage": "https://rui.juzi.bot/interview/2026-06-23-cuiniuhui-fde-interview.html", "keywords": "FDE, Forward Deployed Engineer, 访谈, 崔牛会, 按结果交付, 组织, AI, Agent"}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首页", "item": "https://rui.juzi.bot/"}, {"@type": "ListItem", "position": 2, "name": "博客", "item": "https://rui.juzi.bot/blog/"}, {"@type": "ListItem", "position": 3, "name": "一家 AI 公司的天花板，就是 CEO 本人 | FDE 三年实录（二）", "item": "https://rui.juzi.bot/interview/2026-06-23-cuiniuhui-fde-interview.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "硅谷最火的岗位 FDE，我们干了三年，这回把坑全摊开了", "description": "崔牛会针对《硅谷今年最火的岗位 FDE，我们闷头干了三年》约的一小时深访。从 2023 年那个没打算做 FDE 的低代码起点讲起，把三年踩的坑摊开：为什么需要一个新角色而不是\"让更好的人上\"；句子守护是怎么被 CTO 一个人下场逼出来的；七大产品基建分别解决现场哪一堵墙；FDE 从哪招、淘汰率多少、怎么考核；按结果收费怎么从按 GMV 分成一路迭代到按 leads 收费；规模化到底卡在哪，以及为什么一家 AI 公司的天花板就是 CEO 本人。", "image": "https://rui.juzi.bot/img/posts/2026-06-23-cuiniuhui-fde-interview/join-juzibot-poster.png", "url": "https://rui.juzi.bot/interview/2026-06-23-cuiniuhui-fde-interview.html", "datePublished": "2026-06-23", "dateModified": "2026-06-23", "author": {"@type": "Person", "name": "李佳芮", "url": "https://rui.juzi.bot"}, "publisher": {"@type": "Person", "name": "李佳芮", "logo": {"@type": "ImageObject", "url": "https://rui.juzi.bot/images/avatar.jpg"}}, "mainEntityOfPage": "https://rui.juzi.bot/interview/2026-06-23-cuiniuhui-fde-interview.html", "keywords": "FDE, Forward Deployed Engineer, 访谈, 崔牛会, 按结果交付, 组织, AI, Agent"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首页", "item": "https://rui.juzi.bot/"}, {"@type": "ListItem", "position": 2, "name": "博客", "item": "https://rui.juzi.bot/blog/"}, {"@type": "ListItem", "position": 3, "name": "硅谷最火的岗位 FDE，我们干了三年，这回把坑全摊开了", "item": "https://rui.juzi.bot/interview/2026-06-23-cuiniuhui-fde-interview.html"}]}</script>
 </head>
 <body>
 <header class="topnav"><div class="wrap row">
@@ -53,7 +53,7 @@ var _hmt = _hmt || [];
     <div class="post-cat-line">
       <a href="/blog/#interview" class="post-cat">访谈</a>
     </div>
-    <h1 class="post-title-h1">一家 AI 公司的天花板，就是 CEO 本人 | FDE 三年实录（二）</h1>
+    <h1 class="post-title-h1">硅谷最火的岗位 FDE，我们干了三年，这回把坑全摊开了</h1>
     <div class="post-byline">
       <time>2026-06-23</time> · 全文 11237 字
     </div>
@@ -188,7 +188,7 @@ var _hmt = _hmt || [];
 </blockquote>
   </div>
   <div class="post-tags"><span class="post-tag">#FDE</span><span class="post-tag">#Forward Deployed Engineer</span><span class="post-tag">#访谈</span><span class="post-tag">#崔牛会</span><span class="post-tag">#按结果交付</span><span class="post-tag">#组织</span><span class="post-tag">#AI</span><span class="post-tag">#Agent</span><span class="post-tag">#创业</span></div>
-  <aside class="post-related"><h3>相关阅读</h3><ul><li><a href="/thought/2026-06-04-pe-to-fde.html">硅谷今年最火的岗位 FDE，我们闷头干了三年</a><span class="post-related-date">2026-06-04</span></li><li><a href="/thought/2026-05-04-ai-era-competitiveness.html">AI 不可替代的那 20%：判断、品味、在场、关系、手艺</a><span class="post-related-date">2026-05-04</span></li><li><a href="/thought/2026-04-28-return-to-code.html">接近 10 年没写代码了，被 Claude Opus 4.5 拉了回来</a><span class="post-related-date">2026-04-28</span></li></ul></aside>
+  <aside class="post-related"><h3>相关阅读</h3><ul><li><a href="/thought/2026-06-04-pe-to-fde.html">硅谷今年最火的岗位 FDE，我们闷头干了三年</a><span class="post-related-date">2026-06-04</span></li><li><a href="/thought/2026-07-01-what-is-fde.html">什么是 FDE —— 我给新兵训练营讲的一堂课</a><span class="post-related-date">2026-07-01</span></li><li><a href="/thought/2026-05-04-ai-era-competitiveness.html">AI 不可替代的那 20%：判断、品味、在场、关系、手艺</a><span class="post-related-date">2026-05-04</span></li></ul></aside>
   <aside class="post-wechat">
   <img src="/images/wechat-qr.jpg" alt="李佳芮的公众号" class="post-wechat-qr" loading="lazy" decoding="async">
   <div class="post-wechat-text">
@@ -204,7 +204,7 @@ var _hmt = _hmt || [];
   <script type="module" src="https://www.livere.org/livere-widget.js"></script>
   <noscript>请启用 JavaScript 查看评论</noscript>
 </section>
-<nav class="post-nav"><span class="prev"></span><a class="next" href="/thought/2026-06-23-xiaosajie-chanzao-twelve-years.html">写在被偶像采访的这一天 →</a></nav>
+<nav class="post-nav"><a class="prev" href="/thought/2026-07-01-what-is-fde.html">← 什么是 FDE —— 我给新兵训练营讲的一堂课</a><a class="next" href="/thought/2026-06-23-xiaosajie-chanzao-twelve-years.html">写在被偶像采访的这一天 →</a></nav>
 </main>
 <aside class="sidebar">
 
@@ -237,17 +237,17 @@ var _hmt = _hmt || [];
 
 <div class="widget">
   <h3>近期文章</h3>
-  <ul><li><a href="/interview/2026-06-23-cuiniuhui-fde-interview.html">一家 AI 公司的天花板，就是 CEO 本人 | FDE 三年实录（二）</a></li><li><a href="/thought/2026-06-23-xiaosajie-chanzao-twelve-years.html">写在被偶像采访的这一天</a></li><li><a href="/thought/2026-06-22-highschool-intern-github.html">公司里 GitHub 讲得最好的，是个高三刚毕业的实习生</a></li><li><a href="/thought/2026-06-04-pe-to-fde.html">硅谷今年最火的岗位 FDE，我们闷头干了三年</a></li><li><a href="/thought/2026-05-06-anthropic-won-enterprise.html">OpenAI 输给 Anthropic，不是输在产品，是输在组织</a></li><li><a href="/thought/2026-05-04-ai-era-competitiveness.html">AI 不可替代的那 20%：判断、品味、在场、关系、手艺</a></li><li><a href="/thought/2026-05-03-claude-code-lsp.html">给 Claude Code 装上眼睛 - 聊聊 code intelligence plugin</a></li><li><a href="/thought/2026-04-28-return-to-code.html">接近 10 年没写代码了，被 Claude Opus 4.5 拉了回来</a></li></ul>
+  <ul><li><a href="/thought/2026-07-01-what-is-fde.html">什么是 FDE —— 我给新兵训练营讲的一堂课</a></li><li><a href="/interview/2026-06-23-cuiniuhui-fde-interview.html">硅谷最火的岗位 FDE，我们干了三年，这回把坑全摊开了</a></li><li><a href="/thought/2026-06-23-xiaosajie-chanzao-twelve-years.html">写在被偶像采访的这一天</a></li><li><a href="/thought/2026-06-22-highschool-intern-github.html">公司里 GitHub 讲得最好的，是个高三刚毕业的实习生</a></li><li><a href="/thought/2026-06-04-pe-to-fde.html">硅谷今年最火的岗位 FDE，我们闷头干了三年</a></li><li><a href="/thought/2026-05-06-anthropic-won-enterprise.html">OpenAI 输给 Anthropic，不是输在产品，是输在组织</a></li><li><a href="/thought/2026-05-04-ai-era-competitiveness.html">AI 不可替代的那 20%：判断、品味、在场、关系、手艺</a></li><li><a href="/thought/2026-05-03-claude-code-lsp.html">给 Claude Code 装上眼睛 - 聊聊 code intelligence plugin</a></li></ul>
 </div>
 
 <div class="widget">
   <h3>分类</h3>
-  <ul><li><a href="/blog/#thought">思考</a><span class="count">51</span></li><li><a href="/blog/#chatbot">Chatbot</a><span class="count">21</span></li><li><a href="/blog/#interview">访谈</a><span class="count">11</span></li><li><a href="/blog/#project">项目</a><span class="count">10</span></li><li><a href="/blog/#reading">读书</a><span class="count">6</span></li><li><a href="/blog/#saas">SaaS</a><span class="count">4</span></li><li><a href="/blog/#microsoft">Microsoft</a><span class="count">1</span></li></ul>
+  <ul><li><a href="/blog/#thought">思考</a><span class="count">52</span></li><li><a href="/blog/#chatbot">Chatbot</a><span class="count">21</span></li><li><a href="/blog/#interview">访谈</a><span class="count">11</span></li><li><a href="/blog/#project">项目</a><span class="count">10</span></li><li><a href="/blog/#reading">读书</a><span class="count">6</span></li><li><a href="/blog/#saas">SaaS</a><span class="count">4</span></li><li><a href="/blog/#microsoft">Microsoft</a><span class="count">1</span></li></ul>
 </div>
 
 <div class="widget">
   <h3>归档</h3>
-  <ul><li><a href="/blog/#y2026">2026</a><span class="count">9</span></li><li><a href="/blog/#y2025">2025</a><span class="count">3</span></li><li><a href="/blog/#y2024">2024</a><span class="count">3</span></li><li><a href="/blog/#y2023">2023</a><span class="count">4</span></li><li><a href="/blog/#y2022">2022</a><span class="count">10</span></li><li><a href="/blog/#y2021">2021</a><span class="count">10</span></li><li><a href="/blog/#y2020">2020</a><span class="count">7</span></li><li><a href="/blog/#y2019">2019</a><span class="count">9</span></li><li><a href="/blog/#y2018">2018</a><span class="count">21</span></li><li><a href="/blog/#y2017">2017</a><span class="count">10</span></li><li><a href="/blog/#y2016">2016</a><span class="count">6</span></li><li><a href="/blog/#y2015">2015</a><span class="count">6</span></li><li><a href="/blog/#y2014">2014</a><span class="count">3</span></li><li><a href="/blog/#y2013">2013</a><span class="count">1</span></li><li><a href="/blog/#y2012">2012</a><span class="count">2</span></li></ul>
+  <ul><li><a href="/blog/#y2026">2026</a><span class="count">10</span></li><li><a href="/blog/#y2025">2025</a><span class="count">3</span></li><li><a href="/blog/#y2024">2024</a><span class="count">3</span></li><li><a href="/blog/#y2023">2023</a><span class="count">4</span></li><li><a href="/blog/#y2022">2022</a><span class="count">10</span></li><li><a href="/blog/#y2021">2021</a><span class="count">10</span></li><li><a href="/blog/#y2020">2020</a><span class="count">7</span></li><li><a href="/blog/#y2019">2019</a><span class="count">9</span></li><li><a href="/blog/#y2018">2018</a><span class="count">21</span></li><li><a href="/blog/#y2017">2017</a><span class="count">10</span></li><li><a href="/blog/#y2016">2016</a><span class="count">6</span></li><li><a href="/blog/#y2015">2015</a><span class="count">6</span></li><li><a href="/blog/#y2014">2014</a><span class="count">3</span></li><li><a href="/blog/#y2013">2013</a><span class="count">1</span></li><li><a href="/blog/#y2012">2012</a><span class="count">2</span></li></ul>
 </div>
 
 <div class="widget">
