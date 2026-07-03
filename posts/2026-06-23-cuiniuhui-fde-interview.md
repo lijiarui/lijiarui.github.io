@@ -1,5 +1,5 @@
 ---
-title: 硅谷最火的岗位 FDE，我们干了三年，这回把坑全摊开了
+title: 硅谷最火的岗位 FDE，我们干了三年（后续）：这回把坑全摊开了
 date: 2026-06-23
 category: interview
 tags: FDE, Forward Deployed Engineer, 访谈, 崔牛会, 按结果交付, 组织, AI, Agent, 创业
