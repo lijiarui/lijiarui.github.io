@@ -237,6 +237,19 @@ def clean_feishu_html(html):
             tag = tag[:-1] + ' decoding="async"' + tag[-1]
         return tag
     html = re.sub(r'<img\b[^>]*>', _img_hints, html, flags=re.I)
+    # 正文所有链接新标签页打开（页内锚点除外）
+    def _a_blank(m):
+        tag = m.group(0)
+        lower = tag.lower()
+        href_m = re.search(r'href="([^"]*)"', tag, flags=re.I)
+        if not href_m or href_m.group(1).startswith('#'):
+            return tag
+        if 'target=' not in lower:
+            tag = tag[:-1] + ' target="_blank"' + tag[-1]
+        if 'rel=' not in lower:
+            tag = tag[:-1] + ' rel="noopener"' + tag[-1]
+        return tag
+    html = re.sub(r'<a\b[^>]*>', _a_blank, html, flags=re.I)
     return html
 
 
