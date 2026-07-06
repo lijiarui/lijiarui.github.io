@@ -38,10 +38,11 @@ jobs:
       - run: python3 build.py
       - name: 组装 artifact（排除源码，与 Jekyll 时代的可见范围一致）
         run: |
+          # 排除规则必须以 / 开头锚定仓库根：不锚定的 `posts` 会连 img/posts/ 一起排掉（全站文章配图 404 的事故）
           rsync -a ./ /tmp/site/ \
-            --exclude=.git --exclude=.github --exclude=posts \
-            --exclude='_*.py' --exclude=build.py --exclude=CLAUDE.md \
-            --exclude=.gitignore
+            --exclude=/.git --exclude=/.github --exclude=/posts \
+            --exclude='/_*.py' --exclude=/build.py --exclude=/CLAUDE.md \
+            --exclude=/.gitignore --exclude=/tmp
       - uses: actions/upload-pages-artifact@v3
         with:
           path: /tmp/site
