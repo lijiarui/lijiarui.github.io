@@ -1,0 +1,56 @@
+# 云端构建 + 部署到 GitHub Pages。
+# 上线流程：push 源文件（posts/*.md + img/）到 master，CI 跑 build.py 并部署。
+# 本地不再需要 python3 build.py（想预览可以照跑，产物不用 commit）。
+name: pages
+
+on:
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: 部署到线上（false 只验证构建产物）
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  TZ: Asia/Shanghai
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          # 与本地一致（macOS 自带 3.9.6），保证 markdown 渲染逐字节相同
+          python-version: "3.9"
+      - run: pip install Markdown==3.9
+      - run: python3 build.py
+      - name: 组装 artifact（排除源码，与 Jekyll 时代的可见范围一致）
+        run: |
+          rsync -a ./ /tmp/site/ \
+            --exclude=.git --exclude=.github --exclude=posts \
+            --exclude='_*.py' --exclude=build.py --exclude=CLAUDE.md \
+            --exclude=.gitignore
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: /tmp/site
+
+  deploy:
+    if: inputs.deploy
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

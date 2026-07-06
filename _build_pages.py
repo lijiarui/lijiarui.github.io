@@ -314,14 +314,15 @@ def generate_cover(src_path, slug):
             capture_output=True, timeout=60, check=False,
         )
     except (subprocess.SubprocessError, FileNotFoundError):
-        return None
+        # CI（Linux）没有 qlmanage；封面图已提交进仓库，直接用现成的
+        return f"/img/slides/{slug}.png" if target.exists() else None
     tmp = out_dir / f"{src_path.name}.png"
     if tmp.exists():
         if target.exists():
             target.unlink()
         tmp.rename(target)
         return f"/img/slides/{slug}.png"
-    return None
+    return f"/img/slides/{slug}.png" if target.exists() else None
 
 
 def scan_uploaded_slides():
