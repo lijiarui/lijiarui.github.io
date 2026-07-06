@@ -12,17 +12,19 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 操作纪律：
 
-1. **永远不用 `git add -A`**。只显式 `git add` 点名那篇的 `posts/<slug>.md` + `img/posts/<slug>/` + 渲染出的 `<category>/<slug>.html` + 必要的聚合文件（`content.json` / `feed.xml` / `index.html` / `search-index.json` / `sitemap.xml`）。
-2. **build 前先 `git status`**，把所有未点名的 untracked `.md` 标成 `draft: true` 再 `python3 build.py`，确保它们被清出 `content.json` / `feed` / `index`、渲染 HTML 也被清理。
+1. **永远不用 `git add -A`**。只显式 `git add` 点名那篇的 `posts/<slug>.md` + `img/posts/<slug>/`。云端构建后渲染 HTML 和聚合文件不需要 add——CI 会生成。
+2. **push 的每个 commit 都会被 CI 全量 build 并上线**：凡是已提交且 `draft` 不为 true 的 `posts/*.md` 都会被发布。本地未跟踪的草稿不影响线上（CI 看不到），但绝不能把未点名的 `.md` add 进任何 commit。改共享组件（侧栏 / topnav / css / 构建脚本）的 commit 同样会全站生效，推前想清楚。
 3. **推/提 PR 之前，先把"哪些文章会变上线"列成清单**，等到明确确认（"推 / yes"）才动。在 GitHub Actions / @claude 场景下，永远只**提 PR 交人审**，不直接 push 到默认分支。
 
 ## 核心命令
 
 ```bash
-python3 build.py                            # 唯一构建命令，串四步
+python3 build.py                            # 唯一构建命令，串四步（本地预览用，产物不用 commit）
 python3 -m http.server 8080 --bind 127.0.0.1   # 本地预览
-git add -A && git commit -m '...' && git push  # 上线（GitHub Pages 自动部署）
+git add posts/<那篇>.md img/posts/<slug>/ && git commit -m '...' && git push   # 上线
 ```
+
+**2026-07 起云端构建**：Pages 是 GitHub Actions 模式（`.github/workflows/pages.yml`），push master 后 CI 自动跑 `build.py` 并部署。**发布只需要推源文件**（`.md` + 图片），渲染 HTML / `content.json` / `feed.xml` / `search-index.json` / `sitemap.xml` 由 CI 生成，不需要也不应该再 add。仓库里现存的旧渲染产物会渐渐过时，无害。例外：PPT 封面图 `img/slides/<slug>.png` 靠 macOS qlmanage 生成，CI 上没有，上传新 slides 时要本地 build 一次并把封面图一起 commit。回滚整套云端构建：`gh api -X PUT repos/lijiarui/lijiarui.github.io/pages -f build_type=legacy`。
 
 `build.py` 顺序执行（每一步失败就停）：
 

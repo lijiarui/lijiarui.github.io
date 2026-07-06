@@ -4,6 +4,8 @@
 name: pages
 
 on:
+  push:
+    branches: [master]
   workflow_dispatch:
     inputs:
       deploy:
@@ -45,7 +47,7 @@ jobs:
           path: /tmp/site
 
   deploy:
-    if: inputs.deploy
+    if: github.event_name == 'push' || inputs.deploy
     needs: build
     runs-on: ubuntu-latest
     environment:

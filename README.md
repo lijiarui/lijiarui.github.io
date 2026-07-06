@@ -25,12 +25,15 @@
    正文从这里开始，支持完整 Markdown。
    ```
 
-4. 跑：
+4. （可选）本地预览：`python3 build.py` + `python3 -m http.server 8080`，看 http://127.0.0.1:8080/
+5. 推到线上——**只 add 源文件**，构建产物不用 commit：
    ```bash
-   python3 build.py
+   git add posts/<date>-<slug>.md img/posts/<slug>/
+   git commit -m '新文章' && git push
    ```
-5. 看一眼本地 http://127.0.0.1:8080/
-6. 推到线上：`git add -A && git commit -m '新文章' && git push`
+6. GitHub Actions 自动云端 build + 部署（约 2 分钟），Actions 页可看进度
+
+> ⚠️ 永远不要 `git add -A`——会把没打算发的草稿一起推上线。
 
 **`category` 可选值**（决定文章放哪个分区）：
 - `thought` — 思考（最常用）
@@ -65,9 +68,13 @@
    一段描述。会出现在详情页 PPT 预览上方。支持 Markdown。
    ```
 
-4. 跑 `python3 build.py`
-5. `/slides/` 列表自动多出一张卡，封面是 PPT 第一页（自动从 macOS qlmanage 抽取）
-6. 推到线上：`git add -A && git commit -m '新分享' && git push`
+4. 本地跑一次 `python3 build.py`——封面靠 macOS qlmanage 抽 PPT 第一页，**CI 上没有 qlmanage**，所以封面图必须本地生成并一起 commit
+5. 推到线上：
+   ```bash
+   git add files/slides/<文件> files/slides/<同名>.md img/slides/<slug>.png
+   git commit -m '新分享' && git push
+   ```
+6. CI 自动 build + 部署，`/slides/` 列表多出一张卡
 
 **注意**：
 - **PDF** 在本地 + 线上都能预览
@@ -126,9 +133,11 @@ python3 build.py
 python3 -m http.server 8080 --bind 127.0.0.1
 open http://127.0.0.1:8080/
 
-# 推到线上：
-git add -A && git commit -m '...' && git push
+# 推到线上（2026-07 起云端构建）：只 add 源文件，push 后 CI 自动 build + 部署
+git add posts/<那篇>.md img/posts/<slug>/ && git commit -m '...' && git push
 ```
+
+**云端构建说明**（2026-07 切换）：Pages 已从「master 分支直出」切到「GitHub Actions 构建」模式。`.github/workflows/pages.yml` 在每次 push master 后跑 `build.py` 并部署，所以渲染出的 HTML / `content.json` / `feed.xml` 等产物**不需要再 commit**（仓库里现存的会慢慢过时，无害——线上永远以 CI 构建为准）。CI 排除了 `_*.py`、`build.py`、`posts/`、`CLAUDE.md`，这些在线上 404，和 Jekyll 时代一致。回滚方法：`gh api -X PUT repos/lijiarui/lijiarui.github.io/pages -f build_type=legacy`。
 
 ---
 
