@@ -4,11 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-李佳芮的个人博客（rui.juzi.bot），纯静态站。**没有框架** — 用一组 Python 脚本读 `content.json` + `posts/*.md`，渲染成 HTML 直接 push 到 GitHub Pages。2026-04 从 Hexo 重构而来。详细作者向使用说明在 `README.md`。
+李佳芮的个人博客（rui.juzi.bot），纯静态站。**没有框架** — 用一组 Python 脚本读 `content.json` + `posts/*.md` 渲染成 HTML。2026-04 从 Hexo 重构而来；2026-07 起 push 源文件后由 GitHub Actions 云端构建部署（见「核心命令」）。详细作者向使用说明在 `README.md`。
 
 ## 发布红线（最重要，先读这条）
 
-**只发布本次明确点名要发的那一篇文章。** 没点名的 `.md` 一律不发——哪怕它没标 `draft`、`build.py` 会把它一起渲染进 `content.json` / `feed.xml` / `index.html`，也要先拦住。作者被坑过：曾有一次 `git add -A` 误推了 4 篇文章（含 3 篇草稿）到公开网址，紧急撤回。红线是「**宁可漏发，不可误发**」。
+**只发布本次明确点名要发的那一篇文章。** 没点名的 `.md` 一律不进 commit——哪怕它没标 `draft`。作者被坑过：曾有一次 `git add -A` 误推了 4 篇文章（含 3 篇草稿）到公开网址，紧急撤回。红线是「**宁可漏发，不可误发**」。
 
 操作纪律：
 
@@ -67,7 +67,7 @@ description: 自定义 SEO 摘要  # 可选；不填则取正文前 150 字
 
 ## 上传 PPT/PDF 分享
 
-把 `.pdf` 或 `.pptx` 丢到 `files/slides/`（建议命名 `YYYY-MM-DD-标题.<ext>`），可选放一份**同名** `.md` 写描述/标签 frontmatter。`build.py` 会调 macOS `qlmanage` 抽 PPT 第一页做封面。**PPT/PPTX 必须 push 到 GitHub 后线上才能预览**（Office Online viewer 需要公网 URL），强烈建议导出 PDF 上传。
+把 `.pdf` 或 `.pptx` 丢到 `files/slides/`（建议命名 `YYYY-MM-DD-标题.<ext>`），可选放一份**同名** `.md` 写描述/标签 frontmatter。`build.py` 会调 macOS `qlmanage` 抽 PPT 第一页做封面——**CI 没有 qlmanage，所以要本地 build 一次，把 `img/slides/<slug>.png` 封面和 slides 文件一起 commit**。**PPT/PPTX 必须 push 到 GitHub 后线上才能预览**（Office Online viewer 需要公网 URL），强烈建议导出 PDF 上传。
 
 ## 飞书拉文章
 
@@ -75,7 +75,7 @@ description: 自定义 SEO 摘要  # 可选；不填则取正文前 150 字
 
 ```bash
 python3 _publish_feishu.py    # lark-cli 拉 markdown + 自动下载图片到 img/posts/<slug>/
-python3 build.py
+python3 build.py              # 本地预览（可选）；发布只需 push 生成的 .md + img
 ```
 
 脚本会自动找 `<image token="..."/>`，调 `lark-cli docs +media-download` 下载并替换正文引用。需要 `lark-cli` 已登录（见 workspace `CLAUDE.md`）。
@@ -95,8 +95,8 @@ python3 build.py
 ## 不要乱碰
 
 - `index-old.html` —— 旧首页备份，回滚用
-- `tags/` —— Hexo 时代遗留的 case-collision 目录，macOS 上 git 总显示 `M`，忽略即可
-- `search.xml`、旧的 `archives/`、`categories/`、`tags/` —— Hexo 时代产物，已被 `_redirect_legacy.py` 改写为跳转页，不要手编辑
+- `search.xml`、旧的 `archives/`、`categories/`、`tags/` —— Hexo 时代产物，已被 `_redirect_legacy.py` 改写为跳转页，不要手编辑（tags/ 的大小写冲突已于 2026-07 清理，`git add -u` 不再报 file alias；如再出现，删掉 index 里的重复大小写条目即可）
+- **可能有多个 Claude 会话并行操作本仓库**（互相触发 rebuild、翻 draft 标记）。动 git 前先 `git status` 核对现场，发现工作区被别的会话改了就先和作者对齐，只 commit 自己的改动
 - `.env*` / 任何 token / LiveRe 账密 —— 仓库不放敏感信息
 
 ## 依赖
