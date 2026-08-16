@@ -1300,11 +1300,33 @@ iframe.slide-viewer-ppt,
 .post-content p img.full {
   width: 100%;
 }
+.post-content .img-cap {
+  text-align: center;
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  max-width: 92%;
+  margin: -0.4em auto 1.6em;
+}
 .post-content .cite {
   display: block;
   text-align: right;
   color: var(--ink-soft);
   margin-top: 0.4em;
+}
+.post-content .credits {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  line-height: 1.9;
+  border-top: 1px dashed var(--rule);
+  padding-top: 14px;
+  margin-top: 2.5em;
+}
+.post-content .credits p {
+  margin: 0 0 0.5em;
+}
+.post-content .credits p:first-child {
+  font-weight: 600;
 }
 .post-content hr {
   border: none;

@@ -81,7 +81,7 @@ HEAD = """<!doctype html>
 <meta name="twitter:title" content="{title}">
 <meta name="twitter:description" content="{desc}">
 <meta name="twitter:image" content="{og_image}">
-<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/site.css?v=20260816">
 <link rel="shortcut icon" href="/images/favicon.png?v=3">
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png?v=3">
 <link rel="alternate" type="application/rss+xml" title="李佳芮的博客 RSS" href="/feed.xml">

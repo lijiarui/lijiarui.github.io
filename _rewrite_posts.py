@@ -64,7 +64,7 @@ HEAD = """<!doctype html>
 <meta name="twitter:title" content="{title}">
 <meta name="twitter:description" content="{desc}">
 <meta name="twitter:image" content="{og_image}">
-<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/site.css?v=20260816">
 <link rel="shortcut icon" href="/images/favicon.png?v=3">
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png?v=3">
 <link rel="alternate" type="application/rss+xml" title="李佳芮的博客 RSS" href="/feed.xml">
@@ -231,11 +231,16 @@ def clean_feishu_html(html):
     def _img_hints(m):
         tag = m.group(0)
         lower = tag.lower()
+        extra = ''
         if 'loading=' not in lower:
-            tag = tag[:-1] + ' loading="lazy"' + tag[-1]
+            extra += ' loading="lazy"'
         if 'decoding=' not in lower:
-            tag = tag[:-1] + ' decoding="async"' + tag[-1]
-        return tag
+            extra += ' decoding="async"'
+        if not extra:
+            return tag
+        if tag.endswith('/>'):
+            return tag[:-2].rstrip() + extra + '/>'
+        return tag[:-1] + extra + '>'
     html = re.sub(r'<img\b[^>]*>', _img_hints, html, flags=re.I)
     # 正文所有链接新标签页打开（页内锚点除外）
     def _a_blank(m):
