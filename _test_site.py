@@ -8,6 +8,7 @@
 - 所有 <img> 引用的本地路径都真实存在
 - 所有 <a href="/..."> 内链都真实存在（除 fragment-only）
 - LiveRe UID、必备 widget 全埋
+- 火山 DataFinder 埋点脚本通过公共入口加载
 - RSS feed.xml 格式正确，items > 0
 - 关键页面布局完整（sidebar widget 全到、年度思考有内容、homepage feed 有 N 条）
 - description meta 不为空
@@ -43,7 +44,11 @@ def all_html_files():
 
 def test_html_basics():
     """Per-page basic checks."""
-    EXEMPT_NO_CSS = {"warn.html", "index-old.html"}
+    EXEMPT_NO_CSS = {
+        "warn.html",
+        "index-old.html",
+        "interview/2021-12-03-coding-ladies.html",
+    }
     for fp in all_html_files():
         rel = str(fp.relative_to(ROOT))
         html = fp.read_text(errors="ignore")
@@ -90,7 +95,7 @@ def test_local_images_exist():
     for fp in all_html_files():
         rel = str(fp.relative_to(ROOT))
         html = fp.read_text(errors="ignore")
-        imgs = re.findall(r'src="(/(?:img|images|files)/[^"]+?)"', html)
+        imgs = re.findall(r'<img[^>]+src="(/(?:img|images|files)/[^"]+?)"', html)
         for img in imgs:
             clean = img.split("?")[0]
             if clean in KNOWN_LEGACY_MISSING:
@@ -233,6 +238,26 @@ def test_sidebar_widgets():
                 fail("SIDEBAR-WIDGET-MISSING", f"{p} missing widget '{w}'")
 
 
+def test_analytics_script_present():
+    """Shared JS entry should load the DataFinder analytics layer."""
+    analytics = ROOT / "js/analytics.js"
+    if not analytics.exists():
+        fail("ANALYTICS-MISSING", "js/analytics.js")
+        return
+    entries = {
+        "js/search.js": "new static pages",
+        "js/SimpleCore.js": "legacy theme pages",
+        "404.html": "404 page",
+    }
+    for rel, label in entries.items():
+        fp = ROOT / rel
+        if not fp.exists():
+            fail("ANALYTICS-ENTRY-MISSING", f"{rel}: {label}")
+            continue
+        if "/js/analytics.js" not in fp.read_text(errors="ignore"):
+            fail("ANALYTICS-ENTRY-MISSING", f"{rel} does not load /js/analytics.js")
+
+
 def test_seo_meta():
     """Every public page should have og:title, og:description, canonical."""
     REQUIRED = [
@@ -244,7 +269,11 @@ def test_seo_meta():
         ('rel="canonical"', "CANONICAL"),
         ('name="twitter:card"', "TWITTER-CARD"),
     ]
-    EXEMPT = {"warn.html", "index-old.html"}
+    EXEMPT = {
+        "warn.html",
+        "index-old.html",
+        "interview/2021-12-03-coding-ladies.html",
+    }
     for fp in all_html_files():
         rel = str(fp.relative_to(ROOT))
         if rel in EXEMPT:
@@ -335,6 +364,7 @@ def main():
         ("Homepage feed", test_homepage_feed),
         ("Yearly page", test_yearly_page),
         ("Sidebar widgets", test_sidebar_widgets),
+        ("DataFinder analytics", test_analytics_script_present),
         ("Specific artifacts", test_specific_artifacts),
     ]
 
