@@ -1,4 +1,12 @@
 (function () {
+  if (!document.querySelector('script[data-ljr-analytics-entry]')) {
+    var analyticsScript = document.createElement('script');
+    analyticsScript.src = '/js/analytics.js';
+    analyticsScript.defer = true;
+    analyticsScript.setAttribute('data-ljr-analytics-entry', '1');
+    (document.head || document.documentElement).appendChild(analyticsScript);
+  }
+
   var input = document.getElementById('search-input');
   var results = document.getElementById('search-results');
   if (!input || !results) return;
