@@ -87,7 +87,7 @@ python3 build.py              # 本地预览（可选）；发布只需 push 生
 | 顶栏 / 侧栏 / footer | `_build_pages.py` 和 `_rewrite_posts.py` 的 `topnav()` / `sidebar()` 函数（注意：要同时改两个文件） |
 | `<head>` SEO meta / 统计 beacon | 同上，`HEAD` 常量 |
 | 全站颜色 / 主题色 | `css/site.css` 顶部的 `:root { --accent: ... }` |
-| LiveRe 评论 UID | `_rewrite_posts.py` 里搜 `livere-comment client-id` |
+| 评论插件 | 2026-09-07 已全站去掉（LiveRe 带广告，作者要求移除）；`comments_block` 在 `_rewrite_posts.py` 和 `_build_pages.py` 里留空，要恢复看 git 历史 |
 | 网站颜色橙 `#d26911` | 是站点品牌色，不要随便改 |
 
 **坑**：百度统计 JS 里有 `{` `}`，写在 Python `.format()` 模板里必须转义成 `{{` `}}`，否则 `KeyError`。
