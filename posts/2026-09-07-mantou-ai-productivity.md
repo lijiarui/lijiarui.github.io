@@ -203,7 +203,7 @@ Agent 质量怎么保证？有句子守护，AI 生成测试，用软件工程�
 
 ---
 
-**这场分享的完整 PPT（36 页）线上版：[AI 怎么变成生产力 · 路演版](https://html-gallery.juzibot.com/p/tr-mantou-talk)**，浏览器打开，方向键翻页，也可以[直接下载 PDF](https://html-gallery.juzibot.com/p/tr-mantou-talk/deck.pdf)。这份 PPT 是句子互动的 Mio 做的，上面「先改自己」那节讲的就是它怎么做出来的。
+**这场分享的完整 PPT（36 页）线上版：[AI 怎么变成生产力 · 路演版](https://html-gallery.juzibot.com/p/tr-mantou-talk)**，浏览器打开，方向键翻页，也可以[直接下载 PDF](https://html-gallery.juzibot.com/p/tr-mantou-talk/deck.pdf)。这份 PPT 是句子互动的 Mio 做的，上面「先改自己」那节讲的就是它怎么做出来的。Mio 是每人一个的 AI 办公搭子：查数据、写报告、做 PPT、做海报，一句话交给它，交回来的是成品。有兴趣可以自己试试，先从你最讨厌的那件活开始，看看一个人的生产力能变多少：[Mio 产品页](https://juzibot.com/products/mio.html)，[免费注册](https://az-bg.juzibot.com/auth/register)。
 
 相关的两篇：[什么是 FDE](/thought/2026-07-01-what-is-fde.html)、[崔牛会的深访](/interview/2026-06-23-cuiniuhui-fde-interview.html)。
 

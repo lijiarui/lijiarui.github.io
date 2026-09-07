@@ -370,12 +370,8 @@ def build_post_page(post_meta, parsed, side_html, newer, older, related=None):
   </div>
 </aside>"""
 
-    comments_block = """<section class="post-comments">
-  <h3>评论</h3>
-  <livere-comment client-id="AwCdtY6RULKUsR5ehN3E"></livere-comment>
-  <script type="module" src="https://www.livere.org/livere-widget.js"></script>
-  <noscript>请启用 JavaScript 查看评论</noscript>
-</section>"""
+    # 2026-09-07: LiveRe 评论插件带广告，Grace 要求全站去掉；评论区留空
+    comments_block = ""
 
     word_html = ""
     if parsed["word_count"]:

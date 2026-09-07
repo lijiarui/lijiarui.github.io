@@ -542,7 +542,7 @@ def build_index(posts, uploaded_slides):
     # new 分享 PPT posts to show on the home page)
     feed_source = blog_posts + [p for p in posts if p["_cat"] == "presentation"] + uploaded_slides
     feed_source.sort(key=lambda p: p["_date"], reverse=True)
-    feed_posts = feed_source[:12]
+    feed_posts = feed_source[:16]  # 2026-09-07: 12 → 16，让 2026 年的三份分享 PPT 都能留在首页
 
     feed_html = "\n".join(entry_html(p) for p in feed_posts)
     side_html = sidebar(blog_posts, slide_posts_all)
@@ -825,12 +825,8 @@ def build_slide_viewer(u, blog_posts, slide_posts):
             f'<span class="slide-tag">#{escape(t)}</span>' for t in u["_tags"]
         ) + '</div>'
 
-    comments_block = """<section class="post-comments">
-  <h3>评论</h3>
-  <livere-comment client-id="AwCdtY6RULKUsR5ehN3E"></livere-comment>
-  <script type="module" src="https://www.livere.org/livere-widget.js"></script>
-  <noscript>请启用 JavaScript 查看评论</noscript>
-</section>"""
+    # 2026-09-07: LiveRe 评论插件带广告，Grace 要求全站去掉；评论区留空
+    comments_block = ""
 
     body = f"""{topnav("slides")}
 
