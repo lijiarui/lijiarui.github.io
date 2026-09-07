@@ -537,8 +537,10 @@ def build_index(posts, uploaded_slides):
     blog_posts = [p for p in posts if p["_cat"] != "presentation"]
     slide_posts_all = [p for p in posts if p["_cat"] == "presentation"] + uploaded_slides
 
-    # Feed mixes blog + uploaded slides (NOT historical Hexo presentations — those are 2015-2021 archive)
-    feed_source = blog_posts + uploaded_slides
+    # Feed mixes blog + presentation posts + uploaded slides; sorted by date and cut to 12,
+    # so the 2015-2021 Hexo presentation archive never surfaces (2026-09-07: Grace asked for
+    # new 分享 PPT posts to show on the home page)
+    feed_source = blog_posts + [p for p in posts if p["_cat"] == "presentation"] + uploaded_slides
     feed_source.sort(key=lambda p: p["_date"], reverse=True)
     feed_posts = feed_source[:12]
 
@@ -1088,8 +1090,6 @@ def build_rss(posts, uploaded):
 
     items = []
     for p in posts:
-        if p["_cat"] == "presentation":
-            continue
         items.append({
             "title": p["title"],
             "link": f"{SITE_URL}/{p['path']}",
