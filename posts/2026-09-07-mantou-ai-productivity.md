@@ -1,7 +1,7 @@
 ---
 title: AI 怎么变成生产力：我们自己怎么用，和我在前线看到的坑
 date: 2026-09-07
-category: thought
+category: presentation
 tags: AI 原生组织, FDE, AI 员工, 组织, 分享, 馒头商学院
 slug: 2026-09-07-mantou-ai-productivity
 description: 9 月 5 日在北京，馒头商学院的创始人闭门对谈，我讲了 45 分钟「AI 怎么变成生产力」：这份 PPT 是前一天夜里 AI 自己做的；四个机制怎么把 AI 变成公司日常；我在前线看到的三个坑；一线销售为什么抵触、怎么变成主动要；一家头部在线教育客户跑出来的数字；以及你缺的那个角色，对内叫 AI 管培生，对外叫 FDE。
@@ -203,6 +203,8 @@ Agent 质量怎么保证？有句子守护，AI 生成测试，用软件工程�
 
 ---
 
-完整 36 页 PPT 在这里：[AI 怎么变成生产力 · 路演版](https://html-gallery.juzibot.com/p/tr-mantou-talk)，页面里有 PDF 下载。相关的两篇：[什么是 FDE](/thought/2026-07-01-what-is-fde.html)、[崔牛会的深访](/interview/2026-06-23-cuiniuhui-fde-interview.html)。
+**这场分享的完整 PPT（36 页）线上版：[AI 怎么变成生产力 · 路演版](https://html-gallery.juzibot.com/p/tr-mantou-talk)**，浏览器打开，方向键翻页，也可以[直接下载 PDF](https://html-gallery.juzibot.com/p/tr-mantou-talk/deck.pdf)。这份 PPT 是句子互动的 Mio 做的，上面「先改自己」那节讲的就是它怎么做出来的。
+
+相关的两篇：[什么是 FDE](/thought/2026-07-01-what-is-fde.html)、[崔牛会的深访](/interview/2026-06-23-cuiniuhui-fde-interview.html)。
 
 ![散场来找我 · 扫码加微信](/img/posts/2026-09-07-mantou-ai-productivity/p36.png)
