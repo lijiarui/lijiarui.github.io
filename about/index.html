@@ -53,149 +53,13 @@ var _hmt = _hmt || [];
   </header>
   <div class="post-content markdown-body">
 <style>
-/* about 页内联图：按正文栏宽设计，颜色跟站点深浅色变量走 */
-.afig{margin:1.8em 0 1.7em;padding:24px 26px 22px;border:1px solid var(--rule);border-radius:6px;background:var(--bg-soft);color:var(--ink-soft);font-size:13px;line-height:1.6;overflow-wrap:normal;word-break:normal}
-.afig *{box-sizing:border-box}
-.afig b{font-weight:600;color:var(--ink)}
-.afig .nw{white-space:nowrap}
-.afig-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:20px}
-.afig-t{font-size:15px;font-weight:600;color:var(--ink);line-height:1.4}
-.afig-k{font:500 11px/1.2 ui-monospace,"SF Mono",Menlo,Consolas,monospace;letter-spacing:.12em;color:var(--ink-faint);white-space:nowrap}
-
-/* 1 里程碑 */
-.tl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));position:relative}
-.tl::before{content:"";position:absolute;left:0;right:0;top:4px;height:1px;background:var(--ink-faint);opacity:.45}
-.tl-i{position:relative;padding:22px 18px 0 0}
-.tl-i::before{content:"";position:absolute;left:0;top:0;width:9px;height:9px;border-radius:50%;background:var(--bg-soft);border:1.5px solid var(--ink-mute)}
-.tl-i.now::before{background:var(--accent);border-color:var(--accent)}
-.tl-y{font:600 12px/1.2 ui-monospace,"SF Mono",Menlo,Consolas,monospace;letter-spacing:.06em;color:var(--ink-mute)}
-.tl-i.now .tl-y{color:var(--accent)}
-.tl-n{display:block;font-size:15px;font-weight:600;color:var(--ink);margin:3px 0 4px}
-.tl-d{display:block;font-size:12.5px;color:var(--ink-mute);line-height:1.65}
-.st{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 18px;margin-top:24px;padding-top:18px;border-top:1px solid var(--rule)}
-.st-n{display:block;font-size:22px;font-weight:700;color:var(--ink);line-height:1.25;letter-spacing:-.01em}
-.st-n.txt{font-size:17px;line-height:1.6}
-.st-l{display:block;font-size:12px;color:var(--ink-mute);margin-top:2px}
-
-/* 2 七大产品基建 */
-.ly{display:grid;grid-template-columns:minmax(0,1fr) 176px;gap:14px}
-.ly-r{display:grid;grid-template-columns:70px minmax(0,1fr);gap:12px;align-items:stretch;padding:12px 0;border-top:1px solid var(--rule)}
-.ly-r:first-child{border-top:0;padding-top:0}
-.ly-r:last-child{padding-bottom:0}
-.ly-l{display:flex;flex-direction:column;justify-content:center}
-.ly-l b{font-size:14px}
-.ly-l span{font-size:12px;color:var(--ink-mute)}
-.ly-c{display:grid;gap:8px}
-.ly-c.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
-.ly-c.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
-.ly-p{background:var(--bg);border:1px solid var(--rule);border-radius:4px;padding:10px 12px}
-.ly-c.c3 .ly-p{padding:10px}
-.ly-n{display:flex;align-items:center;flex-wrap:wrap;gap:4px 6px}
-.ly-n b{font-size:14px;line-height:1.4;white-space:nowrap}
-.ly-n em{font-style:normal;font-size:11px;line-height:1.55;color:var(--ink-mute);border:1px solid var(--rule);border-radius:3px;padding:0 5px;white-space:nowrap}
-.ly-p > span{display:block;font-size:12px;color:var(--ink-mute);line-height:1.55;margin-top:4px}
-.ly-fde{background:var(--ink);color:var(--bg);border-radius:4px;padding:16px 14px 14px;display:flex;flex-direction:column}
-.ly-fde b{color:var(--bg);font-size:15px}
-.ly-fde .k{font:500 11px/1.2 ui-monospace,"SF Mono",Menlo,Consolas,monospace;letter-spacing:.12em;opacity:.6;margin-bottom:8px}
-.ly-fde .d{margin-top:10px;font-size:12.5px;line-height:1.7;opacity:.85}
-.ly-fde .m{margin-top:auto;padding-top:12px;font-size:11px;white-space:nowrap;line-height:1.6;opacity:.7}
-
-/* 3 两个循环 */
-.lp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px}
-.lp-b + .lp-b{border-left:1px solid var(--rule);padding-left:28px}
-.lp-t b{font-size:15px}
-.lp-t span{font-size:12.5px;color:var(--ink-mute);margin-left:8px}
-.lp-d{margin:6px 0 12px;font-size:12.5px;line-height:1.65;color:var(--ink-mute)}
-.lp-s{display:grid;grid-template-columns:22px minmax(0,1fr);align-items:baseline;padding:8px 0;border-top:1px solid var(--rule);font-size:13.5px;color:var(--ink)}
-.lp-s i{font:500 11px/1 ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-style:normal;color:var(--ink-faint)}
-.lp-s.back{color:var(--ink-mute);font-size:12.5px}
-.lp-s.back i{color:var(--accent);font-size:13px}
-
-/* 4 Agent 工厂 */
-.pf{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 22px}
-.pf-s{position:relative;background:var(--bg);border:1px solid var(--rule);border-radius:4px;padding:12px}
-.pf-s i{display:block;font:500 11px/1 ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-style:normal;color:var(--ink-faint);margin-bottom:6px}
-.pf-s b{display:block;font-size:14px;line-height:1.4}
-.pf-s span{display:block;font-size:12px;color:var(--ink-mute);line-height:1.5;margin-top:2px}
-.pf-s:not(:last-child)::after{content:"→";position:absolute;right:-18px;top:50%;transform:translateY(-50%);color:var(--ink-faint);font-size:13px}
-.pf-back{position:relative;margin:0 12.5%;height:30px;border:1px solid var(--ink-faint);border-top:0;border-radius:0 0 6px 6px}
-.pf-back::before{content:"";position:absolute;left:-4.5px;top:-1px;border:4px solid transparent;border-bottom-color:var(--ink-mute);border-top:0}
-.pf-back span{position:absolute;left:50%;bottom:-10px;transform:translateX(-50%);background:var(--bg-soft);padding:0 10px;white-space:nowrap;font-size:12.5px;color:var(--ink-soft)}
-.pf-back span em{font-style:normal;color:var(--accent);margin-right:6px}
-.pf-n{margin-top:26px;font-size:12.5px;color:var(--ink-mute)}
-
-/* 6 数字员工业务版图 */
-.bm-g + .bm-g{margin-top:22px;padding-top:20px;border-top:1px solid var(--rule)}
-.bm-gt{display:flex;align-items:baseline;gap:10px;margin-bottom:12px}
-.bm-gt b{font-size:14.5px}
-.bm-gt span{font-size:12.5px;color:var(--ink-mute)}
-.bm{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 16px}
-.bm-c{position:relative;background:var(--bg);border:1px solid var(--rule);border-radius:4px;padding:12px 12px 6px}
-.bm-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
-.bm-c i{font:500 11px/1 ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-style:normal;color:var(--ink-faint)}
-.bm-top em{font-style:normal;font-size:11px;line-height:1;color:var(--ink-faint);white-space:nowrap}
-.bm-c b{display:block;font-size:13.5px;line-height:1.4}
-.bm-c .s{display:block;font-size:11.5px;color:var(--ink-mute);line-height:1.5;margin:2px 0 9px}
-.bm-c .r{display:block;font-size:12.5px;color:var(--ink-soft);line-height:1.45;padding:6px 0;border-top:1px solid var(--rule)}
-.bm.chain .bm-c:nth-child(-n+2)::after{content:"→";position:absolute;right:-14px;top:22px;color:var(--ink-faint);font-size:12px}
-
-/* 5 岗位 × 行业 */
-.mx{display:grid;grid-template-columns:72px repeat(10,minmax(0,1fr));align-items:center}
-.mx-g{grid-column:span 5;text-align:center;font-size:11.5px;color:var(--ink-faint);letter-spacing:.08em;padding-bottom:6px}
-.mx-c{text-align:center;font-size:12px;color:var(--ink);white-space:nowrap;padding:0 0 8px;font-weight:500}
-.mx-d,.mx-r{height:38px;display:flex;align-items:center;border-top:1px solid var(--rule)}
-.mx-r{justify-content:flex-end;font-size:13px;color:var(--ink);font-weight:500;white-space:nowrap;padding-right:10px}
-.mx-d{justify-content:center}
-.mx-d.sep{border-left:1px solid var(--rule)}
-.mx-d::before{content:"";width:3px;height:3px;border-radius:50%;background:var(--ink-faint);opacity:.45}
-.mx-d.on::before{width:11px;height:11px;background:var(--accent);opacity:1}
-.mx-d.wip::before{width:11px;height:11px;opacity:1;background:linear-gradient(90deg,var(--ink-soft) 50%,transparent 50%);border:1.5px solid var(--ink-soft)}
-.mx-lg{display:flex;flex-wrap:wrap;gap:6px 22px;padding-top:12px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--ink-mute)}
-.mx-lg span{display:inline-flex;align-items:center;gap:7px}
-.mx-lg i{display:inline-block;width:11px;height:11px;border-radius:50%}
-.mx-lg i.on{background:var(--accent)}
-.mx-lg i.wip{background:linear-gradient(90deg,var(--ink-soft) 50%,transparent 50%);border:1.5px solid var(--ink-soft)}
-.mx-lg i.no{width:3px;height:3px;background:var(--ink-faint);opacity:.45;margin:0 4px}
-
-@media (max-width:640px){
-  .afig{padding:18px 16px 16px}
-  .afig-h{margin-bottom:16px}
-  .afig-k{display:none}
-  .tl{grid-template-columns:1fr}
-  .tl::before{left:4px;right:auto;top:8px;bottom:30px;width:1px;height:auto}
-  .tl-i{padding:0 0 16px 24px}
-  .tl-i:last-child{padding-bottom:0}
-  .tl-i::before{top:5px}
-  .tl-y{margin-right:8px}
-  .tl-n{display:inline}
-  .tl-d{margin-top:3px}
-  .st{gap:0 10px;margin-top:20px;padding-top:14px}
-  .st-n{font-size:19px}
-  .st-n.txt{font-size:14px;line-height:1.45;padding-top:2px}
-  .ly{grid-template-columns:1fr}
-  .ly-r{grid-template-columns:1fr;gap:8px}
-  .ly-l{flex-direction:row;justify-content:flex-start;align-items:baseline;gap:8px}
-  .ly-c.c2,.ly-c.c3{grid-template-columns:1fr;gap:6px}
-  .ly-p{padding:9px 12px}
-  .ly-p > span{margin-top:2px}
-  .bm{grid-template-columns:1fr 1fr;gap:10px}
-  .bm.chain .bm-c:nth-child(-n+2)::after{display:none}
-  .bm-gt{flex-wrap:wrap;gap:2px 10px}
-  .lp{grid-template-columns:1fr;gap:22px 0}
-  .lp-b + .lp-b{border-left:0;padding-left:0;border-top:1px solid var(--rule);padding-top:20px}
-  .pf{grid-template-columns:1fr 1fr;gap:10px}
-  .pf-s:not(:last-child)::after{display:none}
-  .pf-back{margin:12px 0 0;height:auto;border:0}
-  .pf-back::before{display:none}
-  .pf-back span{position:static;transform:none;display:block;white-space:normal;padding:0;background:none}
-  .pf-n{margin-top:10px}
-  .mx{grid-template-columns:54px repeat(10,minmax(0,1fr))}
-  .mx-c{writing-mode:vertical-rl;text-orientation:mixed;justify-self:center;align-self:end;padding:0 0 8px;font-size:11.5px;letter-spacing:.04em}
-  .mx-r{font-size:12px;padding-right:6px}
-  .mx-d,.mx-r{height:32px}
-  .mx-d.on::before,.mx-d.wip::before{width:10px;height:10px}
-  .mx-g{font-size:11px;letter-spacing:.02em}
-}
+/* about 页嵌入的 deck 单页：16:9 容器 + iframe，整块可点开看大图 */
+.aslide{position:relative;aspect-ratio:16/9;margin:1.7em 0 .9em;border:1px solid var(--rule);border-radius:8px;overflow:hidden;background:#F1F4FB}
+.aslide iframe{position:absolute;inset:0;width:100%;height:100%;max-width:none;border:0;border-radius:0;display:block}
+.post-content a.aslide-open{position:absolute;inset:0;display:block;border:0;padding:0;background:none}
+.aslide-open::after{content:"点开看大图 ⤢";position:absolute;right:10px;bottom:10px;padding:3px 9px;border-radius:999px;background:rgba(15,23,42,.72);color:#fff;font-size:11.5px;line-height:1.6;opacity:0;transition:opacity .2s}
+.aslide:hover .aslide-open::after{opacity:1}
+@media (hover:none){.aslide-open::after{opacity:.85;font-size:10.5px;padding:2px 7px;right:6px;bottom:6px}}
 </style>
 <h2 id="我是谁">我是谁</h2>
 <p>我是李佳芮，<a href="https://juzibot.com" target="_blank" rel="noopener">句子互动</a> 创始人兼 CEO。</p>
@@ -209,26 +73,36 @@ var _hmt = _hmt || [];
 <p><a href="https://juzibot.com" target="_blank" rel="noopener">句子互动</a>（JuziBot）成立于 2019 年，做的事一句话能说清：为企业部署能直接上岗的 AI 员工。</p>
 <p><strong>卖的是干完的活，不是软件。</strong>收费跟着结果走：教育客户按有效线索算，消费客户按 AI 服务的用户数算，算得清经营结果的直接按业务产出算。我们经常开玩笑说自己是一家人力公司，只不过输出的是 AI 人力。</p>
 <p>为什么有这门生意？模型已经足够强了，但千行百业用大模型的方式，还是打开一个对话框聊两句。模型厂商不懂行业 SOP，拿不到企业的私域数据；企业自己又没有把模型接进业务系统、管住质量、过合规的工程能力。从基础模型到真正的生产力，中间有一道巨大的鸿沟，我们做的就是填这道鸿沟。</p>
-<div class="afig"><div class="afig-h"><div class="afig-t">从接住消息，到配进每个工位</div><div class="afig-k">2019 — 2026</div></div><div class="tl"><div class="tl-i"><span class="tl-y">2019</span><span class="tl-n">句子秒回</span><span class="tl-d">帮企业接住每条客户消息，一个工作台管 10+ 个渠道。</span></div><div class="tl-i"><span class="tl-y">2023</span><span class="tl-n">句子秒懂</span><span class="tl-d">业务人员不写代码，也能把 AI 员工搭起来。同年组建 FDE 交付团队。</span></div><div class="tl-i"><span class="tl-y">2025</span><span class="tl-n">七大产品基建</span><span class="tl-d">应用、编排、地基三层 Agent 基建成型。</span></div><div class="tl-i now"><span class="tl-y">2026</span><span class="tl-n">Mio</span><span class="tl-d">给每个员工配一个 AI 办公搭子，会写、会做、会主动盯。</span></div></div><div class="st"><div><span class="st-n">1000+</span><span class="st-l">大型企业客户</span></div><div><span class="st-n">连续 4 年</span><span class="st-l">盈利</span></div><div><span class="st-n txt"><span class="nw">国家高新</span> · <span class="nw">专精特新</span></span><span class="st-l">资质认证</span></div></div></div>
+<div class="aslide"><iframe src="/about/slides/milestones.html" title="从接住消息，到配进每个工位" loading="lazy" scrolling="no"></iframe><a class="aslide-open" href="/about/slides/milestones.html" target="_blank" rel="noopener" aria-label="从接住消息，到配进每个工位（点开看大图）"></a></div>
+<div class="img-cap">从接住消息，到配进每个工位：2019 句子秒回 → 2023 句子秒懂（同年组建 FDE 交付团队，国内最早一批）→ 2025 七大产品基建成型 → 2026 Mio</div>
 <h3>七大产品基建</h3>
 <p>七个产品里，最早规划出来的只有句子秒回和句子秒懂。剩下五个都不是会议室里想出来的，是 FDE 在客户现场撞出来的。句子守护就是这么来的：交付断点接不住，来回扯了很久，最后 CTO 自己下场，把整套测试搭了出来。</p>
 <p>七个产品各管一件事：Mio 是 AI 办公搭子，秒回是 AI 和人协作的工作台，秒懂是大脑，守护是主管，懂行是记忆，CLI 是手，制造是地基。</p>
-<div class="afig"><div class="afig-h"><div class="afig-t">七大产品基建，加一支 FDE 团队</div><div class="afig-k">三层 · 七个产品</div></div><div class="ly"><div class="ly-rows"><div class="ly-r"><div class="ly-l"><b>应用层</b><span>终端用户用</span></div><div class="ly-c c2"><div class="ly-p"><div class="ly-n"><b>句子秒回</b><em>工作台</em></div><span>Agent 和人协作的界面，一套复制到多业务场景</span></div><div class="ly-p"><div class="ly-n"><b>Mio</b><em>AI 办公搭子</em></div><span>每人一个，把活干完，不只是回答问题</span></div></div></div><div class="ly-r"><div class="ly-l"><b>编排层</b><span>Agent 搭建</span></div><div class="ly-c c3"><div class="ly-p"><div class="ly-n"><b>句子秒懂</b><em>大脑</em></div><span>多 Agent 编排，业务人员就能搭</span></div><div class="ly-p"><div class="ly-n"><b>句子守护</b><em>主管</em></div><span><span class="nw">测试 / 灰度 / 质检</span>，上线每步把关</span></div><div class="ly-p"><div class="ly-n"><b>句子懂行</b><em>记忆</em></div><span>散乱知识炼成可检索资产</span></div></div></div><div class="ly-r"><div class="ly-l"><b>地基层</b><span>数字化底座</span></div><div class="ly-c c2"><div class="ly-p"><div class="ly-n"><b>句子 CLI</b><em>手</em></div><span>对外打通各大平台，对内封装企业系统</span></div><div class="ly-p"><div class="ly-n"><b>句子制造</b><em>地基</em></div><span>补齐数字化能力，AI 原生组织改造起点</span></div></div></div></div><div class="ly-fde"><div class="k">贯穿三层</div><b>FDE 团队</b><div class="d">前线部署工程师，对结果负责的交付团队。懂业务的和写代码的搭班子，先读懂客户的生意，再当场落地。</div><div class="m">简单角色 1 天上岗<br>复杂角色 90 天接管完整业务</div></div></div></div>
+<div class="aslide"><iframe src="/about/slides/seven-infra.html" title="七大产品基建 × FDE，三层一体" loading="lazy" scrolling="no"></iframe><a class="aslide-open" href="/about/slides/seven-infra.html" target="_blank" rel="noopener" aria-label="七大产品基建 × FDE，三层一体（点开看大图）"></a></div>
+<div class="img-cap">七大产品基建分三层：应用层给人用，编排层搭 Agent，地基层补数字化；FDE 团队贯穿三层</div>
+<div class="aslide"><iframe src="/about/slides/mio-what.html" title="Mio，把活直接干完" loading="lazy" scrolling="no"></iframe><a class="aslide-open" href="/about/slides/mio-what.html" target="_blank" rel="noopener" aria-label="Mio，把活直接干完（点开看大图）"></a></div>
+<div class="img-cap">Mio：说一句话，它交回能直接验收的成果</div>
 <h3>FDE：对结果负责的交付团队</h3>
 <p>FDE（Forward Deployed Engineer，前线部署工程师），这个团队我们 2023 年就开始建，国内最早一批。FDE 进场第一件事不是上系统，是把客户的生意先搞懂：钻进业务里，把那几百个分支一个个画出来，再当场把东西做出来。简单角色 1 天上岗，复杂角色 90 天接管完整业务。现场踩过的坑沉淀回产品，下一个岗位开箱即用。</p>
+<div class="aslide"><iframe src="/about/slides/fde.html" title="FDE 交付团队，对结果负责" loading="lazy" scrolling="no"></iframe><a class="aslide-open" href="/about/slides/fde.html" target="_blank" rel="noopener" aria-label="FDE 交付团队，对结果负责（点开看大图）"></a></div>
+<div class="img-cap">FDE 两人一组进场：一个懂行业，一个写代码；从诊断对齐到扩展场景四步</div>
 <p>今年我们拿到了工信体系的 FDE 认证。内部招 FDE、带 FDE 的那套四级标准（新兵训练营、老带新、独当一面、带人和沉淀产品），正在和馒头商学院一起做成对外的培训课，首期即将开班。</p>
 <p>关于 FDE 我写过一篇：<a href="/thought/2026-07-01-what-is-fde.html" target="_blank" rel="noopener">《什么是 FDE》</a>。</p>
 <h3>自研引擎</h3>
 <p>企业 AI 的关键不在更聪明，在更可控。我们把跑 Agent 的引擎整套自己做了：决策主循环、工具系统、上下文工程、沙盒执行、跨会话记忆、评估与回归。真实对话里的错例自动变成测试用例，每天深夜跑回归，通过才放行新版本。</p>
 <p>这套工程把单次业务结果的 token 成本压到行业的 1/10。同一个岗位，我们用同行 1/10 的时间、1/10 的成本，交付 2 倍好的结果。敢按结果收钱，是因为成本真的压得下来。</p>
-<div class="afig"><div class="afig-h"><div class="afig-t">上线之后的进化，是系统自己做的</div><div class="afig-k">两个循环</div></div><div class="lp"><div class="lp-b"><div class="lp-t"><b>宏观循环</b><span>调整体流程</span></div><div class="lp-d">指定一个核心指标，系统围着它调。比如课程转化 ROI。</div><div class="lp-s"><i>1</i>指定指标</div><div class="lp-s"><i>2</i>自动搭出转化漏斗</div><div class="lp-s"><i>3</i>逐层分析，定位瓶颈</div><div class="lp-s"><i>4</i>AB Test 验证新流程</div><div class="lp-s back"><i>↻</i>回到指标，再来一轮</div></div><div class="lp-b"><div class="lp-t"><b>微观循环</b><span>调每一句回复</span></div><div class="lp-d">真实对话里的错例，自动变成测试用例。</div><div class="lp-s"><i>1</i>真实对话挖出错例</div><div class="lp-s"><i>2</i>自动生成测试用例</div><div class="lp-s"><i>3</i>深夜跑统计、调优、回归</div><div class="lp-s"><i>4</i>通过才放行新版本</div><div class="lp-s back"><i>↻</i>每天一轮</div></div></div></div>
+<div class="aslide"><iframe src="/about/slides/self-evolution.html" title="上线之后的进化，是系统自己做的" loading="lazy" scrolling="no"></iframe><a class="aslide-open" href="/about/slides/self-evolution.html" target="_blank" rel="noopener" aria-label="上线之后的进化，是系统自己做的（点开看大图）"></a></div>
+<div class="img-cap">上线之后的进化是系统自己做的：宏观循环调整体流程，微观循环调每一句回复</div>
 <p>再往深一层，我们在做工程领域的 RSI（Recursive Self-Improvement，递归自我进化）。产品自己会进化还不够，造 Agent 的工厂本身也要会进化：更强的工程，带来更强的研发能力，反过来又造出更强的工程。落到流水线上就是：需求资料进来，流程自动生成，测试通过才上线，上线后的错例回流调优，数据统计、调优、回归、AB Test、版本控制每天深夜自动跑一遍。行业场景固化成模板和 SOP，下一个岗位开箱即用。人搭一个 Agent 是线性的，工厂造 Agent 是复利的：每个上线的岗位，都在给下一个岗位攒工程能力。这条流水线还没全干完，已经跑通的环节，先在头部客户的岗位上转起来。</p>
-<div class="afig"><div class="afig-h"><div class="afig-t">Agent 工厂的流水线</div><div class="afig-k">每日深夜自动执行</div></div><div class="pf"><div class="pf-s"><i>01</i><b>需求资料进来</b></div><div class="pf-s"><i>02</i><b>流程自动生成</b></div><div class="pf-s"><i>03</i><b>测试通过才上线</b></div><div class="pf-s"><i>04</i><b>错例回流调优</b></div></div><div class="pf-back"><span><em>↻</em>数据统计 · 调优 · 回归 · AB Test · 版本控制</span></div><div class="pf-n">行业场景固化成模板和 SOP，下一个岗位开箱即用。</div></div>
+<div class="aslide"><iframe src="/about/slides/agent-factory.html" title="人搭 Agent 是线性的，工厂造 Agent 是复利的" loading="lazy" scrolling="no"></iframe><a class="aslide-open" href="/about/slides/agent-factory.html" target="_blank" rel="noopener" aria-label="人搭 Agent 是线性的，工厂造 Agent 是复利的（点开看大图）"></a></div>
+<div class="img-cap">Agent 工厂的流水线：需求进来到上线调优全程产品化；同样一年，工厂流水线造出的 AI 员工数量是复利的</div>
 <h3>做到哪了</h3>
 <p>1000+ 大型企业客户。在线教育、消费电商、金融、政务司法、泛互联网五个行业规模落地，制造业在拓。岗位从销售起步，导购、客服、理财顾问、社工、律师、HR，一格一格往外复制。公司靠业务收入自我造血，营收连续翻倍，连续盈利 4 年。</p>
-<div class="afig"><div class="afig-h"><div class="afig-t">岗位 × 行业，一格一格拓</div><div class="afig-k">6 行业 × 10 岗位</div></div><div class="mx"><div></div><div class="mx-g">对话场景</div><div class="mx-g">跳出对话场景</div><div></div><div class="mx-c">销售</div><div class="mx-c">导购</div><div class="mx-c">客服</div><div class="mx-c">理财顾问</div><div class="mx-c">社工调解</div><div class="mx-c">律师法务</div><div class="mx-c">HR</div><div class="mx-c">GEO 优化</div><div class="mx-c">选品规划</div><div class="mx-c">后勤管家</div><div class="mx-r">在线教育</div><div class="mx-d on"></div><div class="mx-d"></div><div class="mx-d on"></div><div class="mx-d"></div><div class="mx-d"></div><div class="mx-d sep"></div><div class="mx-d wip"></div><div class="mx-d"></div><div class="mx-d"></div><div class="mx-d"></div><div class="mx-r">消费电商</div><div class="mx-d on"></div><div class="mx-d on"></div><div class="mx-d on"></div><div class="mx-d"></div><div class="mx-d"></div><div class="mx-d sep"></div><div class="mx-d"></div><div class="mx-d wip"></div><div class="mx-d"></div><div class="mx-d"></div><div class="mx-r">金融</div><div class="mx-d"></div><div class="mx-d"></div><div class="mx-d on"></div><div class="mx-d wip"></div><div class="mx-d"></div><div class="mx-d sep"></div><div class="mx-d"></div><div class="mx-d"></div><div class="mx-d on"></div><div class="mx-d"></div><div class="mx-r">政务司法</div><div class="mx-d"></div><div class="mx-d"></div><div class="mx-d wip"></div><div class="mx-d"></div><div class="mx-d on"></div><div class="mx-d wip sep"></div><div class="mx-d"></div><div class="mx-d"></div><div class="mx-d"></div><div class="mx-d"></div><div class="mx-r">泛互联网</div><div class="mx-d on"></div><div class="mx-d"></div><div class="mx-d wip"></div><div class="mx-d"></div><div class="mx-d"></div><div class="mx-d sep"></div><div class="mx-d on"></div><div class="mx-d"></div><div class="mx-d"></div><div class="mx-d"></div><div class="mx-r">制造业</div><div class="mx-d"></div><div class="mx-d"></div><div class="mx-d"></div><div class="mx-d"></div><div class="mx-d"></div><div class="mx-d sep"></div><div class="mx-d"></div><div class="mx-d"></div><div class="mx-d"></div><div class="mx-d wip"></div></div><div class="mx-lg"><span><i class="on"></i>已跑通（按结果付费验证）</span><span><i class="wip"></i>复制中</span><span><i class="no"></i>规划中</span></div></div>
+<div class="aslide"><iframe src="/about/slides/expansion-map.html" title="岗位 × 行业，一格一格拓" loading="lazy" scrolling="no"></iframe><a class="aslide-open" href="/about/slides/expansion-map.html" target="_blank" rel="noopener" aria-label="岗位 × 行业，一格一格拓（点开看大图）"></a></div>
+<div class="img-cap">岗位 × 行业一格一格拓：绿色已跑通（按结果付费验证），紫色复制中，空白格规划中</div>
 <p>岗位已经不只在对话里。营销增长分四段，一共 16 个岗位：获客、线索承接、私域转化、运营策略各 4 个。内部提效有 12 个，做的是标书审核、合同审核、费用核对这类把关的活。这 28 个岗位用的是同一套七大产品基建。</p>
-<div class="afig"><div class="afig-h"><div class="afig-t">数字员工业务版图：从营销增长到内部提效</div><div class="afig-k">28 个岗位</div></div><div class="bm-g"><div class="bm-gt"><b>营销增长</b><span>四段接成一条链，运营策略再反馈回前三段</span></div><div class="bm chain"><div class="bm-c"><div class="bm-top"><i>01</i><em>非对话为主</em></div><b>获客起盘</b><span class="s">内容生产与获客</span><span class="r">GEO 内容分析</span><span class="r">GEO 内容发布</span><span class="r">视频图片设计（AIGC）</span><span class="r">营销文案创作</span></div><div class="bm-c"><div class="bm-top"><i>02</i><em>对话为主</em></div><b>公转私线索承接</b><span class="s">咨询承接与线索引流</span><span class="r">抖音公转私线索引流</span><span class="r">小红书线索承接</span><span class="r">公域咨询接待</span><span class="r">线索识别与分流</span></div><div class="bm-c"><div class="bm-top"><i>03</i><em>对话为主</em></div><b>私域运营与转化</b><span class="s">销售跟进与客户服务</span><span class="r">私域销售</span><span class="r">私域客服</span><span class="r">会员运营</span><span class="r">客户召回与复购</span></div><div class="bm-c"><div class="bm-top"><i>04</i><em>非对话为主</em></div><b>运营策略与分析</b><span class="s">增长分析与策略生成</span><span class="r">AI 活动策划</span><span class="r">AI 门店经营分析</span><span class="r">公域投放策略分析</span><span class="r">人群运营策略</span></div></div></div><div class="bm-g"><div class="bm-gt"><b>内部提效</b><span>四类把关的活</span></div><div class="bm "><div class="bm-c"><div class="bm-top"><i>01</i><em></em></div><b>审核与质量检查</b><span class="s">材料审核与质量把关</span><span class="r">标书审核</span><span class="r">合同审核</span><span class="r">标注质量审核</span></div><div class="bm-c"><div class="bm-top"><i>02</i><em></em></div><b>文档与数据处理</b><span class="s">资料整理与信息核对</span><span class="r">文档整理</span><span class="r">跨文档内容核对</span><span class="r">数据录入与核对</span></div><div class="bm-c"><div class="bm-top"><i>03</i><em></em></div><b>风险与合规检查</b><span class="s">规范检查与风险识别</span><span class="r">内容合规检查</span><span class="r">敏感信息检查</span><span class="r">业务规则检查</span></div><div class="bm-c"><div class="bm-top"><i>04</i><em></em></div><b>财务与经营支持</b><span class="s">预算核算与财务分析</span><span class="r">WBS 预算核算</span><span class="r">费用核对</span><span class="r">财务报表分析</span></div></div></div></div>
+<div class="aslide"><iframe src="/about/slides/biz-map.html" title="数字员工业务版图：从营销增长到内部提效" loading="lazy" scrolling="no"></iframe><a class="aslide-open" href="/about/slides/biz-map.html" target="_blank" rel="noopener" aria-label="数字员工业务版图：从营销增长到内部提效（点开看大图）"></a></div>
+<div class="img-cap">数字员工业务版图：营销增长四段 16 个岗位，内部提效四类 12 个岗位</div>
 <p>我不是中国的 Palantir，我是在用 Palantir 的方式落地中国的 AI。</p>
 
 <h2 id="我们在做-ai-原生组织">我们在做 AI 原生组织</h2>

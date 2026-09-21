@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>从接住消息，到配进每个工位 · 句子互动</title>
+<link rel="stylesheet" href="mio.css">
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:var(--bg)}
+#stage{position:absolute;left:0;top:0;transform-origin:0 0}
+.slide{transition:none}
+</style>
+</head>
+<body>
+<div id="stage">
+<section class="slide">
+    <div class="head rv">
+      <div class="eyebrow">Who we are — 为什么是句子互动</div>
+      <h2>从接住消息，<span class="hl">到配进每个工位</span>。</h2>
+      <div class="sub">2019 年做到今天，AI 员工这件事我们不是第一天干。</div>
+    </div>
+    <div class="body">
+      <div class="tl">
+        <div class="rail"></div>
+        <div class="node" style="left:calc(1% + 114px);--nd:.4s"></div>
+        <div class="node" style="left:calc(27% + 114px);--nd:.8s"></div>
+        <div class="node" style="left:calc(53% + 114px);--nd:1.2s"></div>
+        <div class="node" style="left:calc(79% + 114px);--nd:1.6s"></div>
+        <div class="card mcard rv" style="left:1%;--d:.5s"><div class="yr">2019</div><h3>句子秒回</h3><div class="d">帮企业接住每条客户消息，一个工作台管 10+ 个渠道。</div></div>
+        <div class="card mcard rv" style="left:27%;--d:.9s"><div class="yr">2023</div><h3>句子秒懂</h3><div class="d">帮企业把 AI 员工搭起来，业务人不写代码也能上手。</div></div>
+        <div class="card mcard rv" style="left:53%;--d:1.3s"><div class="yr">2025</div><h3>七大产品基建</h3><div class="d">三层一体的 Agent 基建成型，AI 员工矩阵铺开。</div></div>
+        <div class="card mcard hot rv" style="left:79%;--d:1.7s"><div class="yr">2026</div><h3>Mio</h3><div class="d">给每个员工配上 AI 办公坐席，会写、会做、会主动盯。</div></div>
+      </div>
+      <div class="grid3">
+        <div class="card cred rv" style="--d:2.0s"><b>1000+</b><span>大型企业在用</span></div>
+        <div class="card cred rv" style="--d:2.1s"><b>连续 4 年</b><span>盈利的 AI 公司</span></div>
+        <div class="card cred rv" style="--d:2.2s"><b>国家高新 · 专精特新</b><span>权威资质认证</span></div>
+      </div>
+    </div>
+    <div class="punch rv" style="--d:2.4s">在多数 AI 公司还在烧钱的时候，句子互动靠业务收入自我造血。</div>
+  <div class="pbm"><i></i><b>句子互动</b><span class="sep"></span><em>JUZI.BOT</em></div>
+  </section>
+</div>
+<script>
+(function(){
+  var stage=document.getElementById('stage'),s=document.querySelector('.slide');
+  var rvs=s.querySelectorAll('.rv');
+  for(var k=0;k<rvs.length;k++){
+    if(!rvs[k].style.getPropertyValue('--d'))rvs[k].style.setProperty('--d',(0.05+k*0.06).toFixed(2)+'s');
+  }
+  /* 嵌在博客里时裁掉页面四周的留白（内容区放大约 10%）；单独打开时显示整页 */
+  var embedded=window.self!==window.top;
+  var C=embedded?{x:56,y:32,w:1168,h:657}:{x:0,y:0,w:1280,h:720};
+  function fit(){
+    if(!embedded&&innerHeight>innerWidth*1.2){
+      /* 手机竖屏单独打开：横置铺满，字比不旋转大近一倍 */
+      var r=Math.min(innerHeight/1280,innerWidth/720);
+      stage.style.transform='translate('+((innerWidth+720*r)/2)+'px,'+((innerHeight-1280*r)/2)+'px) rotate(90deg) scale('+r+')';
+      return;
+    }
+    var k=Math.min(innerWidth/C.w,innerHeight/C.h);
+    stage.style.transform='translate('+((innerWidth-C.w*k)/2-C.x*k)+'px,'+((innerHeight-C.h*k)/2-C.y*k)+'px) scale('+k+')';
+  }
+  addEventListener('resize',fit);fit();
+  /* 露出 35% 才播放，完全滚出视野才复位：每次滚到都重播，边缘不闪 */
+  var called=false;
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      called=true;
+      var e=es[es.length-1];
+      if(e.intersectionRatio>=.35)s.classList.add('active');
+      else if(!e.isIntersecting)s.classList.remove('active');
+    },{threshold:[0,.35]}).observe(document.body);
+    setTimeout(function(){if(!called)s.classList.add('active');},2500);
+  }else s.classList.add('active');
+})();
+</script>
+</body>
+</html>
