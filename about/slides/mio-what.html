@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Mio，把活直接干完 · 句子互动</title>
+<link rel="stylesheet" href="mio.css">
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:var(--bg)}
+#stage{position:absolute;left:0;top:0;transform-origin:0 0}
+.slide{transition:none}
+</style>
+</head>
+<body>
+<div id="stage">
+<section class="slide">
+    <div class="head rv">
+      <div class="eyebrow">What it is — 它是什么</div>
+      <h2>Mio，<span class="hl">把活直接干完</span>的 AI 坐席。</h2>
+      <div class="sub">不止于问答：听得懂任务，自己拆步骤、动手干，交回能直接验收的成果。</div>
+    </div>
+    <div class="body">
+      <div class="heroline rv">
+        <div class="say"><div class="who">你说</div><div class="q">“把上周的渠道业务整理成周报，周一早上发我。”</div></div>
+        <div class="mio-node">Mio<small>接下任务</small></div>
+        <div class="get"><div class="who">它交回</div><div class="q">一份排好版的 Word 周报，到点自动出现。</div></div>
+      </div>
+      <div class="heroline rv" style="--d:.5s">
+        <div class="say"><div class="who">你说</div><div class="q">“把这个月经营情况做成汇报 PPT。”</div></div>
+        <div class="mio-node" style="animation-delay:.9s">Mio<small>接下任务</small></div>
+        <div class="get"><div class="who">它交回</div><div class="q">一份能直接开会用的 PPT，图表和数据都填好。</div></div>
+      </div>
+      <div class="heroline rv" style="--d:.8s">
+        <div class="say"><div class="who">你说</div><div class="q">“这份表把各区数据清一遍，做个对比。”</div></div>
+        <div class="mio-node" style="animation-delay:1.3s">Mio<small>接下任务</small></div>
+        <div class="get"><div class="who">它交回</div><div class="q">清洗、汇总、对比图表，连表带图一并交回。</div></div>
+      </div>
+    </div>
+    <div class="punch rv">AI 助手给答案，Mio 交成果。</div>
+  <div class="pbm"><i></i><b>句子互动</b><span class="sep"></span><em>JUZI.BOT</em></div>
+  </section>
+</div>
+<script>
+(function(){
+  var stage=document.getElementById('stage'),s=document.querySelector('.slide');
+  var rvs=s.querySelectorAll('.rv');
+  for(var k=0;k<rvs.length;k++){
+    if(!rvs[k].style.getPropertyValue('--d'))rvs[k].style.setProperty('--d',(0.05+k*0.06).toFixed(2)+'s');
+  }
+  /* 嵌在博客里时裁掉页面四周的留白（内容区放大约 10%）；单独打开时显示整页 */
+  var embedded=window.self!==window.top;
+  var C=embedded?{x:56,y:32,w:1168,h:657}:{x:0,y:0,w:1280,h:720};
+  function fit(){
+    if(!embedded&&innerHeight>innerWidth*1.2){
+      /* 手机竖屏单独打开：横置铺满，字比不旋转大近一倍 */
+      var r=Math.min(innerHeight/1280,innerWidth/720);
+      stage.style.transform='translate('+((innerWidth+720*r)/2)+'px,'+((innerHeight-1280*r)/2)+'px) rotate(90deg) scale('+r+')';
+      return;
+    }
+    var k=Math.min(innerWidth/C.w,innerHeight/C.h);
+    stage.style.transform='translate('+((innerWidth-C.w*k)/2-C.x*k)+'px,'+((innerHeight-C.h*k)/2-C.y*k)+'px) scale('+k+')';
+  }
+  addEventListener('resize',fit);fit();
+  /* 露出 35% 才播放，完全滚出视野才复位：每次滚到都重播，边缘不闪 */
+  var called=false;
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      called=true;
+      var e=es[es.length-1];
+      if(e.intersectionRatio>=.35)s.classList.add('active');
+      else if(!e.isIntersecting)s.classList.remove('active');
+    },{threshold:[0,.35]}).observe(document.body);
+    setTimeout(function(){if(!called)s.classList.add('active');},2500);
+  }else s.classList.add('active');
+})();
+</script>
+</body>
+</html>

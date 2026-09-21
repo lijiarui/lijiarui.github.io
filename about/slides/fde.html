@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>FDE 交付团队，对结果负责 · 句子互动</title>
+<link rel="stylesheet" href="company.css">
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:var(--bg)}
+#stage{position:absolute;left:0;top:0;transform-origin:0 0}
+.slide{transition:none}
+</style>
+</head>
+<body>
+<div id="stage">
+<section class="slide">
+    <div class="head rv">
+      <div class="eyebrow">Delivery — 怎么交付</div>
+      <h2>FDE 交付团队，<span class="hl">对结果负责</span>。</h2>
+      <div class="sub">模型本身不会直接变成业务生产力，中间缺把模型嵌进业务流程的人。FDE（Forward Deployed Engineer，前线部署工程师）补这一环。</div>
+    </div>
+    <div class="body" style="padding-top:18px">
+      <div class="grid2" style="margin-bottom:14px">
+        <div class="card fdec rv" style="--d:.25s"><h3>ECHO · 懂行业<span class="en">先搞懂生意</span></h3>
+          <div class="d">钻进客户的生意里，找出真该解决的问题，把这门生意先讲清楚——进场第一件事不是上系统，是把业务理清楚。</div></div>
+        <div class="card fdec rv" style="--d:.4s"><h3>DELTA · 写代码<span class="en">当场落地</span></h3>
+          <div class="d">把现场需要的东西当场实现。两人扎进同一个客户：Echo 定义，Delta 落地；现场跑出的能力沉淀回标品，复用到更多客户。</div></div>
+      </div>
+      <div class="grid4" style="margin-bottom:14px">
+        <div class="card stepcard rv" style="--d:.55s"><span class="no">STEP 01</span><h3>诊断对齐<small>1-2 周</small></h3>
+          <div class="d">理解业务、梳理流程、定 KPI：AI 员工替代哪些动作、产出什么结果</div></div>
+        <div class="card stepcard rv" style="--d:.7s"><span class="no">STEP 02</span><h3>搭建上线<small>4-6 周</small></h3>
+          <div class="d">秒懂搭 Agent、守护保稳定，对接客户现有系统，灰度上线</div></div>
+        <div class="card stepcard rv" style="--d:.85s"><span class="no">STEP 03</span><h3>调优陪跑<small>持续</small></h3>
+          <div class="d">badcase 每日复盘、策略迭代；人改的 Agent 跟着学，每周比上周更准</div></div>
+        <div class="card stepcard rv" style="--d:1s"><span class="no">STEP 04</span><h3>扩展场景<small>持续</small></h3>
+          <div class="d">一个角色跑通后，横向复制到更多岗位、更多业务线</div></div>
+      </div>
+      <div class="strip rv" style="--d:1.15s"><b>服务承诺</b>：专属客户成功 · 7×12 响应 · 月度业务复盘 · badcase 24 小时闭环 · 重大事件 4 小时内现场支持</div>
+    </div>
+    <div class="punch rv" style="--d:1.3s">简单角色 1 天上岗，复杂角色 90 天接管完整业务。</div>
+  <div class="pbm"><i></i><b>句子互动</b><span class="sep"></span><em>JUZI.BOT</em></div>
+  </section>
+</div>
+<script>
+(function(){
+  var stage=document.getElementById('stage'),s=document.querySelector('.slide');
+  var rvs=s.querySelectorAll('.rv');
+  for(var k=0;k<rvs.length;k++){
+    if(!rvs[k].style.getPropertyValue('--d'))rvs[k].style.setProperty('--d',(0.05+k*0.06).toFixed(2)+'s');
+  }
+  /* 嵌在博客里时裁掉页面四周的留白（内容区放大约 10%）；单独打开时显示整页 */
+  var embedded=window.self!==window.top;
+  var C=embedded?{x:56,y:32,w:1168,h:657}:{x:0,y:0,w:1280,h:720};
+  function fit(){
+    if(!embedded&&innerHeight>innerWidth*1.2){
+      /* 手机竖屏单独打开：横置铺满，字比不旋转大近一倍 */
+      var r=Math.min(innerHeight/1280,innerWidth/720);
+      stage.style.transform='translate('+((innerWidth+720*r)/2)+'px,'+((innerHeight-1280*r)/2)+'px) rotate(90deg) scale('+r+')';
+      return;
+    }
+    var k=Math.min(innerWidth/C.w,innerHeight/C.h);
+    stage.style.transform='translate('+((innerWidth-C.w*k)/2-C.x*k)+'px,'+((innerHeight-C.h*k)/2-C.y*k)+'px) scale('+k+')';
+  }
+  addEventListener('resize',fit);fit();
+  /* 露出 35% 才播放，完全滚出视野才复位：每次滚到都重播，边缘不闪 */
+  var called=false;
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      called=true;
+      var e=es[es.length-1];
+      if(e.intersectionRatio>=.35)s.classList.add('active');
+      else if(!e.isIntersecting)s.classList.remove('active');
+    },{threshold:[0,.35]}).observe(document.body);
+    setTimeout(function(){if(!called)s.classList.add('active');},2500);
+  }else s.classList.add('active');
+})();
+</script>
+</body>
+</html>
